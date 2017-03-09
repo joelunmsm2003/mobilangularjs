@@ -1,5 +1,9 @@
-# Demonstration of AngularUI Router
+* Activak Mobile Call Center
 
-Code and demo for the scotch.io tutorial
+** Instalacion
 
-[AngularJS Routing Using UI-Router](http://scotch.io/tutorials/javascript/angular-routing-using-ui-router)
+npm install
+
+** Run
+
+./run.sh
