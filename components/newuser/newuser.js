@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('newusercomponent', {
-    templateUrl: '../html/newuser/newuser.html',
+    templateUrl: 'gestion/build/html/newuser/newuser.html',
     controller: NewuserController
   });
 

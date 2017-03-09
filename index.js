@@ -10,14 +10,14 @@ routerApp.config(function($stateProvider, $urlRouterProvider,$locationProvider) 
         
         .state('system', {
             url: '/system',
-            templateUrl: 'prueba/build/html/system/system.html',
+            templateUrl: 'gestion/build/html/system/system.html',
             controller: function($scope,$http) {
 
             }
         })
         .state('agente', {
             url: '/agente',
-            templateUrl: 'prueba/build/html/agente/agente.html',
+            templateUrl: 'gestion/build/html/agente/agente.html',
             controller: function($scope,$http) {
                 
 

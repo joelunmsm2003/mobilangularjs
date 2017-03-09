@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('tipificacioncomponent', {
-    templateUrl: '../html/tipificacion/tipificacion.html',
+    templateUrl: 'gestion/build/html/tipificacion/tipificacion.html',
     controller: TipificacionController,
     bindings: {
         pasabase: '='
