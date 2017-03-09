@@ -161,8 +161,7 @@ gulp.task('watch', function() {
 
 	
 	gulp.watch('./index.js', ['index']);
-
-
+	
 	gulp.watch('./components/**/*.js', ['components']);
 
 	gulp.watch('./components/**/*.html', ['html']);
