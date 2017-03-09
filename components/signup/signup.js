@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('signupcomponent', {
-    templateUrl: '../html/signup/signup.html',
+    templateUrl: 'gestion/build/html/signup/signup.html',
     controller: SignupController
   });
 

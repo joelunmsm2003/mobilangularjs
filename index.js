@@ -1,16 +1,28 @@
-var routerApp = angular.module('app', ['ui.router']);
+angular
 
-routerApp.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
+.module('app', ['ui.router','ngStorage'])
+.service('LlamadaService', LlamadaService)
+.service('TipificaService', TipificaService)
+
+.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
     
 
 
-    host='http://localhost:8000'
+    host='http://localhost:8000/'
     
     $stateProvider
-        
+
         .state('home', {
             url: '/home',
-            templateUrl: 'prueba/build/html/home/home.html',
+            templateUrl: 'gestion/build/html/home/home.html',
+            controller: function($scope,$http) {
+
+            }
+        })
+
+        .state('reporte', {
+            url: '/reporte',
+            templateUrl: 'gestion/build/html/reporte/reporte.html',
             controller: function($scope,$http) {
 
             }
@@ -18,7 +30,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider,$locationProvider) 
 
         
 
-    $urlRouterProvider.otherwise('/error');
+        $urlRouterProvider.otherwise('/error');
 
     //$locationProvider.html5Mode(true);
         

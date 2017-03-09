@@ -8,7 +8,8 @@
 }
 
 .titulo {
-background-color: #2969a8;
+    
+    background-color: #2969a8;
     width: 28%;
     padding: 8px;
     padding-top: 8px;
@@ -25,15 +26,15 @@ background-color: #2969a8;
     border: 1px solid #2969a8;
     margin: 0px;
     margin-right: 16px;
-        padding: 8px;
-        padding-top: 9px;
-  
+    padding: 8px;
+    padding-top: 9px;
+
 }
 
 
 .telefono{
 
-background-color: #ffffff;
+    background-color: #ffffff;
     padding: 6px;
     color: #2969a8;
     margin-right: 2px;
@@ -46,9 +47,9 @@ background-color: #ffffff;
 
 .telefono:hover{
 
-background-color: #2969a8;
-color:#fff;
-transition: background-color 1s;
+    background-color: #2969a8;
+    color:#fff;
+    transition: background-color 1s;
 
 }
 

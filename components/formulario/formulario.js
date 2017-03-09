@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('formulariocomponent', {
-    templateUrl: '../html/formulario/formulario.html',
+    templateUrl: 'gestion/build/html/formulario/formulario.html',
     controller: FormularioController,
     bindings: {
         onDelete: '&'
@@ -15,6 +15,7 @@ function FormularioController($scope,$location,$http,LlamadaService){
         var ctrl = this;
 
 		// Saca de la URL solo el DNI
+
 
 
 		url = $location.url()

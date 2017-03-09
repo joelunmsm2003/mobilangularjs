@@ -16,8 +16,15 @@ urlpatterns = [
     url(r'^contactos/$', 'gestion.views.contactos'),
     url(r'^acciones/(\w+)/$', 'gestion.views.acciones'),
     url(r'^estados/(\w+)/$', 'gestion.views.estados'),
+    url(r'^todosestados/$', 'gestion.views.todosestados'),
     url(r'^tipifica$', 'gestion.views.tipifica'),
-    url(r'^gestionado$', 'gestion.views.gestionado'),
+    url(r'^base/(\w+)/$', 'gestion.views.base'),
+    url(r'^cliente/(\w+)/$', 'gestion.views.cliente'),
+    url(r'^listaacciones/$', 'gestion.views.listaacciones'),
+    url(r'^reporte/$', 'gestion.views.reporte'),
+    url(r'^llamadasxdni/(\w+)/$', 'gestion.views.llamadasxdni'),
+    url(r'^saveagente/(\w+)/(\w+)/$', 'gestion.views.saveagente'),
+    url(r'^traebase/(\w+)/$', 'gestion.views.traebase'),
 
     #Hotels
 

@@ -145,10 +145,11 @@ class Estado(models.Model):
 
 
 class OrigBase(models.Model):
+    id_orig_base = models.AutoField(primary_key=True)
     telefono = models.IntegerField(blank=True, null=True)
     orden = models.IntegerField()
     cliente = models.CharField(max_length=11)
-    id_orig_base_c = models.IntegerField(db_column='id_orig_base_C', blank=True, null=True)  # Field name made lowercase.
+    id_orig_base_c = models.ForeignKey('OrigBaseC01', models.DO_NOTHING, db_column='id_orig_base_c', blank=True, null=True)  # Field name made lowercase.
     lestado = models.IntegerField(db_column='lEstado')  # Field name made lowercase.
     cod_cam = models.IntegerField()
     llam_estado = models.IntegerField()

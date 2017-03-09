@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('formulariocomponent', {
-    templateUrl: '../html/formulario/formulario.html',
+    templateUrl: 'gestion/build/html/formulario/formulario.html',
     controller: FormularioController,
     bindings: {
         onDelete: '&'
@@ -15,6 +15,7 @@ function FormularioController($scope,$location,$http,LlamadaService){
         var ctrl = this;
 
 		// Saca de la URL solo el DNI
+
 
 
 		url = $location.url()
@@ -58,7 +59,7 @@ function FormularioController($scope,$location,$http,LlamadaService){
 angular
   .module('app')
   .component('headercomponent', {
-    templateUrl: '../html/header/header.html',
+    templateUrl: 'gestion/build/html/header/header.html',
     controller: HeaderController,
      bindings: {
         onSidebar: '&'
@@ -119,7 +120,7 @@ function HeaderController($scope,$location,$localStorage,UserService){
 angular
   .module('app')
   .component('historialcomponent', {
-    templateUrl: '../html/historial/historial.html',
+    templateUrl: 'gestion/build/html/historial/historial.html',
     controller: HistorialController
 
   });
@@ -148,7 +149,7 @@ function HistorialController($scope,$location,$http){
 angular
   .module('app')
   .component('homecomponent', {
-    templateUrl: 'prueba/build/html/home/home.html',
+    templateUrl: 'gestion/build/html/home/home.html',
     controller: HomeController
 
   });
@@ -291,7 +292,7 @@ function HomeController($scope,$location,$http,LlamadaService){
 angular
   .module('app')
   .component('ingresarcomponent', {
-    templateUrl: '../html/ingresar/ingresar.html',
+    templateUrl: 'gestion/build/html/ingresar/ingresar.html',
     controller: IngresarController
   });
 
@@ -318,7 +319,7 @@ function IngresarController($scope,UserService){
 angular
   .module('app')
   .component('llamadascomponent', {
-    templateUrl: '../html/llamadas/llamadas.html',
+    templateUrl: 'gestion/build/html/llamadas/llamadas.html',
     controller: LlamadasController
 
   });
@@ -359,7 +360,7 @@ function LlamadasController($scope,$location,$http,LlamadaService){
 angular
   .module('app')
   .component('newusercomponent', {
-    templateUrl: '../html/newuser/newuser.html',
+    templateUrl: 'gestion/build/html/newuser/newuser.html',
     controller: NewuserController
   });
 
@@ -471,7 +472,7 @@ function NewuserController($location,$scope,KineService,UserService,$http){
 angular
   .module('app')
   .component('perfilcomponent', {
-    templateUrl: '../html/perfil/perfil.html',
+    templateUrl: 'gestion/build/html/perfil/perfil.html',
     controller: PerfilController
   });
 
@@ -525,7 +526,7 @@ $scope.kines = $filter('filter')(data,{ 'user_id' : $scope.user_id})
 angular
   .module('app')
   .component('redirectcomponent', {
-    templateUrl: '../html/redirect/redirect.html',
+    templateUrl: 'gestion/build/html/redirect/redirect.html',
     controller: RedirectController
   });
 
@@ -542,7 +543,7 @@ function RedirectController($scope,KineService){
 angular
   .module('app')
   .component('reportecomponent', {
-    templateUrl: '/activak/build/html/reporte/reporte.html',
+    templateUrl: 'gestion/build/html/reporte/reporte.html',
     controller: ReporteController
 
   });
@@ -641,7 +642,7 @@ function ReporteController($scope,$location,$http){
 angular
   .module('app')
   .component('signupcomponent', {
-    templateUrl: '../html/signup/signup.html',
+    templateUrl: 'gestion/build/html/signup/signup.html',
     controller: SignupController
   });
 
@@ -669,7 +670,7 @@ function SignupController($scope,UserService){
 angular
   .module('app')
   .component('homecomponent', {
-    templateUrl: '../html/home/home.html',
+    templateUrl: 'gestion/build/html/system/system.html',
     controller: HomeController
 
   });
@@ -686,7 +687,7 @@ function HomeController($scope,$location,$http,LlamadaService){
 angular
   .module('app')
   .component('tipificacioncomponent', {
-    templateUrl: '../html/tipificacion/tipificacion.html',
+    templateUrl: 'gestion/build/html/tipificacion/tipificacion.html',
     controller: TipificacionController,
     bindings: {
         pasabase: '='

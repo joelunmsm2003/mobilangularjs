@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('ingresarcomponent', {
-    templateUrl: '../html/ingresar/ingresar.html',
+    templateUrl: 'gestion/build/html/ingresar/ingresar.html',
     controller: IngresarController
   });
 
