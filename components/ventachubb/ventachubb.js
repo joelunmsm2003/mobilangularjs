@@ -2,7 +2,7 @@ angular
   .module('app')
   .component('ventachubbcomponent', {
     templateUrl: 'gestion/build/html/ventachubb/ventachubb.html',
-    controller: ventachubbController,
+    controller: VentachubbController,
     bindings: {
         onDelete: '&'
     }

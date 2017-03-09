@@ -1,5 +1,4 @@
 
- 
 <div class='container'>
 
 <br>
@@ -17,7 +16,7 @@
 					<div class="contenido ">{{cliente.campana}}</div>
 					<div class='titulo'> Agente</div>
 
-					<!-- <div class="contenido">{{agentereal.nombre_agente}}</div> -->
+				<div class="contenido">{{agentereal.nombre_agente}}</div> 
 
 					<div ng-if='nomagente' class='contenido'>{{nomagente}}</div>
 
@@ -69,6 +68,8 @@
 	<div id="myModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog modal-lg">
 
+	  
+
 
 
 	    <!-- Modal content-->
@@ -80,12 +81,14 @@
 
 	      
 	      <div class="modal-body">
+	      {{ede}}
 	       	
 
 	       		<div class="form-group">
 					<div class='col-md-3'>
-					<input required type="text" class="form-control" ng-change='searchdni(dni)' ng-model='dni'  id="nombre">
+					<input required type="text" class="form-control" ng-change='buscardni(dni)' ng-model='dni' placeholder="DNI" id="nombre">
 					</div>
+
 
 					<!-- <div class='col-md-3'>
 					<a ng-if='dni' class='btn btn-primary' ng-click='goperson(dni)'><i class="fa fa-user" aria-hidden="true"></i>

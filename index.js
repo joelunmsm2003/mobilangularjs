@@ -1,6 +1,6 @@
 angular
 
-.module('app', ['ui.router','ngStorage'])
+.module('app', ['ui.router','ngStorage','ui.bootstrap'])
 .service('LlamadaService', LlamadaService)
 .service('TipificaService', TipificaService)
 
@@ -9,15 +9,15 @@ angular
 
 
     host='http://localhost:8000/'
+
+    host_primary='http://localhost/'
     
     $stateProvider
 
         .state('home', {
             url: '/home',
             templateUrl: 'gestion/build/html/home/home.html',
-            controller: function($scope,$http) {
-
-            }
+            controller: HomeController
         })
 
         .state('reporte', {

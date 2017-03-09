@@ -2,7 +2,7 @@ angular
   .module('app')
   .component('homecomponent', {
     templateUrl: 'gestion/build/html/system/system.html',
-    controller: HomeController
+    controller: SystemController
 
   });
 
@@ -10,7 +10,7 @@ angular
 
 
 
-function HomeController($scope,$location,$http,LlamadaService){
+function SystemController($scope,$location,$http,LlamadaService){
 
 	
 

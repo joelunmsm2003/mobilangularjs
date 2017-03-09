@@ -2,7 +2,7 @@ angular
   .module('app')
   .component('reportbbvachubbcomponent', {
     templateUrl: 'gestion/build/html/reportbbvachubb/reportbbvachubb.html',
-    controller: reportbbvachubbController,
+    controller: ReportbbvachubbController,
     bindings: {
         onDelete: '&'
     }

@@ -2,7 +2,7 @@ angular
   .module('app')
   .component('botoneracomponent', {
     templateUrl: 'gestion/build/html/botonera/botonera.html',
-    controller: botoneraController,
+    controller: BotoneraController,
     bindings: {
         onDelete: '&'
     }

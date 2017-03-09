@@ -2,7 +2,7 @@ angular
   .module('app')
   .component('supervisorcomponent', {
     templateUrl: 'gestion/build/html/supervisor/supervisor.html',
-    controller: supervisorController,
+    controller: SupervisorController,
     bindings: {
         onDelete: '&'
     }
