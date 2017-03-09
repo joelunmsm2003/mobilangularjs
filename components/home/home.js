@@ -1,82 +1,142 @@
+angular
+  .module('app')
+  .component('homecomponent', {
+    templateUrl: 'prueba/build/html/home/home.html',
+    controller: HomeController
+
+  });
 
 
-angular.module('app').component('homecomponent', {
-  templateUrl: 'prueba/build/html/home/home.html',
-  controller: AndyController
-});
 
 
 
-function AndyController() {
+function HomeController($scope,$location,$http,LlamadaService){
+
+        console.log('URL...',$location.url())
+
+        var ctrl = this;
+
+        url = $location.url()
+
+        console.log('url.....',url.split('&')[0].split('=')[1])
+
+        console.log('urlaaa.',url.split('&nomagente=')[(url.split('&nomagente=')).length-1])
+
+        dni = url.split('&')[0].split('=')[1]
+
+        $scope.base = url.split('&')[1].split('=')[1]
+
+        $scope.id_agente = url.split('&')[2].split('=')[1]
+
+        $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
+
+        $http.get(host+'saveagente/'+$scope.nomagente+'/'+$scope.base).success(function(data) {
+           
+        })
 
 
-Highcharts.chart('container', {
-    chart: {
-        type: 'area'
-    },
-    title: {
-        text: 'US and USSR nuclear stockpiles'
-    },
-    subtitle: {
-        text: 'Source: <a href="http://thebulletin.metapress.com/content/c4120650912x74k7/fulltext.pdf">' +
-            'thebulletin.metapress.com</a>'
-    },
-    xAxis: {
-        allowDecimals: false,
-        labels: {
-            formatter: function () {
-                return this.value; // clean, unformatted number for year
-            }
+        LlamadaService.cliente(dni).then(function(data) {
+
+            console.log('Datos del dni',data)
+
+            $scope.cliente = data[0]
+
+        })
+
+
+
+
+
+
+        var formData = { base: $scope.base };
+
+        var postData = 'myData='+JSON.stringify(formData);
+
+        $http({
+
+        method : 'POST',
+        url : host+'/base.php',
+        data: postData,
+        headers : {'Content-Type': 'application/x-www-form-urlencoded'}  
+
+        }).success(function(res){
+
+            $scope.agentereal = res[0]
+
+            
+
+        })
+
+        // $scope.goperson =function(data){
+
+
+        //     window.location.href='/calidad/#/home?dni='+data+'&'+'base=123'
+
+        //     location.reload()
+
+        // }
+
+
+        $scope.searchdni =function(dni){
+
+
+
+                LlamadaService.listar(dni).then(function(data) {
+
+                $scope.registros = data
+
+                })
+
         }
-    },
-    yAxis: {
-        title: {
-            text: 'Nuclear weapon states'
-        },
-        labels: {
-            formatter: function () {
-                return this.value / 1000 + 'k';
-            }
+
+        
+
+        $scope.go=function(data){
+
+            console.log('ererer...',data)
+
+               $('#myModal').modal('hide');
+
+               //$location.path('/home/'+'?dni='+data.cliente+'&'+'base='+data.id_orig_base+'&agente='+$scope.id_agente+'&nomagente='+$scope.nomagente)
+
+            window.location.href=host_primary+'/home?dni='+data.cliente+'&'+'base='+data.id_orig_base+'&agente='+$scope.id_agente+'&nomagente='+$scope.nomagente
+
+            //location.reload()
+           
         }
-    },
-    tooltip: {
-        pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
-    },
-    plotOptions: {
-        area: {
-            pointStart: 1940,
-            marker: {
-                enabled: false,
-                symbol: 'circle',
-                radius: 2,
-                states: {
-                    hover: {
-                        enabled: true
-                    }
-                }
-            }
-        }
-    },
-    series: [{
-        name: 'USA',
-        data: [null, null, null, null, null, 6, 11, 32, 110, 235, 369, 640,
-            1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,
-            27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
-            26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
-            24304, 23464, 23708, 24099, 24357, 24237, 24401, 24344, 23586,
-            22380, 21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950,
-            10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104]
-    }, {
-        name: 'USSR/Russia',
-        data: [null, null, null, null, null, null, null, null, null, null,
-            5, 25, 50, 120, 150, 200, 426, 660, 869, 1060, 1605, 2471, 3322,
-            4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 14478,
-            15915, 17385, 19055, 21205, 23044, 25393, 27935, 30062, 32049,
-            33952, 35804, 37431, 39197, 45000, 43000, 41000, 39000, 37000,
-            35000, 33000, 31000, 29000, 27000, 25000, 24000, 23000, 22000,
-            21000, 20000, 19000, 18000, 18000, 17000, 16000]
-    }]
-});
+
+
+          ctrl.deleteHero = function(fono) {
+
+      
+
+
+            LlamadaService.traebase(fono).then(function(res) {
+
+                console.log('trae..base...',res)
+
+                $scope.pasabase = res[0]
+
+                url = host_primary+'/home?dni='+res[0].cliente+'&'+'base='+res[0].id_orig_base+'&agente='+$scope.id_agente+'&nomagente='+$scope.nomagente
+ 
+                window.location.href= url
+                
+                })
+
+
+         
+
+            
+
+            //window.location.href=hero
+
+            //location.reload()
+
+          };
+
+
+
+
 
 
 }
