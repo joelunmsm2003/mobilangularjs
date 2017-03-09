@@ -17,7 +17,6 @@ function FormularioController($scope,$location,$http,LlamadaService){
 		// Saca de la URL solo el DNI
 
 
-
 		url = $location.url()
 
         console.log('url.....',url.split('&')[0].split('=')[1])
