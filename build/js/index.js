@@ -8,21 +8,14 @@ routerApp.config(function($stateProvider, $urlRouterProvider,$locationProvider) 
     
     $stateProvider
         
-        .state('system', {
-            url: '/system',
-            templateUrl: 'prueba/build/html/system/system.html',
+        .state('home', {
+            url: '/home',
+            templateUrl: 'prueba/build/html/home/home.html',
             controller: function($scope,$http) {
 
             }
         })
-        .state('agente', {
-            url: '/agente',
-            templateUrl: 'prueba/build/html/agente/agente.html',
-            controller: function($scope,$http) {
-                
 
-            }
-        })
         
 
     $urlRouterProvider.otherwise('/error');
