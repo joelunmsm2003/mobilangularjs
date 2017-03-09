@@ -1,3 +1,117 @@
+function TipificaService ($http,$q,$log,$localStorage) {  
+
+
+    return {
+        buscardni:buscardni,
+        actualizar:actualizar,
+        ventas:ventas,
+        actualizarchubb:actualizarchubb
+
+    }
+
+        function buscardni(dni){
+
+
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+
+        url: host+"buscardni",
+        data: data,
+        method: 'POST'
+        }).
+        success(function(data) {
+
+
+        return promise;
+
+        })
+
+    }
+
+
+
+
+
+
+
+        function actualizar(dni){
+
+
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+
+        url: host+"actualizar",
+        data: data,
+        method: 'POST'
+        }).
+        success(function(data) {
+
+
+        return promise;
+
+        })
+
+    }
+
+
+
+
+
+
+        function ventas(dni){
+
+
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+
+        url: host+"ventas",
+        data: data,
+        method: 'POST'
+        }).
+        success(function(data) {
+
+
+        return promise;
+
+        })
+
+    }
+
+
+
+
+
+
+
+        function actualizarchubb(dni){
+
+
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http({
+
+        url: host+"actualizarchubb",
+        data: data,
+        method: 'POST'
+        }).
+        success(function(data) {
+
+
+        return promise;
+
+        })
+
+    }
+
+
+}
 function LlamadaService ($http,$q,$log,$localStorage) {  
     return {
         listar: listar,
@@ -135,8 +249,6 @@ function TipificaService ($http,$q,$log,$localStorage) {
         acciones:acciones,
         todosestados:todosestados
 
-
-
     }
 
     function todosestados(){
@@ -156,8 +268,7 @@ function TipificaService ($http,$q,$log,$localStorage) {
     function tipifica(data){
 
 
-        var defered = $q.defer();
-        var promise = defered.promise;
+        var def = $q.defer();
 
         $http({
 
@@ -167,10 +278,11 @@ function TipificaService ($http,$q,$log,$localStorage) {
         }).
         success(function(data) {
 
-
-        return promise;
+        def.resolve(data);
 
         })
+
+        return def.promise;
 
     }
 
@@ -178,8 +290,6 @@ function TipificaService ($http,$q,$log,$localStorage) {
     function contacto() {
 
             var def = $q.defer();
-
-            console.log('jdjdjdjdj',host+'contactos')
 
             $http.get(host+'contactos').success(function(data) {
 
@@ -228,9 +338,10 @@ function TipificaService ($http,$q,$log,$localStorage) {
                 })
                
             return def.promise;
+
+
         }
-
-
+      
 
 
 }
@@ -247,7 +358,6 @@ function UserService ($http,$q,$log,$localStorage,$location,$localStorage) {
 
 
     function ingresar (data){
-
 
         console.log('ingresar...',data)
 

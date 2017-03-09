@@ -109,3 +109,6 @@ function TipificaService ($http,$q,$log,$localStorage) {
         })
 
     }
+
+
+}

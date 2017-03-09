@@ -9,8 +9,6 @@ function TipificaService ($http,$q,$log,$localStorage) {
         acciones:acciones,
         todosestados:todosestados
 
-
-
     }
 
     function todosestados(){
@@ -30,8 +28,7 @@ function TipificaService ($http,$q,$log,$localStorage) {
     function tipifica(data){
 
 
-        var defered = $q.defer();
-        var promise = defered.promise;
+        var def = $q.defer();
 
         $http({
 
@@ -41,10 +38,11 @@ function TipificaService ($http,$q,$log,$localStorage) {
         }).
         success(function(data) {
 
-
-        return promise;
+        def.resolve(data);
 
         })
+
+        return def.promise;
 
     }
 
@@ -52,8 +50,6 @@ function TipificaService ($http,$q,$log,$localStorage) {
     function contacto() {
 
             var def = $q.defer();
-
-            console.log('jdjdjdjdj',host+'contactos')
 
             $http.get(host+'contactos').success(function(data) {
 
@@ -102,9 +98,10 @@ function TipificaService ($http,$q,$log,$localStorage) {
                 })
                
             return def.promise;
+
+
         }
-
-
+      
 
 
 }

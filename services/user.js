@@ -9,7 +9,6 @@ function UserService ($http,$q,$log,$localStorage,$location,$localStorage) {
 
     function ingresar (data){
 
-
         console.log('ingresar...',data)
 
         var defered = $q.defer();
