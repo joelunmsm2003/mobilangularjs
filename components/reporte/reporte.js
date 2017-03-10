@@ -1,14 +1,17 @@
-angular
-  .module('app')
-  .component('reportecomponent', {
-    templateUrl: 'html/reporte/reporte.html',
-    controller: ReporteController
 
-  });
+
+function ReporteController($scope,$location,$http,TipificaService){
 
 
 
-function ReporteController($scope,$location,$http){
+	  TipificaService.acciones().then(function(data) {
+
+      console.log('acciones',data)
+
+      $scope.listaaciones = data
+
+
+      })
 
 
 	/// Contador de tipo de Contacto

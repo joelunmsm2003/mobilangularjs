@@ -294,6 +294,7 @@ function TipificaService ($http,$q,$log,$localStorage) {
             $http.get(host+'contactos').success(function(data) {
 
                     def.resolve(data);
+
                 })
                
             return def.promise;
@@ -318,7 +319,7 @@ function TipificaService ($http,$q,$log,$localStorage) {
 
             var def = $q.defer();
 
-            $http.get(host+'listaacciones/').success(function(data) {
+            $http.get(host+'listaacciones').success(function(data) {
 
                     def.resolve(data);
                 })

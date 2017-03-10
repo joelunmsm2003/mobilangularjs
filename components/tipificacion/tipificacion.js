@@ -21,14 +21,20 @@ function TipificacionController($filter,$scope,$location,$http,$log,TipificaServ
 
       url = $location.url()
 
-      $scope.base = url.split('&')[1].split('=')[1]
+      // $scope.base = url.split('&')[1].split('=')[1]
 
-      $scope.idagente = url.split('&')[2].split('=')[1]
+      // $scope.idagente = url.split('&')[2].split('=')[1]
 
-      $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
+      // $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
 
+        dni = 9118234
 
-      console.log('ueuue',$scope.id_agente,$scope.nomagente)
+        $scope.base = 78
+
+        $scope.id_agente = 122
+
+        $scope.nomagente = 'Carla'
+
 
       $scope.resultado={}
 
@@ -119,34 +125,7 @@ function TipificacionController($filter,$scope,$location,$http,$log,TipificaServ
 
 
 
-         $scope.searchdni =function(data){
 
-
-                
-
-
-                var formData = { dni: data };
-
-                var postData = 'myData='+JSON.stringify(formData);
-
-
-                $http({
-
-                method : 'POST',
-                url : host+'/llamadas.php',
-                data: postData,
-                headers : {'Content-Type': 'application/x-www-form-urlencoded'}  
-
-                }).success(function(res){
-
-                    $scope.registros = res
-
-                    console.log('dnis.....',$scope.registros)
-
-                })
-
-
-        }
 
       
 

@@ -15,20 +15,24 @@ function LlamadasController($scope,$location,$http,LlamadaService){
 
         // Saca de la URL solo el DNI
 
-        console.log('hshshshsh')
 
         url = $location.url()
 
-        console.log('url.....',url.split('&')[0].split('=')[1])
 
-        dni = url.split('&')[0].split('=')[1]
+        // dni = url.split('&')[0].split('=')[1]
+
+        dni = 9118234
+
+        $scope.base = 78
+
+        $scope.id_agente = 122
+
+        $scope.nomagente = 'Carla'
 
 
         LlamadaService.listar(dni).then(function(data) {
 
         $scope.llamadas = data
-
-        console.log('LlamadasController...',data)
 
         })
 
