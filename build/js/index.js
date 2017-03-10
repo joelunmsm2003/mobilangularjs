@@ -1,6 +1,6 @@
 angular
 
-.module('app', ['ui.router','ngStorage','ui.bootstrap'])
+.module('app', ['ui.router','ngStorage'])
 .service('LlamadaService', LlamadaService)
 .service('TipificaService', TipificaService)
 
@@ -8,9 +8,9 @@ angular
     
 
 
-    host='http://localhost:8000/'
+    host='http://192.168.1.40:8000/'
 
-    host_primary='http://localhost/'
+    host_primary='http://192.168.1.40/'
     
     $stateProvider
 
@@ -29,8 +29,7 @@ angular
         })
 
         
-
-        $urlRouterProvider.otherwise('/error');
+        $urlRouterProvider.otherwise('/reporte');
 
     //$locationProvider.html5Mode(true);
         
