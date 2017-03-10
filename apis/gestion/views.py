@@ -230,62 +230,115 @@ def trama(request):
         
         m = []
 
-        # Tipo de registro
+        # Tipo de registro - 1
+        tipo = '1'
+        eb = 1 - len(tipo)
+        tipo = tipo + generablancos(eb)
 
-        # Codigo de Producto Paquete
+
+        # Codigo de Producto Paquete - 6
+        cproducto = '7272'
+        eb = 6 - len(cproducto)
+        cproducto = cproducto + generablancos(eb)
+
 
         # DNI
-
         dni = '72748565'
-
         eb = 15 - len(dni)
-
         dni = dni + generablancos(eb)
 
-        # Tipo de cobertura
 
-        cobertura = '1'
+        # Tipo de cobertura - 2
+        tcobertura = '1'
+        eb = 2 - len(tcobertura)
+        tcobertura = tcobertura + generablancos(eb)
 
-        eb = 2 - len(cobertura)
 
-        cobertura = cobertura + generablancos(eb)
-
-        #Nombre Apellido
-
-        nombre = 'Eurieds'
-
-        eb = 50 - len(nombre)
-
-        nombre = nombre + generablancos(eb)
+        #Nombre Apellido - 50
+        nombrea = 'Eurieds'
+        eb = 50 - len(nombrea)
+        nombrea = nombrea + generablancos(eb)
     
-        #Nombre del Contratante
 
-        #Segundo Nonbre del contratante
-
-        #Apellidos del contratante
-
-        #Direccion 1
-
-        #Direccion 2
-
-        #Direccion 3
-
-        #Direccion 4
-
-        #Telefono de Casa
+        #Nombre del Contratante - 30
+        ncontratante = 'Manuel'
+        eb = 30 - len(ncontratante)
+        ncontratante = ncontratante + generablancos(eb)
 
 
-        #Telefono de trabajo
-
-        #Fecha de Naciomiento
-
-
-        #Email
+        #Segundo Nombre del contratante - 30
+        scontratante = 'Eurieds'
+        eb = 30 - len(scontratante)
+        scontratante = scontratante + generablancos(eb)
 
 
-        #Unit
+        #Apellidos del contratante - 30
+        apcontratante = 'Eurieds'
+        eb = 30 - len(apcontratante)
+        apcontratante = apcontratante + generablancos(eb)
 
-        #Datos Especificos del producto
+
+        #Direccion 1 - 30
+        direccion1 = 'Eurieds'
+        eb = 30 - len(direccion1)
+        direccion1 = direccion1 + generablancos(eb)
+
+
+        #Direccion 2 - 30
+        direccion2 = 'Eurieds'
+        eb = 30 - len(direccion2)
+        direccion2 = direccion2 + generablancos(eb)
+
+
+        #Direccion 3 -30
+        direccion3 = 'Eurieds'
+        eb = 30 - len(direccion3)
+        direccion3 = direccdireccion4ion3 + generablancos(eb)
+
+
+        #Direccion 4 - 30
+        direccion4 = 'Eurieds'
+        eb = 30 - len(direccion4)
+        direccion4 = direccion4 + generablancos(eb)
+
+
+        #Telefono de Casa - 20
+        telfcasa = 'Eurieds'
+        eb = 20 - len(telfcasa)
+        telfcasa = telfcasa + generablancos(eb)
+
+
+        #Telefono de trabajo - 20
+        telftrabajo = 'Eurieds'
+        eb = 20 - len(telftrabajo)
+        telftrabajo = telftrabajo + generablancos(eb)
+
+
+        #Fecha de Naciomiento - 8
+        fechadenacimiento = 'Eurieds'
+        eb = 8 - len(fechadenacimiento)
+        fechadenacimiento = fechadenacimiento + generablancos(eb)
+
+
+        #Email - 40 
+        email = 'Eurieds'
+        eb = 40 - len(email)
+        email = email + generablancos(eb)
+
+
+        #Unit - 100
+        uni = 'Eurieds'
+        eb = 100 - len(uni)
+        uni = uni + generablancos(eb)
+
+
+        #Datos Especificos del producto - 2080
+        datespecpro = 'Eurieds'
+        eb = 2080 - len(datespecpro)
+        datespecpro = datespecpro + generablancos(eb)
+
+
+
 
         m.append('1')#tipo de registro - 1
         m.append('          ')#codigo de capana - 10
