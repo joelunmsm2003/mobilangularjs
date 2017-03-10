@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('redirectcomponent', {
-    templateUrl: 'gestion/build/html/redirect/redirect.html',
+    templateUrl: 'html/redirect/redirect.html',
     controller: RedirectController
   });
 

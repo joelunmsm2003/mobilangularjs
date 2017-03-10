@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('historialcomponent', {
-    templateUrl: 'gestion/build/html/historial/historial.html',
+    templateUrl: 'html/historial/historial.html',
     controller: HistorialController
 
   });
