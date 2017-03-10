@@ -217,11 +217,52 @@ def trama(request):
 
     if request.method == 'GET':
 
+        
         m = []
 
-        m.append(1)
+        # Tipo de registro
 
-        
+        # Codigo de Producto Paquete
+
+        # DNI
+
+        #Tipo de cobertura
+
+        #Nombre Apellido
+
+
+        #Nombre del Contratante
+
+        #Segundo Nonbre del contratante
+
+        #Apellidos del contratante
+
+        #Direccion 1
+
+        #Direccion 2
+
+        #Direccion 3
+
+        #Direccion 4
+
+        #Telefono de Casa
+
+
+        #Telefono de trabajo
+
+        #Fecha de Naciomiento
+
+
+        #Email
+
+
+        #Unit
+
+        #Datos Especificos del producto
+
+        m.append(' ')
+        m.append('          ')
+        m.append('                  ')
 
         data = ''.join(m)
 
