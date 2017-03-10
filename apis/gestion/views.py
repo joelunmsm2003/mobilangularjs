@@ -212,6 +212,16 @@ def reporte(request):
 
         # return HttpResponse(data_json, content_type="application/json")
 
+def generablancos(data):
+
+    e = ''
+
+    for b in range(data):
+
+        e = ' '+ e
+
+    return e
+
 @csrf_exempt
 def trama(request):
 
@@ -226,11 +236,28 @@ def trama(request):
 
         # DNI
 
-        #Tipo de cobertura
+        dni = '72748565'
+
+        eb = 15 - len(dni)
+
+        dni = dni + generablancos(eb)
+
+        # Tipo de cobertura
+
+        cobertura = '1'
+
+        eb = 2 - len(cobertura)
+
+        cobertura = cobertura + generablancos(eb)
 
         #Nombre Apellido
 
+        nombre = 'Eurieds'
 
+        eb = 50 - len(nombre)
+
+        nombre = nombre + generablancos(eb)
+    
         #Nombre del Contratante
 
         #Segundo Nonbre del contratante
@@ -261,13 +288,13 @@ def trama(request):
         #Datos Especificos del producto
 
         m.append('1')#tipo de registro - 1
-        m.append('          ')#codigo de capaña - 10
+        m.append('          ')#codigo de capana - 10
         m.append('      ')#codigo de producto paquete - 6
         m.append('                                                            ')#codigo de producto simple - 60
         m.append('                    ')#numero de cuenta bancaria - 20
-        m.append('72748565       ')#numero de DNI - 15
+        m.append(dni)#numero de DNI - 15
         m.append(' ')#plan - 1
-        m.append('  ')#tipo de cobertura - 2
+        m.append(cobertura)#tipo de cobertura - 2
         m.append('        ')#Fecha de efectividad - 8
         m.append('          ')#codigo de sucursal bancaria - 10
         m.append('                    ')#codigo de vendedor - 20
