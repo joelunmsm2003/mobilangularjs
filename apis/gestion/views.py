@@ -260,9 +260,69 @@ def trama(request):
 
         #Datos Especificos del producto
 
-        m.append(' ')
-        m.append('          ')
-        m.append('                  ')
+        m.append('1')#tipo de registro - 1
+        m.append('          ')#codigo de capaña - 10
+        m.append('      ')#codigo de producto paquete - 6
+        m.append('                                                            ')#codigo de producto simple - 60
+        m.append('                    ')#numero de cuenta bancaria - 20
+        m.append('72748565       ')#numero de DNI - 15
+        m.append(' ')#plan - 1
+        m.append('  ')#tipo de cobertura - 2
+        m.append('        ')#Fecha de efectividad - 8
+        m.append('          ')#codigo de sucursal bancaria - 10
+        m.append('                    ')#codigo de vendedor - 20
+        m.append('          ')#codigo de banco - 10
+        m.append('  ')#codigo de tarjeta de credito - 2
+        m.append('  ')#metodo de pago - 2
+        m.append('  ')#frecuencia de pago - 2
+        m.append('                                                  ')# nombre y apellido del contratante - 50
+        m.append('                              ')#nombre del contratante - 30
+        m.append('                              ')#segundonombre del contratante - 30
+        m.append('  ')#codigo de tipo de direccion - 2
+        m.append('                              ')#direccion 1 - 30
+        m.append('                              ')#direccion 2 - 30
+        m.append('                              ')#direccion 3 - 30
+        m.append('                              ')#direccion 4 - 30
+        m.append('               ')#fillar - 15
+        m.append('                              ')#provincia - 30
+        m.append('  ')#departamento - 2
+        m.append('          ')#postal - 10
+        m.append('  ')#codigo de pais - 2
+        m.append('                    ')#telefono de casa - 20
+        m.append('                    ')#telefono de trabajo - 20
+        m.append('        ')#fecha de nacimiento - 8
+        m.append('  ')#codigo de sexo - 2
+        m.append('  ')#titulo - 2
+        m.append('  ')#idioma - 2
+        m.append('  ')#filler - 2
+        m.append('  ')#filler - 2
+        m.append('  ')#filler - 2
+        m.append('  ')#filler - 2
+        m.append('  ')#indicador de envio de polisa - 2
+        m.append('  ')#numero de dependientes - 2
+        m.append('  ')#filler - 2
+        m.append('               ')#polisa - 15
+        m.append('         ')#filler - 9
+        m.append('   ')#codigo de transaccion - 3
+        m.append('  ')#filler - 2
+        m.append('     ')#filler - 5
+        m.append('                              ')#filler - 30
+        m.append('                                        ')#email - 40
+        m.append('                                                                                                    ')#unit - 100
+        m.append('                                                                                                    ')#referencia1 - 100
+        m.append('                                                                                                    ')#referencia2 - 100
+        m.append('                                                                                                    ')#referencia3 - 100
+        m.append('     ')#fecha de expiracion - 5
+        m.append('          ')#fecha de aplicacion - 10
+        m.append('     ')#filler - 5
+        m.append('   ')#filler - 3
+        m.append('      ')#filler - 6
+        m.append('          ')#filler - 10
+        m.append('               ')#numero de formulario - 15
+        m.append('                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ')#datos especificos del producto - 2080
+
+
+
 
         data = ''.join(m)
 
