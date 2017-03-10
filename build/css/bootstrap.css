@@ -4,6 +4,10 @@
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+@font-face {
+  font-family: Open;
+  src: url(fonts/open-sans-fontface/fonts/Regular/OpenSans-Regular.ttf); }
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
@@ -1051,7 +1055,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Nunito", Helvetica, Arial, sans-serif;
+  font-family: Open, Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #4e4e4e;
@@ -1446,7 +1450,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: "Nunito", "Courier New", monospace; }
+  font-family: Open, "Courier New", monospace; }
 
 code {
   padding: 2px 4px;
@@ -5119,7 +5123,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Nunito", Helvetica, Arial, sans-serif;
+  font-family: Open, Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5232,7 +5236,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Nunito", Helvetica, Arial, sans-serif;
+  font-family: Open, Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5824,3 +5828,15 @@ button.close {
     color: #fff; }
   .detalleperfil .flex-item-1 {
     width: 80%; }
+
+.gestionado:hover {
+  background: #8e48a8;
+  color: #fff; }
+
+.contactibilidad:hover {
+  background: #ff4848;
+  color: #fff; }
+
+.efectividad:hover {
+  background: #00beec;
+  color: #fff; }

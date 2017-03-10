@@ -16,17 +16,18 @@ angular
 
         .state('home', {
             url: '/home',
-            templateUrl: 'gestion/build/html/home/home.html',
+            templateUrl: 'html/home/home.html',
             controller: HomeController
         })
 
         .state('reporte', {
             url: '/reporte',
-            templateUrl: 'gestion/build/html/reporte/reporte.html',
+            templateUrl: 'html/reporte/reporte.html',
             controller: function($scope,$http) {
 
             }
         })
+
 
         
         $urlRouterProvider.otherwise('/reporte');

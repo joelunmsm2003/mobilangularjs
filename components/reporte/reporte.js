@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('reportecomponent', {
-    templateUrl: 'gestion/build/html/reporte/reporte.html',
+    templateUrl: 'html/reporte/reporte.html',
     controller: ReporteController
 
   });
