@@ -73,7 +73,6 @@ def llamadas(request,dni):
 
                 data[x]['fagenda'] = OrigBase.objects.get(id_orig_base=data[x]['id_orig_base']).fagenda.strftime(fmt)
 
-        
         data = ValuesQuerySetToDict(data)
 
         data_json = simplejson.dumps(data)
@@ -177,7 +176,7 @@ def reporte(request):
 
             base = OrigBase.objects.filter(cliente=data[j]['cliente']).values('id_orig_base','telefono','contacto__nombre','estado__nombre','accion__nombre','observacion','nombre_agente','tadicional','id_orig_base_c__campana','id_orig_base_c__fecha').order_by('-fgestion')
 
-            fmt = '%Y-%b-%d %H:%M:%S'
+            fmt = '%Y-%m-%d %H:%M:%S'
 
             for x in range(len(base)):
 
@@ -190,8 +189,6 @@ def reporte(request):
                 base = ValuesQuerySetToDict(base)
 
             data[j]['registros'] = base[0]
-
-
 
         response = HttpResponse(content_type='text/csv')
     
