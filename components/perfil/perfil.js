@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('perfilcomponent', {
-    templateUrl: 'gestion/build/html/perfil/perfil.html',
+    templateUrl: 'html/perfil/perfil.html',
     controller: PerfilController
   });
 

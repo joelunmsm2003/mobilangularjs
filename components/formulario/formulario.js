@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('formulariocomponent', {
-    templateUrl: 'gestion/build/html/formulario/formulario.html',
+    templateUrl: 'html/formulario/formulario.html',
     controller: FormularioController,
     bindings: {
         onDelete: '&'

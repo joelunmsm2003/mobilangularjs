@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('headercomponent', {
-    templateUrl: 'gestion/build/html/header/header.html',
+    templateUrl: 'html/header/header.html',
     controller: HeaderController,
      bindings: {
         onSidebar: '&'

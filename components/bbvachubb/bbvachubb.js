@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('bbvachubbcomponent', {
-    templateUrl: 'gestion/build/html/bbvachubb/bbvachubb.html',
+    templateUrl: 'html/bbvachubb/bbvachubb.html',
     controller: BbvachubbController,
     bindings: {
         onDelete: '&'
