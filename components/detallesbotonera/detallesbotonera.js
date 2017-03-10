@@ -2,11 +2,12 @@ angular
   .module('app')
   .component('detallesbotoneracomponent', {
     templateUrl: 'html/detallesbotonera/detallesbotonera.html',
-    controller: detallesbotoneraController,
+    controller: DetallesbotoneraController,
     bindings: {
         onDelete: '&'
     }
   });
+
 
 
 

@@ -15,7 +15,7 @@ function AdministradorController($scope,$location,$http,LlamadaService){
 angular
   .module('app')
   .component('bbvacomponent', {
-    templateUrl: 'gestion/build/html/bbva/bbva.html',
+    templateUrl: 'html/bbva/bbva.html',
     controller: BbvaController,
     bindings: {
         onDelete: '&'
@@ -32,7 +32,7 @@ function BbvaController($scope,$location,$http,LlamadaService){
 angular
   .module('app')
   .component('bbvachubbcomponent', {
-    templateUrl: 'gestion/build/html/bbvachubb/bbvachubb.html',
+    templateUrl: 'html/bbvachubb/bbvachubb.html',
     controller: BbvachubbController,
     bindings: {
         onDelete: '&'
@@ -46,7 +46,7 @@ function BbvachubbController($scope,$location,$http,LlamadaService){
 angular
   .module('app')
   .component('botoneracomponent', {
-    templateUrl: 'gestion/build/html/botonera/botonera.html',
+    templateUrl: 'html/botonera/botonera.html',
     controller: BotoneraController,
     bindings: {
         onDelete: '&'
@@ -59,8 +59,23 @@ function BotoneraController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
+  .component('detallesbotoneracomponent', {
+    templateUrl: 'html/detallesbotonera/detallesbotonera.html',
+    controller: DetallesbotoneraController,
+    bindings: {
+        onDelete: '&'
+    }
+  });
+
+
+
+
+function DetallesbotoneraController($scope,$location,$http,LlamadaService){
+	 }
+angular
+  .module('app')
   .component('formulariocomponent', {
-    templateUrl: 'gestion/build/html/formulario/formulario.html',
+    templateUrl: 'html/formulario/formulario.html',
     controller: FormularioController,
     bindings: {
         onDelete: '&'
@@ -116,8 +131,22 @@ function FormularioController($scope,$location,$http,LlamadaService){
 
 angular
   .module('app')
+  .component('gamecomponent', {
+    templateUrl: 'html/game/game.html',
+    controller: SupervisorController,
+    bindings: {
+        onDelete: '&'
+    }
+  });
+
+
+
+function GameController($scope,$location,$http,LlamadaService){
+	 }
+angular
+  .module('app')
   .component('headercomponent', {
-    templateUrl: 'gestion/build/html/header/header.html',
+    templateUrl: 'html/header/header.html',
     controller: HeaderController,
      bindings: {
         onSidebar: '&'
@@ -178,7 +207,7 @@ function HeaderController($scope,$location,$localStorage,UserService){
 angular
   .module('app')
   .component('historialcomponent', {
-    templateUrl: 'gestion/build/html/historial/historial.html',
+    templateUrl: 'html/historial/historial.html',
     controller: HistorialController
 
   });
@@ -222,9 +251,9 @@ function HomeController($scope,$location,$http,LlamadaService){
 
         $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
 
-        $http.get(host+'saveagente/'+$scope.nomagente+'/'+$scope.base).success(function(data) {
+        // $http.get(host+'saveagente/'+$scope.nomagente+'/'+$scope.base).success(function(data) {
            
-        })
+        // })
 
 
         LlamadaService.cliente(dni).then(function(data) {
@@ -339,7 +368,7 @@ function HomeController($scope,$location,$http,LlamadaService){
 angular
   .module('app')
   .component('ingresarcomponent', {
-    templateUrl: 'gestion/build/html/ingresar/ingresar.html',
+    templateUrl: 'html/ingresar/ingresar.html',
     controller: IngresarController
   });
 
@@ -366,7 +395,7 @@ function IngresarController($scope,UserService){
 angular
   .module('app')
   .component('llamadascomponent', {
-    templateUrl: 'gestion/build/html/llamadas/llamadas.html',
+    templateUrl: 'html/llamadas/llamadas.html',
     controller: LlamadasController
 
   });
@@ -407,7 +436,7 @@ function LlamadasController($scope,$location,$http,LlamadaService){
 angular
   .module('app')
   .component('newusercomponent', {
-    templateUrl: 'gestion/build/html/newuser/newuser.html',
+    templateUrl: 'html/newuser/newuser.html',
     controller: NewuserController
   });
 
@@ -519,7 +548,7 @@ function NewuserController($location,$scope,KineService,UserService,$http){
 angular
   .module('app')
   .component('perfilcomponent', {
-    templateUrl: 'gestion/build/html/perfil/perfil.html',
+    templateUrl: 'html/perfil/perfil.html',
     controller: PerfilController
   });
 
@@ -573,7 +602,7 @@ $scope.kines = $filter('filter')(data,{ 'user_id' : $scope.user_id})
 angular
   .module('app')
   .component('redirectcomponent', {
-    templateUrl: 'gestion/build/html/redirect/redirect.html',
+    templateUrl: 'html/redirect/redirect.html',
     controller: RedirectController
   });
 
@@ -590,7 +619,7 @@ function RedirectController($scope,KineService){
 angular
   .module('app')
   .component('reportbbvachubbcomponent', {
-    templateUrl: 'gestion/build/html/reportbbvachubb/reportbbvachubb.html',
+    templateUrl: 'html/reportbbvachubb/reportbbvachubb.html',
     controller: ReportbbvachubbController,
     bindings: {
         onDelete: '&'
@@ -703,7 +732,7 @@ function ReporteController($scope,$location,$http){
 angular
   .module('app')
   .component('signupcomponent', {
-    templateUrl: 'gestion/build/html/signup/signup.html',
+    templateUrl: 'html/signup/signup.html',
     controller: SignupController
   });
 
@@ -731,7 +760,7 @@ function SignupController($scope,UserService){
 angular
   .module('app')
   .component('supervisorcomponent', {
-    templateUrl: 'gestion/build/html/supervisor/supervisor.html',
+    templateUrl: 'html/supervisor/supervisor.html',
     controller: SupervisorController,
     bindings: {
         onDelete: '&'
@@ -745,7 +774,7 @@ function SupervisorController($scope,$location,$http,LlamadaService){
 angular
   .module('app')
   .component('homecomponent', {
-    templateUrl: 'gestion/build/html/system/system.html',
+    templateUrl: 'html/system/system.html',
     controller: SystemController
 
   });
@@ -762,7 +791,7 @@ function SystemController($scope,$location,$http,LlamadaService){
 angular
   .module('app')
   .component('tipificacioncomponent', {
-    templateUrl: 'gestion/build/html/tipificacion/tipificacion.html',
+    templateUrl: 'html/tipificacion/tipificacion.html',
     controller: TipificacionController,
     bindings: {
         pasabase: '='
@@ -783,6 +812,13 @@ function TipificacionController($filter,$scope,$location,$http,$log,TipificaServ
       url = $location.url()
 
       $scope.base = url.split('&')[1].split('=')[1]
+
+      $scope.idagente = url.split('&')[2].split('=')[1]
+
+      $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
+
+
+      console.log('ueuue',$scope.id_agente,$scope.nomagente)
 
       $scope.resultado={}
 
@@ -817,16 +853,28 @@ function TipificacionController($filter,$scope,$location,$http,$log,TipificaServ
 
       $scope.tipifica =function(data){
 
-
-      
-
             data.base = $scope.base
+
+            data.idagente = $scope.idagente 
+
+            data.nomagente = $scope.nomagente
 
             TipificaService.tipifica(data).then(function(data) {
 
             console.log('dhhd')
 
-            swal("Good job!", "You clicked the button!", "success")
+            swal({
+              title: "Tipificacion",
+              text: "Tus cambios se guardaron con exito",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#5bc0de",
+              confirmButtonText: "Cerrar",
+              closeOnConfirm: true
+            },
+            function(){
+              
+            });
 
             })
 
@@ -906,7 +954,7 @@ function TipificacionController($filter,$scope,$location,$http,$log,TipificaServ
 angular
   .module('app')
   .component('ventachubbcomponent', {
-    templateUrl: 'gestion/build/html/ventachubb/ventachubb.html',
+    templateUrl: 'html/ventachubb/ventachubb.html',
     controller: VentachubbController,
     bindings: {
         onDelete: '&'

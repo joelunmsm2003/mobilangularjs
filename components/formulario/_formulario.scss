@@ -9,7 +9,7 @@
 
 .titulo {
     
-    background-color: #2969a8;
+    background-color: $state-info-bg;
     width: 28%;
     padding: 8px;
     padding-top: 8px;
@@ -23,7 +23,7 @@
 
     background-color: #fff;
     width: 50%;
-    border: 1px solid #2969a8;
+    border: 1px solid $state-info-bg;
     margin: 0px;
     margin-right: 16px;
     padding: 8px;
@@ -40,7 +40,7 @@
     margin-right: 2px;
     height: 30px;
     width: 21px;
-    border: 1px solid #2969a8;
+    border: 1px solid $state-info-bg;
     transition: background-color 0.5s;
     cursor:pointer;
 }

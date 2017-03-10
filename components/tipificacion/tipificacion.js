@@ -23,6 +23,13 @@ function TipificacionController($filter,$scope,$location,$http,$log,TipificaServ
 
       $scope.base = url.split('&')[1].split('=')[1]
 
+      $scope.idagente = url.split('&')[2].split('=')[1]
+
+      $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
+
+
+      console.log('ueuue',$scope.id_agente,$scope.nomagente)
+
       $scope.resultado={}
 
       TipificaService.contacto().then(function(data) { $scope.contacto = data })
@@ -56,16 +63,28 @@ function TipificacionController($filter,$scope,$location,$http,$log,TipificaServ
 
       $scope.tipifica =function(data){
 
-
-      
-
             data.base = $scope.base
+
+            data.idagente = $scope.idagente 
+
+            data.nomagente = $scope.nomagente
 
             TipificaService.tipifica(data).then(function(data) {
 
             console.log('dhhd')
 
-            swal("Good job!", "You clicked the button!", "success")
+            swal({
+              title: "Tipificacion",
+              text: "Tus cambios se guardaron con exito",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#5bc0de",
+              confirmButtonText: "Cerrar",
+              closeOnConfirm: true
+            },
+            function(){
+              
+            });
 
             })
 

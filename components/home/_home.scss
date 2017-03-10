@@ -44,7 +44,7 @@
 
 .list-group-item:hover{
 
-    background: $state-success-bg;
+    background: $state-info-bg;
     color:#fff;
     
 }
@@ -60,3 +60,8 @@
 
 //     font-size: 12px;
 // }
+
+.botonera{
+
+    text-align: right;
+}

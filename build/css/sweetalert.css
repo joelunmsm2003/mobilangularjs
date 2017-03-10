@@ -18,7 +18,7 @@ body.stop-scrolling {
 
 .sweet-alert {
   background-color: white;
-  font-family: Open, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Maven Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 478px;
   padding: 17px;
   border-radius: 5px;
@@ -47,6 +47,7 @@ body.stop-scrolling {
     margin: 25px 0;
     padding: 0;
     line-height: 40px;
+    font-family: 'Maven Pro', sans-serif;
     display: block; }
   .sweet-alert p {
     color: $font-activated;

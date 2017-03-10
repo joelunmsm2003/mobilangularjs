@@ -5,7 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 @font-face {
-  font-family: Open;
+  font-family: 'Maven Pro';
   src: url(fonts/open-sans-fontface/fonts/Regular/OpenSans-Regular.ttf); }
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1055,7 +1055,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: Open, Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #4e4e4e;
@@ -1450,7 +1450,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Open, "Courier New", monospace; }
+  font-family: "Maven Pro", "Courier New", monospace; }
 
 code {
   padding: 2px 4px;
@@ -5123,7 +5123,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: Open, Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5236,7 +5236,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: Open, Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5767,11 +5767,14 @@ button.close {
   color: #fff; }
 
 .list-group-item:hover {
-  background: #8e48a8;
+  background: #00beec;
   color: #fff; }
 
 .list-group-item {
   color: #000; }
+
+.botonera {
+  text-align: right; }
 
 .flex-container {
   display: -ms-flexbox;
@@ -5780,7 +5783,7 @@ button.close {
   margin: 2px; }
 
 .titulo {
-  background-color: #2969a8;
+  background-color: #00beec;
   width: 28%;
   padding: 8px;
   padding-top: 8px;
@@ -5792,7 +5795,7 @@ button.close {
 .contenido {
   background-color: #fff;
   width: 50%;
-  border: 1px solid #2969a8;
+  border: 1px solid #00beec;
   margin: 0px;
   margin-right: 16px;
   padding: 8px;
@@ -5805,7 +5808,7 @@ button.close {
   margin-right: 2px;
   height: 30px;
   width: 21px;
-  border: 1px solid #2969a8;
+  border: 1px solid #00beec;
   transition: background-color 0.5s;
   cursor: pointer; }
 

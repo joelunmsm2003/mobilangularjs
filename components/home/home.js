@@ -16,9 +16,9 @@ function HomeController($scope,$location,$http,LlamadaService){
 
         $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
 
-        $http.get(host+'saveagente/'+$scope.nomagente+'/'+$scope.base).success(function(data) {
+        // $http.get(host+'saveagente/'+$scope.nomagente+'/'+$scope.base).success(function(data) {
            
-        })
+        // })
 
 
         LlamadaService.cliente(dni).then(function(data) {

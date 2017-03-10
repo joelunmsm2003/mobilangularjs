@@ -8,9 +8,9 @@ angular
     
 
 
-    host='http://192.168.1.40:8000/'
+    host='http://localhost:8000/'
 
-    host_primary='http://192.168.1.40/'
+    host_primary='http://localhost/'
     
     $stateProvider
 

@@ -213,6 +213,42 @@ def reporte(request):
         # return HttpResponse(data_json, content_type="application/json")
 
 @csrf_exempt
+def trama(request):
+
+    if request.method == 'GET':
+
+        m = []
+
+        m.append(1)
+
+        
+
+        data = ''.join(m)
+
+
+      
+
+        
+        # data[0:2] = '22323'
+
+        # data[2:4] = 'yeyey'
+
+        # print data
+
+        response = HttpResponse(content_type='text/csv')
+    
+        response['Content-Disposition'] = 'attachment; filename="Trama.csv"'
+    
+        writer = csv.writer(response)
+
+
+        writer.writerow([data])
+
+        return response   
+
+
+
+@csrf_exempt
 def base(request,id):
 
     if request.method == 'GET':
@@ -308,6 +344,8 @@ def tipifica(request):
         agendax = False
 
         base = data['base']
+        idagente = data['idagente']
+        nomagente = data['nomagente']
 
         for d in data:
 
@@ -363,6 +401,10 @@ def tipifica(request):
         b.accion_id = accion
 
         b.observacion = observacion 
+
+        b.id_ori_usuario = idagente
+
+        b.nombre_agente = nomagente
 
         if agendax:
 
