@@ -2,7 +2,7 @@ angular
   .module('app')
   .component('gamecomponent', {
     templateUrl: 'html/game/game.html',
-    controller: SupervisorController,
+    controller: GameController,
     bindings: {
         onDelete: '&'
     }
