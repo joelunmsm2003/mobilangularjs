@@ -1,27 +1,96 @@
 
-<form>
+<form ng-submit='actualizar(cliente)' >
+								<div class="form-group">
+									<label for="nombre">Tipo documento</label>
+									<input required type="text" class="form-control"  ng-model='cliente.documento' id="nombre" >
+								</div>
 
-
+								<div class="form-group">
+									<label for="nombre">Número documento</label>
+									<input required type="text" class="form-control"  ng-model='cliente.ndocumento' id="nombre" >
+								</div>
 
 								<div class="form-group">
 									<label for="nombre">Nombre</label>
-									<input disabled required type="text" class="form-control"  ng-model='cliente.nombre' id="nombre" >
+									<input  required type="text" class="form-control"  ng-model='cliente.nombre' id="nombre" >
 								</div>
 
 								<div class="form-group">
-									<label for="dni">DNI</label>
-									<input disabled required type="text" class="form-control"  ng-model='cliente.dni' id="dni" >
+									<label for="nombre">Nro TC encriptada</label>
+									<input  required type="text" class="form-control"  ng-model='cliente.nrotc' id="nombre" >
+								</div>
+
+								<div class="form-group">
+									<label for="nombre">Fecha de Nacimiento</label>
+									<input  required type="date" class="form-control"  ng-model='cliente.fnacimiento' id="nombre" >
+								</div>
+
+								<div class="form-group">
+									<label for="nombre">Tipo de Tarjeta</label>
+									<input  required type="text" class="form-control"  ng-model='cliente.ttarjeta' id="nombre" >
+								</div>
+
+								<div class="form-group">
+									<label for="dni">Tiene tarjeta de Credito con nosotros?</label>
+									<input  required type="checkbox" class="form-control"  ng-model='cliente.tienetarjeta' id="dni" >
+								</div>
+
+								<div class="form-group">
+									<label for="dni">¿Tiene tarjetas adicioanales a su TC?</label>
+									<input  required type="checkbox" class="form-control"  ng-model='cliente.tienetarjetatc' id="dni" >
 								</div>
 
 
 								<div class="form-group">
-									<label for="telefono">Telefono</label>
-									<input disabled required type="text" class="form-control"  ng-model='cliente.telefono' id="telefono" >
+									<label for="telefono">¿Recibe CTS con el Banco?</label>
+									<input  required type="text" class="form-control"  ng-model='cliente.recibects' id="telefono" >
 								</div>
 
-								<div class="form-group">
-									<label for="direccion">Direccion</label>
-									<input disabled required type="text" class="form-control"  ng-model='cliente.direccion' id="direccion" >
-								</div>
+							<button type="submit" class="btn btn-danger">Actualizar BBVA</button>
+
 
 								</form>
+
+
+
+
+<div class="btn-group">
+  <button type="button" ng-click='venta(cliente)' class="btn btn-danger">Venta</button>
+
+ <button type="button" class="btn btn-info" data-toggle="modal" data-target="#dni">Buscar DNI</button>
+</div>
+
+
+<!-- Modal -->
+<div id="dni" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Ingrese DNI</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+		  <label for="dni">Name:</label>
+		  <input type="text" ng-change='buscadni(dni)' class="form-control" ng-model='dni' id="dni">
+		</div>
+
+		 <ul class="list-group">
+		  <li ng-click='traecliente(cliente.dni)' class="list-group-item">{{cliente.dni}}</li>
+
+		</ul>
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

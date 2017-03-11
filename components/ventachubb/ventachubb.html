@@ -1,3 +1,5 @@
+				<form ng-submit='ventachubb(cliente)'>
+
 				<legend>Ventas CHUBB</legend>
 
 
@@ -19,7 +21,7 @@
 
 								<div class="form-group">
 									<label for="direccion">Fecha de Nacimiento</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.nacimiento' id="direccion" >
+									<input  required type="date" class="form-control"  ng-model='cliente.nacimiento' id="direccion" >
 								</div>
 
 								<div class="form-group">
@@ -35,7 +37,7 @@
 
 								<div class="form-group">
 									<label for="correo">Correo Electronico</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.mail' id="correo" >
+									<input  required type="email" class="form-control"  ng-model='cliente.mail' id="correo" >
 								</div>
 
 								<div class="form-group">
@@ -45,7 +47,7 @@
 
 								<div class="form-group">
 									<label for="dni">Cantidad</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.cantidad'  id="dni">
+									<input  required type="number" class="form-control"  ng-model='cliente.cantidad'  id="dni">
 								</div>
 
 								<div class="form-group">
@@ -73,4 +75,8 @@
 									<input  required type="text" class="form-control"  ng-model='cliente.tprima'  id="dni">
 								</div>
 
+									<button type="submit" class="btn btn-danger">Actualizar Venta CHUBB</button>
 
+
+
+							</form>
