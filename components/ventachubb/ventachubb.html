@@ -1,7 +1,7 @@
 				<legend>Ventas CHUBB</legend>
 
 
-
+								<form ng-submit=venta(cliente)>
 								
 								<div class="form-group">
 									<label for="nombre">Nombre Apellido Completos</label>
@@ -72,5 +72,11 @@
 									<label for="dni">Todo Prima</label>
 									<input  required type="text" class="form-control"  ng-model='cliente.tprima'  id="dni">
 								</div>
+
+
+								<button class='btn btn-info' type='submit'>Guardar</button>
+
+
+								</form>
 
 

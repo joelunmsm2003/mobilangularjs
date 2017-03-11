@@ -16,7 +16,7 @@ angular
     $stateProvider
 
         .state('home', {
-            url: '/home/:dni',
+            url: '/home/:dni/:base/:idadente/:nomagente',
             templateUrl: 'html/home/home.html',
             controller: HomeController
         })

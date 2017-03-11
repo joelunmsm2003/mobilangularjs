@@ -84,7 +84,7 @@ angular
 
 
 
-function FormularioController($scope,$location,$http,LlamadaService){
+function FormularioController($scope,$stateParams,$location,$http,LlamadaService){
 
         var ctrl = this;
 
@@ -94,23 +94,9 @@ function FormularioController($scope,$location,$http,LlamadaService){
 		url = $location.url()
 
 
-
-		// dni = url.split('&')[0].split('=')[1]
-
-  //       $scope.base = url.split('&')[1].split('=')[1]
-
-  //       $scope.id_agente = url.split('&')[2].split('=')[1]
-
-  //       $scope.nomagente = url.split('&')[3].split('=')[1]
+    dni = $stateParams.dni
 
 
-          dni = 9118234
-
-        $scope.base = 78
-
-        $scope.id_agente = 122
-
-        $scope.nomagente = 'Carla'
 
 
 
@@ -246,32 +232,19 @@ function HistorialController($scope,$location,$http){
 function HomeController($stateParams,$scope,$location,$http,LlamadaService){
 
 
-        console.log($stateParams)
+        console.log($stateParams.dni)
         
         var ctrl = this;
 
         url = $location.url()
 
-        // dni = url.split('&')[0].split('=')[1]
+        dni = $stateParams.dni
 
-        dni = 9118234
+        $scope.base = $stateParams.base
 
-        $scope.base = 78
+        $scope.id_agente = $stateParams.idagente
 
-        // $scope.base = url.split('&')[1].split('=')[1]
-
-        $scope.id_agente = 122
-
-        //$scope.id_agente = url.split('&')[2].split('=')[1]
-
-        $scope.nomagente = 'Carla'
-
-        //$scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
-
-        // $http.get(host+'saveagente/'+$scope.nomagente+'/'+$scope.base).success(function(data) {
-           
-        // })
-
+        $scope.nomagente = $stateParams.nomagente
 
         LlamadaService.cliente(dni).then(function(data) {
 
@@ -282,18 +255,7 @@ function HomeController($stateParams,$scope,$location,$http,LlamadaService){
         })
 
 
-
-
-
-
-
-
-
         $scope.buscardni =function(dni){
-
-
-            console.log('buscando dni...')
-
 
 
                 LlamadaService.listar(dni).then(function(data) {
@@ -399,31 +361,22 @@ angular
 function LlamadasController($scope,$location,$http,LlamadaService){
 
 
-        // Saca de la URL solo el DNI
-
-
         url = $location.url()
 
 
-        // dni = url.split('&')[0].split('=')[1]
+        dni = $stateParams.dni
 
-        dni = 9118234
+        $scope.base = $stateParams.base
 
-        $scope.base = 78
+        $scope.id_agente = $stateParams.idagente
 
-        $scope.id_agente = 122
-
-        $scope.nomagente = 'Carla'
-
+        $scope.nomagente = $stateParams.nomagente
 
         LlamadaService.listar(dni).then(function(data) {
 
         $scope.llamadas = data
 
         })
-
-
-
 
 
 
@@ -803,26 +756,20 @@ angular
 
 
 
-function TipificacionController($filter,$scope,$location,$http,$log,TipificaService,LlamadaService){
+function TipificacionController($stateParams,$filter,$scope,$location,$http,$log,TipificaService,LlamadaService){
 
 
       ctrl = this
 
       url = $location.url()
 
-      // $scope.base = url.split('&')[1].split('=')[1]
+      dni = $stateParams.dni
 
-      // $scope.idagente = url.split('&')[2].split('=')[1]
+      $scope.base = $stateParams.base
 
-      // $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
+      $scope.id_agente = $stateParams.idagente
 
-        dni = 9118234
-
-        $scope.base = 78
-
-        $scope.id_agente = 122
-
-        $scope.nomagente = 'Carla'
+      $scope.nomagente = $stateParams.nomagente
 
 
       $scope.resultado={}
@@ -942,4 +889,15 @@ angular
 
 
 function VentachubbController($scope,$location,$http,LlamadaService){
+
+
+	$scope.venta=function(data){
+
+
+		console.log(data)
+
+
+	}
+
+
 	 }

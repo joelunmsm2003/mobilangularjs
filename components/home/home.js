@@ -2,32 +2,19 @@
 function HomeController($stateParams,$scope,$location,$http,LlamadaService){
 
 
-        console.log($stateParams)
+        console.log($stateParams.dni)
         
         var ctrl = this;
 
         url = $location.url()
 
-        // dni = url.split('&')[0].split('=')[1]
+        dni = $stateParams.dni
 
-        dni = 9118234
+        $scope.base = $stateParams.base
 
-        $scope.base = 78
+        $scope.id_agente = $stateParams.idagente
 
-        // $scope.base = url.split('&')[1].split('=')[1]
-
-        $scope.id_agente = 122
-
-        //$scope.id_agente = url.split('&')[2].split('=')[1]
-
-        $scope.nomagente = 'Carla'
-
-        //$scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
-
-        // $http.get(host+'saveagente/'+$scope.nomagente+'/'+$scope.base).success(function(data) {
-           
-        // })
-
+        $scope.nomagente = $stateParams.nomagente
 
         LlamadaService.cliente(dni).then(function(data) {
 
@@ -38,18 +25,7 @@ function HomeController($stateParams,$scope,$location,$http,LlamadaService){
         })
 
 
-
-
-
-
-
-
-
         $scope.buscardni =function(dni){
-
-
-            console.log('buscando dni...')
-
 
 
                 LlamadaService.listar(dni).then(function(data) {

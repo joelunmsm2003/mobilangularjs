@@ -11,4 +11,15 @@ angular
 
 
 function VentachubbController($scope,$location,$http,LlamadaService){
+
+
+	$scope.venta=function(data){
+
+
+		console.log(data)
+
+
+	}
+
+
 	 }

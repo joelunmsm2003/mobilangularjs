@@ -14,26 +14,20 @@ angular
 
 
 
-function TipificacionController($filter,$scope,$location,$http,$log,TipificaService,LlamadaService){
+function TipificacionController($stateParams,$filter,$scope,$location,$http,$log,TipificaService,LlamadaService){
 
 
       ctrl = this
 
       url = $location.url()
 
-      // $scope.base = url.split('&')[1].split('=')[1]
+      dni = $stateParams.dni
 
-      // $scope.idagente = url.split('&')[2].split('=')[1]
+      $scope.base = $stateParams.base
 
-      // $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
+      $scope.id_agente = $stateParams.idagente
 
-        dni = 9118234
-
-        $scope.base = 78
-
-        $scope.id_agente = 122
-
-        $scope.nomagente = 'Carla'
+      $scope.nomagente = $stateParams.nomagente
 
 
       $scope.resultado={}

@@ -10,7 +10,7 @@ angular
 
 
 
-function FormularioController($scope,$location,$http,LlamadaService){
+function FormularioController($scope,$stateParams,$location,$http,LlamadaService){
 
         var ctrl = this;
 
@@ -20,23 +20,9 @@ function FormularioController($scope,$location,$http,LlamadaService){
 		url = $location.url()
 
 
-
-		// dni = url.split('&')[0].split('=')[1]
-
-  //       $scope.base = url.split('&')[1].split('=')[1]
-
-  //       $scope.id_agente = url.split('&')[2].split('=')[1]
-
-  //       $scope.nomagente = url.split('&')[3].split('=')[1]
+    dni = $stateParams.dni
 
 
-          dni = 9118234
-
-        $scope.base = 78
-
-        $scope.id_agente = 122
-
-        $scope.nomagente = 'Carla'
 
 
 
