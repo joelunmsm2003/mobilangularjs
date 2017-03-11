@@ -3,16 +3,20 @@
 .play {
 
 	height:47px;
-	-moz-transform: scaleX(-1); /* Firefox */
-	-o-transform: scaleX(-1); /* Opera */
-	-webkit-transform: scaleX(-1); /* Chrome y Safari */
-	transform: scaleX(-1); /* w3org */
 
 }
+
+
 
 .controles{
 
 	background: $state-success-bg;
+	background: #96d06a;
+    padding-right: 57px;
+    padding-top: 9px;
+    padding-left: 6px;
+    padding-bottom: 8px;
+
 
 
 }

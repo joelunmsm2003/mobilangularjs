@@ -1,80 +1,120 @@
+				<form ng-submit='ventachubb(cliente)'>
+
 				<legend>Ventas CHUBB</legend>
 
 
-								<form ng-submit=venta(cliente)>
-								
 								<div class="form-group">
 									<label for="nombre">Nombre Apellido Completos</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.nombre'  id="nombre">
+									<input   type="text" class="form-control"  ng-model='cliente.nombre'  id="nombre">
 								</div>
 
+									<div class='row'>
 
-								<div class="form-group">
-									<label for="dni">DNI</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.dni'  id="dni">
-								</div>
+									<div class='col-md-4'>
+						
+									<div class="form-group">
+										<label for="dni">DNI</label>
+										<input   type="text" class="form-control"  ng-model='cliente.dni'  id="dni">
+									</div>
+
+									</div>
+
+								
+									
+									<div class='col-md-4'>
+						
+								
+									<div class="form-group">
+										<label for="direccion">Fecha de Nacimiento</label>
+										<input   type="date" class="form-control"  ng-model='cliente.nacimiento' id="direccion" >
+									</div>
+
+									</div>
 
 
+									<div class='col-md-4'>
+						
+
+
+											<div class="form-group">
+												<label for="distrito">Numero de Celular</label>
+												<input   type="text" class="form-control"  ng-model='cliente.celular' id="distrito" >
+
+											</div>								
+								
+									</div>
+
+
+									</div>
+
+
+
+							<div class='row'>
+
+								<div class='col-md-4'>
 			
-
-								<div class="form-group">
-									<label for="direccion">Fecha de Nacimiento</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.nacimiento' id="direccion" >
-								</div>
-
-								<div class="form-group">
-									<label for="distrito">Numero de Celular</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.celular' id="distrito" >
-
-								</div>
-
 								<div class="form-group">
 									<label for="departamento">Numero de telefono Fijo</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.fijo' id="departamento" >
+									<input   type="text" class="form-control"  ng-model='cliente.fijo' id="departamento" >
 								</div>
+
+								</div>
+
+								<div class='col-md-4'>
 
 								<div class="form-group">
 									<label for="correo">Correo Electronico</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.mail' id="correo" >
+									<input   type="email" class="form-control"  ng-model='cliente.mail' id="correo" >
 								</div>
 
-								<div class="form-group">
-									<label for="nacimiento">Nombre del Producto</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.nproducto' id="nacimiento" >
 								</div>
+
+								<div class='col-md-4'>
+
 
 								<div class="form-group">
 									<label for="dni">Cantidad</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.cantidad'  id="dni">
+									<input   type="number" class="form-control"  ng-model='cliente.cantidad'  id="dni">
+								</div>
+
+			
+								</div>
+
+								</div>
+			
+								<div class="form-group">
+									<label for="nacimiento">Nombre del Producto</label>
+									<input   type="text" class="form-control"  ng-model='cliente.nproducto' id="nacimiento" >
 								</div>
 
 								<div class="form-group">
 									<label for="dni">Tipo de Cobertura</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.tcobertura'  id="dni">
+									<input   type="text" class="form-control"  ng-model='cliente.tcobertura'  id="dni">
 								</div>
 
 								<div class="form-group">
 									<label for="dni">Direccion</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.direccion'  id="dni">
+									<input   type="text" class="form-control"  ng-model='cliente.direccion'  id="dni">
 								</div>
 
 								<div class="form-group">
 									<label for="dni">Tipo de Envio</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.tenvio'  id="dni">
+									<input   type="text" class="form-control"  ng-model='cliente.tenvio'  id="dni">
 								</div>
 
 								<div class="form-group">
 									<label for="dni">Prima</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.prima'  id="dni">
+									<input   type="text" class="form-control"  ng-model='cliente.prima'  id="dni">
 								</div>
 
 								<div class="form-group">
 									<label for="dni">Todo Prima</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.tprima'  id="dni">
+									<input   type="text" class="form-control"  ng-model='cliente.tprima'  id="dni">
 								</div>
 
+									<button type="submit" class="btn btn-danger">Actualizar Venta CHUBB</button>
 
-								<button class='btn btn-info' type='submit'>Guardar</button>
+
 
 
 								</form>

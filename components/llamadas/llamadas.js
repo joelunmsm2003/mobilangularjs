@@ -10,7 +10,7 @@ angular
 
 
 
-function LlamadasController($scope,$location,$http,LlamadaService){
+function LlamadasController($stateParams,$scope,$location,$http,LlamadaService){
 
 
         url = $location.url()

@@ -358,7 +358,7 @@ angular
 
 
 
-function LlamadasController($scope,$location,$http,LlamadaService){
+function LlamadasController($stateParams,$scope,$location,$http,LlamadaService){
 
 
         url = $location.url()
@@ -891,7 +891,7 @@ angular
 function VentachubbController($scope,$location,$http,LlamadaService){
 
 
-	$scope.venta=function(data){
+	$scope.ventachubb=function(data){
 
 
 		console.log(data)

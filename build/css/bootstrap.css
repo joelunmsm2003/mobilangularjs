@@ -5845,12 +5845,120 @@ button.close {
   color: #fff; }
 
 .play {
-  height: 47px;
-  /* Firefox */
-  /* Opera */
-  /* Chrome y Safari */
-  transform: scaleX(-1);
-  /* w3org */ }
+  height: 47px; }
 
 .controles {
-  background: #96d06a; }
+  background: #96d06a;
+  background: #96d06a;
+  padding-right: 57px;
+  padding-top: 9px;
+  padding-left: 6px;
+  padding-bottom: 8px; }
+
+.flex-container {
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fff;
+  margin: 2px; }
+
+.titulo {
+  background-color: #00beec;
+  width: 28%;
+  padding: 8px;
+  padding-top: 8px;
+  padding-top: -2px;
+  text-align: center;
+  color: #fff;
+  font-size: 17px; }
+
+.contenido {
+  background-color: #fff;
+  width: 50%;
+  border: 1px solid #00beec;
+  margin: 0px;
+  margin-right: 16px;
+  padding: 8px;
+  padding-top: 9px; }
+
+.telefono {
+  background-color: #ffffff;
+  padding: 6px;
+  color: #2969a8;
+  margin-right: 2px;
+  height: 30px;
+  width: 21px;
+  border: 1px solid #00beec;
+  transition: background-color 0.5s;
+  cursor: pointer; }
+
+.telefono:hover {
+  background-color: #2969a8;
+  color: #fff;
+  transition: background-color 1s; }
+
+.informe {
+  padding: 7em; }
+
+.imagen {
+  width: 100%;
+  background: #2969a8; }
+
+.paralelogramo {
+  transform: skew(-4deg); }
+
+.search {
+  width: auto;
+  padding: 28px;
+  top: 171px;
+  position: fixed;
+  right: 0;
+  padding: 10px;
+  border: 1px solid #2969a8;
+  border: 1px 0px 1px 1px;
+  color: #2969a8;
+  transition: width 1s ease;
+  padding-left: 20px;
+  padding-right: 20px; }
+
+.search:hover {
+  transform: rotate(-9deg) scale(1, 1);
+  background: #2969a8;
+  border: 1px 0px 1px 1px;
+  color: #fff; }
+
+.list-group-item:hover {
+  background: #00beec;
+  color: #fff; }
+
+.list-group-item {
+  color: #000; }
+
+.botonera {
+  text-align: right; }
+
+.perfil {
+  padding-top: 77px; }
+
+.detalleperfil {
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  background-color: #ff2069; }
+  .detalleperfil .flex-item {
+    background-color: #ff2069;
+    width: 20%;
+    color: #fff; }
+  .detalleperfil .flex-item-1 {
+    width: 80%; }
+
+.gestionado:hover {
+  background: #96d06a;
+  color: #fff; }
+
+.contactibilidad:hover {
+  background: #ff4848;
+  color: #fff; }
+
+.efectividad:hover {
+  background: #00beec;
+  color: #fff; }

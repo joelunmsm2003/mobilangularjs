@@ -28,6 +28,9 @@ angular
         })
 
 
+
+
+
         
         $urlRouterProvider.otherwise('/reporte');
 
