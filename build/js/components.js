@@ -30,10 +30,24 @@ function BbvaController($stateParams,$scope,$location,$http,LlamadaService){
 
 
 
+        dni = $stateParams.dni
+
+        $scope.base = $stateParams.base
 
         $scope.idagente = $stateParams.idagente
 
         $scope.nomagente = $stateParams.nomagente
+
+
+              LlamadaService.cliente(dni).then(function(data) {
+
+                console.log('Ventachub...',data)
+
+                $scope.cliente = data[0]
+
+                })
+
+
 
 	  $scope.buscardni =function(dni){
 
@@ -350,6 +364,9 @@ function HomeController($stateParams,$scope,$location,$http,LlamadaService){
                $('#myModal').modal('hide');
 
                $location.path('/home/'+data.cliente+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
+
+
+               
 
 
            
@@ -970,7 +987,26 @@ angular
 
 
 
-function VentachubbController($scope,$location,$http,LlamadaService){
+function VentachubbController($stateParams,$scope,$location,$http,LlamadaService){
+
+
+
+        dni = $stateParams.dni
+
+        $scope.base = $stateParams.base
+
+        $scope.idagente = $stateParams.idagente
+
+        $scope.nomagente = $stateParams.nomagente
+
+
+              LlamadaService.cliente(dni).then(function(data) {
+
+                console.log('Ventachub...',data)
+
+                $scope.cliente = data[0]
+
+                })
 
 
 	$scope.ventachubb=function(data){
