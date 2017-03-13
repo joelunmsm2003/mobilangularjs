@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 import xlrd
 from gestion.models import *
 from PIL import Image
-from resizeimage import resizeimage
+
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
