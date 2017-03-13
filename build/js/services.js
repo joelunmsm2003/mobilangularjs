@@ -1,4 +1,4 @@
-function TipificaService ($http,$q,$log,$localStorage) {  
+function BbvaService ($http,$q,$log,$localStorage) {  
 
 
     return {
@@ -44,7 +44,7 @@ function TipificaService ($http,$q,$log,$localStorage) {
 
         $http({
 
-        url: host+"actualizar",
+        url: host+"actualizabbva",
         data: data,
         method: 'POST'
         }).
