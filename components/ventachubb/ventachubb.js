@@ -10,7 +10,26 @@ angular
 
 
 
-function VentachubbController($scope,$location,$http,LlamadaService){
+function VentachubbController($stateParams,$scope,$location,$http,LlamadaService){
+
+
+
+        dni = $stateParams.dni
+
+        $scope.base = $stateParams.base
+
+        $scope.idagente = $stateParams.idagente
+
+        $scope.nomagente = $stateParams.nomagente
+
+
+              LlamadaService.cliente(dni).then(function(data) {
+
+                console.log('Ventachub...',data)
+
+                $scope.cliente = data[0]
+
+                })
 
 
 	$scope.ventachubb=function(data){
