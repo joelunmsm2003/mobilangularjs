@@ -21,6 +21,12 @@ angular
             controller: HomeController
         })
 
+        .state('bbvacampana', {
+            url: '/bbvacampana/:dni/:base/:idadente/:nomagente',
+            templateUrl: 'html/bbvacampana/bbvacampana.html',
+            controller: VentachubbController
+        })
+
         .state('reporte', {
             url: '/reporte',
             templateUrl: 'html/reporte/reporte.html',
