@@ -1,8 +1,15 @@
 
+
+
+
 <form ng-submit='actualizar(cliente)' >
 
 
-<legend>Actualizacion BBVA</legend>
+<legend>Actualizacion BBVA <button type="button" class="btn btn-default " style='float:right;' data-toggle="modal" data-target="#dni">Buscar DNI</button>
+</legend>
+
+
+
 								<div class="form-group">
 									<label for="nombre">Tipo documento</label>
 									<input  type="text" class="form-control"  ng-model='cliente.documento' id="nombre" >
@@ -10,7 +17,7 @@
 
 								<div class="form-group">
 									<label for="nombre">Número documento</label>
-									<input  type="text" class="form-control"  ng-model='cliente.ndocumento' id="nombre" >
+									<input  type="text" class="form-control"  ng-model='cliente.dni' id="nombre" >
 								</div>
 
 								<div class="form-group">
@@ -46,10 +53,11 @@
 								</div>
 
 
-								<div class="form-group">
-									<label for="telefono">¿Recibe CTS con el Banco?</label>
-									<input   type="text" class="form-control"  ng-model='cliente.recibects' id="telefono" >
+								<div class="checkbox">
+									<label for="tt3"><input type="checkbox"  ng-model='cliente.recibects' id="tt3" >¿Recibe CTS con el Banco?</label>
+									
 								</div>
+
 
 							<button type="submit" class="btn btn-danger">Actualizar BBVA</button>
 
@@ -59,43 +67,90 @@
 
 
 
-<div class="btn-group">
-  <button type="button" ng-click='venta(cliente)' class="btn btn-danger">Venta</button>
 
- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#dni">Buscar DNI</button>
-</div>
 
 
 <!-- Modal -->
-<div id="dni" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<!-- Modal -->
+	<div id="dni" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-lg">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Ingrese DNI</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-		  <label for="dni">Name:</label>
-		  <input type="text" ng-change='buscadni(dni)' class="form-control" ng-model='dni' id="dni">
-		</div>
-
-		 <ul class="list-group">
-		  <li ng-click='traecliente(cliente.dni)' class="list-group-item">{{cliente.dni}}</li>
-
-		</ul>
+	  
 
 
 
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">INGRESE DNI </h4>
+	      </div>
+
+	      
+	      <div class="modal-body">
+	
+	       	
+
+	       		<div class="form-group">
+					<div class='col-md-3'>
+					<input required type="text" class="form-control" ng-change='buscardni(dni)' ng-model='dni' placeholder="DNI" id="nombre">
+					</div>
 
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+					<!-- <div class='col-md-3'>
+					<a ng-if='dni' class='btn btn-primary' ng-click='goperson(dni)'><i class="fa fa-user" aria-hidden="true"></i>
+				<i class="fa fa-hand-o-right" aria-hidden="true"></i>
+				</a>
+					</div> -->
 
-  </div>
-</div>
+
+				</div>
+
+				<br>
+
+				<!-- <h5 ng-if ='resultadodni.NOMBRE'>DATOS</h5>
+				<h5 ng-if ='resultadodni.NOMBRE'> {{resultadodni.NOMBRE}}</h5>
+ -->
+
+			<h5 ng-if='registros'>LLAMADAS</h5>
+			<ul class="list-group" >
+			  
+			  <li ng-click='go(x)' class="list-group-item" ng-repeat="x in registros">
+
+			  <div class='row'>
+			  <div class='col-md-3'>
+			  <i class="fa fa-phone-square" aria-hidden="true"></i> {{x.telefono}} 
+			  </div>
+
+			  <div class='col-md-3'>
+			   {{x.contacto}}  
+			  </div>
+
+			  <div class='col-md-3'>
+			  {{x.accion}}   
+			  </div>
+
+			  <div class='col-md-3'>
+			  {{x.estado}}   
+			  </div>
+
+
+
+
+			  </li>
+
+		
+			</ul>
+
+
+
+
+
+	      </div>
+	      <!-- <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div> -->
+	    </div>
+
+	  </div>
+	</div>

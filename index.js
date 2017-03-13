@@ -16,15 +16,15 @@ angular
     $stateProvider
 
         .state('home', {
-            url: '/home/:dni/:base/:idadente/:nomagente',
+            url: '/home/:dni/:base/:idagente/:nomagente',
             templateUrl: 'html/home/home.html',
             controller: HomeController
         })
 
         .state('bbvacampana', {
-            url: '/bbvacampana/:dni/:base/:idadente/:nomagente',
+            url: '/bbvacampana/:dni/:base/:idagente/:nomagente',
             templateUrl: 'html/bbvacampana/bbvacampana.html',
-            controller: VentachubbController
+            controller: BbvacampanaController
         })
 
         .state('reporte', {

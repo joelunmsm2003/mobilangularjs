@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^saveagente/(\w+)/(\w+)$', 'gestion.views.saveagente'),
     url(r'^traebase/(\w+)$', 'gestion.views.traebase'),
     url(r'^trama$', 'gestion.views.trama'),
+    url(r'^actualizabbva$', 'gestion.views.actualizabbva'),
 
     #Hotels
 

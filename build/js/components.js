@@ -26,9 +26,84 @@ angular
 
 
 
-function BbvaController($scope,$location,$http,LlamadaService){
+function BbvaController($stateParams,$scope,$location,$http,LlamadaService){
+
+
+
+
+        $scope.idagente = $stateParams.idagente
+
+        $scope.nomagente = $stateParams.nomagente
+
+	  $scope.buscardni =function(dni){
+
+
+                LlamadaService.listar(dni).then(function(data) {
+
+                $scope.registros = data
+
+                })
+
+        }
+
+
+          $scope.go=function(data){
+
+            console.log('ererer...',data)
+
+               $('#dni').modal('hide');
+
+             $location.path('/bbvacampana/'+data.cliente+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
+
+
+                LlamadaService.cliente(dni).then(function(data) {
+
+		            console.log('Datos del dni',data)
+
+		            $scope.cliente = data[0]
+
+		        })
+
+           
+        }
+
+
+          $scope.actualizar =function(cliente){
+
+
+          	console.log('cliente...',cliente)
+
+
+
+        }
+
+
+
 
 	 }
+function BbvacampanaController($stateParams,$scope,$location,$http){
+
+
+        console.log($stateParams.dni)
+        
+        var ctrl = this;
+
+        url = $location.url()
+
+        dni = $stateParams.dni
+
+        $scope.base = $stateParams.base
+
+        $scope.id_agente = $stateParams.idagente
+
+        $scope.nomagente = $stateParams.nomagente
+
+
+
+
+
+
+ }
 angular
   .module('app')
   .component('bbvachubbcomponent', {
@@ -274,11 +349,9 @@ function HomeController($stateParams,$scope,$location,$http,LlamadaService){
 
                $('#myModal').modal('hide');
 
-               //$location.path('/home/'+'?dni='+data.cliente+'&'+'base='+data.id_orig_base+'&agente='+$scope.id_agente+'&nomagente='+$scope.nomagente)
+               $location.path('/home/'+data.cliente+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
 
-            window.location.href=host_primary+'gestion/build/#/home?dni='+data.cliente+'&'+'base='+data.id_orig_base+'&agente='+$scope.id_agente+'&nomagente='+$scope.nomagente
 
-            location.reload()
            
         }
 
@@ -763,11 +836,17 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
 
       url = $location.url()
 
+
+      console.log('uauau',$stateParams)
+
       dni = $stateParams.dni
 
       $scope.base = $stateParams.base
 
-      $scope.id_agente = $stateParams.idagente
+      $scope.idagente = $stateParams.idagente
+
+
+      console.log('agente.....',$scope.idagente)
 
       $scope.nomagente = $stateParams.nomagente
 
@@ -804,6 +883,9 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
       $scope.muestraagendar= false
 
       $scope.tipifica =function(data){
+
+
+            console.log('YYYYY',$scope.idagente)
 
             data.base = $scope.base
 

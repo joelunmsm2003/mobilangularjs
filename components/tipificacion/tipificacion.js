@@ -21,11 +21,17 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
 
       url = $location.url()
 
+
+      console.log('uauau',$stateParams)
+
       dni = $stateParams.dni
 
       $scope.base = $stateParams.base
 
-      $scope.id_agente = $stateParams.idagente
+      $scope.idagente = $stateParams.idagente
+
+
+      console.log('agente.....',$scope.idagente)
 
       $scope.nomagente = $stateParams.nomagente
 
@@ -62,6 +68,9 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
       $scope.muestraagendar= false
 
       $scope.tipifica =function(data){
+
+
+            console.log('YYYYY',$scope.idagente)
 
             data.base = $scope.base
 

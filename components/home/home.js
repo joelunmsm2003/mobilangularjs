@@ -44,11 +44,9 @@ function HomeController($stateParams,$scope,$location,$http,LlamadaService){
 
                $('#myModal').modal('hide');
 
-               //$location.path('/home/'+'?dni='+data.cliente+'&'+'base='+data.id_orig_base+'&agente='+$scope.id_agente+'&nomagente='+$scope.nomagente)
+               $location.path('/home/'+data.cliente+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
 
-            window.location.href=host_primary+'gestion/build/#/home?dni='+data.cliente+'&'+'base='+data.id_orig_base+'&agente='+$scope.id_agente+'&nomagente='+$scope.nomagente
 
-            location.reload()
            
         }
 

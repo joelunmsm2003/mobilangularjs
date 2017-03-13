@@ -111,6 +111,21 @@ def contactos(request):
 
 
 @csrf_exempt
+def actualizabbva(request):
+
+    if request.method == 'POST':
+
+        print 'Actualiza....',json.loads(request.body)
+
+
+        data = ValuesQuerySetToDict(data)
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
+
+@csrf_exempt
 def acciones(request,contacto):
 
     if request.method == 'GET':
