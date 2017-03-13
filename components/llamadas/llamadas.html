@@ -1,11 +1,11 @@
 		<legend><i class="fa fa-phone-square" aria-hidden="true"></i> HISTORIAL DE LLAMADAS</legend>
 
-
+<!--
 	<table class="table table-condensed table-hover">
 				<thead>
 					<tr>
 						<th>Telefono</th>
-						<!-- <th>Orden</th> -->
+						<!-- <th>Orden</th> 
 						<th>Tipo de Contacto</th>
 						<th>Accion</th>
 						<th>Estado</th>
@@ -16,17 +16,26 @@
 				<tbody>
 					<tr ng-repeat="x in llamadas">
 						<td>{{x.telefono}}</td>
-						<!-- <td>{{x.orden}}</td> -->
+						<!-- <td>{{x.orden}}</td> 
 						<td>{{x.contacto__nombre}}</td>
 						<td>{{x.accion__nombre}}</td>
 						<td>{{x.estado__nombre}}</td>
 						<td>{{x.observacion}}</td>
 						<td>{{x.fagenda}}</td>
 
-						
+					-->	
 						
 				
 
 					</tr>
 				</tbody>
 			</table>
+
+			 <ul class="list-group" ng-repeat="x in llamadas">
+				  <li class="list-group-item">{{x.telefono}}</li>
+				  <li class="list-group-item">{{x.contacto__nombre}}</li>
+				  <li class="list-group-item">{{x.accion__nombre}}</li>
+				  <li class="list-group-item">{{x.estado__nombre}}</li>
+				  <li class="list-group-item">{{x.observacion}}</li>
+				  <li class="list-group-item">{{x.fagenda}}</li>
+			</ul>
