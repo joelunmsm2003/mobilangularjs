@@ -12,55 +12,82 @@
 
 								<div class="form-group">
 									<label for="nombre">Tipo documento</label>
-									<input  type="text" class="form-control"  ng-model='cliente.documento' id="nombre" >
+									<input  disabled type="text" class="form-control"  ng-model='cliente.documento' id="nombre" >
 								</div>
 
 								<div class="form-group">
 									<label for="nombre">Número documento</label>
-									<input  type="text" class="form-control"  ng-model='cliente.dni' id="nombre" >
+									<input  disabled type="text" class="form-control"  ng-model='cliente.dni' id="nombre" >
 								</div>
 
 								<div class="form-group">
 									<label for="nombre">Nombre</label>
-									<input   type="text" class="form-control"  ng-model='cliente.nombre' id="nombre" >
+									<input disabled  type="text" class="form-control"  ng-model='cliente.nombre' id="nombre" >
 								</div>
 
-								<div class="form-group">
+							<!-- 	<div class="form-group">
 									<label for="nombre">Nro TC encriptada</label>
-									<input   type="text" class="form-control"  ng-model='cliente.nrotc' id="nombre" >
+									<input disabled  type="text" class="form-control"  ng-model='cliente.nrotc' id="nombre" >
 								</div>
-
+ -->
 								<div class="form-group">
 									<label for="nombre">Fecha de Nacimiento</label>
-									<input   type="date" class="form-control"  ng-model='cliente.fnacimiento' id="nombre" >
+									<input disabled  type="text" class="form-control"  ng-model='cliente.fnacimiento' id="nombre" >
 								</div>
 
 								<div class="form-group">
 									<label for="nombre">Tipo de Tarjeta</label>
-									<input   type="text" class="form-control"  ng-model='cliente.ttarjeta' id="nombre" >
+									<input disabled  type="text" class="form-control"  ng-model='cliente.ttarjeta' id="nombre" >
 								</div>
+
+								<div class="form-group">
+									<label for="nombre">Si tiene LPDP </label>
+									<input  disabled type="text" class="form-control"  ng-model='cliente.tienelpdp' id="nombre" >
+								</div>
+
 
 		
 
+								<div class='panel panel-default'>
+
+								<div class="panel-heading">
+									
+									Preguntas
+								</div>
+
+								<div class='panel-body'>
+
 								<div class="checkbox">
-									<label for="tt1"><input type="checkbox"  ng-model='cliente.tienetarjeta' id="tt1" >Tiene tarjeta de Credito con nosotros?</label>
+									<label for="sfn"><input type="checkbox"  ng-change='preguntar(a)' ng-model='a' id="sfn" >¿Su fecha de nacimiento? <strong>{{cliente.fnacimiento}}</strong></label>
 									
 								</div>
 
 								<div class="checkbox">
-									<label for="tt2"><input type="checkbox"  ng-model='cliente.tienetarjetatc' id="tt2" >¿Tiene tarjetas adicioanales a su TC?</label>
+									<label for="tt1"><input type="checkbox"  ng-change='preguntar(b)' ng-model='b' id="tt1" >¿Tiene tarjeta de Credito con nosotros? <strong>{{cliente.tienetarjetadecredito}}</strong></label>
 									
 								</div>
-
 
 								<div class="checkbox">
-									<label for="tt3"><input type="checkbox"  ng-model='cliente.recibects' id="tt3" >¿Recibe CTS con el Banco?</label>
+									<label for="tt2"><input type="checkbox"  ng-change='preguntar(c)' ng-model='c' id="tt2" >¿Tiene tarjetas adicionales a su TC? <strong>{{cliente.tarjetasadicionales}}</strong></label>
 									
 								</div>
 
+								<div class="checkbox">
+									<label for="tt3"><input type="checkbox"  ng-change='preguntar(d)' ng-model='d' id="tt3" >¿Recibe CTS con el Banco? <strong>{{cliente.recibects}}</strong></label>
+									
+								</div>
 
-							<button type="submit" class="btn btn-danger">Actualizar BBVA</button>
+				
 
+								</div>
+
+								</div>
+
+
+							<button ng-show='btnact' type="submit" class="btn btn-danger">Actualizar BBVA</button>
+
+							
+							<button ng-hide='btnact' type="submit" disabled class="btn btn-danger">Actualizar BBVA</button>
 
 								</form>
 

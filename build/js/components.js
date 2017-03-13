@@ -91,6 +91,39 @@ function BbvaController($stateParams,$scope,$location,$http,LlamadaService){
 
         }
 
+        var x=0;
+
+
+
+
+        $scope.preguntar =function(preguntas){
+
+            $scope.btnact = false
+
+            if(preguntas==true){
+
+              x=x+1
+            }
+            else{
+
+              x=x-1
+            }
+
+            if(x>=2){
+
+              $scope.btnact = true
+            }
+
+
+            console.log('cliente...',x)
+
+
+
+
+
+        }
+
+
 
 
 
