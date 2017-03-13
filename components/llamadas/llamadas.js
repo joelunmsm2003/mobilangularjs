@@ -10,30 +10,25 @@ angular
 
 
 
-function LlamadasController($scope,$location,$http,LlamadaService){
+function LlamadasController($stateParams,$scope,$location,$http,LlamadaService){
 
-
-        // Saca de la URL solo el DNI
-
-        console.log('hshshshsh')
 
         url = $location.url()
 
-        console.log('url.....',url.split('&')[0].split('=')[1])
 
-        dni = url.split('&')[0].split('=')[1]
+        dni = $stateParams.dni
 
+        $scope.base = $stateParams.base
+
+        $scope.id_agente = $stateParams.idagente
+
+        $scope.nomagente = $stateParams.nomagente
 
         LlamadaService.listar(dni).then(function(data) {
 
         $scope.llamadas = data
 
-        console.log('LlamadasController...',data)
-
         })
-
-
-
 
 
 

@@ -1,25 +1,20 @@
 
-function HomeController($scope,$location,$http,LlamadaService){
+function HomeController($stateParams,$scope,$location,$http,LlamadaService){
 
 
-
-
+        console.log($stateParams.dni)
+        
         var ctrl = this;
 
         url = $location.url()
 
-        dni = url.split('&')[0].split('=')[1]
+        dni = $stateParams.dni
 
-        $scope.base = url.split('&')[1].split('=')[1]
+        $scope.base = $stateParams.base
 
-        $scope.id_agente = url.split('&')[2].split('=')[1]
+        $scope.id_agente = $stateParams.idagente
 
-        $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
-
-        // $http.get(host+'saveagente/'+$scope.nomagente+'/'+$scope.base).success(function(data) {
-           
-        // })
-
+        $scope.nomagente = $stateParams.nomagente
 
         LlamadaService.cliente(dni).then(function(data) {
 
@@ -30,44 +25,7 @@ function HomeController($scope,$location,$http,LlamadaService){
         })
 
 
-
-
-
-
-        var formData = { base: $scope.base };
-
-        var postData = 'myData='+JSON.stringify(formData);
-
-        $http({
-
-        method : 'POST',
-        url : host+'/base.php',
-        data: postData,
-        headers : {'Content-Type': 'application/x-www-form-urlencoded'}  
-
-        }).success(function(res){
-
-            $scope.agentereal = res[0]
-
-            
-
-        })
-
-        // $scope.goperson =function(data){
-
-
-        //     window.location.href='/calidad/#/home?dni='+data+'&'+'base=123'
-
-        //     location.reload()
-
-        // }
-
-
         $scope.buscardni =function(dni){
-
-
-            console.log('buscando dni...')
-
 
 
                 LlamadaService.listar(dni).then(function(data) {

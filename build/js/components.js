@@ -84,7 +84,7 @@ angular
 
 
 
-function FormularioController($scope,$location,$http,LlamadaService){
+function FormularioController($scope,$stateParams,$location,$http,LlamadaService){
 
         var ctrl = this;
 
@@ -93,15 +93,10 @@ function FormularioController($scope,$location,$http,LlamadaService){
 
 		url = $location.url()
 
-        console.log('url.....',url.split('&')[0].split('=')[1])
 
-		dni = url.split('&')[0].split('=')[1]
+    dni = $stateParams.dni
 
-        $scope.base = url.split('&')[1].split('=')[1]
 
-        $scope.id_agente = url.split('&')[2].split('=')[1]
-
-        $scope.nomagente = url.split('&')[3].split('=')[1]
 
 
 
@@ -234,27 +229,22 @@ function HistorialController($scope,$location,$http){
 }
 
 
-function HomeController($scope,$location,$http,LlamadaService){
+function HomeController($stateParams,$scope,$location,$http,LlamadaService){
 
 
-
-
+        console.log($stateParams.dni)
+        
         var ctrl = this;
 
         url = $location.url()
 
-        dni = url.split('&')[0].split('=')[1]
+        dni = $stateParams.dni
 
-        $scope.base = url.split('&')[1].split('=')[1]
+        $scope.base = $stateParams.base
 
-        $scope.id_agente = url.split('&')[2].split('=')[1]
+        $scope.id_agente = $stateParams.idagente
 
-        $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
-
-        // $http.get(host+'saveagente/'+$scope.nomagente+'/'+$scope.base).success(function(data) {
-           
-        // })
-
+        $scope.nomagente = $stateParams.nomagente
 
         LlamadaService.cliente(dni).then(function(data) {
 
@@ -265,44 +255,7 @@ function HomeController($scope,$location,$http,LlamadaService){
         })
 
 
-
-
-
-
-        var formData = { base: $scope.base };
-
-        var postData = 'myData='+JSON.stringify(formData);
-
-        $http({
-
-        method : 'POST',
-        url : host+'/base.php',
-        data: postData,
-        headers : {'Content-Type': 'application/x-www-form-urlencoded'}  
-
-        }).success(function(res){
-
-            $scope.agentereal = res[0]
-
-            
-
-        })
-
-        // $scope.goperson =function(data){
-
-
-        //     window.location.href='/calidad/#/home?dni='+data+'&'+'base=123'
-
-        //     location.reload()
-
-        // }
-
-
         $scope.buscardni =function(dni){
-
-
-            console.log('buscando dni...')
-
 
 
                 LlamadaService.listar(dni).then(function(data) {
@@ -405,30 +358,25 @@ angular
 
 
 
-function LlamadasController($scope,$location,$http,LlamadaService){
+function LlamadasController($stateParams,$scope,$location,$http,LlamadaService){
 
-
-        // Saca de la URL solo el DNI
-
-        console.log('hshshshsh')
 
         url = $location.url()
 
-        console.log('url.....',url.split('&')[0].split('=')[1])
 
-        dni = url.split('&')[0].split('=')[1]
+        dni = $stateParams.dni
 
+        $scope.base = $stateParams.base
+
+        $scope.id_agente = $stateParams.idagente
+
+        $scope.nomagente = $stateParams.nomagente
 
         LlamadaService.listar(dni).then(function(data) {
 
         $scope.llamadas = data
 
-        console.log('LlamadasController...',data)
-
         })
-
-
-
 
 
 
@@ -631,17 +579,20 @@ angular
 
 function ReportbbvachubbController($scope,$location,$http,LlamadaService){
 	 }
-angular
-  .module('app')
-  .component('reportecomponent', {
-    templateUrl: 'html/reporte/reporte.html',
-    controller: ReporteController
 
-  });
+
+function ReporteController($scope,$location,$http,TipificaService){
 
 
 
-function ReporteController($scope,$location,$http){
+	  TipificaService.acciones().then(function(data) {
+
+      console.log('acciones',data)
+
+      $scope.listaaciones = data
+
+
+      })
 
 
 	/// Contador de tipo de Contacto
@@ -805,21 +756,21 @@ angular
 
 
 
-function TipificacionController($filter,$scope,$location,$http,$log,TipificaService,LlamadaService){
+function TipificacionController($stateParams,$filter,$scope,$location,$http,$log,TipificaService,LlamadaService){
 
 
       ctrl = this
 
       url = $location.url()
 
-      $scope.base = url.split('&')[1].split('=')[1]
+      dni = $stateParams.dni
 
-      $scope.idagente = url.split('&')[2].split('=')[1]
+      $scope.base = $stateParams.base
 
-      $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
+      $scope.id_agente = $stateParams.idagente
 
+      $scope.nomagente = $stateParams.nomagente
 
-      console.log('ueuue',$scope.id_agente,$scope.nomagente)
 
       $scope.resultado={}
 
@@ -910,34 +861,7 @@ function TipificacionController($filter,$scope,$location,$http,$log,TipificaServ
 
 
 
-         $scope.searchdni =function(data){
 
-
-                
-
-
-                var formData = { dni: data };
-
-                var postData = 'myData='+JSON.stringify(formData);
-
-
-                $http({
-
-                method : 'POST',
-                url : host+'/llamadas.php',
-                data: postData,
-                headers : {'Content-Type': 'application/x-www-form-urlencoded'}  
-
-                }).success(function(res){
-
-                    $scope.registros = res
-
-                    console.log('dnis.....',$scope.registros)
-
-                })
-
-
-        }
 
       
 
@@ -965,4 +889,15 @@ angular
 
 
 function VentachubbController($scope,$location,$http,LlamadaService){
+
+
+	$scope.ventachubb=function(data){
+
+
+		console.log(data)
+
+
+	}
+
+
 	 }

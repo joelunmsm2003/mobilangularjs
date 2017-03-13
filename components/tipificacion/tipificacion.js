@@ -14,21 +14,21 @@ angular
 
 
 
-function TipificacionController($filter,$scope,$location,$http,$log,TipificaService,LlamadaService){
+function TipificacionController($stateParams,$filter,$scope,$location,$http,$log,TipificaService,LlamadaService){
 
 
       ctrl = this
 
       url = $location.url()
 
-      $scope.base = url.split('&')[1].split('=')[1]
+      dni = $stateParams.dni
 
-      $scope.idagente = url.split('&')[2].split('=')[1]
+      $scope.base = $stateParams.base
 
-      $scope.nomagente = url.split('&nomagente=')[(url.split('&nomagente=')).length-1]
+      $scope.id_agente = $stateParams.idagente
 
+      $scope.nomagente = $stateParams.nomagente
 
-      console.log('ueuue',$scope.id_agente,$scope.nomagente)
 
       $scope.resultado={}
 
@@ -119,34 +119,7 @@ function TipificacionController($filter,$scope,$location,$http,$log,TipificaServ
 
 
 
-         $scope.searchdni =function(data){
 
-
-                
-
-
-                var formData = { dni: data };
-
-                var postData = 'myData='+JSON.stringify(formData);
-
-
-                $http({
-
-                method : 'POST',
-                url : host+'/llamadas.php',
-                data: postData,
-                headers : {'Content-Type': 'application/x-www-form-urlencoded'}  
-
-                }).success(function(res){
-
-                    $scope.registros = res
-
-                    console.log('dnis.....',$scope.registros)
-
-                })
-
-
-        }
 
       
 

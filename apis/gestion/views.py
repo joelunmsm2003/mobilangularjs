@@ -212,6 +212,16 @@ def reporte(request):
 
         # return HttpResponse(data_json, content_type="application/json")
 
+def generablancos(data):
+
+    e = ''
+
+    for b in range(data):
+
+        e = ' '+ e
+
+    return e
+
 @csrf_exempt
 def trama(request):
 
@@ -220,49 +230,180 @@ def trama(request):
         
         m = []
 
-        # Tipo de registro
+        # Tipo de registro - 1
+        tipo = '1'
+        eb = 1 - len(tipo)
+        tipo = tipo + generablancos(eb)
 
-        # Codigo de Producto Paquete
+
+        # Codigo de Producto Paquete - 6
+        cproducto = '7272'
+        eb = 6 - len(cproducto)
+        cproducto = cproducto + generablancos(eb)
+
 
         # DNI
-
-        #Tipo de cobertura
-
-        #Nombre Apellido
-
-
-        #Nombre del Contratante
-
-        #Segundo Nonbre del contratante
-
-        #Apellidos del contratante
-
-        #Direccion 1
-
-        #Direccion 2
-
-        #Direccion 3
-
-        #Direccion 4
-
-        #Telefono de Casa
+        dni = '72748565'
+        eb = 15 - len(dni)
+        dni = dni + generablancos(eb)
 
 
-        #Telefono de trabajo
-
-        #Fecha de Naciomiento
-
-
-        #Email
+        # Tipo de cobertura - 2
+        tcobertura = '1'
+        eb = 2 - len(tcobertura)
+        tcobertura = tcobertura + generablancos(eb)
 
 
-        #Unit
+        #Nombre Apellido - 50
+        nombrea = 'Eurieds'
+        eb = 50 - len(nombrea)
+        nombrea = nombrea + generablancos(eb)
+    
 
-        #Datos Especificos del producto
+        #Nombre del Contratante - 30
+        ncontratante = 'Manuel'
+        eb = 30 - len(ncontratante)
+        ncontratante = ncontratante + generablancos(eb)
 
-        m.append(' ')
-        m.append('          ')
-        m.append('                  ')
+
+        #Segundo Nombre del contratante - 30
+        scontratante = 'Eurieds'
+        eb = 30 - len(scontratante)
+        scontratante = scontratante + generablancos(eb)
+
+
+        #Apellidos del contratante - 30
+        apcontratante = 'Eurieds'
+        eb = 30 - len(apcontratante)
+        apcontratante = apcontratante + generablancos(eb)
+
+
+        #Direccion 1 - 30
+        direccion1 = 'Eurieds'
+        eb = 30 - len(direccion1)
+        direccion1 = direccion1 + generablancos(eb)
+
+
+        #Direccion 2 - 30
+        direccion2 = 'Eurieds'
+        eb = 30 - len(direccion2)
+        direccion2 = direccion2 + generablancos(eb)
+
+
+        #Direccion 3 -30
+        direccion3 = 'Eurieds'
+        eb = 30 - len(direccion3)
+        direccion3 = direccdireccion4ion3 + generablancos(eb)
+
+
+        #Direccion 4 - 30
+        direccion4 = 'Eurieds'
+        eb = 30 - len(direccion4)
+        direccion4 = direccion4 + generablancos(eb)
+
+
+        #Telefono de Casa - 20
+        telfcasa = 'Eurieds'
+        eb = 20 - len(telfcasa)
+        telfcasa = telfcasa + generablancos(eb)
+
+
+        #Telefono de trabajo - 20
+        telftrabajo = 'Eurieds'
+        eb = 20 - len(telftrabajo)
+        telftrabajo = telftrabajo + generablancos(eb)
+
+
+        #Fecha de Naciomiento - 8
+        fechadenacimiento = 'Eurieds'
+        eb = 8 - len(fechadenacimiento)
+        fechadenacimiento = fechadenacimiento + generablancos(eb)
+
+
+        #Email - 40 
+        email = 'Eurieds'
+        eb = 40 - len(email)
+        email = email + generablancos(eb)
+
+
+        #Unit - 100
+        uni = 'Eurieds'
+        eb = 100 - len(uni)
+        uni = uni + generablancos(eb)
+
+
+        #Datos Especificos del producto - 2080
+        datespecpro = 'Eurieds'
+        eb = 2080 - len(datespecpro)
+        datespecpro = datespecpro + generablancos(eb)
+
+
+
+
+        m.append(tipo)#tipo de registro - 1
+        m.append(generablancos(10))#codigo de campana - 10
+        m.append(cproducto)#codigo de producto paquete - 6
+        m.append(generablancos(60))#codigo de producto simple - 60
+        m.append(generablancos(20))#numero de cuenta bancaria - 20
+        m.append(dni)#numero de DNI - 15
+        m.append(generablancos(1))#plan - 1
+        m.append(cobertura)#tipo de cobertura - 2
+        m.append(generablancos(8))#Fecha de efectividad - 8
+        m.append(generablancos(10))#codigo de sucursal bancaria - 10
+        m.append(generablancos(20))#codigo de vendedor - 20
+        m.append(generablancos(10))#codigo de banco - 10
+        m.append(generablancos(2))#codigo de tarjeta de credito - 2
+        m.append(generablancos(2))#metodo de pago - 2
+        m.append(generablancos(2))#frecuencia de pago - 2
+        m.append(nombrea)# nombre y apellido del contratante - 50
+        m.append(ncontratante)#nombre del contratante - 30
+        m.append(scontratante)#segundo nombre del contratante - 30
+        m.append(apcontratante)#apellido del contratante - 30
+        m.append(generablancos(2))#codigo de tipo de direccion - 2
+        m.append(direccion1)#direccion 1 - 30
+        m.append(direccion2)#direccion 2 - 30
+        m.append(direccion3)#direccion 3 - 30
+        m.append(direccion4)#direccion 4 - 30
+        m.append(generablancos(15))#filler - 15
+        m.append(generablancos(30))#provincia - 30
+        m.append(generablancos(2))#departamento - 2
+        m.append(generablancos(10))#postal - 10
+        m.append(generablancos(2))#codigo de pais - 2
+        m.append(telfcasa)#telefono de casa - 20
+        m.append(generablancos(6))#telefono de trabajo - 20
+        m.append(fechadenacimiento)#fecha de nacimiento - 8
+        m.append(generablancos(2))#codigo de sexo - 2
+        m.append(generablancos(2))#titulo - 2
+        m.append(generablancos(2))#idioma - 2
+        m.append(generablancos(2))#filler - 2
+        m.append(generablancos(2))#filler - 2
+        m.append(generablancos(2))#filler - 2
+        m.append(generablancos(2))#filler - 2
+        m.append(generablancos(2))#indicador de envio de polisa - 2
+        m.append(generablancos(2))#numero de dependientes - 2
+        m.append(generablancos(2))#filler - 2
+        m.append(generablancos(15))#polisa - 15
+        m.append(generablancos(9))#filler - 9
+        m.append(generablancos(3))#codigo de transaccion - 3
+        m.append(generablancos(2))#filler - 2
+        m.append(generablancos(5))#filler - 5
+        m.append(generablancos(30))#filler - 30
+        m.append(email)#email - 40
+        m.append(uni)#unit - 100
+        m.append(generablancos(100))#referencia1 - 100
+        m.append(generablancos(100))#referencia2 - 100
+        m.append(generablancos(100))#referencia3 - 100
+        m.append(generablancos(5))#fecha de expiracion - 5
+        m.append(generablancos(10))#fecha de aplicacion - 10
+        m.append(generablancos(5)) 
+        m.append(generablancos(3))#filler - 3
+        m.append(generablancos(6))#filler - 6
+        m.append(generablancos(10))#filler - 10
+        m.append(generablancos(15))#numero de formulario - 15
+        m.append(datespecpro)#datos especificos del producto - 2080
+
+
+
 
         data = ''.join(m)
 
