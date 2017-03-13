@@ -117,6 +117,9 @@ def actualizabbva(request):
 
         print 'Actualiza....',json.loads(request.body)
 
+        #[{,3670L, 'telefono5': u'', 'fecha_nacimiento': u'3/4/1978', 'telefono7': u'', 'telefono6': u'', 'provincia': u'Maynas ', 'telefono3': u'', 'telefono2': u'', 'fecha': u'21/2/2017', 'dni': u'41188226', 'direccion': u'CL SAN JOSE 213 CP MORONACOCHA ', 'call': u'CALLMARK', 'mail': u'nil.3sa@gmail.com', 'distrito': u'Iquitos', 'comercial': u'FQUIROZ', 'telefono4': u'', 'departamento': u'Loreto', 'nombre': u'NISON SAMUEL NUBE VELA', 'telefono1': u'965803214', 'todo_prima': u'36', 'prima_mensual': u'36', 'tipo_envio': u'Correo Electronico', 'cant_afiliados': u'1'}]
+
+        data = json.loads(request.body)
 
         data = ValuesQuerySetToDict(data)
 

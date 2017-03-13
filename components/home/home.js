@@ -47,6 +47,9 @@ function HomeController($stateParams,$scope,$location,$http,LlamadaService){
                $location.path('/home/'+data.cliente+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
 
 
+               
+
+
            
         }
 
