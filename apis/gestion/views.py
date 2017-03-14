@@ -523,68 +523,68 @@ def trama(request):
 
         #1PE16015801      PAP407                                                      9999999999999999    08808817       2MO20170101          GRAMIREZ                      P910M CORINA IMELDA MONZON CASTILLO                     CORINA                        IMELDA         MONZON CASTILLO               01AV ignacio merino N 795 URB palermo                         130107                                                                     1301                          ZG          PE044212807                               1955123002  02        0100                          NEW                                     corinamonzoncatillo@hotmail.com                                                                                                                                                                                                                                                                                                                     230230  
 
-        m.append(tipo)#tipo de registro - 1
-        m.append(ccampana)#codigo de campana - 10
-        m.append('      ') #codigo de producto paquete - 6
-        m.append(codigoproductosimple)#codigo de producto simple - 60
-        m.append(cuentabancaria)#numero de cuenta bancaria - 20
-        m.append(dni)#numero de DNI - 15
-        m.append('1')#plan - 1
-        m.append('MO')#tipo de cobertura - 2
-        m.append('20170101')#Fecha de efectividad - 8
-        m.append(generablancos(10))#codigo de sucursal bancaria - 10
-        m.append('RAMIREZG')#codigo de vendedor - 20
-        m.append(generablancos(10))#codigo de banco - 10
-        m.append('P9')#codigo de tarjeta de credito - 2
-        m.append('10')#metodo de pago - 2
-        m.append('M ')#frecuencia de pago - 2
+        m.append(tipo)#tipo de registro - 1 / 1-1
+        m.append(ccampana)#codigo de campana - 10 / 2-11
+        m.append('      ') #codigo de producto paquete - 6 / 12-17
+        m.append(codigoproductosimple)#codigo de producto simple - 60 / 18-77
+        m.append(cuentabancaria)#numero de cuenta bancaria - 20 / 78-97
+        m.append(dni)#numero de DNI - 15 / 98-112
+        m.append('1')#plan - 1 / 113-113
+        m.append('MO')#tipo de cobertura - 2 / 114-115
+        m.append('20170101')#Fecha de efectividad - 8 / 116-123
+        m.append(generablancos(10))#codigo de sucursal bancaria - 10 / 124-133
+        m.append('RAMIREZG')#codigo de vendedor - 20 / 134-153
+        m.append(generablancos(10))#codigo de banco - 10 / 154-163
+        m.append('P9')#codigo de tarjeta de credito - 2 /164-165
+        m.append('10')#metodo de pago - 2 / 166-167
+        m.append('M ')#frecuencia de pago - 2 / 168-169
 
-        m.append(nombre)# nombre y apellido del contratante - 50
-        m.append(ncontratante)#nombre del contratante - 30
-        m.append(scontratante)#segundo nombre del contratante - 15
-        m.append(apcontratante)#apellido del contratante - 30
-        m.append('1')#codigo de tipo de direccion - 2
-        m.append('Av Primavera 234')#direccion 1 - 30
-        m.append(direccion2)#direccion 2 - 30
-        m.append(direccion3)#direccion 3 - 30
-        m.append(direccion4)#direccion 4 - 30
-        m.append(generablancos(15))#filler - 15
-        m.append(provincia)#provincia - 30
-        m.append(departamento)#departamento - 2
-        m.append(generablancos(10))#postal - 10
-        m.append('PE')#codigo de pais - 2
-        m.append(telefonocasa)#telefono de casa - 20
-        m.append(generablancos(20))#telefono de trabajo - 20
-        m.append(fechadenacimiento)#fecha de nacimiento - 8
-        m.append(sexo)#codigo de sexo - 2
-        m.append(generablancos(2))#titulo - 2
-        m.append(idioma)#idioma - 2
-        m.append(generablancos(2))#filler - 2
-        m.append(generablancos(2))#filler - 2
-        m.append(generablancos(2))#filler - 2
-        m.append(generablancos(2))#filler - 2
-        m.append(poliza)#indicador de envio de polisa - 2
-        m.append(dependientes)#numero de dependientes - 2
-        m.append(generablancos(2))#filler - 2
-        m.append(generablancos(15))#polisa - 15
-        m.append(generablancos(9))#filler - 9
-        m.append(transaccion)#codigo de transaccion - 3
-        m.append(generablancos(2))#filler - 2
-        m.append(generablancos(5))#filler - 5
-        m.append(generablancos(30))#filler - 30
-        m.append(email)#email - 40
-        m.append(uni)#unit - 100
-        m.append(generablancos(100))#referencia1 - 100
-        m.append(generablancos(100))#referencia2 - 100
-        m.append(reference3)#referencia3 - 100
-        m.append(fexpiracion)#fecha de expiracion - 5
-        m.append(generablancos(10))#fecha de aplicacion - 10
-        m.append(generablancos(5)) 
-        m.append(generablancos(3))#filler - 3
-        m.append(generablancos(6))#filler - 6
-        m.append(generablancos(10))#filler - 10
-        m.append(generablancos(15))#numero de formulario - 15
-        m.append(datespecpro)#datos especificos del producto - 2080
+        m.append(nombre)# nombre y apellido del contratante - 50 / 170-219
+        m.append(ncontratante)#nombre del contratante - 30 / 220-249
+        m.append(scontratante)#segundo nombre del contratante - 15 / 250-264
+        m.append(apcontratante)#apellido del contratante - 30 /265-294
+        m.append('1')#codigo de tipo de direccion - 2 / 295-296
+        m.append('Av Primavera 234')#direccion 1 - 30 / 297-326
+        m.append(direccion2)#direccion 2 - 30 / 327-356
+        m.append(direccion3)#direccion 3 - 30 / 357-386
+        m.append(direccion4)#direccion 4 - 30 / 387-416
+        m.append(generablancos(15))#filler - 15 / 417-431
+        m.append(provincia)#provincia - 30 / 432-461
+        m.append(departamento)#departamento - 2 / 462-463
+        m.append(generablancos(10))#postal - 10 / 464-473
+        m.append('PE')#codigo de pais - 2 / 474-475
+        m.append(telefonocasa)#telefono de casa - 20 / 476-495
+        m.append(generablancos(20))#telefono de trabajo - 20 / 496-515
+        m.append(fechadenacimiento)#fecha de nacimiento - 8 / 516-523
+        m.append(sexo)#codigo de sexo - 2 / 524-525
+        m.append(generablancos(2))#titulo - 2 / 526-527
+        m.append(idioma)#idioma - 2 / 528-529
+        m.append(generablancos(2))#filler - 2 / 530-531
+        m.append(generablancos(2))#filler - 2 / 532-533
+        m.append(generablancos(2))#filler - 2 / 534-535
+        m.append(generablancos(2))#filler - 2 / 536-537
+        m.append(poliza)#indicador de envio de polisa - 2 / 538-539
+        m.append(dependientes)#numero de dependientes - 2 / 540-541
+        m.append(generablancos(2))#filler - 2 / 542-543
+        m.append(generablancos(15))#polisa - 15 / 544-558
+        m.append(generablancos(9))#filler - 9 / 559-567
+        m.append(transaccion)#codigo de transaccion - 3 / 568-570
+        m.append(generablancos(2))#filler - 2 / 571-572
+        m.append(generablancos(5))#filler - 5 / 573-577
+        m.append(generablancos(30))#filler - 30 / 578-607
+        m.append(email)#email - 40 / 608-647
+        m.append(uni)#unit - 100 / 648-747
+        m.append(generablancos(100))#referencia1 - 100 / 748-847
+        m.append(generablancos(100))#referencia2 - 100 / 848-947
+        m.append(reference3)#referencia3 - 100 / 948-1047
+        m.append(fexpiracion)#fecha de expiracion - 5 / 1048-1052
+        m.append(generablancos(10))#fecha de aplicacion - 10 / 1053-1062
+        m.append(generablancos(5)) #filler - 5 / 1063-1067
+        m.append(generablancos(3))#filler - 3 / 1068-1070
+        m.append(generablancos(6))#filler - 6 / 1071-1076
+        m.append(generablancos(10))#filler - 10 / 1077-1086
+        m.append(generablancos(15))#numero de formulario - 15 / 1087-1001
+        m.append(datespecpro)#datos especificos del producto - 2080 / 1002-3181
 
 
 
