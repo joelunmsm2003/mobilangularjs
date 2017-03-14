@@ -22,7 +22,15 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
       url = $location.url()
 
 
-      console.log('uauau',$stateParams)
+      console.log('uauau',$location.url().split('/')[1])
+
+      if($location.url().split('/')[1]=='bbvacampana'){
+
+              $scope.bbvamuestra = false
+
+      }
+
+
 
       dni = $stateParams.dni
 

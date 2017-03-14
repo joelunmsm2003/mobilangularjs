@@ -32,6 +32,16 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
                 })
 
 
+            $scope.calcprimatotal=function(cliente){
+
+
+              console.log('dattatata',cliente)
+
+              cliente.todo_prima = cliente.cantidad*25
+
+
+
+            }
 
 
          $scope.actualizabbva =function(cliente){
@@ -42,12 +52,12 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
 
 
                       swal({
-              title: "Actualizacion BBVA",
-              text: "La actualizacion se hizo con exito",
+              title: "Venta CHUBB",
+              text: "La venta se hizo con exito",
               type: "success",
               showCancelButton: false,
               confirmButtonColor: "#5bc0de",
-              confirmButtonText: "Realizar Venta CHUBB",
+              confirmButtonText: "Cerrar",
               closeOnConfirm: true
             },
             function(){

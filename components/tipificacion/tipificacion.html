@@ -11,6 +11,17 @@
 								</div>
 
 
+
+								<div class='panel' ng-hide='bbvamuestra'>
+									
+									<select required class='form-control' ><option value='1'>Solo actualiza</option><option value='0'>Actualiza y Venta</option><option value='0'>No Acepta</option></select>
+
+								</div>
+
+
+								<div class='panel' ng-show='bbvamuestra'>
+
+
 								<div class="form-group">
 
 
@@ -48,6 +59,9 @@
 											  ng-options="p.estado as p.estado__nombre for p in estados" 
 											  ng-model="resultado.estado"
 											  ></select>
+
+								</div>
+
 
 								</div>
 
