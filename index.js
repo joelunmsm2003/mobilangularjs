@@ -4,6 +4,7 @@ angular
 .service('LlamadaService', LlamadaService)
 .service('TipificaService', TipificaService)
 .service('UserService', UserService)
+.service('BbvaService', BbvaService)
 
 .config(function($stateProvider, $urlRouterProvider,$locationProvider,$httpProvider) {
     

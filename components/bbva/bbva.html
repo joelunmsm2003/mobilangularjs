@@ -124,18 +124,25 @@
 	
 	       	<p>Sr. / Srta. {{cliente.apellidos}} para poder asignarle su opcion de participacion al sorteo de la camioneta Hyundai Tucson, es necesario que nos proporcione los siguientes datos:</p>
 
-			<label>Su nombre y apellidos completos es:</label> <input required type="text" class="form-control" ng-change='buscardni(dni)' ng-model='cliente.nombre' id="nombre">
 
-			<label>Su numero de DNI:</label> <input required type="text" class="form-control" ng-change='buscardni(dni)' ng-model='cliente.dni' id="nombre">
+	       	<form ng-submit='actualizabbva(cliente)'>
+
+			<label>Su nombre y apellidos completos es:</label> <input required type="text" class="form-control"  ng-model='cliente.nombre' id="nombre">
+
+			<label>Su numero de DNI:</label> <input required type="text" class="form-control"  ng-model='cliente.dni' id="nombre">
 		
 
-			<label>¿Me brinda su numero de celular porfavor?:</label> <input required type="text" class="form-control" ng-change='buscardni(dni)' ng-model='cliente.telefono1' id="nombre">
+			<label>¿Me brinda su numero de celular porfavor?:</label> <input required type="text" class="form-control"  ng-model='cliente.telefono1' id="nombre">
 		
 			
-			<label>¿Me brinda su correo electronico?</label> <input required type="text" class="form-control" ng-change='buscardni(dni)' ng-model='cliente.mail' id="nombre">
+			<label>¿Me brinda su correo electronico?</label> <input required type="text" class="form-control"  ng-model='cliente.mail' id="nombre">
 		
 			
-			<label>¿Este correo tambien lo utiliza para Facebook?</label> <input required type="check" class="form-control" ng-change='buscardni(dni)' ng-model='dni' id="nombre">
+			<label>¿Este correo tambien lo utiliza para Facebook?</label> <select required class='form-control' ><option value='1'>Si</option><option value='0'>No</option></select>
+
+			<br>
+			<button class="btn btn-prrimary" type='submit'>Actualizar</button>
+			</form>
 		
 
 

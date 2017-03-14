@@ -12,7 +12,7 @@ angular
 
 
 
-function BbvaController($stateParams,$scope,$location,$http,LlamadaService){
+function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService){
 
 
 
@@ -72,10 +72,34 @@ function BbvaController($stateParams,$scope,$location,$http,LlamadaService){
         }
 
 
-          $scope.actualizar =function(cliente){
+
+         $scope.actualizabbva =function(cliente){
 
 
-          	console.log('cliente...',cliente)
+
+              BbvaService.actualizar(cliente).then(function(data) {
+
+
+                      swal({
+              title: "Actualizacion BBVA",
+              text: "La actualizacion se hizo con exito",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#5bc0de",
+              confirmButtonText: "Realizar Venta CHUBB",
+              closeOnConfirm: true
+            },
+            function(){
+
+
+              $state.reload()
+              
+            });
+
+
+
+
+            })
 
 
 
