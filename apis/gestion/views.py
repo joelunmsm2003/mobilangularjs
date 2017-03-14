@@ -473,8 +473,6 @@ def trama(request):
         reference3 = reference3 + generablancos(eb)
 
 
-
-
         #Fecha de Naciomiento - 8
         fechadenacimiento = '19570302'
         eb = 8 - len(fechadenacimiento)
@@ -492,13 +490,10 @@ def trama(request):
         eb = 100 - len(uni)
         uni = uni + generablancos(eb)
 
-
         #Datos Especificos del producto - 2080
         datespecpro = '414'
         eb = 2080 - len(datespecpro)
         datespecpro = datespecpro + generablancos(eb)
-
-
 
         #60
         codigoproductosimple = 'PAP407'
@@ -526,7 +521,7 @@ def trama(request):
         m.append(tipo)#tipo de registro - 1
         m.append(ccampana)#codigo de campana - 10
         m.append('      ') #codigo de producto paquete - 6
-        m.append(codigoproductosimple)#codigo de producto simple - 60
+        m.append('PAP407')#codigo de producto simple - 60
         m.append(cuentabancaria)#numero de cuenta bancaria - 20
         m.append(dni)#numero de DNI - 15
         m.append('1')#plan - 1
@@ -538,7 +533,6 @@ def trama(request):
         m.append('P9')#codigo de tarjeta de credito - 2
         m.append('10')#metodo de pago - 2
         m.append('M ')#frecuencia de pago - 2
-
         m.append(nombre)# nombre y apellido del contratante - 50
         m.append(ncontratante)#nombre del contratante - 30
         m.append(scontratante)#segundo nombre del contratante - 15
