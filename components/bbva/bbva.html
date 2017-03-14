@@ -5,7 +5,11 @@
 <form ng-submit='actualizar(cliente)' >
 
 
-<legend>Actualizacion BBVA <button type="button" class="btn btn-default " style='float:right;' data-toggle="modal" data-target="#dni">Buscar DNI</button>
+<legend>Actualizacion BBVA 
+
+<input  placeholder='Ingrese DNI...' ng-change='go(dni)' type="text" class="form-control"  ng-model='dni' id="nombre" >
+
+
 </legend>
 
 
@@ -30,10 +34,10 @@
 									<input disabled  type="text" class="form-control"  ng-model='cliente.nrotc' id="nombre" >
 								</div>
  -->
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label for="nombre">Fecha de Nacimiento</label>
 									<input disabled  type="text" class="form-control"  ng-model='cliente.fnacimiento' id="nombre" >
-								</div>
+								</div> -->
 
 								<div class="form-group">
 									<label for="nombre">Tipo de Tarjeta</label>
@@ -84,7 +88,7 @@
 								</div>
 
 
-							<button ng-show='btnact' type="submit" class="btn btn-danger">Actualizar BBVA</button>
+							<button ng-show='btnact' data-toggle="modal" data-target="#actualiza" type="submit" class="btn btn-danger">Actualizar BBVA</button>
 
 							
 							<button ng-hide='btnact' type="submit" disabled class="btn btn-danger">Actualizar BBVA</button>
@@ -97,9 +101,11 @@
 
 
 
+
+
+
 <!-- Modal -->
-<!-- Modal -->
-	<div id="dni" class="modal fade" role="dialog">
+	<div id="actualiza" class="modal fade" role="dialog">
 	  <div class="modal-dialog modal-lg">
 
 	  
@@ -110,64 +116,40 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">INGRESE DNI </h4>
+	        <h4 class="modal-title">Actualizacion BBVA </h4>
 	      </div>
 
 	      
 	      <div class="modal-body">
 	
-	       	
+	       	<p>Sr. / Srta. {{cliente.apellidos}} para poder asignarle su opcion de participacion al sorteo de la camioneta Hyundai Tucson, es necesario que nos proporcione los siguientes datos:</p>
 
-	       		<div class="form-group">
-					<div class='col-md-3'>
-					<input required type="text" class="form-control" ng-change='buscardni(dni)' ng-model='dni' placeholder="DNI" id="nombre">
-					</div>
+			<label>Su nombre y apellidos completos es:</label> <input required type="text" class="form-control" ng-change='buscardni(dni)' ng-model='cliente.nombre' id="nombre">
 
+			<label>Su numero de DNI:</label> <input required type="text" class="form-control" ng-change='buscardni(dni)' ng-model='cliente.dni' id="nombre">
+		
 
-					<!-- <div class='col-md-3'>
-					<a ng-if='dni' class='btn btn-primary' ng-click='goperson(dni)'><i class="fa fa-user" aria-hidden="true"></i>
-				<i class="fa fa-hand-o-right" aria-hidden="true"></i>
-				</a>
-					</div> -->
-
-
-				</div>
-
-				<br>
-
-				<!-- <h5 ng-if ='resultadodni.NOMBRE'>DATOS</h5>
-				<h5 ng-if ='resultadodni.NOMBRE'> {{resultadodni.NOMBRE}}</h5>
- -->
-
-			<h5 ng-if='registros'>LLAMADAS</h5>
-			<ul class="list-group" >
-			  
-			  <li ng-click='go(x)' class="list-group-item" ng-repeat="x in registros">
-
-			  <div class='row'>
-			  <div class='col-md-3'>
-			  <i class="fa fa-phone-square" aria-hidden="true"></i> {{x.telefono}} 
-			  </div>
-
-			  <div class='col-md-3'>
-			   {{x.contacto}}  
-			  </div>
-
-			  <div class='col-md-3'>
-			  {{x.accion}}   
-			  </div>
-
-			  <div class='col-md-3'>
-			  {{x.estado}}   
-			  </div>
+			<label>¿Me brinda su numero de celular porfavor?:</label> <input required type="text" class="form-control" ng-change='buscardni(dni)' ng-model='cliente.telefono1' id="nombre">
+		
+			
+			<label>¿Me brinda su correo electronico?</label> <input required type="text" class="form-control" ng-change='buscardni(dni)' ng-model='cliente.mail' id="nombre">
+		
+			
+			<label>¿Este correo tambien lo utiliza para Facebook?</label> <input required type="check" class="form-control" ng-change='buscardni(dni)' ng-model='dni' id="nombre">
+		
 
 
 
 
-			  </li>
+
+
 
 		
-			</ul>
+
+
+	       		
+
+				<br>
 
 
 
@@ -181,3 +163,4 @@
 
 	  </div>
 	</div>
+
