@@ -38,29 +38,33 @@ function BbvaController($stateParams,$scope,$location,$http,LlamadaService){
 	  $scope.buscardni =function(dni){
 
 
-                LlamadaService.listar(dni).then(function(data) {
+                LlamadaService.cliente(dni).then(function(data) {
 
                 $scope.registros = data
+
+                console.log('data',data[0])
 
                 })
 
         }
 
 
-          $scope.go=function(data){
+          $scope.go=function(dni){
 
-            console.log('ererer...',data)
 
-               $('#dni').modal('hide');
-
-             $location.path('/bbvacampana/'+data.cliente+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
+             
 
 
                 LlamadaService.cliente(dni).then(function(data) {
 
-		            console.log('Datos del dni',data)
+		            console.log('Datos del dni',data[0])
 
 		            $scope.cliente = data[0]
+
+                if(data[0]){
+
+                  $location.path('/bbvacampana/'+dni+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
+                }
 
 		        })
 

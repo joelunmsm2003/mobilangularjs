@@ -466,9 +466,10 @@ class OrigBaseC01(models.Model):
     tarjetasadicionales = models.CharField(db_column='TARJETASADICIONALES', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     recibects = models.CharField(db_column='RECIBECTS', max_length=100, blank=True, null=True)  # Field name made lowercase.
     tienelpdp = models.CharField(db_column='TIENELPDP', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    facebook = models.CharField(db_column='facebook', max_length=100, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'orig_base_C01'
 
 

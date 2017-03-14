@@ -115,11 +115,103 @@ def actualizabbva(request):
 
     if request.method == 'POST':
 
-        print 'Actualiza....',json.loads(request.body)
-
-        #[{,3670L, 'telefono5': u'', 'fecha_nacimiento': u'3/4/1978', 'telefono7': u'', 'telefono6': u'', 'provincia': u'Maynas ', 'telefono3': u'', 'telefono2': u'', 'fecha': u'21/2/2017', 'dni': u'41188226', 'direccion': u'CL SAN JOSE 213 CP MORONACOCHA ', 'call': u'CALLMARK', 'mail': u'nil.3sa@gmail.com', 'distrito': u'Iquitos', 'comercial': u'FQUIROZ', 'telefono4': u'', 'departamento': u'Loreto', 'nombre': u'NISON SAMUEL NUBE VELA', 'telefono1': u'965803214', 'todo_prima': u'36', 'prima_mensual': u'36', 'tipo_envio': u'Correo Electronico', 'cant_afiliados': u'1'}]
-
         data = json.loads(request.body)
+
+        print data
+
+        nombre = None
+        dni = None
+        fecha_nacimiento = None
+        telefono1 = None
+        telefono2 = None
+        mail = None
+        cantidad = None
+        nombredelproducto = None
+        cobertura = None
+        direccion = None
+        tipo_envio =None
+        prima = None
+        todo_prima = None
+        facebook = None
+
+        
+        for d in data:
+
+            if d == 'nombre':
+
+                nombre = data['nombre']
+
+            if d == 'dni':
+
+                dni = data['dni']
+
+            if d == 'fecha_nacimiento':
+
+                fecha_nacimiento = data['fecha_nacimiento']
+
+            if d == 'telefono1':
+
+                telefono1 = data['telefono1']
+
+            if d == 'telefono2':
+
+                telefono2 = data['telefono2']
+
+            if d == 'mail':
+
+                mail = data['mail']
+
+            if d == 'cantidad':
+
+                cantidad = data['cantidad']
+
+            if d == 'nombredelproducto':
+
+                nombredelproducto = data['nombredelproducto']
+
+            if d == 'cobertura':
+
+                cobertura = data['cobertura']
+
+            if d == 'direccion':
+
+                direccion = data['direccion']
+
+            if d == 'tipo_envio':
+
+                tipo_envio = data['tipo_envio']
+
+            if d == 'prima':
+
+                prima = data['prima']
+
+            if d == 'todo_prima':
+
+                todo_prima = data['todo_prima']
+
+            if d == 'facebook':
+
+                facebook = data['facebook']
+
+ 
+
+        base = OrigBaseC01.objects.get(dni=dni)
+        base.nombre = nombre
+        base.dni = dni
+        base.fecha_nacimiento = fecha_nacimiento
+        base.telefono1 = telefono1
+        base.telefono2 = telefono2
+        base.mail = mail
+        base.cantidad = cantidad
+        base.nombredelproducto = nombredelproducto
+        base.cobertura = cobertura
+        base.direccion = direccion
+        base.tipo_envio =tipo_envio
+        base.prima = prima
+        base.todo_prima = todo_prima
+        base.facebook = facebook
+
+        base.save()
 
         data = ValuesQuerySetToDict(data)
 
@@ -482,7 +574,9 @@ def cliente(request,dni):
 
     if request.method == 'GET':
 
-        data = OrigBaseC01.objects.filter(dni=dni).values('tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
+
+
+        data = OrigBaseC01.objects.filter(dni=dni).values('facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
         
         print data
 
