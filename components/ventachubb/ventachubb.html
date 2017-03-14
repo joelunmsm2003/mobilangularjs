@@ -90,7 +90,16 @@
 
 								<div class="form-group">
 									<label for="dni">Tipo de Cobertura</label>
-									<input   type="text" class="form-control"  ng-model='cliente.cobertura'  id="dni">
+
+									<select  class="form-control"  ng-model='cliente.cobertura' ><option  value='Solo titular'>Solo Titular</option>
+									<option value='Titular y Esposo'>Titular y Esposo(a)</option>
+									<option value='Titular y Familiares'>Titular y Familiares</option>
+									<option value='Titular y Dependientes'>Titular y Dependientes</option>
+									<option value='Solo Esposo(a)'>Solo Esposo(a)</option>
+									<option value='Solo dependientes'>Solo dependientes</option>
+									<option value='Esposo(a) y Dependientes'>Esposo(a) y Dependientes</option>
+
+									</select>
 								</div>
 
 								<div class="form-group">
@@ -100,18 +109,39 @@
 
 								<div class="form-group">
 									<label for="dni">Tipo de Envio</label>
-									<input   type="text" class="form-control"  ng-model='cliente.tipo_envio'  id="dni">
+								
+									<select class="form-control"  ng-model='cliente.tipo_envio'><option value='Email'>Email</option>
+									<option value='Domicilio'>Domicilio</option>
+									
+									</select>
+
 								</div>
 
-								<div class="form-group">
+								<div class='row'>
+
+								<div class='col-md-6'>
+
+
+									<div class="form-group">
 									<label for="dni">Prima</label>
 									<input   type="text" class="form-control"  ng-model='cliente.prima_mensual'  id="dni">
+									</div>
+
+
 								</div>
 
-								<div class="form-group">
+								<div class='col-md-6'>
+
+									<div class="form-group">
 									<label for="dni">Todo Prima</label>
 									<input   type="text" class="form-control"  ng-model='cliente.todo_prima'  id="dni">
+									</div>
+
 								</div>
+								
+								</div>	
+
+							
 
 									<button type="submit" class="btn btn-danger">Venta CHUBB</button>
 
