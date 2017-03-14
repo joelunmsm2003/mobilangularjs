@@ -395,7 +395,7 @@ class OrigBase(models.Model):
     telefono = models.IntegerField(blank=True, null=True)
     orden = models.IntegerField()
     cliente = models.CharField(max_length=11)
-    id_orig_base_c = models.IntegerField(db_column='id_orig_base_C', blank=True, null=True)  # Field name made lowercase.
+    id_orig_base_c = models.ForeignKey('OrigBaseC01', models.DO_NOTHING, db_column='id_orig_base_c', blank=True, null=True)  # Field name made lowercase.
     lestado = models.IntegerField(db_column='lEstado')  # Field name made lowercase.
     cod_cam = models.IntegerField()
     llam_estado = models.IntegerField()
@@ -404,9 +404,9 @@ class OrigBase(models.Model):
     pre_flag = models.IntegerField()
     pre_estado = models.IntegerField()
     nombre_agente = models.CharField(max_length=100, blank=True, null=True)
-    contacto = models.IntegerField(blank=True, null=True)
-    accion = models.IntegerField(blank=True, null=True)
-    estado = models.IntegerField(blank=True, null=True)
+    contacto = models.ForeignKey(Contacto, models.DO_NOTHING, db_column='contacto', blank=True, null=True)
+    accion = models.ForeignKey(Accion, models.DO_NOTHING, db_column='accion', blank=True, null=True)
+    estado = models.ForeignKey(Estado, models.DO_NOTHING, db_column='estado', blank=True, null=True)
     fagenda = models.DateTimeField(blank=True, null=True)
     observacion = models.CharField(max_length=300, blank=True, null=True)
     fgestion = models.DateTimeField(blank=True, null=True)
