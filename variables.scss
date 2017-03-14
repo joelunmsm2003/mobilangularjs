@@ -15,11 +15,11 @@ $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
-$brand-primary:         #2969a8 !default; // #337ab7
-$brand-success:         #6be0ea !default;
-$brand-info:            #5bc0de !default;
-$brand-warning:         #f0ad4e !default;
-$brand-danger:          #d9534f !default;
+$brand-primary:         #DDFEE4 !default; // #337ab7
+$brand-success:         #196B69 !default;
+$brand-info:            #28CC9E !default;
+$brand-warning:         #DDFEE4 !default;
+$brand-danger:          #132F2B !default;
 
 
 //== Scaffolding
@@ -224,7 +224,7 @@ $input-height-small:             (floor($font-size-small * $line-height-small) +
 //** `.form-group` margin
 $form-group-margin-bottom:       15px !default;
 
-$legend-color:                   #2969a8 !default;
+$legend-color:                   #196B69 !default;
 $legend-border-color:            #e5e5e5 !default;
 
 //** Background color for textual input addons
@@ -513,15 +513,15 @@ $state-success-bg:               #132F2B !default;
 $state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
 
 $state-info-text:                #fff !default;
-$state-info-bg:                  #00beec !default;
+$state-info-bg:                  #28CC9E !default;
 $state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
 
 $state-warning-text:             #fff !default;
-$state-warning-bg:               #a2d039 !default;
+$state-warning-bg:               #28CC9E !default;
 $state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
 
 $state-danger-text:              #fff !default;
-$state-danger-bg:                #ff4848 !default;
+$state-danger-bg:                #DDFEE4 !default;
 $state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
 
 
