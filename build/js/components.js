@@ -1,5 +1,19 @@
 angular
   .module('app')
+  .component('administradorcomponent', {
+    templateUrl: 'html/administrador/administrador.html',
+    controller: AdministradorController,
+    bindings: {
+        onDelete: '&'
+    }
+  });
+
+
+
+function AdministradorController($scope,$location,$http,LlamadaService){
+	 }
+angular
+  .module('app')
   .component('bbvacomponent', {
     templateUrl: 'html/bbva/bbva.html',
     controller: BbvaController,
@@ -23,6 +37,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
         $scope.idagente = $stateParams.idagente
 
         $scope.nomagente = $stateParams.nomagente
+
+
 
 
               LlamadaService.cliente(dni).then(function(data) {
@@ -52,7 +68,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
           $scope.go=function(dni){
 
 
-             
+               $scope.exito = false
+
 
 
                 LlamadaService.cliente(dni).then(function(data) {
@@ -63,6 +80,10 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                 if(data[0]){
 
+
+                   $scope.exito = true
+
+
                   $location.path('/bbvacampana/'+dni+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
                 }
 
@@ -70,7 +91,6 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
            
         }
-
 
 
          $scope.actualizabbva =function(cliente){
@@ -145,20 +165,6 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
 
-	 }
-angular
-  .module('app')
-  .component('administradorcomponent', {
-    templateUrl: 'html/administrador/administrador.html',
-    controller: AdministradorController,
-    bindings: {
-        onDelete: '&'
-    }
-  });
-
-
-
-function AdministradorController($scope,$location,$http,LlamadaService){
 	 }
 function BbvacampanaController($stateParams,$scope,$location,$http){
 
