@@ -25,6 +25,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
         $scope.nomagente = $stateParams.nomagente
 
 
+
+
               LlamadaService.cliente(dni).then(function(data) {
 
                 console.log('Ventachub...',data)
@@ -52,7 +54,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
           $scope.go=function(dni){
 
 
-             
+               $scope.exito = false
+
 
 
                 LlamadaService.cliente(dni).then(function(data) {
@@ -63,6 +66,10 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                 if(data[0]){
 
+
+                   $scope.exito = true
+
+
                   $location.path('/bbvacampana/'+dni+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
                 }
 
@@ -70,7 +77,6 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
            
         }
-
 
 
          $scope.actualizabbva =function(cliente){
