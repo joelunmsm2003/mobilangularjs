@@ -1107,8 +1107,17 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
 
               console.log('dattatata',cliente)
 
-              cliente.todo_prima = cliente.cantidad*25
+              if(cliente.cantidad==0){
 
+                cliente.todo_prima = 25
+              }
+              else{
+
+                cliente.todo_prima = cliente.cantidad*25
+
+              }
+
+              
 
 
             }

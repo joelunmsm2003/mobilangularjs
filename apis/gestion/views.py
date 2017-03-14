@@ -346,6 +346,11 @@ def trama(request):
         eb = 1 - len(tipo)
         tipo = tipo + generablancos(eb)
 
+        ccampana = 'PE16015801'
+        eb = 10 - len(ccampana)
+        ccampana = ccampana + generablancos(eb)
+
+
 
         # Codigo de Producto Paquete - 6
         cproducto = 'PE1601'
@@ -366,25 +371,25 @@ def trama(request):
 
 
         #Nombre Apellido - 50
-        nombre = 'Carlos'
+        nombre = 'CARLOS ALCANTARA RAMIRES PERES'
         eb = 50 - len(nombre)
         nombre = nombre + generablancos(eb)
     
 
         #Nombre del Contratante - 30
-        ncontratante = 'Manuel'
+        ncontratante = 'CARLOS'
         eb = 30 - len(ncontratante)
         ncontratante = ncontratante + generablancos(eb)
 
 
         #Segundo Nombre del contratante - 30
-        scontratante = 'Castro'
+        scontratante = 'ALCANTARA'
         eb = 30 - len(scontratante)
         scontratante = scontratante + generablancos(eb)
 
 
         #Apellidos del contratante - 30
-        apcontratante = 'Castro'
+        apcontratante = 'RAMIRES PERES'
         eb = 30 - len(apcontratante)
         apcontratante = apcontratante + generablancos(eb)
 
@@ -402,24 +407,24 @@ def trama(request):
 
 
         #Direccion 3 -30
-        direccion3 = 'Av Republica de Panama 234'
+        direccion3 = '130107'
         eb = 30 - len(direccion3)
         direccion3 = direccion3 + generablancos(eb)
 
         #Provincia-30
-        provincia ='0101'
+        provincia ='1301'
         eb = 30 - len(provincia)
         provincia = provincia + generablancos(eb)
 
 
 
         #Departamento-2
-        departamento ='aD'
+        departamento ='ZG'
         eb = 2 - len(departamento)
         departamento = departamento + generablancos(eb)
 
         #Sexo-2
-        sexo ='M'
+        sexo ='02'
         eb = 2 - len(sexo)
         sexo = sexo + generablancos(eb)
 
@@ -463,7 +468,7 @@ def trama(request):
 
 
         #Fecha de Naciomiento - 100
-        reference3 = '20170302'
+        reference3 = '230230'
         eb = 100 - len(reference3)
         reference3 = reference3 + generablancos(eb)
 
@@ -471,7 +476,7 @@ def trama(request):
 
 
         #Fecha de Naciomiento - 8
-        fechadenacimiento = '20170302'
+        fechadenacimiento = '19570302'
         eb = 8 - len(fechadenacimiento)
         fechadenacimiento = fechadenacimiento + generablancos(eb)
 
@@ -496,18 +501,18 @@ def trama(request):
 
 
         #60
-        codigoproductosimple = 'PAP'
+        codigoproductosimple = 'PAP407'
         eb = 60 - len(codigoproductosimple)
         codigoproductosimple = codigoproductosimple + generablancos(eb)
 
 
         #20
-        cuentabancaria = '2222222222222222222'
+        cuentabancaria = '99999999999999999'
         eb = 20 - len(cuentabancaria)
         cuentabancaria = cuentabancaria + generablancos(eb)
 
         
-        dni = 'iiiiiiiiiiiiiii'
+        dni = '41222930'
         eb = 15 - len(dni)
         dni = dni + generablancos(eb)
 
@@ -516,32 +521,30 @@ def trama(request):
         telefonocasa = telefonocasa + generablancos(eb)
 
 
-        
-
         #1PE16015801      PAP407                                                      9999999999999999    08808817       2MO20170101          GRAMIREZ                      P910M CORINA IMELDA MONZON CASTILLO                     CORINA                        IMELDA         MONZON CASTILLO               01AV ignacio merino N 795 URB palermo                         130107                                                                     1301                          ZG          PE044212807                               1955123002  02        0100                          NEW                                     corinamonzoncatillo@hotmail.com                                                                                                                                                                                                                                                                                                                     230230  
 
-
         m.append(tipo)#tipo de registro - 1
-        m.append('PE16015801')#codigo de campana - 10
+        m.append(ccampana)#codigo de campana - 10
         m.append('      ') #codigo de producto paquete - 6
         m.append(codigoproductosimple)#codigo de producto simple - 60
         m.append(cuentabancaria)#numero de cuenta bancaria - 20
         m.append(dni)#numero de DNI - 15
-        m.append('x')#plan - 1
+        m.append('1')#plan - 1
         m.append('MO')#tipo de cobertura - 2
         m.append('20170101')#Fecha de efectividad - 8
         m.append(generablancos(10))#codigo de sucursal bancaria - 10
-        m.append(generablancos(20))#codigo de vendedor - 20
+        m.append('RAMIREZG')#codigo de vendedor - 20
         m.append(generablancos(10))#codigo de banco - 10
         m.append('P9')#codigo de tarjeta de credito - 2
         m.append('10')#metodo de pago - 2
         m.append('M ')#frecuencia de pago - 2
+
         m.append(nombre)# nombre y apellido del contratante - 50
-        m.append(generablancos(30))#nombre del contratante - 30
-        m.append(generablancos(15))#segundo nombre del contratante - 15
-        m.append(generablancos(30))#apellido del contratante - 30
-        m.append(generablancos(2))#codigo de tipo de direccion - 2
-        m.append(direccion1)#direccion 1 - 30
+        m.append(ncontratante)#nombre del contratante - 30
+        m.append(scontratante)#segundo nombre del contratante - 15
+        m.append(apcontratante)#apellido del contratante - 30
+        m.append('1')#codigo de tipo de direccion - 2
+        m.append('Av Primavera 234')#direccion 1 - 30
         m.append(direccion2)#direccion 2 - 30
         m.append(direccion3)#direccion 3 - 30
         m.append(direccion4)#direccion 4 - 30
@@ -590,6 +593,8 @@ def trama(request):
 
 
         print 'carater 10' ,data[108]
+
+
 
 
       
