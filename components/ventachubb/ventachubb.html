@@ -75,7 +75,7 @@
 
 								<div class="form-group">
 									<label for="dni">Cantidad</label>
-									<input   type="number" class="form-control"  ng-model='cliente.cantidad'  id="dni">
+									<input   type="number" class="form-control" ng-change='calcprimatotal(cliente)' ng-model='cliente.cantidad'  id="dni">
 								</div>
 
 			
@@ -85,7 +85,7 @@
 			
 								<div class="form-group">
 									<label for="nacimiento">Nombre del Producto</label>
-									<input   type="text" class="form-control"  ng-model='cliente.nombredelproducto' id="nacimiento" >
+									<input   type="text" class="form-control"  value='Muerte Accidental' ng-model='cliente.nombredelproducto' id="nacimiento" >
 								</div>
 
 								<div class="form-group">
@@ -124,7 +124,7 @@
 
 									<div class="form-group">
 									<label for="dni">Prima</label>
-									<input   type="text" class="form-control"  ng-model='cliente.prima_mensual'  id="dni">
+									<input   type="text" class="form-control"   ng-model='cliente.prima_mensual' value='25' id="dni">
 									</div>
 
 
