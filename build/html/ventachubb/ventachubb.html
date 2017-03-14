@@ -1,4 +1,4 @@
-				<form ng-submit='ventachubb(cliente)'>
+				<form ng-submit='actualizabbva(cliente)'>
 
 				<legend>Ventas CHUBB</legend>
 
@@ -26,7 +26,7 @@
 								
 									<div class="form-group">
 										<label for="direccion">Fecha de Nacimiento</label>
-										<input   type="date" class="form-control"  ng-model='cliente.nacimiento' id="direccion" >
+										<input   type="date" class="form-control"  ng-model='cliente.fecha_nacimiento' id="direccion" >
 									</div>
 
 									</div>
@@ -45,7 +45,7 @@
 						
 											<div class="form-group">
 												<label for="distrito">Numero de Celular</label>
-												<input   type="text" class="form-control"  ng-model='cliente.celular' id="distrito" >
+												<input   type="text" class="form-control"  ng-model='cliente.telefono1' id="distrito" >
 
 											</div>								
 								
@@ -56,7 +56,7 @@
 			
 								<div class="form-group">
 									<label for="departamento">Numero de telefono Fijo</label>
-									<input   type="text" class="form-control"  ng-model='cliente.fijo' id="departamento" >
+									<input   type="text" class="form-control"  ng-model='cliente.telefono2' id="departamento" >
 								</div>
 
 								</div>
@@ -85,12 +85,12 @@
 			
 								<div class="form-group">
 									<label for="nacimiento">Nombre del Producto</label>
-									<input   type="text" class="form-control"  ng-model='cliente.nproducto' id="nacimiento" >
+									<input   type="text" class="form-control"  ng-model='cliente.nombredelproducto' id="nacimiento" >
 								</div>
 
 								<div class="form-group">
 									<label for="dni">Tipo de Cobertura</label>
-									<input   type="text" class="form-control"  ng-model='cliente.tcobertura'  id="dni">
+									<input   type="text" class="form-control"  ng-model='cliente.cobertura'  id="dni">
 								</div>
 
 								<div class="form-group">
@@ -100,17 +100,17 @@
 
 								<div class="form-group">
 									<label for="dni">Tipo de Envio</label>
-									<input   type="text" class="form-control"  ng-model='cliente.tenvio'  id="dni">
+									<input   type="text" class="form-control"  ng-model='cliente.tipo_envio'  id="dni">
 								</div>
 
 								<div class="form-group">
 									<label for="dni">Prima</label>
-									<input   type="text" class="form-control"  ng-model='cliente.prima'  id="dni">
+									<input   type="text" class="form-control"  ng-model='cliente.prima_mensual'  id="dni">
 								</div>
 
 								<div class="form-group">
 									<label for="dni">Todo Prima</label>
-									<input   type="text" class="form-control"  ng-model='cliente.tprima'  id="dni">
+									<input   type="text" class="form-control"  ng-model='cliente.todo_prima'  id="dni">
 								</div>
 
 									<button type="submit" class="btn btn-danger">Actualizar Venta CHUBB</button>

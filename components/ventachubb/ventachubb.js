@@ -10,7 +10,7 @@ angular
 
 
 
-function VentachubbController($stateParams,$scope,$location,$http,LlamadaService){
+function VentachubbController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService){
 
 
 
@@ -32,13 +32,39 @@ function VentachubbController($stateParams,$scope,$location,$http,LlamadaService
                 })
 
 
-	$scope.ventachubb=function(data){
 
 
-		console.log(data)
+         $scope.actualizabbva =function(cliente){
 
 
-	}
+
+              BbvaService.actualizar(cliente).then(function(data) {
+
+
+                      swal({
+              title: "Actualizacion BBVA",
+              text: "La actualizacion se hizo con exito",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#5bc0de",
+              confirmButtonText: "Realizar Venta CHUBB",
+              closeOnConfirm: true
+            },
+            function(){
+
+
+              $state.reload()
+              
+            });
+
+
+
+
+            })
+
+
+
+        }
 
 
 	 }

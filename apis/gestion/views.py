@@ -366,9 +366,9 @@ def trama(request):
 
 
         #Nombre Apellido - 50
-        nombrea = 'Carlos'
-        eb = 50 - len(nombrea)
-        nombrea = nombrea + generablancos(eb)
+        nombre = 'Carlos'
+        eb = 50 - len(nombre)
+        nombre = nombre + generablancos(eb)
     
 
         #Nombre del Contratante - 30
@@ -402,10 +402,38 @@ def trama(request):
 
 
         #Direccion 3 -30
-        direccion3 = ''
+        direccion3 = 'Av Republica de Panama 234'
         eb = 30 - len(direccion3)
         direccion3 = direccion3 + generablancos(eb)
 
+        #Provincia-30
+        provincia ='0101'
+        eb = 30 - len(provincia)
+        provincia = provincia + generablancos(eb)
+
+
+
+        #Departamento-2
+        departamento ='aD'
+        eb = 2 - len(departamento)
+        departamento = departamento + generablancos(eb)
+
+        #Sexo-2
+        sexo ='M'
+        eb = 2 - len(sexo)
+        sexo = sexo + generablancos(eb)
+
+        idioma='02'
+
+        #Poliza
+        poliza ='00'
+        eb = 2 - len(poliza)
+        poliza = poliza + generablancos(eb)
+
+
+
+        #transaccion
+        transaccion ='NEW'
 
         #Direccion 4 - 30
         direccion4 = ''
@@ -423,6 +451,23 @@ def trama(request):
         telftrabajo = '7485874'
         eb = 20 - len(telftrabajo)
         telftrabajo = telftrabajo + generablancos(eb)
+
+
+        dependientes = '00'
+
+        #Fecha de expiracion - 100
+        fexpiracion = '03/17'
+        eb = 5- len(fexpiracion)
+        fexpiracion = fexpiracion + generablancos(eb)
+
+
+
+        #Fecha de Naciomiento - 100
+        reference3 = '20170302'
+        eb = 100 - len(reference3)
+        reference3 = reference3 + generablancos(eb)
+
+
 
 
         #Fecha de Naciomiento - 8
@@ -450,16 +495,39 @@ def trama(request):
 
 
 
+        #60
+        codigoproductosimple = 'PAP'
+        eb = 60 - len(codigoproductosimple)
+        codigoproductosimple = codigoproductosimple + generablancos(eb)
+
+
+        #20
+        cuentabancaria = '2222222222222222222'
+        eb = 20 - len(cuentabancaria)
+        cuentabancaria = cuentabancaria + generablancos(eb)
+
+        
+        dni = 'iiiiiiiiiiiiiii'
+        eb = 15 - len(dni)
+        dni = dni + generablancos(eb)
+
+        telefonocasa = '2578481'
+        eb = 20 - len(telefonocasa)
+        telefonocasa = telefonocasa + generablancos(eb)
+
+
+        
+
         #1PE16015801      PAP407                                                      9999999999999999    08808817       2MO20170101          GRAMIREZ                      P910M CORINA IMELDA MONZON CASTILLO                     CORINA                        IMELDA         MONZON CASTILLO               01AV ignacio merino N 795 URB palermo                         130107                                                                     1301                          ZG          PE044212807                               1955123002  02        0100                          NEW                                     corinamonzoncatillo@hotmail.com                                                                                                                                                                                                                                                                                                                     230230  
 
 
         m.append(tipo)#tipo de registro - 1
         m.append('PE16015801')#codigo de campana - 10
         m.append('      ') #codigo de producto paquete - 6
-        m.append('PAP407                                                      ')#codigo de producto simple - 60
-        m.append('9999999999999999    ')#numero de cuenta bancaria - 20
-        m.append('08808817  ')#numero de DNI - 15
-        m.append('2')#plan - 1
+        m.append(codigoproductosimple)#codigo de producto simple - 60
+        m.append(cuentabancaria)#numero de cuenta bancaria - 20
+        m.append(dni)#numero de DNI - 15
+        m.append('x')#plan - 1
         m.append('MO')#tipo de cobertura - 2
         m.append('20170101')#Fecha de efectividad - 8
         m.append(generablancos(10))#codigo de sucursal bancaria - 10
@@ -468,36 +536,36 @@ def trama(request):
         m.append('P9')#codigo de tarjeta de credito - 2
         m.append('10')#metodo de pago - 2
         m.append('M ')#frecuencia de pago - 2
-        m.append('CORINA IMELDA MONZON CASTILLO                     ')# nombre y apellido del contratante - 50
-        m.append('CORINA                        ')#nombre del contratante - 30
-        m.append('IMELDA                        ')#segundo nombre del contratante - 30
-        m.append('MONZON CASTILLO               ')#apellido del contratante - 30
-        m.append('01')#codigo de tipo de direccion - 2
-        m.append('AV ignacio merino N 795 URB palermo')#direccion 1 - 30
+        m.append(nombre)# nombre y apellido del contratante - 50
+        m.append(generablancos(30))#nombre del contratante - 30
+        m.append(generablancos(15))#segundo nombre del contratante - 15
+        m.append(generablancos(30))#apellido del contratante - 30
+        m.append(generablancos(2))#codigo de tipo de direccion - 2
+        m.append(direccion1)#direccion 1 - 30
         m.append(direccion2)#direccion 2 - 30
         m.append(direccion3)#direccion 3 - 30
         m.append(direccion4)#direccion 4 - 30
         m.append(generablancos(15))#filler - 15
-        m.append(generablancos(30))#provincia - 30
-        m.append(generablancos(2))#departamento - 2
+        m.append(provincia)#provincia - 30
+        m.append(departamento)#departamento - 2
         m.append(generablancos(10))#postal - 10
         m.append('PE')#codigo de pais - 2
-        m.append('044212807           ')#telefono de casa - 20
-        m.append(generablancos(6))#telefono de trabajo - 20
+        m.append(telefonocasa)#telefono de casa - 20
+        m.append(generablancos(20))#telefono de trabajo - 20
         m.append(fechadenacimiento)#fecha de nacimiento - 8
-        m.append(generablancos(2))#codigo de sexo - 2
+        m.append(sexo)#codigo de sexo - 2
         m.append(generablancos(2))#titulo - 2
-        m.append(generablancos(2))#idioma - 2
+        m.append(idioma)#idioma - 2
         m.append(generablancos(2))#filler - 2
         m.append(generablancos(2))#filler - 2
         m.append(generablancos(2))#filler - 2
         m.append(generablancos(2))#filler - 2
-        m.append(generablancos(2))#indicador de envio de polisa - 2
-        m.append(generablancos(2))#numero de dependientes - 2
+        m.append(poliza)#indicador de envio de polisa - 2
+        m.append(dependientes)#numero de dependientes - 2
         m.append(generablancos(2))#filler - 2
         m.append(generablancos(15))#polisa - 15
         m.append(generablancos(9))#filler - 9
-        m.append(generablancos(3))#codigo de transaccion - 3
+        m.append(transaccion)#codigo de transaccion - 3
         m.append(generablancos(2))#filler - 2
         m.append(generablancos(5))#filler - 5
         m.append(generablancos(30))#filler - 30
@@ -505,8 +573,8 @@ def trama(request):
         m.append(uni)#unit - 100
         m.append(generablancos(100))#referencia1 - 100
         m.append(generablancos(100))#referencia2 - 100
-        m.append(generablancos(100))#referencia3 - 100
-        m.append(generablancos(5))#fecha de expiracion - 5
+        m.append(reference3)#referencia3 - 100
+        m.append(fexpiracion)#fecha de expiracion - 5
         m.append(generablancos(10))#fecha de aplicacion - 10
         m.append(generablancos(5)) 
         m.append(generablancos(3))#filler - 3
@@ -521,6 +589,9 @@ def trama(request):
         data = ''.join(m)
 
 
+        print 'carater 10' ,data[108]
+
+
       
 
         
@@ -532,7 +603,7 @@ def trama(request):
 
         response = HttpResponse(content_type='text/csv')
     
-        response['Content-Disposition'] = 'attachment; filename="Trama.csv"'
+        response['Content-Disposition'] = 'attachment; filename="Trama.txt"'
     
         writer = csv.writer(response)
 
