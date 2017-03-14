@@ -1,0 +1,17 @@
+HISTORY.rst
+LICENSE.txt
+MANIFEST.in
+README.rst
+setup.cfg
+corsheaders/__init__.py
+corsheaders/checks.py
+corsheaders/compat.py
+corsheaders/conf.py
+corsheaders/defaults.py
+corsheaders/middleware.py
+corsheaders/models.py
+corsheaders/signals.py
+pip-egg-info/django_cors_headers.egg-info/PKG-INFO
+pip-egg-info/django_cors_headers.egg-info/SOURCES.txt
+pip-egg-info/django_cors_headers.egg-info/dependency_links.txt
+pip-egg-info/django_cors_headers.egg-info/top_level.txt

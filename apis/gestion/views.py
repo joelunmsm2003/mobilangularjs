@@ -245,6 +245,7 @@ def trama(request):
 
     if request.method == 'GET':
 
+
         
         m = []
 
@@ -255,25 +256,25 @@ def trama(request):
 
 
         # Codigo de Producto Paquete - 6
-        cproducto = '7272'
+        cproducto = 'PE1601'
         eb = 6 - len(cproducto)
         cproducto = cproducto + generablancos(eb)
 
 
         # DNI
-        dni = '72748565'
+        dni = '5801      '
         eb = 15 - len(dni)
         dni = dni + generablancos(eb)
 
 
         # Tipo de cobertura - 2
-        tcobertura = '1'
+        tcobertura = 'PA'
         eb = 2 - len(tcobertura)
         tcobertura = tcobertura + generablancos(eb)
 
 
         #Nombre Apellido - 50
-        nombrea = 'Eurieds'
+        nombrea = 'Carlos'
         eb = 50 - len(nombrea)
         nombrea = nombrea + generablancos(eb)
     
@@ -285,100 +286,102 @@ def trama(request):
 
 
         #Segundo Nombre del contratante - 30
-        scontratante = 'Eurieds'
+        scontratante = 'Castro'
         eb = 30 - len(scontratante)
         scontratante = scontratante + generablancos(eb)
 
 
         #Apellidos del contratante - 30
-        apcontratante = 'Eurieds'
+        apcontratante = 'Castro'
         eb = 30 - len(apcontratante)
         apcontratante = apcontratante + generablancos(eb)
 
 
         #Direccion 1 - 30
-        direccion1 = 'Eurieds'
+        direccion1 = 'Av Primavera 234'
         eb = 30 - len(direccion1)
         direccion1 = direccion1 + generablancos(eb)
 
 
         #Direccion 2 - 30
-        direccion2 = 'Eurieds'
+        direccion2 = ''
         eb = 30 - len(direccion2)
         direccion2 = direccion2 + generablancos(eb)
 
 
         #Direccion 3 -30
-        direccion3 = 'Eurieds'
+        direccion3 = ''
         eb = 30 - len(direccion3)
-        direccion3 = direccdireccion4ion3 + generablancos(eb)
+        direccion3 = direccion3 + generablancos(eb)
 
 
         #Direccion 4 - 30
-        direccion4 = 'Eurieds'
+        direccion4 = ''
         eb = 30 - len(direccion4)
         direccion4 = direccion4 + generablancos(eb)
 
 
         #Telefono de Casa - 20
-        telfcasa = 'Eurieds'
+        telfcasa = '2578581'
         eb = 20 - len(telfcasa)
         telfcasa = telfcasa + generablancos(eb)
 
 
         #Telefono de trabajo - 20
-        telftrabajo = 'Eurieds'
+        telftrabajo = '7485874'
         eb = 20 - len(telftrabajo)
         telftrabajo = telftrabajo + generablancos(eb)
 
 
         #Fecha de Naciomiento - 8
-        fechadenacimiento = 'Eurieds'
+        fechadenacimiento = '20170302'
         eb = 8 - len(fechadenacimiento)
         fechadenacimiento = fechadenacimiento + generablancos(eb)
 
 
         #Email - 40 
-        email = 'Eurieds'
+        email = 'joelunmsm@gmail.com'
         eb = 40 - len(email)
         email = email + generablancos(eb)
 
 
         #Unit - 100
-        uni = 'Eurieds'
+        uni = '20'
         eb = 100 - len(uni)
         uni = uni + generablancos(eb)
 
 
         #Datos Especificos del producto - 2080
-        datespecpro = 'Eurieds'
+        datespecpro = '414'
         eb = 2080 - len(datespecpro)
         datespecpro = datespecpro + generablancos(eb)
 
 
 
+        #1PE16015801      PAP407                                                      9999999999999999    08808817       2MO20170101          GRAMIREZ                      P910M CORINA IMELDA MONZON CASTILLO                     CORINA                        IMELDA         MONZON CASTILLO               01AV ignacio merino N 795 URB palermo                         130107                                                                     1301                          ZG          PE044212807                               1955123002  02        0100                          NEW                                     corinamonzoncatillo@hotmail.com                                                                                                                                                                                                                                                                                                                     230230  
+
 
         m.append(tipo)#tipo de registro - 1
-        m.append(generablancos(10))#codigo de campana - 10
-        m.append(cproducto)#codigo de producto paquete - 6
-        m.append(generablancos(60))#codigo de producto simple - 60
-        m.append(generablancos(20))#numero de cuenta bancaria - 20
-        m.append(dni)#numero de DNI - 15
-        m.append(generablancos(1))#plan - 1
-        m.append(cobertura)#tipo de cobertura - 2
-        m.append(generablancos(8))#Fecha de efectividad - 8
+        m.append('PE16015801')#codigo de campana - 10
+        m.append('      ') #codigo de producto paquete - 6
+        m.append('PAP407                                                      ')#codigo de producto simple - 60
+        m.append('9999999999999999    ')#numero de cuenta bancaria - 20
+        m.append('08808817  ')#numero de DNI - 15
+        m.append('2')#plan - 1
+        m.append('MO')#tipo de cobertura - 2
+        m.append('20170101')#Fecha de efectividad - 8
         m.append(generablancos(10))#codigo de sucursal bancaria - 10
         m.append(generablancos(20))#codigo de vendedor - 20
         m.append(generablancos(10))#codigo de banco - 10
-        m.append(generablancos(2))#codigo de tarjeta de credito - 2
-        m.append(generablancos(2))#metodo de pago - 2
-        m.append(generablancos(2))#frecuencia de pago - 2
-        m.append(nombrea)# nombre y apellido del contratante - 50
-        m.append(ncontratante)#nombre del contratante - 30
-        m.append(scontratante)#segundo nombre del contratante - 30
-        m.append(apcontratante)#apellido del contratante - 30
-        m.append(generablancos(2))#codigo de tipo de direccion - 2
-        m.append(direccion1)#direccion 1 - 30
+        m.append('P9')#codigo de tarjeta de credito - 2
+        m.append('10')#metodo de pago - 2
+        m.append('M ')#frecuencia de pago - 2
+        m.append('CORINA IMELDA MONZON CASTILLO                     ')# nombre y apellido del contratante - 50
+        m.append('CORINA                        ')#nombre del contratante - 30
+        m.append('IMELDA                        ')#segundo nombre del contratante - 30
+        m.append('MONZON CASTILLO               ')#apellido del contratante - 30
+        m.append('01')#codigo de tipo de direccion - 2
+        m.append('AV ignacio merino N 795 URB palermo')#direccion 1 - 30
         m.append(direccion2)#direccion 2 - 30
         m.append(direccion3)#direccion 3 - 30
         m.append(direccion4)#direccion 4 - 30
@@ -386,8 +389,8 @@ def trama(request):
         m.append(generablancos(30))#provincia - 30
         m.append(generablancos(2))#departamento - 2
         m.append(generablancos(10))#postal - 10
-        m.append(generablancos(2))#codigo de pais - 2
-        m.append(telfcasa)#telefono de casa - 20
+        m.append('PE')#codigo de pais - 2
+        m.append('044212807           ')#telefono de casa - 20
         m.append(generablancos(6))#telefono de trabajo - 20
         m.append(fechadenacimiento)#fecha de nacimiento - 8
         m.append(generablancos(2))#codigo de sexo - 2
@@ -479,8 +482,8 @@ def cliente(request,dni):
 
     if request.method == 'GET':
 
-        data = OrigBaseC01.objects.filter(dni=dni).values('id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
-
+        data = OrigBaseC01.objects.filter(dni=dni).values('tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
+        
         print data
 
         data = ValuesQuerySetToDict(data)
