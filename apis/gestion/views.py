@@ -500,22 +500,23 @@ def trama(request):
 
 
 
-        #60
+        #Codigo producto simple - 60
         codigoproductosimple = 'PAP407'
         eb = 60 - len(codigoproductosimple)
         codigoproductosimple = codigoproductosimple + generablancos(eb)
 
 
-        #20
+        #Cuenta bancaria - 20
         cuentabancaria = '99999999999999999'
         eb = 20 - len(cuentabancaria)
         cuentabancaria = cuentabancaria + generablancos(eb)
 
-        
+        #DNI - 15
         dni = '41222930'
         eb = 15 - len(dni)
         dni = dni + generablancos(eb)
 
+        #telefono casa - 20
         telefonocasa = '2578481'
         eb = 20 - len(telefonocasa)
         telefonocasa = telefonocasa + generablancos(eb)
