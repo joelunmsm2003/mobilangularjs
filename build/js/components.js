@@ -1,19 +1,5 @@
 angular
   .module('app')
-  .component('administradorcomponent', {
-    templateUrl: 'html/administrador/administrador.html',
-    controller: AdministradorController,
-    bindings: {
-        onDelete: '&'
-    }
-  });
-
-
-
-function AdministradorController($scope,$location,$http,LlamadaService){
-	 }
-angular
-  .module('app')
   .component('bbvacomponent', {
     templateUrl: 'html/bbva/bbva.html',
     controller: BbvaController,
@@ -90,6 +76,10 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
          $scope.actualizabbva =function(cliente){
 
 
+              $('#actualiza').modal('hide');
+
+
+
 
               BbvaService.actualizar(cliente).then(function(data) {
 
@@ -155,6 +145,20 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
 
+	 }
+angular
+  .module('app')
+  .component('administradorcomponent', {
+    templateUrl: 'html/administrador/administrador.html',
+    controller: AdministradorController,
+    bindings: {
+        onDelete: '&'
+    }
+  });
+
+
+
+function AdministradorController($scope,$location,$http,LlamadaService){
 	 }
 function BbvacampanaController($stateParams,$scope,$location,$http){
 

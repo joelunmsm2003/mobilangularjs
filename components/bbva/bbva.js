@@ -76,6 +76,10 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
          $scope.actualizabbva =function(cliente){
 
 
+              $('#actualiza').modal('hide');
+
+
+
 
               BbvaService.actualizar(cliente).then(function(data) {
 
