@@ -65,7 +65,7 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
               text: "La venta se hizo con exito",
               type: "success",
               showCancelButton: false,
-              confirmButtonColor: "#5bc0de",
+              confirmButtonColor: "#28CC9E",
               confirmButtonText: "Cerrar",
               closeOnConfirm: true
             },
