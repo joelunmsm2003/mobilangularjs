@@ -495,29 +495,29 @@ def trama(request):
         eb = 2080 - len(datespecpro)
         datespecpro = datespecpro + generablancos(eb)
 
-        #60
+
         codigoproductosimple = 'PAP407'
         eb = 60 - len(codigoproductosimple)
         codigoproductosimple = codigoproductosimple + generablancos(eb)
 
 
-        #20
+        #Cuenta bancaria - 20
         cuentabancaria = '99999999999999999'
         eb = 20 - len(cuentabancaria)
         cuentabancaria = cuentabancaria + generablancos(eb)
 
-        
+        #DNI - 15
         dni = '41222930'
         eb = 15 - len(dni)
         dni = dni + generablancos(eb)
 
+        #telefono casa - 20
         telefonocasa = '2578481'
         eb = 20 - len(telefonocasa)
         telefonocasa = telefonocasa + generablancos(eb)
 
 
         #1PE16015801      PAP407                                                      9999999999999999    08808817       2MO20170101          GRAMIREZ                      P910M CORINA IMELDA MONZON CASTILLO                     CORINA                        IMELDA         MONZON CASTILLO               01AV ignacio merino N 795 URB palermo                         130107                                                                     1301                          ZG          PE044212807                               1955123002  02        0100                          NEW                                     corinamonzoncatillo@hotmail.com                                                                                                                                                                                                                                                                                                                     230230  
-
 
         m.append(tipo)#tipo de registro - 1 / 1-1
         m.append(ccampana)#codigo de campana - 10 / 2-11
