@@ -346,7 +346,7 @@ def trama(request):
         eb = 1 - len(tipo)
         tipo = tipo + generablancos(eb)
 
-        ccampana = 'PE16015801'
+        ccampana = 'PE17008801'
         eb = 10 - len(ccampana)
         ccampana = ccampana + generablancos(eb)
 
@@ -382,9 +382,9 @@ def trama(request):
         ncontratante = ncontratante + generablancos(eb)
 
 
-        #Segundo Nombre del contratante - 30
+        #Segundo Nombre del contratante - 15
         scontratante = 'ALCANTARA'
-        eb = 30 - len(scontratante)
+        eb = 15 - len(scontratante)
         scontratante = scontratante + generablancos(eb)
 
 
@@ -424,14 +424,14 @@ def trama(request):
         departamento = departamento + generablancos(eb)
 
         #Sexo-2
-        sexo ='02'
+        sexo ='01'
         eb = 2 - len(sexo)
         sexo = sexo + generablancos(eb)
 
         idioma='02'
 
         #Poliza
-        poliza ='00'
+        poliza ='01'
         eb = 2 - len(poliza)
         poliza = poliza + generablancos(eb)
 
@@ -486,17 +486,17 @@ def trama(request):
 
 
         #Unit - 100
-        uni = '20'
+        uni = ''
         eb = 100 - len(uni)
         uni = uni + generablancos(eb)
 
         #Datos Especificos del producto - 2080
-        datespecpro = '414'
+        datespecpro = ''
         eb = 2080 - len(datespecpro)
         datespecpro = datespecpro + generablancos(eb)
 
 
-        codigoproductosimple = 'PAP407'
+        codigoproductosimple = 'PAP494'
         eb = 60 - len(codigoproductosimple)
         codigoproductosimple = codigoproductosimple + generablancos(eb)
 
@@ -517,6 +517,16 @@ def trama(request):
         telefonocasa = telefonocasa + generablancos(eb)
 
 
+        #telefono casa - 20
+        vendedor = 'CARLOS'
+        eb = 20 - len(vendedor)
+        vendedor = vendedor + generablancos(eb)
+
+        #telefono casa - 20
+        codigotarjeta = 'P9'
+        eb = 2 - len(codigotarjeta)
+        codigotarjeta = codigotarjeta + generablancos(eb)
+
         #1PE16015801      PAP407                                                      9999999999999999    08808817       2MO20170101          GRAMIREZ                      P910M CORINA IMELDA MONZON CASTILLO                     CORINA                        IMELDA         MONZON CASTILLO               01AV ignacio merino N 795 URB palermo                         130107                                                                     1301                          ZG          PE044212807                               1955123002  02        0100                          NEW                                     corinamonzoncatillo@hotmail.com                                                                                                                                                                                                                                                                                                                     230230  
 
         m.append(tipo)#tipo de registro - 1 / 1-1
@@ -529,17 +539,17 @@ def trama(request):
         m.append('MO')#tipo de cobertura - 2 / 114-115
         m.append('20170101')#Fecha de efectividad - 8 / 116-123
         m.append(generablancos(10))#codigo de sucursal bancaria - 10 / 124-133
-        m.append('RAMIREZG')#codigo de vendedor - 20 / 134-153
+        m.append(vendedor)#codigo de vendedor - 20 / 134-153
         m.append(generablancos(10))#codigo de banco - 10 / 154-163
-        m.append('P9')#codigo de tarjeta de credito - 2 /164-165
+        m.append(codigotarjeta)#codigo de tarjeta de credito - 2 /164-165
         m.append('10')#metodo de pago - 2 / 166-167
         m.append('M ')#frecuencia de pago - 2 / 168-169
         m.append(nombre)# nombre y apellido del contratante - 50 / 170-219
         m.append(ncontratante)#nombre del contratante - 30 / 220-249
         m.append(scontratante)#segundo nombre del contratante - 15 / 250-264
         m.append(apcontratante)#apellido del contratante - 30 /265-294
-        m.append('1')#codigo de tipo de direccion - 2 / 295-296
-        m.append('Av Primavera 234')#direccion 1 - 30 / 297-326
+        m.append('01')#codigo de tipo de direccion - 2 / 295-296
+        m.append(direccion1)#direccion 1 - 30 / 297-326
         m.append(direccion2)#direccion 2 - 30 / 327-356
         m.append(direccion3)#direccion 3 - 30 / 357-386
         m.append(direccion4)#direccion 4 - 30 / 387-416
@@ -580,21 +590,9 @@ def trama(request):
         m.append(generablancos(10))#filler - 10 / 1077-1086
         m.append(generablancos(15))#numero de formulario - 15 / 1087-1001
         m.append(datespecpro)#datos especificos del producto - 2080 / 1002-3181
-
-
-
-
-
         data = ''.join(m)
 
-
         print 'carater 10' ,data[108]
-
-
-
-
-      
-
         
         # data[0:2] = '22323'
 
@@ -608,11 +606,9 @@ def trama(request):
     
         writer = csv.writer(response)
 
-
         writer.writerow([data])
 
         return response   
-
 
 
 @csrf_exempt
@@ -645,8 +641,6 @@ def base(request,id):
 def cliente(request,dni):
 
     if request.method == 'GET':
-
-
 
         data = OrigBaseC01.objects.filter(dni=dni).values('tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
         
@@ -716,6 +710,8 @@ def tipifica(request):
         idagente = data['idagente']
         nomagente = data['nomagente']
 
+
+
         for d in data:
 
             if d =='contacto':
@@ -728,9 +724,17 @@ def tipifica(request):
 
             if d == 'accion':
 
+                if type(accion)==dict:
+
+                    accion = data['accion']['id'] 
+
                 accion = data['accion']
 
             if d =='estado':
+
+                if type(estado)==dict:
+
+                    estado = data['estado']['id'] 
 
                 estado = data['estado']
 
@@ -758,28 +762,41 @@ def tipifica(request):
 
                 agendax = True
 
+        ccampana = 2
 
-        b = OrigBase.objects.get(id_orig_base=int(base))
+        if cccampana==2:
 
-        print 'b', b
+            b = OrigBase.objects.get(id_orig_base=int(base))
 
-        b.contacto_id = contacto
+            print 'b', b
 
-        b.estado_id = estado
+            b.contacto_id = contacto
 
-        b.accion_id = accion
+            b.estado_id = estado
 
-        b.observacion = observacion 
+            b.accion_id = accion
 
-        b.id_ori_usuario = idagente
+            b.observacion = observacion 
 
-        b.nombre_agente = nomagente
+            b.id_ori_usuario = idagente
 
-        if agendax:
+            b.nombre_agente = nomagente
 
-            b.fagenda = fagenda-timedelta(hours=5)
+            if agendax:
 
-        b.tadicional = phone
+                b.fagenda = fagenda-timedelta(hours=5)
+
+            b.tadicional = phone
+
+
+        if cccampana == 1:
+
+            b = OrigBaseC01.objects.get(dni=dni)
+            b.nombre_agente = nombre_agente
+            b.observacion = observacion
+            b.contacto=contacto
+
+            b.save()
 
 
 
