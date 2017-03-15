@@ -32,6 +32,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
         dni = $stateParams.dni
 
+
+
         $scope.base = $stateParams.base
 
         $scope.idagente = $stateParams.idagente
@@ -83,8 +85,11 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                    $scope.exito = true
 
+                  $('#campana').addClass('bounceInLeft');
 
                   $location.path('/bbvacampana/'+dni+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
+
+
                 }
 
 		        })

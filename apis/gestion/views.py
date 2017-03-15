@@ -473,8 +473,6 @@ def trama(request):
         reference3 = reference3 + generablancos(eb)
 
 
-
-
         #Fecha de Naciomiento - 8
         fechadenacimiento = '19570302'
         eb = 8 - len(fechadenacimiento)
@@ -492,15 +490,12 @@ def trama(request):
         eb = 100 - len(uni)
         uni = uni + generablancos(eb)
 
-
         #Datos Especificos del producto - 2080
         datespecpro = '414'
         eb = 2080 - len(datespecpro)
         datespecpro = datespecpro + generablancos(eb)
 
 
-
-        #Codigo producto simple - 60
         codigoproductosimple = 'PAP407'
         eb = 60 - len(codigoproductosimple)
         codigoproductosimple = codigoproductosimple + generablancos(eb)
@@ -539,7 +534,6 @@ def trama(request):
         m.append('P9')#codigo de tarjeta de credito - 2 /164-165
         m.append('10')#metodo de pago - 2 / 166-167
         m.append('M ')#frecuencia de pago - 2 / 168-169
-
         m.append(nombre)# nombre y apellido del contratante - 50 / 170-219
         m.append(ncontratante)#nombre del contratante - 30 / 220-249
         m.append(scontratante)#segundo nombre del contratante - 15 / 250-264
@@ -586,6 +580,7 @@ def trama(request):
         m.append(generablancos(10))#filler - 10 / 1077-1086
         m.append(generablancos(15))#numero de formulario - 15 / 1087-1001
         m.append(datespecpro)#datos especificos del producto - 2080 / 1002-3181
+
 
 
 
@@ -653,7 +648,7 @@ def cliente(request,dni):
 
 
 
-        data = OrigBaseC01.objects.filter(dni=dni).values('facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
+        data = OrigBaseC01.objects.filter(dni=dni).values('tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
         
         print data
 

@@ -46,11 +46,11 @@
 
 								<div class="form-group">
 									<label for="nombre">Tipo de Tarjeta</label>
-									<input disabled  type="text" class="form-control"  ng-model='cliente.ttarjeta' id="nombre" >
+									<input disabled  type="text" class="form-control"  ng-model='cliente.tipo_tarjeta' id="nombre" >
 								</div>
 
 								<div class="form-group">
-									<label for="nombre">Si tiene LPDP </label>
+									<label for="nombre">Ley de proteccion de datos personales </label>
 									<input  disabled type="text" class="form-control"  ng-model='cliente.tienelpdp' id="nombre" >
 								</div>
 
@@ -67,22 +67,22 @@
 								<div class='panel-body'>
 
 								<div class="checkbox">
-									<label for="sfn"><input type="checkbox"  ng-change='preguntar(a)' ng-model='a' id="sfn" >¿Su fecha de nacimiento? <strong>{{cliente.fnacimiento}}</strong></label>
+									<label for="sfn"><input type="checkbox"  ng-change='preguntar(a)' ng-model='a' id="sfn" >¿Su fecha de nacimiento? <strong style='color:#345;'>{{cliente.fecha_nacimiento}}</strong></label>
 									
 								</div>
 
 								<div class="checkbox">
-									<label for="tt1"><input type="checkbox"  ng-change='preguntar(b)' ng-model='b' id="tt1" >¿Tiene tarjeta de Credito con nosotros? <strong>{{cliente.tienetarjetadecredito}}</strong></label>
+									<label for="tt1"><input type="checkbox"  ng-change='preguntar(b)' ng-model='b' id="tt1" >¿Tiene tarjeta de Credito con nosotros? <strong style='color:#345;'>{{cliente.tienetarjetadecredito}}</strong></label>
 									
 								</div>
 
 								<div class="checkbox">
-									<label for="tt2"><input type="checkbox"  ng-change='preguntar(c)' ng-model='c' id="tt2" >¿Tiene tarjetas adicionales a su TC? <strong>{{cliente.tarjetasadicionales}}</strong></label>
+									<label for="tt2"><input type="checkbox"  ng-change='preguntar(c)' ng-model='c' id="tt2" >¿Tiene tarjetas adicionales a su TC? <strong style='color:#345;'>{{cliente.tarjetasadicionales}}</strong></label>
 									
 								</div>
 
 								<div class="checkbox">
-									<label for="tt3"><input type="checkbox"  ng-change='preguntar(d)' ng-model='d' id="tt3" >¿Recibe CTS con el Banco? <strong>{{cliente.recibects}}</strong></label>
+									<label for="tt3"><input type="checkbox"  ng-change='preguntar(d)' ng-model='d' id="tt3" >¿Recibe CTS con el Banco? <strong style='color:#345;'>{{cliente.recibects}}</strong></label>
 									
 								</div>
 
