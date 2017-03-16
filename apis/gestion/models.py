@@ -467,6 +467,12 @@ class OrigBaseC01(models.Model):
     recibects = models.CharField(db_column='RECIBECTS', max_length=100, blank=True, null=True)  # Field name made lowercase.
     tienelpdp = models.CharField(db_column='TIENELPDP', max_length=100, blank=True, null=True)  # Field name made lowercase.
     facebook = models.CharField(db_column='facebook', max_length=100, blank=True, null=True)
+    fecha_vencimiento = models.CharField(db_column='fecha_vencimiento', max_length=1000, blank=True, null=True)
+    nombre_agente = models.CharField(db_column='nombre_agente', max_length=1000, blank=True, null=True)
+    observacion = models.CharField(db_column='observacion', max_length=1000, blank=True, null=True)
+    contacto = models.CharField(db_column='contacto', max_length=100, blank=True, null=True)
+    deacuerdo = models.CharField(db_column='deacuerdo', max_length=100, blank=True, null=True)
+    accion = models.CharField(db_column='accion', max_length=100, blank=True, null=True)
 
     class Meta:
         managed = True

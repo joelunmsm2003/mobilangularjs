@@ -21,6 +21,28 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
 
       url = $location.url()
 
+      dni = $stateParams.dni
+
+
+
+        $scope.base = $stateParams.base
+
+        $scope.idagente = $stateParams.idagente
+
+        $scope.nomagente = $stateParams.nomagente
+
+
+
+
+              LlamadaService.cliente(dni).then(function(data) {
+
+                console.log('Ventachub...',data)
+
+                $scope.cliente = data[0]
+
+                })
+
+
 
       console.log('uauau',$location.url().split('/')[1])
 

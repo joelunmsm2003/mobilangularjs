@@ -143,7 +143,9 @@
 			<label>¿Me brinda su correo electronico?</label> <input required type="email" class="form-control"  ng-model='cliente.mail' id="nombre">
 		
 			
-			<label>¿Este correo tambien lo utiliza para Facebook?</label> <select required class='form-control' ><option value='1'>Si</option><option value='0'>No</option></select>
+			<label>¿Este correo tambien lo utiliza para Facebook?</label> <select required class='form-control' ng-model='cliente.facebook'  ><option></option><option value='1'>Si</option><option value='0'>No</option></select>
+
+			<label>Ley de Proteccion de Datos ¿Esta de acuerdo?</label> <select ng-model='cliente.lpd' required class='form-control' ><option></option><option value='1'>Si</option><option value='0'>No</option></select>
 
 			<br>
 			<button class="btn btn-prrimary" type='submit'>Actualizar</button>
