@@ -134,6 +134,7 @@ def actualizabbva(request):
         todo_prima = None
         facebook = None
         lpd= None
+        deacuerdo= None
 
         
         for d in data:
@@ -717,7 +718,7 @@ def tipifica(request):
         base = data['base']
         idagente = data['idagente']
         nomagente = data['nomagente']
-
+        dni = data['dni']
 
 
         for d in data:
@@ -760,6 +761,12 @@ def tipifica(request):
 
                 phone = data['tadicional']
 
+
+            if d == 'dni':
+
+                dni = data['dni']
+
+
             if d == 'mytime':
 
                 mytime = data['mytime']
@@ -770,11 +777,11 @@ def tipifica(request):
 
                 agendax = True
 
-        ccampana = 2
+        ccampana = 3
 
-        if cccampana==2:
+        if ccampana==3:
 
-            b = OrigBase.objects.get(id_orig_base=int(base))
+            b = OrigBaseC01.objects.get(dni=dni)
 
             print 'b', b
 
@@ -797,7 +804,7 @@ def tipifica(request):
             b.tadicional = phone
 
 
-        if cccampana == 1:
+        if ccampana == 1:
 
             b = OrigBaseC01.objects.get(dni=dni)
             b.nombre_agente = nombre_agente

@@ -1024,6 +1024,8 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
 
             console.log('YYYYY',$scope.idagente)
 
+            data.dni = $stateParams.dni
+
             data.base = $scope.base
 
             data.idagente = $scope.idagente 

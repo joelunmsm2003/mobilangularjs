@@ -470,9 +470,12 @@ class OrigBaseC01(models.Model):
     fecha_vencimiento = models.CharField(db_column='fecha_vencimiento', max_length=1000, blank=True, null=True)
     nombre_agente = models.CharField(db_column='nombre_agente', max_length=1000, blank=True, null=True)
     observacion = models.CharField(db_column='observacion', max_length=1000, blank=True, null=True)
-    contacto = models.CharField(db_column='contacto', max_length=100, blank=True, null=True)
     deacuerdo = models.CharField(db_column='deacuerdo', max_length=100, blank=True, null=True)
-    accion = models.CharField(db_column='accion', max_length=100, blank=True, null=True)
+    contacto = models.ForeignKey(Contacto, models.DO_NOTHING, db_column='contacto', blank=True, null=True)
+    accion = models.ForeignKey(Accion, models.DO_NOTHING, db_column='accion', blank=True, null=True)
+    fecha_actualizar_bbva = models.DateTimeField(db_column='fecha_actualizar_bbva')
+    fecha_venta_bbva = models.DateTimeField(db_column='fecha_venta_bbva')
+    fecha_tipifica_bbva = models.DateTimeField(db_column='fecha_tipifica_bbva')
 
     class Meta:
         managed = True
