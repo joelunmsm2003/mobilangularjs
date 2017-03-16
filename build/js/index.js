@@ -9,16 +9,10 @@ angular
 .config(function($stateProvider, $urlRouterProvider,$locationProvider,$httpProvider) {
     
 
+    host='http://192.168.40.231:8000/'
 
-
-    host='http://192.168.40.4:8000/'
-
-    host_primary='http://192.168.40.4/'
-
-    // host='http://192.168.40.231:8000/'
-
-    // host_primary='http://192.168.40.231/'
-
+    host_primary='http://192.168.40.231/'
+    
     $stateProvider
 
         .state('home', {

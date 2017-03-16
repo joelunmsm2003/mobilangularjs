@@ -84,9 +84,9 @@ WSGI_APPLICATION = 'apis.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'OrionC7_ges',
+        'NAME': 'orionc7',
         'USER': 'root',
-        'PASSWORD': '1q2w3e4r5t',
+        'PASSWORD': '123',
         'HOST': '127.0.0.1', 
         'PORT': '3306'
      
@@ -117,13 +117,15 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Lima'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+
+
 JWT_EXPIRATION_DELTA = datetime.timedelta(seconds=3000000000)
 
 

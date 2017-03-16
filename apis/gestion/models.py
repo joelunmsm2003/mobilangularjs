@@ -483,9 +483,9 @@ class OrigBaseC01(models.Model):
 
 
 class Tipificacion(models.Model):
-    contacto = models.IntegerField(blank=True, null=True)
-    accion = models.IntegerField(blank=True, null=True)
-    estado = models.IntegerField(blank=True, null=True)
+    contacto = models.ForeignKey(Contacto, models.DO_NOTHING, db_column='contacto', blank=True, null=True)
+    accion = models.ForeignKey(Accion, models.DO_NOTHING, db_column='accion', blank=True, null=True)
+    estado = models.ForeignKey(Estado, models.DO_NOTHING, db_column='estado', blank=True, null=True)
     tipo = models.IntegerField(blank=True, null=True)
 
     class Meta:

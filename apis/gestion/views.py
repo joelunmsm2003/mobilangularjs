@@ -14,9 +14,7 @@ from PIL import Image
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
-import time
 import os
-from datetime import datetime,timedelta,date
 import os.path
 import requests
 import smtplib
@@ -29,7 +27,7 @@ from django.db.models import Count
 from django.db.models import Avg
 import csv
 
-from datetime import datetime,timedelta,date
+import datetime
 
 def ValuesQuerySetToDict(vqs):
 
@@ -199,10 +197,6 @@ def actualizabbva(request):
 
                 deacuerdo = data['lpd']
 
-            
-
- 
-
         base = OrigBaseC01.objects.get(dni=dni)
         base.nombre = nombre
         base.dni = dni
@@ -220,6 +214,15 @@ def actualizabbva(request):
         base.facebook = facebook
         base.deacuerdo = deacuerdo
 
+        if tipo_envio:
+
+            base.fecha_venta_bbva = datetime.datetime.now()
+
+        if facebook:
+
+            base.fecha_actualizar_bbva = datetime.datetime.now()
+
+
         base.save()
 
         data = ValuesQuerySetToDict(data)
@@ -235,10 +238,6 @@ def acciones(request,contacto):
     if request.method == 'GET':
 
         data = Tipificacion.objects.filter(contacto_id=contacto).values('accion','accion__nombre').annotate(num_acciones=Count('accion__nombre'))
-
-        print data
-
-
 
         data = ValuesQuerySetToDict(data)
 
@@ -674,7 +673,6 @@ def listaacciones(request):
             data[j]['accion'] = data[j]['id'] 
             data[j]['accion__nombre'] = data[j]['nombre'] 
 
-        print data
 
         data = ValuesQuerySetToDict(data)
 
@@ -796,6 +794,8 @@ def tipifica(request):
             b.id_ori_usuario = idagente
 
             b.nombre_agente = nomagente
+
+            b.fecha_tipifica_bbva = datetime.datetime.now()
 
             if agendax:
 

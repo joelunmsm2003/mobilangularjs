@@ -1,0 +1,13 @@
+export ORACLE_HOME="/opt/oracle/instantclient_11_2"
+export DYLD_LIBRARY_PATH="$ORACLE_HOME"
+export SQLPATH="$ORACLE_HOME"
+export PATH="$PATH:$ORACLE_HOME"
+
+
+
+export ORACLE_HOME="/home/xiencias02/Desktop/ORACLE/instantclient10_1"
+export DYLD_LIBRARY_PATH="$ORACLE_HOME"
+export SQLPATH="$ORACLE_HOME"
+export PATH="$PATH:$ORACLE_HOME"
+
+
