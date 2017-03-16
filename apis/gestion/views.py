@@ -133,6 +133,7 @@ def actualizabbva(request):
         prima = None
         todo_prima = None
         facebook = None
+        lpd= None
 
         
         for d in data:
@@ -193,6 +194,12 @@ def actualizabbva(request):
 
                 facebook = data['facebook']
 
+            if d == 'lpd':
+
+                deacuerdo = data['lpd']
+
+            
+
  
 
         base = OrigBaseC01.objects.get(dni=dni)
@@ -210,6 +217,7 @@ def actualizabbva(request):
         base.prima = prima
         base.todo_prima = todo_prima
         base.facebook = facebook
+        base.deacuerdo = deacuerdo
 
         base.save()
 
