@@ -336,7 +336,7 @@ def reportebbva(request):
 
     if request.method == 'GET':
 
-        data = OrigBaseC01.objects.filter(cod_cam=29).values('dni','nombre','telefono1','telefono2',
+        data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('dni','nombre','telefono1','telefono2',
             'mail','tipo_envio','campana','cobertura','cant_afiliados','fecha_nacimiento',
             'tipo_tarjeta','observaciones','prima_mensual','todo_prima','cod_cam','cantidad',
             'nombredelproducto','tipodecobertura','tipodedocumento','nrotarjetaencriptada',
