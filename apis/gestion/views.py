@@ -378,105 +378,139 @@ def reportebbva(request):
 
         for d in data:
 
+        if d['dni']:
             d['dni'] = d['dni'].encode('ascii','ignore')
             d['dni'] = d['dni'].encode('ascii','replace')
 
+        if d['nombre']:
             d['nombre'] = d['nombre'].encode('ascii','ignore')
             d['nombre'] = d['nombre'].encode('ascii','replace')
 
+        if d['telefono1']:
             d['telefono1'] = d['telefono1'].encode('ascii','ignore')
             d['telefono1'] = d['telefono1'].encode('ascii','replace')
 
+        if d['telefono2']:
             d['telefono2'] = d['telefono2'].encode('ascii','ignore')
             d['telefono2'] = d['telefono2'].encode('ascii','replace')
 
+        if d['mail']:
             d['mail'] = d['mail'].encode('ascii','ignore')
             d['mail'] = d['mail'].encode('ascii','replace')
 
+        if d['tipo_envio']:
             d['tipo_envio'] = d['tipo_envio'].encode('ascii','ignore')
             d['tipo_envio'] = d['tipo_envio'].encode('ascii','replace')
 
+        if d['campana']:
             d['campana'] = d['campana'].encode('ascii','ignore')
             d['campana'] = d['campana'].encode('ascii','replace')
 
+        if d['cobertura']:
             d['cobertura'] = d['cobertura'].encode('ascii','ignore')
             d['cobertura'] = d['cobertura'].encode('ascii','replace')
 
+        if d['cant_afiliados']:
             d['cant_afiliados'] = d['cant_afiliados'].encode('ascii','ignore')
             d['cant_afiliados'] = d['cant_afiliados'].encode('ascii','replace')
 
+        if d['fecha_nacimiento']:
             d['fecha_nacimiento'] = d['fecha_nacimiento'].encode('ascii','ignore')
             d['fecha_nacimiento'] = d['fecha_nacimiento'].encode('ascii','replace')
 
+        if d['tipo_tarjeta']:
             d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','ignore')
             d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','replace')
 
+        if d['observaciones']:
             d['observaciones'] = d['observaciones'].encode('ascii','ignore')
             d['observaciones'] = d['observaciones'].encode('ascii','replace')
 
+        if d['prima_mensual']:
             d['prima_mensual'] = d['prima_mensual'].encode('ascii','ignore')
             d['prima_mensual'] = d['prima_mensual'].encode('ascii','replace')
 
+        if d['todo_prima']:
             d['todo_prima'] = d['todo_prima'].encode('ascii','ignore')
             d['todo_prima'] = d['todo_prima'].encode('ascii','replace')
 
+        if d['cod_cam']:
             d['cod_cam'] = d['cod_cam'].encode('ascii','ignore')
             d['cod_cam'] = d['cod_cam'].encode('ascii','replace')
 
+        if d['cantidad']:
             d['cantidad'] = d['cantidad'].encode('ascii','ignore')
             d['cantidad'] = d['cantidad'].encode('ascii','replace')
 
+        if d['nombredelproducto']:
             d['nombredelproducto'] = d['nombredelproducto'].encode('ascii','ignore')
             d['nombredelproducto'] = d['nombredelproducto'].encode('ascii','replace')
 
+        if d['tipodecobertura']:
             d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','ignore')
             d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','replace')
 
+        if d['tipodedocumento']:
             d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','ignore')
             d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','replace')
 
+        if d['nrotarjetaencriptada']:
             d['nrotarjetaencriptada'] = d['nrotarjetaencriptada'].encode('ascii','ignore')
             d['nrotarjetaencriptada'] = d['nrotarjetaencriptada'].encode('ascii','replace')
 
+        if d['tienetarjetadecredito']:
             d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','ignore')
             d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','replace')
 
+        if d['tarjetasadicionales']:
             d['tarjetasadicionales'] = d['tarjetasadicionales'].encode('ascii','ignore')
             d['tarjetasadicionales'] = d['tarjetasadicionales'].encode('ascii','replace')
 
+        if d['recibects']:
             d['recibects'] = d['recibects'].encode('ascii','ignore')
             d['recibects'] = d['recibects'].encode('ascii','replace')
 
+        if d['tienelpdp']:
             d['tienelpdp'] = d['tienelpdp'].encode('ascii','ignore')
             d['tienelpdp'] = d['tienelpdp'].encode('ascii','replace')
 
+        if d['facebook']:
             d['facebook'] = d['facebook'].encode('ascii','ignore')
             d['facebook'] = d['facebook'].encode('ascii','replace')
 
+        if d['fecha_vencimiento']:
             d['fecha_vencimiento'] = d['fecha_vencimiento'].encode('ascii','ignore')
             d['fecha_vencimiento'] = d['fecha_vencimiento'].encode('ascii','replace')
 
+        if d['nombre_agente']:
             d['nombre_agente'] = d['nombre_agente'].encode('ascii','ignore')
             d['nombre_agente'] = d['nombre_agente'].encode('ascii','replace')
 
+        if d['observacion']:
             d['observacion'] = d['observacion'].encode('ascii','ignore')
             d['observacion'] = d['observacion'].encode('ascii','replace')
 
+        if d['deacuerdo']:
             d['deacuerdo'] = d['deacuerdo'].encode('ascii','ignore')
             d['deacuerdo'] = d['deacuerdo'].encode('ascii','replace')
 
+        if d['contacto']:
             d['contacto'] = d['contacto'].encode('ascii','ignore')
             d['contacto'] = d['contacto'].encode('ascii','replace')
 
+        if d['accion']:
             d['accion'] = d['accion'].encode('ascii','ignore')
-            d['accion'] = d['accion'].encode('ascii','replace')
+            d['accion'] = d['accion'].encode('ascii','replace') 
 
+        if d['fecha_actualizar_bbva']:
             d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','ignore')
             d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','replace')
 
+        if d['fecha_venta_bbva']:
             d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','ignore')
             d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','replace')
 
+        if d['fecha_tipifica_bbva']:
             d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','ignore')
             d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','replace')
 
