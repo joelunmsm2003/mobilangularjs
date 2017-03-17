@@ -363,14 +363,14 @@ def reportebbva(request):
     
         writer = csv.writer(response)
 
-        writer.writerow(['dni'],['nombre'],['telefono1'],['telefono2'],['mail'],
-        ['tipo_envio'],['campana'],['cobertura'],['cant_afiliados'],['fecha_nacimiento'],
-        ['tipo_tarjeta'],['observaciones'],['prima_mensual'],['todo_prima'],['cod_cam'],
-        ['cantidad'],['nombredelproducto'],['tipodecobertura'],['tipodedocumento'],
-        ['nrotarjetaencriptada'],['tienetarjetadecredito'],['tarjetasadicionales'],
-        ['recibects'],['tienelpdp'],['facebook'],['fecha_vencimiento'],['nombre_agente'],
-        ['observacion'],['deacuerdo'],['contacto'],['accion'],['fecha_actualizar_bbva'],
-        ['fecha_venta_bbva'],['fecha_tipifica_bbva'])
+        writer.writerow(['dni','nombre','telefono1','telefono2','mail',
+        'tipo_envio','campana','cobertura','cant_afiliados','fecha_nacimiento',
+        'tipo_tarjeta','observaciones','prima_mensual','todo_prima','cod_cam',
+        'cantidad','nombredelproducto','tipodecobertura','tipodedocumento',
+        'nrotarjetaencriptada','tienetarjetadecredito','tarjetasadicionales',
+        'recibects','tienelpdp','facebook','fecha_vencimiento','nombre_agente',
+        'observacion','deacuerdo','contacto','accion','fecha_actualizar_bbva',
+        'fecha_venta_bbva','fecha_tipifica_bbva'])
 
         print 'Csv...'
 
