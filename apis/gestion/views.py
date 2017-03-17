@@ -434,13 +434,13 @@ def reportebbva(request):
             d['todo_prima'] = d['todo_prima'].encode('ascii','ignore')
             d['todo_prima'] = d['todo_prima'].encode('ascii','replace')
 
-        if d['cod_cam']:
-            d['cod_cam'] = d['cod_cam'].encode('ascii','ignore')
-            d['cod_cam'] = d['cod_cam'].encode('ascii','replace')
+        # if d['cod_cam']:
+        #     d['cod_cam'] = d['cod_cam'].encode('ascii','ignore')
+        #     d['cod_cam'] = d['cod_cam'].encode('ascii','replace')
 
-        if d['cantidad']:
-            d['cantidad'] = d['cantidad'].encode('ascii','ignore')
-            d['cantidad'] = d['cantidad'].encode('ascii','replace')
+        # if d['cantidad']:
+        #     d['cantidad'] = d['cantidad'].encode('ascii','ignore')
+        #     d['cantidad'] = d['cantidad'].encode('ascii','replace')
 
         if d['nombredelproducto']:
             d['nombredelproducto'] = d['nombredelproducto'].encode('ascii','ignore')
@@ -494,25 +494,25 @@ def reportebbva(request):
             d['deacuerdo'] = d['deacuerdo'].encode('ascii','ignore')
             d['deacuerdo'] = d['deacuerdo'].encode('ascii','replace')
 
-        if d['contacto']:
-            d['contacto'] = d['contacto'].encode('ascii','ignore')
-            d['contacto'] = d['contacto'].encode('ascii','replace')
+        # if d['contacto']:
+        #     d['contacto'] = d['contacto'].encode('ascii','ignore')
+        #     d['contacto'] = d['contacto'].encode('ascii','replace')
 
-        if d['accion']:
-            d['accion'] = d['accion'].encode('ascii','ignore')
-            d['accion'] = d['accion'].encode('ascii','replace') 
+        # if d['accion']:
+        #     d['accion'] = d['accion'].encode('ascii','ignore')
+        #     d['accion'] = d['accion'].encode('ascii','replace') 
 
-        if d['fecha_actualizar_bbva']:
-            d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','ignore')
-            d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','replace')
+        # if d['fecha_actualizar_bbva']:
+        #     d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','ignore')
+        #     d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','replace')
 
-        if d['fecha_venta_bbva']:
-            d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','ignore')
-            d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','replace')
+        # if d['fecha_venta_bbva']:
+        #     d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','ignore')
+        #     d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','replace')
 
-        if d['fecha_tipifica_bbva']:
-            d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','ignore')
-            d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','replace')
+        # if d['fecha_tipifica_bbva']:
+        #     d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','ignore')
+        #     d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','replace')
 
 
 
