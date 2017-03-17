@@ -771,7 +771,7 @@ def tipifica(request):
 
                 fagenda = str(fecha)[0:10]+' '+str(mytime)[11:19]
 
-                fagenda = datetime.strptime(fagenda,'%Y-%m-%d  %H:%M:%S')
+                #fagenda = datetime.strptime(fagenda,'%Y-%m-%d  %H:%M:%S')
 
                 agendax = True
 
@@ -795,11 +795,13 @@ def tipifica(request):
 
             b.nombre_agente = nomagente
 
+
+
             b.fecha_tipifica_bbva = datetime.datetime.now()
 
-            if agendax:
+            # if agendax:
 
-                b.fagenda = fagenda-timedelta(hours=5)
+            #     b.fagenda = fagenda-timedelta(hours=5)
 
             b.tadicional = phone
 
