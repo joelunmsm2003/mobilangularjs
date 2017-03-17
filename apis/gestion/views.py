@@ -331,6 +331,64 @@ def reporte(request):
 
         # return HttpResponse(data_json, content_type="application/json")
 
+@csrf_exempt
+def reportebbva(request):
+
+    if request.method == 'GET':
+
+        data = OrigBaseC01.objects.filter(cod_cam=29).values('dni','nombre','telefono1','telefono2',
+            'mail','tipo_envio','campana','cobertura','cant_afiliados','fecha_nacimiento',
+            'tipo_tarjeta','observaciones','prima_mensual','todo_prima','cod_cam','cantidad',
+            'nombredelproducto','tipodecobertura','tipodedocumento','nrotarjetaencriptada',
+            'tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','facebook',
+            'fecha_vencimiento','nombre_agente','observacion','deacuerdo','contacto','accion',
+            'fecha_actualizar_bbva','fecha_venta_bbva','fecha_tipifica_bbva')
+
+        # for j in range(len(data)):
+
+        #     fmt = '%Y-%m-%d %H:%M:%S'
+
+        #         data[x]['fecha_venta_bbva'] = ''
+
+   
+        #             base[x]['fecha_venta_bbva'] = OrigBase.objects.get(id_orig_base=base[x]['id_orig_base']).fgestion.strftime(fmt)
+
+        #         base = ValuesQuerySetToDict(base)
+
+        #     data[j]['registros'] = base[0]
+
+        response = HttpResponse(content_type='text/csv')
+    
+        response['Content-Disposition'] = 'attachment; filename="Resumenbbva.csv"'
+    
+        writer = csv.writer(response)
+
+        writer.writerow(['dni'],['nombre'],['telefono1'],['telefono2'],['mail'],
+        ['tipo_envio'],['campana'],['cobertura'],['cant_afiliados'],['fecha_nacimiento'],
+        ['tipo_tarjeta'],['observaciones'],['prima_mensual'],['todo_prima'],['cod_cam'],
+        ['cantidad'],['nombredelproducto'],['tipodecobertura'],['tipodedocumento'],
+        ['nrotarjetaencriptada'],['tienetarjetadecredito'],['tarjetasadicionales'],
+        ['recibects'],['tienelpdp'],['facebook'],['fecha_vencimiento'],['nombre_agente'],
+        ['observacion'],['deacuerdo'],['contacto'],['accion'],['fecha_actualizar_bbva'],
+        ['fecha_venta_bbva'],['fecha_tipifica_bbva'])
+
+        print 'Csv...'
+
+        for d in data:
+
+            writer.writerow([['dni'],['nombre'],['telefono1'],['telefono2'],['mail'],
+        ['tipo_envio'],['campana'],['cobertura'],['cant_afiliados'],['fecha_nacimiento'],
+        ['tipo_tarjeta'],['observaciones'],['prima_mensual'],['todo_prima'],['cod_cam'],
+        ['cantidad'],['nombredelproducto'],['tipodecobertura'],['tipodedocumento'],
+        ['nrotarjetaencriptada'],['tienetarjetadecredito'],['tarjetasadicionales'],
+        ['recibects'],['tienelpdp'],['facebook'],['fecha_vencimiento'],['nombre_agente'],
+        ['observacion'],['deacuerdo'],['contacto'],['accion'],['fecha_actualizar_bbva'],
+        ['fecha_venta_bbva'],['fecha_tipifica_bbva']])
+
+
+        return response   
+   
+
 def generablancos(data):
 
     e = ''
