@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import HttpResponse
@@ -375,6 +377,10 @@ def reportebbva(request):
         print 'Csv...'
 
         for d in data:
+
+            x['dni'] = x['dni'].encode('ascii','ignore')
+
+            x['dni'] = x['dni'].encode('ascii','replace')
 
             writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['mail'],
         d['tipo_envio'],d['campana'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],

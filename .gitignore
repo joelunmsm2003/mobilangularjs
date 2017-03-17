@@ -1,5 +1,5 @@
-node_modules
-apis/apis/settings.py
-run.sh
-index.js
-build/js/index.js
+./node_modules
+./apis/apis/settings.py
+./run.sh
+./index.js
+./build/js/index.js

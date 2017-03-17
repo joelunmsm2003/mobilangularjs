@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'OrionC7_ges',
         'USER': 'root',
         'PASSWORD': '1q2w3e4r5t',
-        'HOST': '127.0.0.1', 
+        'HOST': '192.168.40.4', 
         'PORT': '3306'
      
     }
