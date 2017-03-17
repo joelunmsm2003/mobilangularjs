@@ -343,7 +343,7 @@ def reportebbva(request):
             'tipo_tarjeta','observaciones','prima_mensual','todo_prima','cod_cam','cantidad',
             'nombredelproducto','tipodecobertura','tipodedocumento','nrotarjetaencriptada',
             'tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','facebook',
-            'fecha_vencimiento','nombre_agente','observacion','deacuerdo','contacto','accion',
+            'fecha_vencimiento','nombre_agente','observacion','deacuerdo','contacto__nombre','accion__nombre',
             'fecha_actualizar_bbva','fecha_venta_bbva','fecha_tipifica_bbva')
 
         # for j in range(len(data)):
@@ -371,7 +371,7 @@ def reportebbva(request):
         'cantidad','nombredelproducto','tipodecobertura','tipodedocumento',
         'nrotarjetaencriptada','tienetarjetadecredito','tarjetasadicionales',
         'recibects','tienelpdp','facebook','fecha_vencimiento','nombre_agente',
-        'observacion','deacuerdo','contacto','accion','fecha_actualizar_bbva',
+        'observacion','deacuerdo','contacto__nombre','accion__nombre','fecha_actualizar_bbva',
         'fecha_venta_bbva','fecha_tipifica_bbva'])
 
         print 'Csv...'
@@ -522,7 +522,7 @@ def reportebbva(request):
         d['cantidad'],d['nombredelproducto'],d['tipodecobertura'],d['tipodedocumento'],
         d['nrotarjetaencriptada'],d['tienetarjetadecredito'],d['tarjetasadicionales'],
         d['recibects'],d['tienelpdp'],d['facebook'],d['fecha_vencimiento'],d['nombre_agente'],
-        d['observacion'],d['deacuerdo'],d['contacto'],d['accion'],d['fecha_actualizar_bbva'],
+        d['observacion'],d['deacuerdo'],d['contacto__nombre'],d['accion__nombre'],d['fecha_actualizar_bbva'],
         d['fecha_venta_bbva'],d['fecha_tipifica_bbva']])
 
 
