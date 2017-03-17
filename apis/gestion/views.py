@@ -376,14 +376,14 @@ def reportebbva(request):
 
         for d in data:
 
-            writer.writerow([['dni'],['nombre'],['telefono1'],['telefono2'],['mail'],
-        ['tipo_envio'],['campana'],['cobertura'],['cant_afiliados'],['fecha_nacimiento'],
-        ['tipo_tarjeta'],['observaciones'],['prima_mensual'],['todo_prima'],['cod_cam'],
-        ['cantidad'],['nombredelproducto'],['tipodecobertura'],['tipodedocumento'],
-        ['nrotarjetaencriptada'],['tienetarjetadecredito'],['tarjetasadicionales'],
-        ['recibects'],['tienelpdp'],['facebook'],['fecha_vencimiento'],['nombre_agente'],
-        ['observacion'],['deacuerdo'],['contacto'],['accion'],['fecha_actualizar_bbva'],
-        ['fecha_venta_bbva'],['fecha_tipifica_bbva']])
+            writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['mail'],
+        d['tipo_envio'],d['campana'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],
+        d['tipo_tarjeta'],d['observaciones'],d['prima_mensual'],d['todo_prima'],d['cod_cam'],
+        d['cantidad'],d['nombredelproducto'],d['tipodecobertura'],d['tipodedocumento'],
+        d['nrotarjetaencriptada'],d['tienetarjetadecredito'],d['tarjetasadicionales'],
+        d['recibects'],d['tienelpdp'],d['facebook'],d['fecha_vencimiento'],d['nombre_agente'],
+        d['observacion'],d['deacuerdo'],d['contacto'],d['accion'],d['fecha_actualizar_bbva'],
+        d['fecha_venta_bbva'],d['fecha_tipifica_bbva']])
 
 
         return response   
