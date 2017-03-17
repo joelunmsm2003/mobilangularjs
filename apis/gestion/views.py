@@ -378,107 +378,107 @@ def reportebbva(request):
 
         for d in data:
 
-            x['dni'] = x['dni'].encode('ascii','ignore')
-            x['dni'] = x['dni'].encode('ascii','replace')
+            d['dni'] = d['dni'].encode('ascii','ignore')
+            d['dni'] = d['dni'].encode('ascii','replace')
 
-            x['nombre'] = x['nombre'].encode('ascii','ignore')
-            x['nombre'] = x['nombre'].encode('ascii','replace')
+            d['nombre'] = d['nombre'].encode('ascii','ignore')
+            d['nombre'] = d['nombre'].encode('ascii','replace')
 
-            x['telefono1'] = x['telefono1'].encode('ascii','ignore')
-            x['telefono1'] = x['telefono1'].encode('ascii','replace')
+            d['telefono1'] = d['telefono1'].encode('ascii','ignore')
+            d['telefono1'] = d['telefono1'].encode('ascii','replace')
 
-            x['telefono2'] = x['telefono2'].encode('ascii','ignore')
-            x['telefono2'] = x['telefono2'].encode('ascii','replace')
+            d['telefono2'] = d['telefono2'].encode('ascii','ignore')
+            d['telefono2'] = d['telefono2'].encode('ascii','replace')
 
-            x['mail'] = x['mail'].encode('ascii','ignore')
-            x['mail'] = x['mail'].encode('ascii','replace')
+            d['mail'] = d['mail'].encode('ascii','ignore')
+            d['mail'] = d['mail'].encode('ascii','replace')
 
-            x['tipo_envio'] = x['tipo_envio'].encode('ascii','ignore')
-            x['tipo_envio'] = x['tipo_envio'].encode('ascii','replace')
+            d['tipo_envio'] = d['tipo_envio'].encode('ascii','ignore')
+            d['tipo_envio'] = d['tipo_envio'].encode('ascii','replace')
 
-            x['campana'] = x['campana'].encode('ascii','ignore')
-            x['campana'] = x['campana'].encode('ascii','replace')
+            d['campana'] = d['campana'].encode('ascii','ignore')
+            d['campana'] = d['campana'].encode('ascii','replace')
 
-            x['cobertura'] = x['cobertura'].encode('ascii','ignore')
-            x['cobertura'] = x['cobertura'].encode('ascii','replace')
+            d['cobertura'] = d['cobertura'].encode('ascii','ignore')
+            d['cobertura'] = d['cobertura'].encode('ascii','replace')
 
-            x['cant_afiliados'] = x['cant_afiliados'].encode('ascii','ignore')
-            x['cant_afiliados'] = x['cant_afiliados'].encode('ascii','replace')
+            d['cant_afiliados'] = d['cant_afiliados'].encode('ascii','ignore')
+            d['cant_afiliados'] = d['cant_afiliados'].encode('ascii','replace')
 
-            x['fecha_nacimiento'] = x['fecha_nacimiento'].encode('ascii','ignore')
-            x['fecha_nacimiento'] = x['fecha_nacimiento'].encode('ascii','replace')
+            d['fecha_nacimiento'] = d['fecha_nacimiento'].encode('ascii','ignore')
+            d['fecha_nacimiento'] = d['fecha_nacimiento'].encode('ascii','replace')
 
-            x['tipo_tarjeta'] = x['tipo_tarjeta'].encode('ascii','ignore')
-            x['tipo_tarjeta'] = x['tipo_tarjeta'].encode('ascii','replace')
+            d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','ignore')
+            d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','replace')
 
-            x['observaciones'] = x['observaciones'].encode('ascii','ignore')
-            x['observaciones'] = x['observaciones'].encode('ascii','replace')
+            d['observaciones'] = d['observaciones'].encode('ascii','ignore')
+            d['observaciones'] = d['observaciones'].encode('ascii','replace')
 
-            x['prima_mensual'] = x['prima_mensual'].encode('ascii','ignore')
-            x['prima_mensual'] = x['prima_mensual'].encode('ascii','replace')
+            d['prima_mensual'] = d['prima_mensual'].encode('ascii','ignore')
+            d['prima_mensual'] = d['prima_mensual'].encode('ascii','replace')
 
-            x['todo_prima'] = x['todo_prima'].encode('ascii','ignore')
-            x['todo_prima'] = x['todo_prima'].encode('ascii','replace')
+            d['todo_prima'] = d['todo_prima'].encode('ascii','ignore')
+            d['todo_prima'] = d['todo_prima'].encode('ascii','replace')
 
-            x['cod_cam'] = x['cod_cam'].encode('ascii','ignore')
-            x['cod_cam'] = x['cod_cam'].encode('ascii','replace')
+            d['cod_cam'] = d['cod_cam'].encode('ascii','ignore')
+            d['cod_cam'] = d['cod_cam'].encode('ascii','replace')
 
-            x['cantidad'] = x['cantidad'].encode('ascii','ignore')
-            x['cantidad'] = x['cantidad'].encode('ascii','replace')
+            d['cantidad'] = d['cantidad'].encode('ascii','ignore')
+            d['cantidad'] = d['cantidad'].encode('ascii','replace')
 
-            x['nombredelproducto'] = x['nombredelproducto'].encode('ascii','ignore')
-            x['nombredelproducto'] = x['nombredelproducto'].encode('ascii','replace')
+            d['nombredelproducto'] = d['nombredelproducto'].encode('ascii','ignore')
+            d['nombredelproducto'] = d['nombredelproducto'].encode('ascii','replace')
 
-            x['tipodecobertura'] = x['tipodecobertura'].encode('ascii','ignore')
-            x['tipodecobertura'] = x['tipodecobertura'].encode('ascii','replace')
+            d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','ignore')
+            d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','replace')
 
-            x['tipodedocumento'] = x['tipodedocumento'].encode('ascii','ignore')
-            x['tipodedocumento'] = x['tipodedocumento'].encode('ascii','replace')
+            d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','ignore')
+            d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','replace')
 
-            x['nrotarjetaencriptada'] = x['nrotarjetaencriptada'].encode('ascii','ignore')
-            x['nrotarjetaencriptada'] = x['nrotarjetaencriptada'].encode('ascii','replace')
+            d['nrotarjetaencriptada'] = d['nrotarjetaencriptada'].encode('ascii','ignore')
+            d['nrotarjetaencriptada'] = d['nrotarjetaencriptada'].encode('ascii','replace')
 
-            x['tienetarjetadecredito'] = x['tienetarjetadecredito'].encode('ascii','ignore')
-            x['tienetarjetadecredito'] = x['tienetarjetadecredito'].encode('ascii','replace')
+            d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','ignore')
+            d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','replace')
 
-            x['tarjetasadicionales'] = x['tarjetasadicionales'].encode('ascii','ignore')
-            x['tarjetasadicionales'] = x['tarjetasadicionales'].encode('ascii','replace')
+            d['tarjetasadicionales'] = d['tarjetasadicionales'].encode('ascii','ignore')
+            d['tarjetasadicionales'] = d['tarjetasadicionales'].encode('ascii','replace')
 
-            x['recibects'] = x['recibects'].encode('ascii','ignore')
-            x['recibects'] = x['recibects'].encode('ascii','replace')
+            d['recibects'] = d['recibects'].encode('ascii','ignore')
+            d['recibects'] = d['recibects'].encode('ascii','replace')
 
-            x['tienelpdp'] = x['tienelpdp'].encode('ascii','ignore')
-            x['tienelpdp'] = x['tienelpdp'].encode('ascii','replace')
+            d['tienelpdp'] = d['tienelpdp'].encode('ascii','ignore')
+            d['tienelpdp'] = d['tienelpdp'].encode('ascii','replace')
 
-            x['facebook'] = x['facebook'].encode('ascii','ignore')
-            x['facebook'] = x['facebook'].encode('ascii','replace')
+            d['facebook'] = d['facebook'].encode('ascii','ignore')
+            d['facebook'] = d['facebook'].encode('ascii','replace')
 
-            x['fecha_vencimiento'] = x['fecha_vencimiento'].encode('ascii','ignore')
-            x['fecha_vencimiento'] = x['fecha_vencimiento'].encode('ascii','replace')
+            d['fecha_vencimiento'] = d['fecha_vencimiento'].encode('ascii','ignore')
+            d['fecha_vencimiento'] = d['fecha_vencimiento'].encode('ascii','replace')
 
-            x['nombre_agente'] = x['nombre_agente'].encode('ascii','ignore')
-            x['nombre_agente'] = x['nombre_agente'].encode('ascii','replace')
+            d['nombre_agente'] = d['nombre_agente'].encode('ascii','ignore')
+            d['nombre_agente'] = d['nombre_agente'].encode('ascii','replace')
 
-            x['observacion'] = x['observacion'].encode('ascii','ignore')
-            x['observacion'] = x['observacion'].encode('ascii','replace')
+            d['observacion'] = d['observacion'].encode('ascii','ignore')
+            d['observacion'] = d['observacion'].encode('ascii','replace')
 
-            x['deacuerdo'] = x['deacuerdo'].encode('ascii','ignore')
-            x['deacuerdo'] = x['deacuerdo'].encode('ascii','replace')
+            d['deacuerdo'] = d['deacuerdo'].encode('ascii','ignore')
+            d['deacuerdo'] = d['deacuerdo'].encode('ascii','replace')
 
-            x['contacto'] = x['contacto'].encode('ascii','ignore')
-            x['contacto'] = x['contacto'].encode('ascii','replace')
+            d['contacto'] = d['contacto'].encode('ascii','ignore')
+            d['contacto'] = d['contacto'].encode('ascii','replace')
 
-            x['accion'] = x['accion'].encode('ascii','ignore')
-            x['accion'] = x['accion'].encode('ascii','replace')
+            d['accion'] = d['accion'].encode('ascii','ignore')
+            d['accion'] = d['accion'].encode('ascii','replace')
 
-            x['fecha_actualizar_bbva'] = x['fecha_actualizar_bbva'].encode('ascii','ignore')
-            x['fecha_actualizar_bbva'] = x['fecha_actualizar_bbva'].encode('ascii','replace')
+            d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','ignore')
+            d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','replace')
 
-            x['fecha_venta_bbva'] = x['fecha_venta_bbva'].encode('ascii','ignore')
-            x['fecha_venta_bbva'] = x['fecha_venta_bbva'].encode('ascii','replace')
+            d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','ignore')
+            d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','replace')
 
-            x['fecha_tipifica_bbva'] = x['fecha_tipifica_bbva'].encode('ascii','ignore')
-            x['fecha_tipifica_bbva'] = x['fecha_tipifica_bbva'].encode('ascii','replace')
+            d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','ignore')
+            d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','replace')
 
 
 
