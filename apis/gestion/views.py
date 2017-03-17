@@ -27,7 +27,8 @@ from django.db.models import Count
 from django.db.models import Avg
 import csv
 
-import datetime
+
+from datetime import datetime,timedelta,date
 
 def ValuesQuerySetToDict(vqs):
 
@@ -216,11 +217,11 @@ def actualizabbva(request):
 
         if tipo_envio:
 
-            base.fecha_venta_bbva = datetime.datetime.now()
+            base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
 
         if facebook:
 
-            base.fecha_actualizar_bbva = datetime.datetime.now()
+            base.fecha_actualizar_bbva = datetime.today()-timedelta(hours=5)
 
 
         base.save()
@@ -704,6 +705,10 @@ def tipifica(request):
 
         print 'Tipificando...',data
 
+        print date.today()
+
+
+
         contacto = ''
         estado = ''
         accion=''
@@ -796,8 +801,8 @@ def tipifica(request):
             b.nombre_agente = nomagente
 
 
+            b.fecha_tipifica_bbva = datetime.today()-timedelta(hours=5)
 
-            b.fecha_tipifica_bbva = datetime.datetime.now()
 
             # if agendax:
 
