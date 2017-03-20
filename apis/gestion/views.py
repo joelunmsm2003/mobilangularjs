@@ -334,17 +334,20 @@ def reporte(request):
         # return HttpResponse(data_json, content_type="application/json")
 
 @csrf_exempt
-def reportebbva(request):
+def reportebbva(request,contacto):
 
     if request.method == 'GET':
 
-        data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('dni','nombre','telefono1','telefono2',
-            'mail','tipo_envio','campana','cobertura','cant_afiliados','fecha_nacimiento',
-            'tipo_tarjeta','observaciones','prima_mensual','todo_prima','cod_cam','cantidad',
-            'nombredelproducto','tipodecobertura','tipodedocumento','nrotarjetaencriptada',
-            'tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','facebook',
-            'fecha_vencimiento','nombre_agente','observacion','deacuerdo','contacto__nombre','accion__nombre',
-            'fecha_actualizar_bbva','fecha_venta_bbva','fecha_tipifica_bbva')
+        # data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('dni','nombre','telefono1','telefono2',
+        #     'mail','tipo_envio','campana','cobertura','cant_afiliados','fecha_nacimiento',
+        #     'tipo_tarjeta','observaciones','prima_mensual','todo_prima','cod_cam','cantidad',
+        #     'nombredelproducto','tipodecobertura','tipodedocumento','nrotarjetaencriptada',
+        #     'tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','facebook',
+        #     'fecha_vencimiento','nombre_agente','observacion','deacuerdo','contacto__nombre','accion__nombre',
+        #     'fecha_tipifica_bbva')
+
+        data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','tipo_tarjeta','observaciones','prima_mensual')
+
 
         # for j in range(len(data)):
 
@@ -368,163 +371,150 @@ def reportebbva(request):
         writer.writerow(['dni','nombre','telefono1','telefono2','mail',
         'tipo_envio','campana','cobertura','cant_afiliados','fecha_nacimiento',
         'tipo_tarjeta','observaciones','prima_mensual','todo_prima','cod_cam',
-        'cantidad','nombredelproducto','tipodecobertura','tipodedocumento',
-        'nrotarjetaencriptada','tienetarjetadecredito','tarjetasadicionales',
+        'cantidad','nombredelproducto','tipodecobertura','tipodedocumento','tienetarjetadecredito','tarjetasadicionales',
         'recibects','tienelpdp','facebook','fecha_vencimiento','nombre_agente',
-        'observacion','deacuerdo','contacto__nombre','accion__nombre','fecha_actualizar_bbva',
-        'fecha_venta_bbva','fecha_tipifica_bbva'])
+        'observacion','deacuerdo','contacto__nombre','accion__nombre','fecha_tipifica_bbva'])
 
         print 'Csv...'
 
         for d in data:
 
-        if d['dni']:
-            d['dni'] = d['dni'].encode('ascii','ignore')
-            d['dni'] = d['dni'].encode('ascii','replace')
+            if d['dni']:
+                d['dni'] = d['dni'].encode('ascii','ignore')
+                d['dni'] = d['dni'].encode('ascii','replace')
 
-        if d['nombre']:
-            d['nombre'] = d['nombre'].encode('ascii','ignore')
-            d['nombre'] = d['nombre'].encode('ascii','replace')
+            if d['nombre']:
+                d['nombre'] = d['nombre'].encode('ascii','ignore')
+                d['nombre'] = d['nombre'].encode('ascii','replace')
 
-        if d['telefono1']:
-            d['telefono1'] = d['telefono1'].encode('ascii','ignore')
-            d['telefono1'] = d['telefono1'].encode('ascii','replace')
+            if d['telefono1']:
+                d['telefono1'] = d['telefono1'].encode('ascii','ignore')
+                d['telefono1'] = d['telefono1'].encode('ascii','replace')
 
-        if d['telefono2']:
-            d['telefono2'] = d['telefono2'].encode('ascii','ignore')
-            d['telefono2'] = d['telefono2'].encode('ascii','replace')
+            if d['telefono2']:
+                d['telefono2'] = d['telefono2'].encode('ascii','ignore')
+                d['telefono2'] = d['telefono2'].encode('ascii','replace')
 
-        if d['mail']:
-            d['mail'] = d['mail'].encode('ascii','ignore')
-            d['mail'] = d['mail'].encode('ascii','replace')
+            if d['mail']:
+                d['mail'] = d['mail'].encode('ascii','ignore')
+                d['mail'] = d['mail'].encode('ascii','replace')
 
-        if d['tipo_envio']:
-            d['tipo_envio'] = d['tipo_envio'].encode('ascii','ignore')
-            d['tipo_envio'] = d['tipo_envio'].encode('ascii','replace')
+            if d['tipo_envio']:
+                d['tipo_envio'] = d['tipo_envio'].encode('ascii','ignore')
+                d['tipo_envio'] = d['tipo_envio'].encode('ascii','replace')
 
-        if d['campana']:
-            d['campana'] = d['campana'].encode('ascii','ignore')
-            d['campana'] = d['campana'].encode('ascii','replace')
+            # if d['campana']:
+            #     d['campana'] = d['campana'].encode('ascii','ignore')
+            #     d['campana'] = d['campana'].encode('ascii','replace')
 
-        if d['cobertura']:
-            d['cobertura'] = d['cobertura'].encode('ascii','ignore')
-            d['cobertura'] = d['cobertura'].encode('ascii','replace')
+            if d['cobertura']:
+                d['cobertura'] = d['cobertura'].encode('ascii','ignore')
+                d['cobertura'] = d['cobertura'].encode('ascii','replace')
 
-        if d['cant_afiliados']:
-            d['cant_afiliados'] = d['cant_afiliados'].encode('ascii','ignore')
-            d['cant_afiliados'] = d['cant_afiliados'].encode('ascii','replace')
+            if d['cant_afiliados']:
+                d['cant_afiliados'] = d['cant_afiliados'].encode('ascii','ignore')
+                d['cant_afiliados'] = d['cant_afiliados'].encode('ascii','replace')
 
-        if d['fecha_nacimiento']:
-            d['fecha_nacimiento'] = d['fecha_nacimiento'].encode('ascii','ignore')
-            d['fecha_nacimiento'] = d['fecha_nacimiento'].encode('ascii','replace')
+            if d['fecha_nacimiento']:
+                d['fecha_nacimiento'] = d['fecha_nacimiento'].encode('ascii','ignore')
+                d['fecha_nacimiento'] = d['fecha_nacimiento'].encode('ascii','replace')
 
-        if d['tipo_tarjeta']:
-            d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','ignore')
-            d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','replace')
+            if d['tipo_tarjeta']:
+                d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','ignore')
+                d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','replace')
 
-        if d['observaciones']:
-            d['observaciones'] = d['observaciones'].encode('ascii','ignore')
-            d['observaciones'] = d['observaciones'].encode('ascii','replace')
+            if d['observaciones']:
+                d['observaciones'] = d['observaciones'].encode('ascii','ignore')
+                d['observaciones'] = d['observaciones'].encode('ascii','replace')
 
-        if d['prima_mensual']:
-            d['prima_mensual'] = d['prima_mensual'].encode('ascii','ignore')
-            d['prima_mensual'] = d['prima_mensual'].encode('ascii','replace')
+            if d['prima_mensual']:
+                d['prima_mensual'] = d['prima_mensual'].encode('ascii','ignore')
+                d['prima_mensual'] = d['prima_mensual'].encode('ascii','replace')
 
-        if d['todo_prima']:
-            d['todo_prima'] = d['todo_prima'].encode('ascii','ignore')
-            d['todo_prima'] = d['todo_prima'].encode('ascii','replace')
+            # if d['todo_prima']:
+            #     d['todo_prima'] = d['todo_prima'].encode('ascii','ignore')
+            #     d['todo_prima'] = d['todo_prima'].encode('ascii','replace')
 
-        # if d['cod_cam']:
-        #     d['cod_cam'] = d['cod_cam'].encode('ascii','ignore')
-        #     d['cod_cam'] = d['cod_cam'].encode('ascii','replace')
 
-        # if d['cantidad']:
-        #     d['cantidad'] = d['cantidad'].encode('ascii','ignore')
-        #     d['cantidad'] = d['cantidad'].encode('ascii','replace')
+            # if d['nombredelproducto']:
+            #     d['nombredelproducto'] = d['nombredelproducto'].encode('ascii','ignore')
+            #     d['nombredelproducto'] = d['nombredelproducto'].encode('ascii','replace')
 
-        if d['nombredelproducto']:
-            d['nombredelproducto'] = d['nombredelproducto'].encode('ascii','ignore')
-            d['nombredelproducto'] = d['nombredelproducto'].encode('ascii','replace')
+            # if d['tipodecobertura']:
+            #     d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','ignore')
+            #     d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','replace')
 
-        if d['tipodecobertura']:
-            d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','ignore')
-            d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','replace')
+            # if d['tipodedocumento']:
+            #     d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','ignore')
+            #     d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','replace')
 
-        if d['tipodedocumento']:
-            d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','ignore')
-            d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','replace')
+            # if d['tienetarjetadecredito']:
+            #     d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','ignore')
+            #     d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','replace')
 
-        if d['nrotarjetaencriptada']:
-            d['nrotarjetaencriptada'] = d['nrotarjetaencriptada'].encode('ascii','ignore')
-            d['nrotarjetaencriptada'] = d['nrotarjetaencriptada'].encode('ascii','replace')
+            # if d['tarjetasadicionales']:
+            #     d['tarjetasadicionales'] = d['tarjetasadicionales'].encode('ascii','ignore')
+            #     d['tarjetasadicionales'] = d['tarjetasadicionales'].encode('ascii','replace')
 
-        if d['tienetarjetadecredito']:
-            d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','ignore')
-            d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','replace')
+            # if d['recibects']:
+            #     d['recibects'] = d['recibects'].encode('ascii','ignore')
+            #     d['recibects'] = d['recibects'].encode('ascii','replace')
 
-        if d['tarjetasadicionales']:
-            d['tarjetasadicionales'] = d['tarjetasadicionales'].encode('ascii','ignore')
-            d['tarjetasadicionales'] = d['tarjetasadicionales'].encode('ascii','replace')
+            # if d['tienelpdp']:
+            #     d['tienelpdp'] = d['tienelpdp'].encode('ascii','ignore')
+            #     d['tienelpdp'] = d['tienelpdp'].encode('ascii','replace')
 
-        if d['recibects']:
-            d['recibects'] = d['recibects'].encode('ascii','ignore')
-            d['recibects'] = d['recibects'].encode('ascii','replace')
+            # if d['facebook']:
+            #     d['facebook'] = d['facebook'].encode('ascii','ignore')
+            #     d['facebook'] = d['facebook'].encode('ascii','replace')
 
-        if d['tienelpdp']:
-            d['tienelpdp'] = d['tienelpdp'].encode('ascii','ignore')
-            d['tienelpdp'] = d['tienelpdp'].encode('ascii','replace')
+            # if d['fecha_vencimiento']:
+            #     d['fecha_vencimiento'] = d['fecha_vencimiento'].encode('ascii','ignore')
+            #     d['fecha_vencimiento'] = d['fecha_vencimiento'].encode('ascii','replace')
 
-        if d['facebook']:
-            d['facebook'] = d['facebook'].encode('ascii','ignore')
-            d['facebook'] = d['facebook'].encode('ascii','replace')
+            # if d['nombre_agente']:
+            #     d['nombre_agente'] = d['nombre_agente'].encode('ascii','ignore')
+            #     d['nombre_agente'] = d['nombre_agente'].encode('ascii','replace')
 
-        if d['fecha_vencimiento']:
-            d['fecha_vencimiento'] = d['fecha_vencimiento'].encode('ascii','ignore')
-            d['fecha_vencimiento'] = d['fecha_vencimiento'].encode('ascii','replace')
+            # if d['observacion']:
+            #     d['observacion'] = d['observacion'].encode('ascii','ignore')
+            #     d['observacion'] = d['observacion'].encode('ascii','replace')
 
-        if d['nombre_agente']:
-            d['nombre_agente'] = d['nombre_agente'].encode('ascii','ignore')
-            d['nombre_agente'] = d['nombre_agente'].encode('ascii','replace')
+            # if d['deacuerdo']:
+            #     d['deacuerdo'] = d['deacuerdo'].encode('ascii','ignore')
+            #     d['deacuerdo'] = d['deacuerdo'].encode('ascii','replace')
 
-        if d['observacion']:
-            d['observacion'] = d['observacion'].encode('ascii','ignore')
-            d['observacion'] = d['observacion'].encode('ascii','replace')
+            # if d['contacto']:
+            #     d['contacto'] = d['contacto'].encode('ascii','ignore')
+            #     d['contacto'] = d['contacto'].encode('ascii','replace')
 
-        if d['deacuerdo']:
-            d['deacuerdo'] = d['deacuerdo'].encode('ascii','ignore')
-            d['deacuerdo'] = d['deacuerdo'].encode('ascii','replace')
+            # if d['accion']:
+            #     d['accion'] = d['accion'].encode('ascii','ignore')
+            #     d['accion'] = d['accion'].encode('ascii','replace') 
 
-        # if d['contacto']:
-        #     d['contacto'] = d['contacto'].encode('ascii','ignore')
-        #     d['contacto'] = d['contacto'].encode('ascii','replace')
+            # if d['fecha_actualizar_bbva']:
+            #     d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','ignore')
+            #     d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','replace')
 
-        # if d['accion']:
-        #     d['accion'] = d['accion'].encode('ascii','ignore')
-        #     d['accion'] = d['accion'].encode('ascii','replace') 
+            # if d['fecha_venta_bbva']:
+            #     d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','ignore')
+            #     d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','replace')
 
-        # if d['fecha_actualizar_bbva']:
-        #     d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','ignore')
-        #     d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','replace')
-
-        # if d['fecha_venta_bbva']:
-        #     d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','ignore')
-        #     d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','replace')
-
-        # if d['fecha_tipifica_bbva']:
-        #     d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','ignore')
-        #     d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','replace')
+            # if d['fecha_tipifica_bbva']:
+            #     d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','ignore')
+            #     d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','replace')
 
 
 
-            writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['mail'],
-        d['tipo_envio'],d['campana'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],
-        d['tipo_tarjeta'],d['observaciones'],d['prima_mensual'],d['todo_prima'],d['cod_cam'],
-        d['cantidad'],d['nombredelproducto'],d['tipodecobertura'],d['tipodedocumento'],
-        d['nrotarjetaencriptada'],d['tienetarjetadecredito'],d['tarjetasadicionales'],
-        d['recibects'],d['tienelpdp'],d['facebook'],d['fecha_vencimiento'],d['nombre_agente'],
-        d['observacion'],d['deacuerdo'],d['contacto__nombre'],d['accion__nombre'],d['fecha_actualizar_bbva'],
-        d['fecha_venta_bbva'],d['fecha_tipifica_bbva']])
+            #     writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['mail'],
+            # d['tipo_envio'],d['campana'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],
+            # d['tipo_tarjeta'],d['observaciones'],d['prima_mensual'],d['todo_prima'],d['cod_cam'],
+            # d['cantidad'],d['nombredelproducto'],d['tipodecobertura'],d['tipodedocumento'],
+            # d['tienetarjetadecredito'],d['tarjetasadicionales'],
+            # d['recibects'],d['tienelpdp'],d['facebook'],d['fecha_vencimiento'],d['nombre_agente'],
+            # d['observacion'],d['deacuerdo'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva']])
 
+            writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['mail'],d['tipo_envio'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],d['tipo_tarjeta'],d['observaciones'],d['prima_mensual']])
 
         return response   
    
