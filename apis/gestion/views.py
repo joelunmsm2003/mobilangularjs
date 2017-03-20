@@ -373,11 +373,9 @@ def reportebbva(request,contacto):
         writer = csv.writer(response)
 
         writer.writerow(['dni','nombre','telefono1','telefono2','mail',
-        'tipo_envio','campana','cobertura','cant_afiliados','fecha_nacimiento',
-        'tipo_tarjeta','observaciones','prima_mensual','todo_prima','cod_cam',
-        'cantidad','nombredelproducto','tipodecobertura','tipodedocumento','tienetarjetadecredito','tarjetasadicionales',
-        'recibects','tienelpdp','facebook','fecha_vencimiento','nombre_agente',
-        'observacion','deacuerdo','contacto__nombre','accion__nombre','fecha_tipifica_bbva'])
+        'tipo_envio','cobertura','cant_afiliados','fecha_nacimiento',
+        'tipo_tarjeta','observaciones','prima_mensual','cantidad','tipodecobertura','tipodedocumento'
+        ,'tienetarjetadecredito','facebook','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva'])
 
         print 'Csv...'
 
