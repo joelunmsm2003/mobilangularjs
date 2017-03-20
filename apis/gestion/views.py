@@ -350,7 +350,7 @@ def reportebbva(request,contacto):
         # 'cantidad','tipodecobertura','tipodedocumento','tienetarjetadecredito','facebook','nombredeagente'
         # 'contacto__nombre','accion__nombre','fecha_tipifica_bbva'
 
-        data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','tipo_tarjeta','observaciones','prima_mensual','cantidad','tipodecobertura'.'tipodedocumento','tienetarjetadecredito','facebook','nombredeagente','contacto__nombre','accion__nombre','fecha_tipifica_bbva')
+        data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','tipo_tarjeta','observaciones','prima_mensual','cantidad','tipodecobertura','tipodedocumento','tienetarjetadecredito','facebook','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva')
 
 
         # for j in range(len(data)):
@@ -488,13 +488,13 @@ def reportebbva(request,contacto):
             #     d['deacuerdo'] = d['deacuerdo'].encode('ascii','ignore')
             #     d['deacuerdo'] = d['deacuerdo'].encode('ascii','replace')
 
-            if d['contacto']:
-                d['contacto'] = d['contacto'].encode('ascii','ignore')
-                d['contacto'] = d['contacto'].encode('ascii','replace')
+            # if d['contacto']:
+            #     d['contacto'] = d['contacto'].encode('ascii','ignore')
+            #     d['contacto'] = d['contacto'].encode('ascii','replace')
 
-            if d['accion']:
-                d['accion'] = d['accion'].encode('ascii','ignore')
-                d['accion'] = d['accion'].encode('ascii','replace') 
+            # if d['accion']:
+            #     d['accion'] = d['accion'].encode('ascii','ignore')
+            #     d['accion'] = d['accion'].encode('ascii','replace') 
 
             # if d['fecha_actualizar_bbva']:
             #     d['fecha_actualizar_bbva'] = d['fecha_actualizar_bbva'].encode('ascii','ignore')
@@ -504,9 +504,9 @@ def reportebbva(request,contacto):
             #     d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','ignore')
             #     d['fecha_venta_bbva'] = d['fecha_venta_bbva'].encode('ascii','replace')
 
-            if d['fecha_tipifica_bbva']:
-                d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','ignore')
-                d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','replace')
+            # if d['fecha_tipifica_bbva']:
+            #     d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','ignore')
+            #     d['fecha_tipifica_bbva'] = d['fecha_tipifica_bbva'].encode('ascii','replace')
 
 
 
@@ -518,7 +518,7 @@ def reportebbva(request,contacto):
             # d['recibects'],d['tienelpdp'],d['facebook'],d['fecha_vencimiento'],d['nombre_agente'],
             # d['observacion'],d['deacuerdo'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva']])
 
-            writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['mail'],d['tipo_envio'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],d['tipo_tarjeta'],d['observaciones'],d['prima_mensual'],d['cantidad'],d['tipodecobertura'],d['tipodedocumento'],d['tienetarjetadecredito'],d['facebook'],d['nombredeagente'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva']])
+            writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['mail'],d['tipo_envio'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],d['tipo_tarjeta'],d['observaciones'],d['prima_mensual'],d['cantidad'],d['tipodecobertura'],d['tipodedocumento'],d['tienetarjetadecredito'],d['facebook'],d['nombre_agente'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva']])
 
         return response   
    
