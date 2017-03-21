@@ -45,7 +45,7 @@
 						
 											<div class="form-group">
 												<label for="distrito">Numero de Celular</label>
-												<input   type="text" class="form-control"  ng-model='cliente.telefono1' id="distrito" >
+												<input  required type="text" class="form-control"  ng-model='cliente.telefono1' id="distrito" >
 
 											</div>								
 								
@@ -56,7 +56,7 @@
 			
 								<div class="form-group">
 									<label for="departamento">Numero de telefono Fijo</label>
-									<input   type="text" class="form-control"  ng-model='cliente.telefono2' id="departamento" >
+									<input required type="text" class="form-control"  ng-model='cliente.telefono2' id="departamento" >
 								</div>
 
 								</div>
@@ -65,7 +65,7 @@
 
 								<div class="form-group">
 									<label for="correo">Correo Electronico</label>
-									<input   type="email" class="form-control"  ng-model='cliente.mail' id="correo" >
+									<input required  type="email" class="form-control"  ng-model='cliente.mail' id="correo" >
 								</div>
 
 								</div>
@@ -75,7 +75,7 @@
 
 								<div class="form-group">
 									<label for="dni">Cantidad</label>
-									<input   type="number" class="form-control" ng-change='calcprimatotal(cliente)' ng-model='cliente.cantidad'  id="dni">
+									<input required  type="number" class="form-control" ng-change='calcprimatotal(cliente)' ng-model='cliente.cantidad'  id="dni">
 								</div>
 
 			
@@ -91,7 +91,7 @@
 								<div class="form-group">
 									<label for="dni">Tipo de Cobertura</label>
 
-									<select  class="form-control"  ng-model='cliente.cobertura' ><option  value='Solo titular'>Solo Titular</option>
+									<select required class="form-control"  ng-model='cliente.cobertura' ><option  value='Solo titular'>Solo Titular</option>
 									<option value='Titular y Esposo'>Titular y Esposo(a)</option>
 									<option value='Titular y Familiares'>Titular y Familiares</option>
 									<option value='Titular y Dependientes'>Titular y Dependientes</option>
@@ -110,7 +110,7 @@
 								<div class="form-group">
 									<label for="dni">Tipo de Envio</label>
 								
-									<select class="form-control"  ng-model='cliente.tipo_envio'><option value='Email'>Email</option>
+									<select  class="form-control"  ng-model='cliente.tipo_envio' required><option value='Email'>Email</option>
 									<option value='Domicilio'>Domicilio</option>
 									
 									</select>
@@ -124,7 +124,7 @@
 
 									<div class="form-group">
 									<label for="dni">Prima</label>
-									<input   type="text" class="form-control"   ng-model='cliente.prima_mensual' value='25' id="dni">
+									<input  type="text" class="form-control"   ng-model='cliente.prima_mensual' value='25' id="dni">
 									</div>
 
 
@@ -134,7 +134,7 @@
 
 									<div class="form-group">
 									<label for="dni">Todo Prima</label>
-									<input   type="text" class="form-control"  ng-model='cliente.todo_prima'  id="dni">
+									<input  type="text" class="form-control"  ng-model='cliente.todo_prima'  id="dni">
 									</div>
 
 								</div>

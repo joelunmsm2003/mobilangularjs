@@ -100,7 +100,7 @@ def contactos(request):
 
     if request.method == 'GET':
 
-        data = Contacto.objects.all().values('id','nombre')
+        data = Contacto.objects.filter(id__in=[6,7,8,9,11]).values('id','nombre')
 
         data = ValuesQuerySetToDict(data)
 
