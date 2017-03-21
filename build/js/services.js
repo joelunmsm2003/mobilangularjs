@@ -4,7 +4,7 @@ function BbvaService ($http,$q,$log,$localStorage) {
     return {
         buscardni:buscardni,
         actualizar:actualizar,
-        ventas:ventas,
+        venta:venta,
         actualizarchubb:actualizarchubb
 
     }
@@ -62,7 +62,7 @@ function BbvaService ($http,$q,$log,$localStorage) {
 
 
 
-        function ventas(dni){
+        function venta(dni){
 
 
         var defered = $q.defer();
