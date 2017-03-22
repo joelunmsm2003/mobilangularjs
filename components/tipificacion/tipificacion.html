@@ -1,13 +1,15 @@
-	<legend>TIPIFICACION {{resultado.telefono}}</legend>
+
 
 								
-								<form >
+								<form ng-submit='tipifica(resultado)' ng-if='!cliente.fecha_tipifica_bbva' class='animated zoomInDown'>
+
+									<legend>TIPIFICACION {{resultado.telefono}}</legend>
 
 								<div class="form-group">
 									<label for="nombre">Observacion</label>
 
 									
-									<textarea  required type="text" rows="6" class="form-control"  ng-model='resultado.observacion'  id="nombre"></textarea> 
+									<textarea   type="text" rows="6" class="form-control"  ng-model='resultado.observacion'  id="nombre"></textarea> 
 								</div>
 
 
@@ -28,7 +30,7 @@
 									<label for="nombre">Contacto </label>
 
 									
-									<select ng-change='traeacciones(resultado.contacto)' class='form-control' ng-options="item.id as item.nombre for item in contacto track by item.id" ng-model="resultado.contacto"></select>
+									<select ng-change='traeacciones(resultado.contacto)' class='form-control' ng-options="item.id as item.nombre for item in contacto track by item.id" ng-model="resultado.contacto" required><option></option></select>
 
 								</div>
 
@@ -49,7 +51,7 @@
 
 						
 
-								<div class="form-group">
+						<!-- 		<div class="form-group">
 
 									<label for="estado">Estado    </label>
 
@@ -60,7 +62,7 @@
 											  ng-model="resultado.estado"
 											  ></select>
 
-								</div>
+								</div> -->
 
 
 								</div>
@@ -73,7 +75,7 @@
 									
 
 
-									<div class="form-group">
+								<!-- 	<div class="form-group">
 
 									<label  for="estado"><i class="fa fa-calendar" aria-hidden="true"></i> Agendar {{resultado.fagenda}}</label>
 
@@ -98,9 +100,12 @@
 									<label for="estado"><i class="fa fa-phone-square" aria-hidden="true"></i> Telefono Adicional</label>
 									<input ng-model='resultado.tadicional' class='form-control' placeholder="Telefono Adicional" />
 
-									</div>
+									</div> -->
 
-									<a class='btn btn-info' ng-click='tipifica(resultado)'>Guardar Tipificacion</a>
+									<button class='btn btn-info' type='submit' ng-show='tipificashow' >Guardar Tipificacion</button>
+
+
+									<a class='btn btn-info' ng-hide='tipificashow' ng-click='tipificamal()' disabled >No permitido</a>
 
 
 									</form>

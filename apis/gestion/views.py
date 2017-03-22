@@ -118,7 +118,7 @@ def contactos(request):
 
     if request.method == 'GET':
 
-        data = Contacto.objects.all().values('id','nombre')
+        data = Contacto.objects.filter(id__in=[6,7,8,9,11,12]).values('id','nombre')
 
         data = ValuesQuerySetToDict(data)
 
@@ -251,7 +251,7 @@ def actualizabbva(request):
         return HttpResponse(data_json, content_type="application/json")
 
 @csrf_exempt
-def venta(request):
+def ventas(request):
 
     if request.method == 'POST':
 
@@ -971,9 +971,20 @@ def cliente(request,dni):
 
     if request.method == 'GET':
 
-        data = OrigBaseC01.objects.filter(dni=dni).values('tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
+        data = OrigBaseC01.objects.filter(dni=dni,cod_cam=29).values('fecha_venta_bbva','tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
         
-        print data
+        
+        fmt = '%Y-%b-%d %H:%M:%S'
+
+        for x in range(len(data)):
+
+            if OrigBaseC01.objects.filter(id=data[x]['id']).values('fecha_venta_bbva')[0]['fecha_venta_bbva']:
+
+                data[x]['fecha_venta_bbva'] = OrigBaseC01.objects.get(id=data[x]['id']).fecha_venta_bbva.strftime(fmt)
+
+            if OrigBaseC01.objects.filter(id=data[x]['id']).values('fecha_tipifica_bbva')[0]['fecha_tipifica_bbva']:
+
+                data[x]['fecha_tipifica_bbva'] = OrigBaseC01.objects.get(id=data[x]['id']).fecha_tipifica_bbva.strftime(fmt)
 
         data = ValuesQuerySetToDict(data)
 
@@ -1119,7 +1130,6 @@ def tipifica(request):
             b.id_ori_usuario = idagente
 
             b.nombre_agente = nomagente
-
 
             b.fecha_tipifica_bbva = datetime.today()-timedelta(hours=5)
 

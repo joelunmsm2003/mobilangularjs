@@ -62,11 +62,10 @@ function BbvaService ($http,$q,$log,$localStorage) {
 
 
 
-        function venta(dni){
+        function venta(data){
 
 
-        var defered = $q.defer();
-        var promise = defered.promise;
+        var def = $q.defer();
 
         $http({
 
@@ -76,10 +75,13 @@ function BbvaService ($http,$q,$log,$localStorage) {
         }).
         success(function(data) {
 
-
-        return promise;
+        def.resolve(data);
 
         })
+
+        return def.promise;
+
+
 
     }
 

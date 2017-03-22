@@ -84,19 +84,19 @@ WSGI_APPLICATION = 'apis.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'OrionC7_ges',
+        'NAME': 'orionc7',
         'USER': 'root',
-        'PASSWORD': '1q2w3e4r5t',
-        'HOST': '192.168.40.4', 
+        'PASSWORD': '123',
+        'HOST': '127.0.0.1', 
         'PORT': '3306'
      
     },
-    'orion': {
+    'aplicacion': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'orionc7',
         'USER': 'root',
-        'PASSWORD': '1q2w3e4r5t',
-        'HOST': '192.168.40.4', 
+        'PASSWORD': '123',
+        'HOST': '127.0.0.1', 
         'PORT': '3306'
     }
 }

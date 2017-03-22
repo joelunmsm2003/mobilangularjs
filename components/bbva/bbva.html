@@ -1,18 +1,11 @@
 
 
 
-
-<form ng-submit='actualizar(cliente)' >
+<form ng-submit='actualizar(cliente)' ng-if='!cliente.fecha_tipifica_bbva'  >
 
 
 <legend>Actualizacion BBVA 
 
-<i ng-show='exito' class="fa fa-check" aria-hidden="true"></i>
-<i ng-hide='exito' class="fa fa-o" aria-hidden="true"></i>
-
-
-
-<input  placeholder='Ingrese DNI...' ng-change='go(dni)' type="text" class="form-control"  ng-model='dni' id="nombre" >
 
 
 </legend>
@@ -143,7 +136,7 @@
 			<label>¿Me brinda su correo electronico?</label> <input required type="email" class="form-control"  ng-model='cliente.mail' id="nombre">
 		
 			
-			<label>¿Este correo tambien lo utiliza para Facebook?</label> <select required class='form-control' ng-model='cliente.facebook'  ><option></option><option value='Si'>Si</option><option value='No'>No</option></select>
+			<label>¿Este correo tambien lo utiliza para Facebook?</label> <select  class='form-control' ng-model='cliente.facebook' required ><option></option><option value='Si'>Si</option><option value='No'>No</option></select>
 
 			<label>Ley de Proteccion de Datos ¿Esta de acuerdo?</label> <select ng-model='cliente.lpd' required class='form-control' ><option></option><option value='Si'>Si</option><option value='No'>No</option></select>
 

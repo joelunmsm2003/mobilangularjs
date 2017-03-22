@@ -1,4 +1,4 @@
-				<form ng-submit='ventabbva(cliente)'>
+				<form ng-submit='ventabbva(cliente)' ng-if='!cliente.fecha_tipifica_bbva' >
 
 				<legend>Ventas CHUBB</legend>
 
@@ -20,9 +20,7 @@
 									</div>
 
 
-
-
-								
+	
 									
 									<div class='col-md-6'>
 						
@@ -94,7 +92,7 @@
 								<div class="form-group">
 									<label for="dni">Tipo de Cobertura</label>
 
-									<select required class="form-control"  ng-model='cliente.cobertura' ><option  value='Solo titular'>Solo Titular</option>
+									<select  class="form-control"  ng-model='cliente.cobertura' required><option  value='Solo titular'>Solo Titular</option>
 									<option value='Titular y Esposo'>Titular y Esposo(a)</option>
 									<option value='Titular y Familiares'>Titular y Familiares</option>
 									<option value='Titular y Dependientes'>Titular y Dependientes</option>
@@ -107,13 +105,13 @@
 
 								<div class="form-group">
 									<label for="dni">Direccion</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.direccion'  id="dni">
+									<input   type="text" class="form-control"  ng-model='cliente.direccion' required id="dni">
 								</div>
 
 								<div class="form-group">
 									<label for="dni">Tipo de Envio</label>
 								
-									<select required class="form-control"  ng-model='cliente.tipo_envio'><option value='Email'>Email</option>
+									<select  class="form-control"  ng-model='cliente.tipo_envio' required><option></option><option value='Email'>Email</option>
 									<option value='Domicilio'>Domicilio</option>
 									
 									</select>
@@ -138,7 +136,7 @@
 
 									<div class="form-group">
 									<label for="dni">Todo Prima</label>
-									<input  required type="text" class="form-control"  ng-model='cliente.todo_prima'  id="dni">
+									<input   type="text" class="form-control"  ng-model='cliente.todo_prima' required id="dni">
 									</div>
 
 								</div>

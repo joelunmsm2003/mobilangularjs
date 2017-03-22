@@ -476,6 +476,7 @@ class OrigBaseC01(models.Model):
     fecha_actualizar_bbva = models.DateTimeField(db_column='fecha_actualizar_bbva')
     fecha_venta_bbva = models.DateTimeField(db_column='fecha_venta_bbva')
     fecha_tipifica_bbva = models.DateTimeField(db_column='fecha_tipifica_bbva')
+    fagenda = models.DateTimeField(db_column='fagenda')
 
     class Meta:
         managed = True
