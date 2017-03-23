@@ -56,6 +56,9 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
          $scope.ventabbva =function(cliente){
 
 
+              cliente.nomagente = $scope.nomagente
+
+
 
               BbvaService.venta(cliente).then(function(data) {
 

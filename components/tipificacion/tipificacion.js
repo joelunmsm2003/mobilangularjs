@@ -24,6 +24,9 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
       dni = $stateParams.dni
 
 
+      $('.bbva').show()
+
+
 
         $scope.base = $stateParams.base
 
@@ -149,10 +152,15 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
                 })
 
 
+                $('.bbva').hide()
+
+             
+                
+
+
             }
 
-            $state.reload()
-
+           
 
 
 

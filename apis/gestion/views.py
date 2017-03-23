@@ -152,6 +152,7 @@ def actualizabbva(request):
         facebook = None
         lpd= None
         deacuerdo= None
+        nomagente = None
 
         
         for d in data:
@@ -216,6 +217,10 @@ def actualizabbva(request):
 
                 deacuerdo = data['lpd']
 
+            if d == 'nomagente':
+
+                nomagente = data['nomagente']
+
         base = OrigBaseC01.objects.get(dni=dni)
         base.nombre = nombre
         base.dni = dni
@@ -232,14 +237,9 @@ def actualizabbva(request):
         base.todo_prima = todo_prima
         base.facebook = facebook
         base.deacuerdo = deacuerdo
+        base.nombre_agente = nomagente
 
-        if tipo_envio:
-
-            base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
-
-        if facebook:
-
-            base.fecha_actualizar_bbva = datetime.today()-timedelta(hours=5)
+        base.fecha_actualizar_bbva = datetime.today()-timedelta(hours=5)
 
 
         base.save()
@@ -247,6 +247,8 @@ def actualizabbva(request):
         data = ValuesQuerySetToDict(data)
 
         data_json = simplejson.dumps(data)
+
+        os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
 
         return HttpResponse(data_json, content_type="application/json")
 
@@ -275,6 +277,7 @@ def ventas(request):
         facebook = None
         lpd= None
         deacuerdo= None
+        nomagente = None
 
         
         for d in data:
@@ -339,6 +342,10 @@ def ventas(request):
 
                 deacuerdo = data['lpd']
 
+            if d == 'nomagente':
+
+                nomagente = data['nomagente']
+
         base = OrigBaseC01.objects.get(dni=dni)
         base.nombre = nombre
         base.dni = dni
@@ -363,6 +370,9 @@ def ventas(request):
         data = ValuesQuerySetToDict(data)
 
         data_json = simplejson.dumps(data)
+
+        os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
+
 
         return HttpResponse(data_json, content_type="application/json")
 
@@ -1157,5 +1167,7 @@ def tipifica(request):
         data = ValuesQuerySetToDict('data')
 
         data_json = simplejson.dumps(data)
+
+        os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(dni))
 
         return HttpResponse(data_json, content_type="application/json")

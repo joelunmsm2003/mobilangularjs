@@ -58,6 +58,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                $scope.exito = false
 
+               $('.bbva').show();
+
 
 
                 LlamadaService.cliente(dni).then(function(data) {

@@ -72,6 +72,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                $scope.exito = false
 
+               $('.bbva').show();
+
 
 
                 LlamadaService.cliente(dni).then(function(data) {
@@ -981,6 +983,9 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
       dni = $stateParams.dni
 
 
+      $('.bbva').show()
+
+
 
         $scope.base = $stateParams.base
 
@@ -1106,10 +1111,15 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
                 })
 
 
+                $('.bbva').hide()
+
+             
+                
+
+
             }
 
-            $state.reload()
-
+           
 
 
 
@@ -1267,6 +1277,9 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
 
 
          $scope.ventabbva =function(cliente){
+
+
+              cliente.nomagente = $scope.nomagente
 
 
 
