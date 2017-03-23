@@ -674,9 +674,14 @@ def generablancos(data):
 @csrf_exempt
 def trama(request):
 
-    if request.method == 'GET':
+    if request.method == 'POST':
 
 
+        data = json.loads(request.body)
+
+        dni = data['dni']
+
+        base = OrigBaseC01.objects.get(dni=dni)
         
         m = []
 
@@ -690,7 +695,6 @@ def trama(request):
         ccampana = ccampana + generablancos(eb)
 
 
-
         # Codigo de Producto Paquete - 6
         cproducto = 'PE1601'
         eb = 6 - len(cproducto)
@@ -698,7 +702,7 @@ def trama(request):
 
 
         # DNI
-        dni = '5801      '
+        dni = base.dni
         eb = 15 - len(dni)
         dni = dni + generablancos(eb)
 
@@ -710,31 +714,31 @@ def trama(request):
 
 
         #Nombre Apellido - 50
-        nombre = 'CARLOS ALCANTARA RAMIRES PERES'
+        nombre = base.nombre
         eb = 50 - len(nombre)
         nombre = nombre + generablancos(eb)
     
 
         #Nombre del Contratante - 30
-        ncontratante = 'CARLOS'
+        ncontratante = ''
         eb = 30 - len(ncontratante)
         ncontratante = ncontratante + generablancos(eb)
 
 
         #Segundo Nombre del contratante - 15
-        scontratante = 'ALCANTARA'
+        scontratante = ''
         eb = 15 - len(scontratante)
         scontratante = scontratante + generablancos(eb)
 
 
         #Apellidos del contratante - 30
-        apcontratante = 'RAMIRES PERES'
+        apcontratante = ''
         eb = 30 - len(apcontratante)
         apcontratante = apcontratante + generablancos(eb)
 
 
         #Direccion 1 - 30
-        direccion1 = 'Av Primavera 234'
+        direccion1 = base.direccion
         eb = 30 - len(direccion1)
         direccion1 = direccion1 + generablancos(eb)
 
@@ -786,13 +790,13 @@ def trama(request):
 
 
         #Telefono de Casa - 20
-        telfcasa = '2578581'
+        telfcasa = base.telefono2
         eb = 20 - len(telfcasa)
         telfcasa = telfcasa + generablancos(eb)
 
 
         #Telefono de trabajo - 20
-        telftrabajo = '7485874'
+        telftrabajo = base.telefono1
         eb = 20 - len(telftrabajo)
         telftrabajo = telftrabajo + generablancos(eb)
 
@@ -800,14 +804,16 @@ def trama(request):
         dependientes = '00'
 
         #Fecha de expiracion - 100
-        fexpiracion = '03/17'
+        #fexpiracion = '03/17'
+        fexpiracion = base.fecha_vencimiento
         eb = 5- len(fexpiracion)
         fexpiracion = fexpiracion + generablancos(eb)
 
 
 
         #Fecha de Naciomiento - 100
-        reference3 = '230230'
+        #reference3 = '230230'
+        reference3= base.fecha_nacimiento
         eb = 100 - len(reference3)
         reference3 = reference3 + generablancos(eb)
 
