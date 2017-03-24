@@ -123,7 +123,7 @@ def generatrama(request):
 
         dni = data['dni']
 
-        base = OrigBaseC01.objects.filter(dni=dni).values('dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva')
+        base = OrigBaseC01.objects.filter(dni=dni).values('tipo_tarjeta','mail','dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre')
 
         data = ValuesQuerySetToDict(base)
 
@@ -697,8 +697,7 @@ def trama(request):
 
         data = json.loads(request.body)
 
-    
-        datos = data
+        dni = data['dni']
 
         print 'Datos',datos
 
@@ -825,7 +824,7 @@ def trama(request):
 
 
         #Fecha de Naciomiento - 100
-        reference3 = base.reference3
+        reference3 = data['reference3']
         eb = 100 - len(reference3)
         reference3 = reference3 + generablancos(eb)
 
@@ -858,7 +857,7 @@ def trama(request):
 
 
         #Cuenta bancaria - 20
-        cuentabancaria = base.cuenta_bancaria
+        cuentabancaria = data['cuenta_bancaria']
         eb = 20 - len(cuentabancaria)
         cuentabancaria = cuentabancaria + generablancos(eb)
 
