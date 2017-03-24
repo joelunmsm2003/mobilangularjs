@@ -25,105 +25,109 @@
 <form class="form-inline" ng-submit='genera_trama(base)'>
     
     <div class="form-group">
-      <label for='ct'></label>
-      <input type="password" class="form-control" ng-model='base.cuenta_bancaria' required id="ct" placeholder="Nro.Cuenta Bancaria">
+      <label for='ct'>Nro.Cuenta Bancaria</label>
+      <input type="texttext" class="form-control" ng-model='base.cuenta_bancaria' required id="ct" placeholder="Nro.Cuenta Bancaria">
     </div>
 
 
     <div class="form-group">
-      <label for='dni'></label>
-      <input type="email" class="form-control" ng-model='base.dni' required id="dni" placeholder="DNI">
+      <label for='dni'>DNI</label>
+      <input type="text" class="form-control" ng-model='base.dni' required id="dni" placeholder="DNI">
     </div>
 
 
     <div class="form-group">
-       <label for='plan'></label>
-       <input type="password" class="form-control" ng-model='1' required id="plan" placeholder="Plan">
+       <label for='plan'>Plan</label>
+       <input type="text" class="form-control" ng-model='1' required id="plan" placeholder="Plan">
     </div>
 
 
     <div class="form-group">
-      <label for='tipoc'></label>
-      <input type="email" class="form-control" ng-model='MO' required id="tipoc" placeholder="Tipo de Cobertura">
+      <label for='tipoc'>Tipo de Cobertura</label>
+      <input type="text" class="form-control" ng-model='MO' required id="tipoc" placeholder="Tipo de Cobertura">
     </div>
 
 
     <div class="form-group">
-      <label for='fee'></label>
-      <input type="password" class="form-control" ng-model='20170101' required id="fee" placeholder="Fecha de Efectividad">
+      <label for='fee'>Fecha de Efectividad</label>
+      <input type="text" class="form-control" ng-model='20170101' required id="fee" placeholder="Fecha de Efectividad">
     </div>
 
 
     <div class="form-group">
-      <label for='ven'></label>
-      <input type="email" class="form-control" ng-model='base.nombre_agente' required id="ven" placeholder="Vendedor">
+      <label for='ven'>Vendedor</label>
+      <input type="text" class="form-control" ng-model='base.nombre_agente' required id="ven" placeholder="Vendedor">
     </div>
 
 
     <div class="form-group">
-      <label for='cdt'></label>
-      <input type="password" class="form-control" ng-model='base.tipo_tarjeta' required id="cdt" placeholder="Tipo de Tarjeta de Credito">
+      <label for='cdt'>Tipo de Tarjeta de Credito</label>
+      <input type="text" class="form-control" ng-model='base.tipo_tarjeta' required id="cdt" placeholder="Tipo de Tarjeta de Credito">
     </div>
 
 
     <div class="form-group">
-      <label for='nc'></label>
-      <input type="email" class="form-control" ng-model='base.nombre' required id="nc" placeholder="Nombre Cliente">
+      <label for='nc'>Nombre Cliente</label>
+      <input type="text" class="form-control" ng-model='base.nombre' required id="nc" placeholder="Nombre Cliente">
     </div>
 
 
     <div class="form-group">
-      <label for='dist'></label>
-      <input type="password" class="form-control" ng-model='base.distrito' required id="dist" placeholder="Distrito">
+      <label for='dist'>Distrito</label>
+      <input type="text" class="form-control" ng-model='base.distrito' required id="dist" placeholder="Distrito">
     </div>
 
 
     <div class="form-group">
-      <label for='prov'></label>
-      <input type="email" class="form-control" ng-model='base.provincia' required id="prov" placeholder="Provincia">
+      <label for='prov'>Provincia</label>
+      <input type="text" class="form-control" ng-model='base.provincia' required id="prov" placeholder="Provincia">
     </div>
 
 
     <div class="form-group">
-      <label for='depa'></label>
-      <input type="password" class="form-control" ng-model='base.departamento' required id="depa" placeholder="Departamento">
+      <label for='depa'>Departamento</label>
+      <input type="text" class="form-control" ng-model='base.departamento' required id="depa" placeholder="Departamento">
     </div>
 
 
     <div class="form-group">
-      <label for='telfc'></label>
-      <input type="password" class="form-control" ng-model='base.telefono1' required id="telfc" placeholder="Telf.Casa">
+      <label for='telfc'>Telf.Casa</label>
+      <input type="text" class="form-control" ng-model='base.telefono1' required id="telfc" placeholder="Telf.Casa">
     </div>
 
 
     <div class="form-group">
-      <label for='fn'></label>
-      <input type="password" class="form-control" ng-model='base.fecha_nacimiento' required id="fn" placeholder="Fecha de Nacimiento">
+      <label for='fn'>Fecha de Nacimiento</label>
+      <input type="text" class="form-control" ng-model='base.fecha_nacimiento' required id="fn" placeholder="Fecha de Nacimiento">
     </div>
 
 
     <div class="form-group">
-      <label for='sex'></label>
-      <input type="email" class="form-control" ng-model='base.sexo' required id="sex" placeholder="Sexo">
+      <label for='sex'>Sexo</label>
+      <select  class="form-control" ng-model='base.sexo' required id="sex" placeholder="Sexo">
+      <option></option>
+      <option value='M'>Masculino</option>
+      <option value='F'>Femenino</option>
+      </select>
     </div>
 
 
     <div class="form-group">
-      <label for='mail'></label>
-      <input type="email" class="form-control" ng-model='base.mail' required id="mail" placeholder="E-mail">
+      <label for='mail'>E-mail</label>
+      <input type="text" class="form-control" ng-model='base.mail' required id="mail" placeholder="E-mail">
     </div>
 
 
 
      <div class="form-group">
-      <label for='ca'></label>
-      <input type="email" class="form-control" ng-model='base.reference3' required id="ca" placeholder="Codigo de Autorizacion">
+      <label for='ca'>Codigo de Autorizacion</label>
+      <input type="text" class="form-control" ng-model='base.reference3' required id="ca" placeholder="Codigo de Autorizacion">
     </div>
 
 
      <div class="form-group">
-      <label for='fe'></label>
-      <input type="password" class="form-control" ng-model='base.fecha_vencimiento' required id="fe" placeholder="Fecha de Expiracion">
+      <label for='fe'>Fecha de Expiracion</label>
+      <input type="text" class="form-control" ng-model='base.fecha_vencimiento' required id="fe" placeholder="Fecha de Expiracion">
     </div>
 
     
