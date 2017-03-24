@@ -812,14 +812,15 @@ def trama(request):
 
 
         #Fecha de Naciomiento - 100
-        #reference3 = '230230'
-        reference3= base.fecha_nacimiento
+        reference3 = '230230'
         eb = 100 - len(reference3)
         reference3 = reference3 + generablancos(eb)
 
 
         #Fecha de Naciomiento - 8
-        fechadenacimiento = '19570302'
+        fechadenacimiento = base.fecha_nacimiento.replace('-','')
+
+        print 'Naci',fechadenacimiento
         eb = 8 - len(fechadenacimiento)
         fechadenacimiento = fechadenacimiento + generablancos(eb)
 

@@ -8,7 +8,26 @@ angular
     }
   });
 
+  
 
 
-function GeneratramaController($scope,$location,$http,LlamadaService){
+function GeneratramaController($scope,$location,$http,BbvaService){
+
+
+
+
+	$scope.agregar=function(data){
+
+		 BbvaService.trama(data).then(function(data) {
+
+            console.log('Datos del trama',data)
+
+        })
+
+
 	 }
+
+
+
+	}
+

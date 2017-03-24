@@ -5,7 +5,8 @@ function BbvaService ($http,$q,$log,$localStorage) {
         buscardni:buscardni,
         actualizar:actualizar,
         venta:venta,
-        actualizarchubb:actualizarchubb
+        actualizarchubb:actualizarchubb,
+        trama:trama
 
     }
 
@@ -57,6 +58,32 @@ function BbvaService ($http,$q,$log,$localStorage) {
         return def.promise;
 
     }
+
+
+
+    function trama(data){
+
+
+        var def = $q.defer();
+
+        $http({
+
+        url: host+"trama",
+        data: data,
+        method: 'POST'
+        }).
+        success(function(data) {
+
+        def.resolve(data);
+
+        })
+
+        return def.promise;
+
+    }
+
+
+
 
 
 
