@@ -376,9 +376,15 @@ function GeneratramaController($scope,$location,$http,BbvaService){
 
 		 BbvaService.trama(data).then(function(data) {
 
+
+        })
+
+		 BbvaService.generatrama(data).then(function(data) {
+
             console.log('Datos del trama',data)
 
         })
+
 
 
 	 }
@@ -962,20 +968,6 @@ function SignupController($scope,UserService){
 
 angular
   .module('app')
-  .component('supervisorcomponent', {
-    templateUrl: 'html/supervisor/supervisor.html',
-    controller: SupervisorController,
-    bindings: {
-        onDelete: '&'
-    }
-  });
-
-
-
-function SupervisorController($scope,$location,$http,LlamadaService){
-	 }
-angular
-  .module('app')
   .component('homecomponent', {
     templateUrl: 'html/system/system.html',
     controller: SystemController
@@ -991,6 +983,20 @@ function SystemController($scope,$location,$http,LlamadaService){
 	
 
 }
+angular
+  .module('app')
+  .component('supervisorcomponent', {
+    templateUrl: 'html/supervisor/supervisor.html',
+    controller: SupervisorController,
+    bindings: {
+        onDelete: '&'
+    }
+  });
+
+
+
+function SupervisorController($scope,$location,$http,LlamadaService){
+	 }
 angular
   .module('app')
   .component('tipificacioncomponent', {

@@ -20,9 +20,15 @@ function GeneratramaController($scope,$location,$http,BbvaService){
 
 		 BbvaService.trama(data).then(function(data) {
 
+
+        })
+
+		 BbvaService.generatrama(data).then(function(data) {
+
             console.log('Datos del trama',data)
 
         })
+
 
 
 	 }

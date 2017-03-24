@@ -113,6 +113,24 @@ def todosestados(request):
         data_json = simplejson.dumps(data)
 
         return HttpResponse(data_json, content_type="application/json")
+
+@csrf_exempt
+def generatrama(request):
+
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+
+        dni = data['dni']
+
+        base = OrigBaseC01.objects.filter(dni=dni).values('dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva')
+
+        data = ValuesQuerySetToDict(base)
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
 @csrf_exempt
 def contactos(request):
 
@@ -738,6 +756,8 @@ def trama(request):
 
 
         #Direccion 1 - 30
+        if base.direccion == None:
+            base.direccion =''
         direccion1 = base.direccion
         eb = 30 - len(direccion1)
         direccion1 = direccion1 + generablancos(eb)
@@ -759,8 +779,6 @@ def trama(request):
         eb = 30 - len(provincia)
         provincia = provincia + generablancos(eb)
 
-
-
         #Departamento-2
         departamento ='ZG'
         eb = 2 - len(departamento)
@@ -778,8 +796,6 @@ def trama(request):
         eb = 2 - len(poliza)
         poliza = poliza + generablancos(eb)
 
-
-
         #transaccion
         transaccion ='NEW'
 
@@ -790,6 +806,8 @@ def trama(request):
 
 
         #Telefono de Casa - 20
+        if base.telefono2 == None:
+            base.telefono2 = ''
         telfcasa = base.telefono2
         eb = 20 - len(telfcasa)
         telfcasa = telfcasa + generablancos(eb)
@@ -805,10 +823,9 @@ def trama(request):
 
         #Fecha de expiracion - 100
         #fexpiracion = '03/17'
-        fexpiracion = base.fecha_vencimiento
+        fexpiracion = str(base.fecha_vencimiento).split('-')[1]+'/'+str(base.fecha_vencimiento)[2:4]
         eb = 5- len(fexpiracion)
         fexpiracion = fexpiracion + generablancos(eb)
-
 
 
         #Fecha de Naciomiento - 100
@@ -819,14 +836,12 @@ def trama(request):
 
         #Fecha de Naciomiento - 8
         fechadenacimiento = base.fecha_nacimiento.replace('-','')
-
-        print 'Naci',fechadenacimiento
         eb = 8 - len(fechadenacimiento)
         fechadenacimiento = fechadenacimiento + generablancos(eb)
 
 
         #Email - 40 
-        email = 'joelunmsm@gmail.com'
+        email = base.mail
         eb = 40 - len(email)
         email = email + generablancos(eb)
 
@@ -841,7 +856,6 @@ def trama(request):
         eb = 2080 - len(datespecpro)
         datespecpro = datespecpro + generablancos(eb)
 
-
         codigoproductosimple = 'PAP494'
         eb = 60 - len(codigoproductosimple)
         codigoproductosimple = codigoproductosimple + generablancos(eb)
@@ -853,23 +867,30 @@ def trama(request):
         cuentabancaria = cuentabancaria + generablancos(eb)
 
         #DNI - 15
-        dni = '41222930'
+        dni = base.dni
         eb = 15 - len(dni)
         dni = dni + generablancos(eb)
 
         #telefono casa - 20
-        telefonocasa = '2578481'
+        telefonocasa = base.telefono2
         eb = 20 - len(telefonocasa)
         telefonocasa = telefonocasa + generablancos(eb)
 
 
         #telefono casa - 20
-        vendedor = 'CARLOS'
+        vendedor = base.nombre_agente
         eb = 20 - len(vendedor)
         vendedor = vendedor + generablancos(eb)
 
-        #telefono casa - 20
-        codigotarjeta = 'P9'
+        print str(base.tipo_tarjeta)[0:10]
+
+        if str(base.tipo_tarjeta)[0:4] == 'Visa':
+            codigotarjeta = 'P9'
+        if str(base.tipo_tarjeta)[0:10] == 'MasterCard':
+            codigotarjeta = 'P8' 
+            print 'entre masti'
+
+        print codigotarjeta
         eb = 2 - len(codigotarjeta)
         codigotarjeta = codigotarjeta + generablancos(eb)
 
