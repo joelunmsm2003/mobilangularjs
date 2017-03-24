@@ -1,11 +1,14 @@
 
 <div class='container'>
 
+
+<h1>Generador de Tramas</h1>
+
+
 <form ng-submit='agregar(data)'>
 
 
-      <div class="form-group">
-        <label for="usr">DNI:</label>
+      <div class="form-group">        <label for="usr">DNI:</label>
         <input type="text" ng-model='data.dni' class="form-control" required id="usr">
       </div>
 
@@ -31,13 +34,13 @@
 
     <div class="form-group">
       <label for='dni'>DNI</label>
-      <input type="text" class="form-control" ng-model='base.dni' required id="dni" placeholder="DNI">
+      <input type="text" class="form-control" ng-model='base.dni' disabled id="dni" placeholder="DNI">
     </div>
 
 
     <div class="form-group">
        <label for='plan'>Plan</label>
-       <input type="text" class="form-control" ng-model='1' required id="plan" placeholder="Plan">
+       <input type="text" class="form-control" ng-model='1' disabled required id="plan" placeholder="Plan">
     </div>
 
 
@@ -49,49 +52,49 @@
 
     <div class="form-group">
       <label for='fee'>Fecha de Efectividad</label>
-      <input type="text" class="form-control" ng-model='20170101' required id="fee" placeholder="Fecha de Efectividad">
+      <input type="text" class="form-control" ng-model='20170101' disabled id="fee" placeholder="Fecha de Efectividad">
     </div>
 
 
     <div class="form-group">
       <label for='ven'>Vendedor</label>
-      <input type="text" class="form-control" ng-model='base.nombre_agente' required id="ven" placeholder="Vendedor">
+      <input type="text" class="form-control" ng-model='base.nombre_agente' disabled id="ven" placeholder="Vendedor">
     </div>
 
 
     <div class="form-group">
       <label for='cdt'>Tipo de Tarjeta de Credito</label>
-      <input type="text" class="form-control" ng-model='base.tipo_tarjeta' required id="cdt" placeholder="Tipo de Tarjeta de Credito">
+      <input type="text" class="form-control" ng-model='base.tipo_tarjeta' disabled id="cdt" placeholder="Tipo de Tarjeta de Credito">
     </div>
 
 
     <div class="form-group">
       <label for='nc'>Nombre Cliente</label>
-      <input type="text" class="form-control" ng-model='base.nombre' required id="nc" placeholder="Nombre Cliente">
+      <input type="text" class="form-control" ng-model='base.nombre' disabled id="nc" placeholder="Nombre Cliente">
     </div>
 
 
     <div class="form-group">
       <label for='dist'>Distrito</label>
-      <input type="text" class="form-control" ng-model='base.distrito' required id="dist" placeholder="Distrito">
+      <input type="text" class="form-control" ng-model='base.distrito'  id="dist" placeholder="Distrito">
     </div>
 
 
     <div class="form-group">
       <label for='prov'>Provincia</label>
-      <input type="text" class="form-control" ng-model='base.provincia' required id="prov" placeholder="Provincia">
+      <input type="text" class="form-control" ng-model='base.provincia'  id="prov" placeholder="Provincia">
     </div>
 
 
     <div class="form-group">
       <label for='depa'>Departamento</label>
-      <input type="text" class="form-control" ng-model='base.departamento' required id="depa" placeholder="Departamento">
+      <input type="text" class="form-control" ng-model='base.departamento' id="depa" placeholder="Departamento">
     </div>
 
 
     <div class="form-group">
-      <label for='telfc'>Telf.Casa</label>
-      <input type="text" class="form-control" ng-model='base.telefono1' required id="telfc" placeholder="Telf.Casa">
+      <label for='telfc'>Telefono</label>
+      <input type="text" class="form-control" ng-model='base.telefono1' disabled id="telfc" placeholder="Telefono">
     </div>
 
 
@@ -113,7 +116,7 @@
 
     <div class="form-group">
       <label for='mail'>E-mail</label>
-      <input type="text" class="form-control" ng-model='base.mail' required id="mail" placeholder="E-mail">
+      <input type="text" class="form-control" ng-model='base.mail' disabled id="mail" placeholder="E-mail">
     </div>
 
 

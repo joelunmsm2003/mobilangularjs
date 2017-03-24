@@ -36,9 +36,12 @@ function GeneratramaController($scope,$location,$http,BbvaService){
   $scope.genera_trama=function(data){
 
 
+
      BbvaService.trama(data).then(function(data) {
 
       console.log(data)
+
+      $scope.trama=data
 
 
         })
