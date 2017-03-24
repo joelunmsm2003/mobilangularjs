@@ -8,6 +8,7 @@ function BbvaService ($http,$q,$log,$localStorage) {
         actualizarchubb:actualizarchubb,
         trama:trama,
         generatrama:generatrama,
+        actualizatrama:actualizatrama
 
 
     }
@@ -54,6 +55,30 @@ function BbvaService ($http,$q,$log,$localStorage) {
         return def.promise;
 
     }
+
+
+
+        function actualizatrama(data){
+
+
+        var def = $q.defer();
+
+        $http({
+
+        url: host+"actualizatrama",
+        data: data,
+        method: 'POST'
+        }).
+        success(function(data) {
+
+        def.resolve(data);
+
+        })
+
+        return def.promise;
+
+    }
+
 
 
 

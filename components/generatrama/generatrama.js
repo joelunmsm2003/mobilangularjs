@@ -33,12 +33,31 @@ function GeneratramaController($scope,$location,$http,BbvaService){
 
 
 
-  $scope.genera_trama=function(data){
+  $scope.actualizatrama=function(data){
 
 
-     BbvaService.trama(data).then(function(data) {
+
+     BbvaService.actualizatrama(data).then(function(data) {
 
       console.log(data)
+
+                       swal({
+              title: "Trama Actualizada",
+              text: "La actualizacion se hizo con exito",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#28CC9E",
+              confirmButtonText: "Cerrar",
+              closeOnConfirm: true
+            },
+            function(){
+
+
+       
+              
+            });
+
+
 
 
         })

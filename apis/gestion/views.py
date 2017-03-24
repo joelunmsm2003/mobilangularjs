@@ -123,7 +123,7 @@ def generatrama(request):
 
         dni = data['dni']
 
-        base = OrigBaseC01.objects.filter(dni=dni).values('tipo_tarjeta','mail','dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre')
+        base = OrigBaseC01.objects.filter(dni=dni).values('codigoautorizacion','tarjetacredito','sexo','tipo_tarjeta','mail','dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre')
 
         data = ValuesQuerySetToDict(base)
 
@@ -141,6 +141,34 @@ def contactos(request):
         data = ValuesQuerySetToDict(data)
 
         data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
+
+@csrf_exempt
+def actualizatrama(request):
+
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+
+        dni = data['dni']
+        codigoautorizacion = data['codigoautorizacion']
+        tarjetabancaria = data['tarjetacredito']
+        sexo = data['sexo']
+
+
+
+
+        base = OrigBaseC01.objects.get(dni=dni)
+        base.codigoautorizacion = codigoautorizacion
+        base.tarjetacredito = tarjetabancaria
+        base.sexo=sexo
+
+        base.save()
+
+        data_json = simplejson.dumps(data)
+
 
         return HttpResponse(data_json, content_type="application/json")
 
@@ -690,16 +718,10 @@ def generablancos(data):
     return e
 
 @csrf_exempt
-def trama(request):
+def trama(request,dni):
 
-    if request.method == 'POST':
+    if request.method == 'GET':
 
-
-        data = json.loads(request.body)
-
-        dni = data['dni']
-
-        print 'Datos',datos
 
         base = OrigBaseC01.objects.get(dni=dni)
         
@@ -724,6 +746,9 @@ def trama(request):
         tcobertura = 'PA'
         eb = 2 - len(tcobertura)
         tcobertura = tcobertura + generablancos(eb)
+
+        base.nombre = base.nombre.encode('ascii','ignore')
+        base.nombre = base.nombre.encode('ascii','replace')
 
 
         #Nombre Apellido - 50
@@ -780,7 +805,7 @@ def trama(request):
         departamento = departamento + generablancos(eb)
 
         #Sexo-2
-        sexo ='01'
+        sexo =base.sexo
         eb = 2 - len(sexo)
         sexo = sexo + generablancos(eb)
 
@@ -824,7 +849,7 @@ def trama(request):
 
 
         #Fecha de Naciomiento - 100
-        reference3 = data['reference3']
+        reference3 = base.codigoautorizacion
         eb = 100 - len(reference3)
         reference3 = reference3 + generablancos(eb)
 
@@ -857,7 +882,7 @@ def trama(request):
 
 
         #Cuenta bancaria - 20
-        cuentabancaria = data['cuenta_bancaria']
+        cuentabancaria = base.tarjetacredito
         eb = 20 - len(cuentabancaria)
         cuentabancaria = cuentabancaria + generablancos(eb)
 
@@ -955,12 +980,14 @@ def trama(request):
         data = ''.join(m)
 
         print 'carater 10' ,data[108]
+
+
         
         # data[0:2] = '22323'
 
         # data[2:4] = 'yeyey'
 
-        # print data
+        print data
 
         response = HttpResponse(content_type='text/csv')
     
