@@ -21,11 +21,11 @@
 
 </form>
 
-<form class="form-inline">
+<form class="form-inline" ng-submit='genera_trama(base)'>
     
     <div class="form-group">
       <label for='ct'></label>
-      <input type="password" class="form-control" ng-model='' required id="ct" placeholder="Nro.Cuenta Bancaria">
+      <input type="password" class="form-control" ng-model='base.cuenta_bancaria' required id="ct" placeholder="Nro.Cuenta Bancaria">
     </div>
 
 
@@ -61,7 +61,7 @@
 
     <div class="form-group">
       <label for='cdt'></label>
-      <input type="password" class="form-control" ng-model='base.codigo_tarjeta' required id="cdt" placeholder="Codigo de Tarjeta de Credito">
+      <input type="password" class="form-control" ng-model='base.tipo_tarjeta' required id="cdt" placeholder="Tipo de Tarjeta de Credito">
     </div>
 
 
@@ -116,7 +116,7 @@
 
      <div class="form-group">
       <label for='ca'></label>
-      <input type="email" class="form-control" ng-model='base.referencia3' required id="ca" placeholder="Codigo de Autorizacion">
+      <input type="email" class="form-control" ng-model='base.reference3' required id="ca" placeholder="Codigo de Autorizacion">
     </div>
 
 
