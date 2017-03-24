@@ -697,7 +697,10 @@ def trama(request):
 
         data = json.loads(request.body)
 
-        dni = data['dni']
+    
+        datos = data
+
+        print 'Datos',datos
 
         base = OrigBaseC01.objects.get(dni=dni)
         
@@ -711,13 +714,6 @@ def trama(request):
         ccampana = 'PE17008801'
         eb = 10 - len(ccampana)
         ccampana = ccampana + generablancos(eb)
-
-
-        # Codigo de Producto Paquete - 6
-        cproducto = 'PE1601'
-        eb = 6 - len(cproducto)
-        cproducto = cproducto + generablancos(eb)
-
 
         # DNI
         dni = base.dni
@@ -829,7 +825,7 @@ def trama(request):
 
 
         #Fecha de Naciomiento - 100
-        reference3 = '230230'
+        reference3 = base.reference3
         eb = 100 - len(reference3)
         reference3 = reference3 + generablancos(eb)
 
@@ -862,7 +858,7 @@ def trama(request):
 
 
         #Cuenta bancaria - 20
-        cuentabancaria = '99999999999999999'
+        cuentabancaria = base.cuenta_bancaria
         eb = 20 - len(cuentabancaria)
         cuentabancaria = cuentabancaria + generablancos(eb)
 

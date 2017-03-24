@@ -23,7 +23,7 @@ function GeneratramaController($scope,$location,$http,BbvaService){
 
             console.log('Datos del trama',data)
 
-            $scope.base=data
+            $scope.base=data[0]
 
         })
 

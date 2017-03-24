@@ -1,262 +1,144 @@
 
 <div class='container'>
 
+<div class='row'>
+<div class='col-md-2'>
 <form ng-submit='agregar(data)'>
+
+
       <div class="form-group">
         <label for="usr">DNI:</label>
-        <input type="text" ng-model='data.dni' class="form-control" required id="usr">
+        <input type="text" ng-model='data.dni' class="form-control" required id="usr" placeholder='Ingrese DNI'>
       </div>
 
-      <div class="form-group">
-        <label for="usr">Codigo de Actualizacion:</label>
-        <input type="text" ng-model='data.code' required class="form-control" required id="usr">
-      </div>
+
+
 
       <div class="form-group">
-
         <button type="submit"  class="btn btn-default" id="usr">Agregar DNI</button>
       </div>
+
 </form>
 
-<form class="form-inline">
+</div>
+</div>
+<form class="form-inline" ng-submit='genera_trama(base)'>
+    
     <div class="form-group">
-
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
+      <label for='ct'></label>
+      <input type="password" class="form-control" ng-model='base.cuenta_bancaria' required id="ct" placeholder="Nro.Cuenta Bancaria">
     </div>
+
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='dni'></label>
+      <input type="email" class="form-control" ng-model='base.dni' required id="dni" placeholder="DNI">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+       <label for='plan'></label>
+       <input type="password" class="form-control" ng-model='1' required id="plan" placeholder="Plan">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='tipoc'></label>
+      <input type="email" class="form-control" ng-model='MO' required id="tipoc" placeholder="Tipo de Cobertura">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='fee'></label>
+      <input type="password" class="form-control" ng-model='20170101' required id="fee" placeholder="Fecha de Efectividad">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='ven'></label>
+      <input type="email" class="form-control" ng-model='base.nombre_agente' required id="ven" placeholder="Vendedor">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='cdt'></label>
+      <input type="password" class="form-control" ng-model='base.tipo_tarjeta' required id="cdt" placeholder="Tipo de Tarjeta de Credito">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='nc'></label>
+      <input type="email" class="form-control" ng-model='base.nombre' required id="nc" placeholder="Nombre Cliente">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='dist'></label>
+      <input type="password" class="form-control" ng-model='base.distrito' required id="dist" placeholder="Distrito">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='prov'></label>
+      <input type="email" class="form-control" ng-model='base.provincia' required id="prov" placeholder="Provincia">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='depa'></label>
+      <input type="password" class="form-control" ng-model='base.departamento' required id="depa" placeholder="Departamento">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='telfc'></label>
+      <input type="password" class="form-control" ng-model='base.telefono1' required id="telfc" placeholder="Telf.Casa">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='fn'></label>
+      <input type="password" class="form-control" ng-model='base.fecha_nacimiento' required id="fn" placeholder="Fecha de Nacimiento">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='sex'></label>
+      <input type="email" class="form-control" ng-model='base.sexo' required id="sex" placeholder="Sexo">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
+
     <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+      <label for='mail'></label>
+      <input type="email" class="form-control" ng-model='base.mail' required id="mail" placeholder="E-mail">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
+
+
+     <div class="form-group">
+      <label for='ca'></label>
+      <input type="email" class="form-control" ng-model='base.reference3' required id="ca" placeholder="Codigo de Autorizacion">
     </div>
-    <div class="form-group">
 
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+
+     <div class="form-group">
+      <label for='fe'></label>
+      <input type="password" class="form-control" ng-model='base.fecha_vencimiento' required id="fe" placeholder="Fecha de Expiracion">
     </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
-    <div class="form-group">
+    
 
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
-    </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
-    <div class="form-group">
 
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
-    </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
-    <div class="form-group">
 
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
-    </div>
-        <div class="form-group">
 
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
-    </div>
-        <div class="form-group">
-
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
-    </div>
-        <div class="form-group">
-
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
-    </div>    <div class="form-group">
-
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
-    </div>
-        <div class="form-group">
-
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
-    </div>
-        <div class="form-group">
-
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
-    </div>
-        <div class="form-group">
-
-      <input type="email" class="form-control" required id="email" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-
-      <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
-    </div>
 
     <div class="form-group">
     <button type="submit" class="btn btn-default">Generar Trama</button>
     </div>
 
 </form>
-
-
-
-<table class="table">
-  <thead class="thead-inverse">
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
 
 
 
