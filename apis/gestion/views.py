@@ -123,7 +123,7 @@ def generatrama(request):
 
         dni = data['dni']
 
-        base = OrigBaseC01.objects.filter(dni=dni).values('codigoautorizacion','tarjetacredito','sexo','tipo_tarjeta','mail','dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre')
+        base = OrigBaseC01.objects.filter(dni=dni).values('distrito','provincia','departamento','direccion','codigoautorizacion','tarjetacredito','sexo','tipo_tarjeta','mail','dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre')
 
         data = ValuesQuerySetToDict(base)
 
@@ -152,18 +152,54 @@ def actualizatrama(request):
 
         data = json.loads(request.body)
 
-        dni = data['dni']
-        codigoautorizacion = data['codigoautorizacion']
-        tarjetabancaria = data['tarjetacredito']
-        sexo = data['sexo']
+        dni = None
+        codigoautorizacion = None
+        tarjetabancaria = None
+        sexo = None 
 
+        for d in data:
 
+            if d == 'dni':
+
+                dni = data['dni']
+
+            if d =='codigoautorizacion':
+
+                codigoautorizacion = data['codigoautorizacion']
+
+            if d == 'tarjetacredito':
+
+                tarjetabancaria = data['tarjetacredito']
+
+            if d == 'sexo':
+
+                sexo = data['sexo']
+
+            if d == 'direccion':
+
+                direccion = data['direccion']
+
+            if d == 'distrito':
+
+                distrito = data['distrito']
+
+            if d == 'provincia':
+
+                provincia = data['provincia']
+
+            if d == 'departamento':
+
+                departamento = data['departamento']
 
 
         base = OrigBaseC01.objects.get(dni=dni)
         base.codigoautorizacion = codigoautorizacion
         base.tarjetacredito = tarjetabancaria
         base.sexo=sexo
+        base.direccion = direccion
+        base.distrito = distrito
+        base.provincia=provincia
+        base.departamento=departamento
 
         base.save()
 

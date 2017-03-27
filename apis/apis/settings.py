@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'apis.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'OrionC7_ges',
+        'NAME': 'Orionc7_ges',
         'USER': 'root',
         'PASSWORD': '1q2w3e4r5t',
         'HOST': '192.168.40.4', 

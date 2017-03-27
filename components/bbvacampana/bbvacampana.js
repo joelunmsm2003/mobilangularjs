@@ -16,12 +16,19 @@ function BbvacampanaController(LlamadaService,$stateParams,$scope,$location,$htt
         $scope.nomagente = $stateParams.nomagente
 
 
+        LlamadaService.cliente(dni).then(function(data) {
+
+        console.log('Datos del dni',data[0])
+
+        $scope.cliente = data[0]
+
+
+        })
+
+
                   $scope.go=function(dni){
 
-
                $scope.exito = false
-
-
 
                 LlamadaService.cliente(dni).then(function(data) {
 
