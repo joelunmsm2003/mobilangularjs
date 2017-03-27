@@ -5,7 +5,10 @@ function BbvaService ($http,$q,$log,$localStorage) {
         buscardni:buscardni,
         actualizar:actualizar,
         venta:venta,
-        actualizarchubb:actualizarchubb
+        actualizarchubb:actualizarchubb,
+        trama:trama,
+        generatrama:generatrama,
+        actualizatrama:actualizatrama
 
     }
 
@@ -31,6 +34,49 @@ function BbvaService ($http,$q,$log,$localStorage) {
     }
 
 
+        function generatrama(data){
+
+
+        var def = $q.defer();
+
+        $http({
+
+        url: host+"generatrama",
+        data: data,
+        method: 'POST'
+        }).
+        success(function(data) {
+
+        def.resolve(data);
+
+        })
+
+        return def.promise;
+
+    }
+
+
+
+        function actualizatrama(data){
+
+
+        var def = $q.defer();
+
+        $http({
+
+        url: host+"actualizatrama",
+        data: data,
+        method: 'POST'
+        }).
+        success(function(data) {
+
+        def.resolve(data);
+
+        })
+
+        return def.promise;
+
+    }
 
 
 
@@ -60,13 +106,36 @@ function BbvaService ($http,$q,$log,$localStorage) {
 
 
 
+    function trama(data){
 
 
-        function venta(dni){
+        $http({
+
+        url: host+"trama",
+        data: data,
+        method: 'POST'
+        }).
+        success(function(data) {
+
+        def.resolve(data);
+
+        })
+
+        return def.promise;
+
+    }
 
 
-        var defered = $q.defer();
-        var promise = defered.promise;
+
+
+
+
+
+
+        function venta(data){
+
+
+        var def = $q.defer();
 
         $http({
 
@@ -76,10 +145,13 @@ function BbvaService ($http,$q,$log,$localStorage) {
         }).
         success(function(data) {
 
-
-        return promise;
+        def.resolve(data);
 
         })
+
+        return def.promise;
+
+
 
     }
 

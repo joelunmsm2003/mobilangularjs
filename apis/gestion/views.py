@@ -113,16 +113,98 @@ def todosestados(request):
         data_json = simplejson.dumps(data)
 
         return HttpResponse(data_json, content_type="application/json")
+
+@csrf_exempt
+def generatrama(request):
+
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+
+        dni = data['dni']
+
+        base = OrigBaseC01.objects.filter(dni=dni).values('distrito','provincia','departamento','direccion','codigoautorizacion','tarjetacredito','sexo','tipo_tarjeta','mail','dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre')
+
+        data = ValuesQuerySetToDict(base)
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
 @csrf_exempt
 def contactos(request):
 
     if request.method == 'GET':
 
-        data = Contacto.objects.all().values('id','nombre')
+        data = Contacto.objects.filter(id__in=[6,7,8,9,11,12]).values('id','nombre')
 
         data = ValuesQuerySetToDict(data)
 
         data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
+
+@csrf_exempt
+def actualizatrama(request):
+
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+
+        dni = None
+        codigoautorizacion = None
+        tarjetabancaria = None
+        sexo = None 
+
+        for d in data:
+
+            if d == 'dni':
+
+                dni = data['dni']
+
+            if d =='codigoautorizacion':
+
+                codigoautorizacion = data['codigoautorizacion']
+
+            if d == 'tarjetacredito':
+
+                tarjetabancaria = data['tarjetacredito']
+
+            if d == 'sexo':
+
+                sexo = data['sexo']
+
+            if d == 'direccion':
+
+                direccion = data['direccion']
+
+            if d == 'distrito':
+
+                distrito = data['distrito']
+
+            if d == 'provincia':
+
+                provincia = data['provincia']
+
+            if d == 'departamento':
+
+                departamento = data['departamento']
+
+
+        base = OrigBaseC01.objects.get(dni=dni)
+        base.codigoautorizacion = codigoautorizacion
+        base.tarjetacredito = tarjetabancaria
+        base.sexo=sexo
+        base.direccion = direccion
+        base.distrito = distrito
+        base.provincia=provincia
+        base.departamento=departamento
+
+        base.save()
+
+        data_json = simplejson.dumps(data)
+
 
         return HttpResponse(data_json, content_type="application/json")
 
@@ -152,6 +234,7 @@ def actualizabbva(request):
         facebook = None
         lpd= None
         deacuerdo= None
+        nomagente = None
 
         
         for d in data:
@@ -216,6 +299,10 @@ def actualizabbva(request):
 
                 deacuerdo = data['lpd']
 
+            if d == 'nomagente':
+
+                nomagente = data['nomagente']
+
         base = OrigBaseC01.objects.get(dni=dni)
         base.nombre = nombre
         base.dni = dni
@@ -232,14 +319,9 @@ def actualizabbva(request):
         base.todo_prima = todo_prima
         base.facebook = facebook
         base.deacuerdo = deacuerdo
+        base.nombre_agente = nomagente
 
-        if tipo_envio:
-
-            base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
-
-        if facebook:
-
-            base.fecha_actualizar_bbva = datetime.today()-timedelta(hours=5)
+        base.fecha_actualizar_bbva = datetime.today()-timedelta(hours=5)
 
 
         base.save()
@@ -247,6 +329,132 @@ def actualizabbva(request):
         data = ValuesQuerySetToDict(data)
 
         data_json = simplejson.dumps(data)
+
+        os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
+
+        return HttpResponse(data_json, content_type="application/json")
+
+@csrf_exempt
+def ventas(request):
+
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+
+        print data
+
+        nombre = None
+        dni = None
+        fecha_nacimiento = None
+        telefono1 = None
+        telefono2 = None
+        mail = None
+        cantidad = None
+        nombredelproducto = None
+        cobertura = None
+        direccion = None
+        tipo_envio =None
+        prima = None
+        todo_prima = None
+        facebook = None
+        lpd= None
+        deacuerdo= None
+        nomagente = None
+
+        
+        for d in data:
+
+            if d == 'nombre':
+
+                nombre = data['nombre']
+
+            if d == 'dni':
+
+                dni = data['dni']
+
+            if d == 'fecha_nacimiento':
+
+                fecha_nacimiento = data['fecha_nacimiento']
+
+            if d == 'telefono1':
+
+                telefono1 = data['telefono1']
+
+            if d == 'telefono2':
+
+                telefono2 = data['telefono2']
+
+            if d == 'mail':
+
+                mail = data['mail']
+
+            if d == 'cantidad':
+
+                cantidad = data['cantidad']
+
+            if d == 'nombredelproducto':
+
+                nombredelproducto = data['nombredelproducto']
+
+            if d == 'cobertura':
+
+                cobertura = data['cobertura']
+
+            if d == 'direccion':
+
+                direccion = data['direccion']
+
+            if d == 'tipo_envio':
+
+                tipo_envio = data['tipo_envio']
+
+            if d == 'prima':
+
+                prima = data['prima']
+
+            if d == 'todo_prima':
+
+                todo_prima = data['todo_prima']
+
+            if d == 'facebook':
+
+                facebook = data['facebook']
+
+            if d == 'lpd':
+
+                deacuerdo = data['lpd']
+
+            if d == 'nomagente':
+
+                nomagente = data['nomagente']
+
+        base = OrigBaseC01.objects.get(dni=dni)
+        base.nombre = nombre
+        base.dni = dni
+        base.fecha_nacimiento = fecha_nacimiento
+        base.telefono1 = telefono1
+        base.telefono2 = telefono2
+        base.mail = mail
+        base.cantidad = cantidad
+        base.nombredelproducto = nombredelproducto
+        base.cobertura = cobertura
+        base.direccion = direccion
+        base.tipo_envio =tipo_envio
+        base.prima = prima
+        base.todo_prima = todo_prima
+        base.facebook = facebook
+        base.deacuerdo = deacuerdo
+        
+        base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
+
+        base.save()
+
+        data = ValuesQuerySetToDict(data)
+
+        data_json = simplejson.dumps(data)
+
+        os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
+
 
         return HttpResponse(data_json, content_type="application/json")
 
@@ -662,11 +870,12 @@ def generablancos(data):
     return e
 
 @csrf_exempt
-def trama(request):
+def trama(request,dni):
 
     if request.method == 'GET':
 
 
+        base = OrigBaseC01.objects.get(dni=dni)
         
         m = []
 
@@ -679,16 +888,8 @@ def trama(request):
         eb = 10 - len(ccampana)
         ccampana = ccampana + generablancos(eb)
 
-
-
-        # Codigo de Producto Paquete - 6
-        cproducto = 'PE1601'
-        eb = 6 - len(cproducto)
-        cproducto = cproducto + generablancos(eb)
-
-
         # DNI
-        dni = '5801      '
+        dni = base.dni
         eb = 15 - len(dni)
         dni = dni + generablancos(eb)
 
@@ -698,33 +899,38 @@ def trama(request):
         eb = 2 - len(tcobertura)
         tcobertura = tcobertura + generablancos(eb)
 
+        base.nombre = base.nombre.encode('ascii','ignore')
+        base.nombre = base.nombre.encode('ascii','replace')
+
 
         #Nombre Apellido - 50
-        nombre = 'CARLOS ALCANTARA RAMIRES PERES'
+        nombre = base.nombre
         eb = 50 - len(nombre)
         nombre = nombre + generablancos(eb)
     
 
         #Nombre del Contratante - 30
-        ncontratante = 'CARLOS'
+        ncontratante = ''
         eb = 30 - len(ncontratante)
         ncontratante = ncontratante + generablancos(eb)
 
 
         #Segundo Nombre del contratante - 15
-        scontratante = 'ALCANTARA'
+        scontratante = ''
         eb = 15 - len(scontratante)
         scontratante = scontratante + generablancos(eb)
 
 
         #Apellidos del contratante - 30
-        apcontratante = 'RAMIRES PERES'
+        apcontratante = ''
         eb = 30 - len(apcontratante)
         apcontratante = apcontratante + generablancos(eb)
 
 
         #Direccion 1 - 30
-        direccion1 = 'Av Primavera 234'
+        if base.direccion == None:
+            base.direccion =''
+        direccion1 = base.direccion
         eb = 30 - len(direccion1)
         direccion1 = direccion1 + generablancos(eb)
 
@@ -745,15 +951,13 @@ def trama(request):
         eb = 30 - len(provincia)
         provincia = provincia + generablancos(eb)
 
-
-
         #Departamento-2
         departamento ='ZG'
         eb = 2 - len(departamento)
         departamento = departamento + generablancos(eb)
 
         #Sexo-2
-        sexo ='01'
+        sexo =base.sexo
         eb = 2 - len(sexo)
         sexo = sexo + generablancos(eb)
 
@@ -763,8 +967,6 @@ def trama(request):
         poliza ='01'
         eb = 2 - len(poliza)
         poliza = poliza + generablancos(eb)
-
-
 
         #transaccion
         transaccion ='NEW'
@@ -776,13 +978,15 @@ def trama(request):
 
 
         #Telefono de Casa - 20
-        telfcasa = '2578581'
+        if base.telefono2 == None:
+            base.telefono2 = ''
+        telfcasa = base.telefono2
         eb = 20 - len(telfcasa)
         telfcasa = telfcasa + generablancos(eb)
 
 
         #Telefono de trabajo - 20
-        telftrabajo = '7485874'
+        telftrabajo = base.telefono1
         eb = 20 - len(telftrabajo)
         telftrabajo = telftrabajo + generablancos(eb)
 
@@ -790,26 +994,26 @@ def trama(request):
         dependientes = '00'
 
         #Fecha de expiracion - 100
-        fexpiracion = '03/17'
+        #fexpiracion = '03/17'
+        fexpiracion = str(base.fecha_vencimiento).split('-')[1]+'/'+str(base.fecha_vencimiento)[2:4]
         eb = 5- len(fexpiracion)
         fexpiracion = fexpiracion + generablancos(eb)
 
 
-
         #Fecha de Naciomiento - 100
-        reference3 = '230230'
+        reference3 = base.codigoautorizacion
         eb = 100 - len(reference3)
         reference3 = reference3 + generablancos(eb)
 
 
         #Fecha de Naciomiento - 8
-        fechadenacimiento = '19570302'
+        fechadenacimiento = base.fecha_nacimiento.replace('-','')
         eb = 8 - len(fechadenacimiento)
         fechadenacimiento = fechadenacimiento + generablancos(eb)
 
 
         #Email - 40 
-        email = 'joelunmsm@gmail.com'
+        email = base.mail
         eb = 40 - len(email)
         email = email + generablancos(eb)
 
@@ -824,35 +1028,41 @@ def trama(request):
         eb = 2080 - len(datespecpro)
         datespecpro = datespecpro + generablancos(eb)
 
-
         codigoproductosimple = 'PAP494'
         eb = 60 - len(codigoproductosimple)
         codigoproductosimple = codigoproductosimple + generablancos(eb)
 
 
         #Cuenta bancaria - 20
-        cuentabancaria = '99999999999999999'
+        cuentabancaria = base.tarjetacredito
         eb = 20 - len(cuentabancaria)
         cuentabancaria = cuentabancaria + generablancos(eb)
 
         #DNI - 15
-        dni = '41222930'
+        dni = base.dni
         eb = 15 - len(dni)
         dni = dni + generablancos(eb)
 
         #telefono casa - 20
-        telefonocasa = '2578481'
+        telefonocasa = base.telefono2
         eb = 20 - len(telefonocasa)
         telefonocasa = telefonocasa + generablancos(eb)
 
 
         #telefono casa - 20
-        vendedor = 'CARLOS'
+        vendedor = base.nombre_agente
         eb = 20 - len(vendedor)
         vendedor = vendedor + generablancos(eb)
 
-        #telefono casa - 20
-        codigotarjeta = 'P9'
+        print str(base.tipo_tarjeta)[0:10]
+
+        if str(base.tipo_tarjeta)[0:4] == 'Visa':
+            codigotarjeta = 'P9'
+        if str(base.tipo_tarjeta)[0:10] == 'MasterCard':
+            codigotarjeta = 'P8' 
+            print 'entre masti'
+
+        print codigotarjeta
         eb = 2 - len(codigotarjeta)
         codigotarjeta = codigotarjeta + generablancos(eb)
 
@@ -922,12 +1132,14 @@ def trama(request):
         data = ''.join(m)
 
         print 'carater 10' ,data[108]
+
+
         
         # data[0:2] = '22323'
 
         # data[2:4] = 'yeyey'
 
-        # print data
+        print data
 
         response = HttpResponse(content_type='text/csv')
     
@@ -971,9 +1183,20 @@ def cliente(request,dni):
 
     if request.method == 'GET':
 
-        data = OrigBaseC01.objects.filter(dni=dni).values('tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
+        data = OrigBaseC01.objects.filter(dni=dni,cod_cam=29).values('fecha_venta_bbva','tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
         
-        print data
+        
+        fmt = '%Y-%b-%d %H:%M:%S'
+
+        for x in range(len(data)):
+
+            if OrigBaseC01.objects.filter(id=data[x]['id']).values('fecha_venta_bbva')[0]['fecha_venta_bbva']:
+
+                data[x]['fecha_venta_bbva'] = OrigBaseC01.objects.get(id=data[x]['id']).fecha_venta_bbva.strftime(fmt)
+
+            if OrigBaseC01.objects.filter(id=data[x]['id']).values('fecha_tipifica_bbva')[0]['fecha_tipifica_bbva']:
+
+                data[x]['fecha_tipifica_bbva'] = OrigBaseC01.objects.get(id=data[x]['id']).fecha_tipifica_bbva.strftime(fmt)
 
         data = ValuesQuerySetToDict(data)
 
@@ -1120,7 +1343,6 @@ def tipifica(request):
 
             b.nombre_agente = nomagente
 
-
             b.fecha_tipifica_bbva = datetime.today()-timedelta(hours=5)
 
 
@@ -1147,5 +1369,7 @@ def tipifica(request):
         data = ValuesQuerySetToDict('data')
 
         data_json = simplejson.dumps(data)
+
+        os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(dni))
 
         return HttpResponse(data_json, content_type="application/json")

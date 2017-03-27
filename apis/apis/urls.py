@@ -25,11 +25,16 @@ urlpatterns = [
     url(r'^llamadasxdni/(\w+)$', 'gestion.views.llamadasxdni'),
     url(r'^saveagente/(\w+)/(\w+)$', 'gestion.views.saveagente'),
     url(r'^traebase/(\w+)$', 'gestion.views.traebase'),
-    url(r'^trama$', 'gestion.views.trama'),
+    url(r'^trama/(\w+)$', 'gestion.views.trama'),
+    url(r'^generatrama$', 'gestion.views.generatrama'),
     url(r'^actualizabbva$', 'gestion.views.actualizabbva'),
     url(r'^venta$', 'gestion.views.venta'),
     url(r'^reportebbva/(\w+)$', 'gestion.views.reportebbva'),
     url(r'^audios/$', 'gestion.views.audios'),
+    url(r'^ventas$', 'gestion.views.ventas'),
+    url(r'^reportebbva/(\w+)$', 'gestion.views.reportebbva'),
+    url(r'^audios/$', 'gestion.views.audios'),
+    url(r'^actualizatrama$', 'gestion.views.actualizatrama'),
 
 
     #Hotels

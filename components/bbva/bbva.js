@@ -58,6 +58,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                $scope.exito = false
 
+               $('.bbva').show();
+
 
 
                 LlamadaService.cliente(dni).then(function(data) {
@@ -85,6 +87,9 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
          $scope.actualizabbva =function(cliente){
+
+
+              cliente.nomagente = $scope.nomagente
 
 
               $('#actualiza').modal('hide');

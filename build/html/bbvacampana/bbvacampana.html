@@ -5,7 +5,36 @@
 
 		<div class='row'>
 
+	
 
+
+
+		<div class='col-md-2' ng-show='cliente.fecha_tipifica_bbva'>
+			
+
+	<!-- 				
+			<i ng-show='exito' class="fa fa-check" aria-hidden="true"></i>
+			<i ng-hide='exito' class="fa fa-o" aria-hidden="true"></i>
+ -->
+
+
+			<input  placeholder='Ingrese DNI...' ng-change='go(dni)' type="text" class="form-control"  ng-model='dni' id="nombre" >
+
+
+
+		</div>
+
+		<div class='col-md-2' ng-show='!cliente.fecha_tipifica_bbva'>
+
+					<div class='row'>
+							<div class='col-md-12'>
+
+							<span class='aler'>Porfavor Tipifique</span>
+							</div>
+						
+					</div>
+
+		</div>
 
 		<div class='col-xs-12 col-sm-6 col-md-10   animated bounceInDown' id='campana'>
 			
@@ -29,8 +58,16 @@
 		<hr></hr>
 
 
+ 		<div ng-show='cliente.fecha_tipifica_bbva'>
 
-		<div class='row'>
+ 		<p><center> Exitos! </center></p>
+
+		<center><img src="https://s-media-cache-ak0.pinimg.com/originals/c5/ab/d7/c5abd76f5fe4d2d7163ed809fee84bb2.gif" class='img-responsive'></center>
+</div> 
+
+
+
+		<div class='row ' >
 
 		<div class='col-md-4'>
 
@@ -52,6 +89,7 @@
 
 		</div>
 
+		
 		
 <!-- <llamadascomponent></llamadascomponent>
  -->

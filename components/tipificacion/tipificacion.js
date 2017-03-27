@@ -14,7 +14,7 @@ angular
 
 
 
-function TipificacionController($stateParams,$filter,$scope,$location,$http,$log,TipificaService,LlamadaService){
+function TipificacionController($state,$stateParams,$filter,$scope,$location,$http,$log,TipificaService,LlamadaService){
 
 
       ctrl = this
@@ -22,6 +22,9 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
       url = $location.url()
 
       dni = $stateParams.dni
+
+
+      $('.bbva').show()
 
 
 
@@ -36,7 +39,7 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
 
               LlamadaService.cliente(dni).then(function(data) {
 
-                console.log('Ventachub...',data)
+                console.log('Tipifica...',data)
 
                 $scope.cliente = data[0]
 
@@ -74,6 +77,8 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
 
       LlamadaService.base($scope.base).then(function(data) {
 
+        console.log('base...',data)
+
         $scope.resultado = data[0]
 
         $scope.resultado.contacto = $filter('filter')($scope.contacto,{'id' : $scope.resultado.contacto})[0]     
@@ -100,32 +105,70 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
       $scope.tipifica =function(data){
 
 
-            console.log('YYYYY',$scope.idagente)
+            if(data.contacto==8 && !data.accion){
 
-            data.base = $scope.base
+                swal({
+                  title: "Tipificacion Error",
+                  text: "Seleccionar una accion para que puedas tipificar",
+                  type: "error",
+                  showCancelButton: false,
+                  confirmButtonColor: "#5bc0de",
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: true
+                },
+                function(){
+                  
+                });
 
-            data.idagente = $scope.idagente 
+                
+            }
+            else{
 
-            data.nomagente = $scope.nomagente
+                data.dni = dni
 
-            TipificaService.tipifica(data).then(function(data) {
+                data.base = $scope.base
 
-            console.log('dhhd')
+                data.idagente = $scope.idagente 
 
-            swal({
-              title: "Tipificacion",
-              text: "Tus cambios se guardaron con exito",
-              type: "success",
-              showCancelButton: false,
-              confirmButtonColor: "#5bc0de",
-              confirmButtonText: "Cerrar",
-              closeOnConfirm: true
-            },
-            function(){
-              
-            });
+                data.nomagente = $scope.nomagente
 
-            })
+                TipificaService.tipifica(data).then(function(data) {
+
+                console.log('dhhd')
+
+                swal({
+                  title: "Tipificacion",
+                  text: "Tus cambios se guardaron con exito",
+                  type: "success",
+                  showCancelButton: false,
+                  confirmButtonColor: "#5bc0de",
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: true
+                },
+                function(){
+
+                  $scope.cliente=''
+                  $state.reload()
+
+                  
+                });
+
+                })
+
+
+               // $('.bbva').hide()
+
+
+
+             
+                
+
+
+            }
+
+           
+
+
 
       }
 
@@ -141,8 +184,60 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
             })
       }
 
+      $scope.tipificashow = true
+
+
+      $scope.tipificamal = function(){
+
+
+          swal({
+              title: "Tipificacion no permitida",
+              text: "Realizar venta primero",
+              type: "error",
+              showCancelButton: false,
+              confirmButtonColor: "#5bc0de",
+              confirmButtonText: "Cerrar",
+              closeOnConfirm: true
+            },
+            function(){
+              
+            });
+
+
+
+      }
+
 
       $scope.traeacciones =function(data){
+
+        $scope.tipificashow = true
+
+
+        console.log('tarslsls',data)
+
+        if(data== 7){
+
+
+          if ($scope.cliente.fecha_venta_bbva){
+
+            console.log('144444444443')
+
+            $scope.tipificashow = true
+          }
+          else{
+
+            $scope.tipificashow = false
+
+
+            console.log('200000')
+
+          }
+
+
+        }
+
+
+
 
         TipificaService.accion(data).then(function(data) {
 
