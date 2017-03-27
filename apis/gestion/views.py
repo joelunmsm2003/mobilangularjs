@@ -11,6 +11,7 @@ import simplejson
 from django.views.decorators.csrf import csrf_exempt
 import xlrd
 from gestion.models import *
+
 from PIL import Image
 
 from django.http import HttpResponse
@@ -79,6 +80,21 @@ def llamadas(request,dni):
         data_json = simplejson.dumps(data)
 
         return HttpResponse(data_json, content_type="application/json")
+
+
+@csrf_exempt
+def audios(request):
+
+    if request.method == 'GET':
+
+        print OriUsuario.objects.using('orion').all()
+
+        data = ValuesQuerySetToDict('data')
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
 
 @csrf_exempt
 def todosestados(request):
@@ -234,6 +250,122 @@ def actualizabbva(request):
 
         return HttpResponse(data_json, content_type="application/json")
 
+@csrf_exempt
+def venta(request):
+
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+
+        print data
+
+        nombre = None
+        dni = None
+        fecha_nacimiento = None
+        telefono1 = None
+        telefono2 = None
+        mail = None
+        cantidad = None
+        nombredelproducto = None
+        cobertura = None
+        direccion = None
+        tipo_envio =None
+        prima = None
+        todo_prima = None
+        facebook = None
+        lpd= None
+        deacuerdo= None
+
+        
+        for d in data:
+
+            if d == 'nombre':
+
+                nombre = data['nombre']
+
+            if d == 'dni':
+
+                dni = data['dni']
+
+            if d == 'fecha_nacimiento':
+
+                fecha_nacimiento = data['fecha_nacimiento']
+
+            if d == 'telefono1':
+
+                telefono1 = data['telefono1']
+
+            if d == 'telefono2':
+
+                telefono2 = data['telefono2']
+
+            if d == 'mail':
+
+                mail = data['mail']
+
+            if d == 'cantidad':
+
+                cantidad = data['cantidad']
+
+            if d == 'nombredelproducto':
+
+                nombredelproducto = data['nombredelproducto']
+
+            if d == 'cobertura':
+
+                cobertura = data['cobertura']
+
+            if d == 'direccion':
+
+                direccion = data['direccion']
+
+            if d == 'tipo_envio':
+
+                tipo_envio = data['tipo_envio']
+
+            if d == 'prima':
+
+                prima = data['prima']
+
+            if d == 'todo_prima':
+
+                todo_prima = data['todo_prima']
+
+            if d == 'facebook':
+
+                facebook = data['facebook']
+
+            if d == 'lpd':
+
+                deacuerdo = data['lpd']
+
+        base = OrigBaseC01.objects.get(dni=dni)
+        base.nombre = nombre
+        base.dni = dni
+        base.fecha_nacimiento = fecha_nacimiento
+        base.telefono1 = telefono1
+        base.telefono2 = telefono2
+        base.mail = mail
+        base.cantidad = cantidad
+        base.nombredelproducto = nombredelproducto
+        base.cobertura = cobertura
+        base.direccion = direccion
+        base.tipo_envio =tipo_envio
+        base.prima = prima
+        base.todo_prima = todo_prima
+        base.facebook = facebook
+        base.deacuerdo = deacuerdo
+        
+        base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
+
+        base.save()
+
+        data = ValuesQuerySetToDict(data)
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
 
 @csrf_exempt
 def acciones(request,contacto):
@@ -350,7 +482,7 @@ def reportebbva(request,contacto):
         # 'cantidad','tipodecobertura','tipodedocumento','tienetarjetadecredito','facebook','nombredeagente'
         # 'contacto__nombre','accion__nombre','fecha_tipifica_bbva'
 
-        data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','tipo_tarjeta','observaciones','prima_mensual','cantidad','tipodecobertura','tipodedocumento','tienetarjetadecredito','facebook','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva')
+        data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva')
 
 
         # for j in range(len(data)):
@@ -373,9 +505,7 @@ def reportebbva(request,contacto):
         writer = csv.writer(response)
 
         writer.writerow(['dni','nombre','telefono1','telefono2','mail',
-        'tipo_envio','cobertura','cant_afiliados','fecha_nacimiento',
-        'tipo_tarjeta','observaciones','prima_mensual','cantidad','tipodecobertura','tipodedocumento'
-        ,'tienetarjetadecredito','facebook','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva'])
+        'tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva'])
 
         print 'Csv...'
 
@@ -421,17 +551,17 @@ def reportebbva(request,contacto):
                 d['fecha_nacimiento'] = d['fecha_nacimiento'].encode('ascii','ignore')
                 d['fecha_nacimiento'] = d['fecha_nacimiento'].encode('ascii','replace')
 
-            if d['tipo_tarjeta']:
-                d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','ignore')
-                d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','replace')
+            # if d['tipo_tarjeta']:
+            #     d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','ignore')
+            #     d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','replace')
 
             if d['observaciones']:
                 d['observaciones'] = d['observaciones'].encode('ascii','ignore')
                 d['observaciones'] = d['observaciones'].encode('ascii','replace')
 
-            if d['prima_mensual']:
-                d['prima_mensual'] = d['prima_mensual'].encode('ascii','ignore')
-                d['prima_mensual'] = d['prima_mensual'].encode('ascii','replace')
+            # if d['prima_mensual']:
+            #     d['prima_mensual'] = d['prima_mensual'].encode('ascii','ignore')
+            #     d['prima_mensual'] = d['prima_mensual'].encode('ascii','replace')
 
             # if d['todo_prima']:
             #     d['todo_prima'] = d['todo_prima'].encode('ascii','ignore')
@@ -442,17 +572,17 @@ def reportebbva(request,contacto):
             #     d['nombredelproducto'] = d['nombredelproducto'].encode('ascii','ignore')
             #     d['nombredelproducto'] = d['nombredelproducto'].encode('ascii','replace')
 
-            if d['tipodecobertura']:
-                d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','ignore')
-                d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','replace')
+            # if d['tipodecobertura']:
+            #     d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','ignore')
+            #     d['tipodecobertura'] = d['tipodecobertura'].encode('ascii','replace')
 
-            if d['tipodedocumento']:
-                d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','ignore')
-                d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','replace')
+            # if d['tipodedocumento']:
+            #     d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','ignore')
+            #     d['tipodedocumento'] = d['tipodedocumento'].encode('ascii','replace')
 
-            if d['tienetarjetadecredito']:
-                d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','ignore')
-                d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','replace')
+            # if d['tienetarjetadecredito']:
+            #     d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','ignore')
+            #     d['tienetarjetadecredito'] = d['tienetarjetadecredito'].encode('ascii','replace')
 
             # if d['tarjetasadicionales']:
             #     d['tarjetasadicionales'] = d['tarjetasadicionales'].encode('ascii','ignore')
@@ -466,9 +596,9 @@ def reportebbva(request,contacto):
             #     d['tienelpdp'] = d['tienelpdp'].encode('ascii','ignore')
             #     d['tienelpdp'] = d['tienelpdp'].encode('ascii','replace')
 
-            if d['facebook']:
-                d['facebook'] = d['facebook'].encode('ascii','ignore')
-                d['facebook'] = d['facebook'].encode('ascii','replace')
+            # if d['facebook']:
+            #     d['facebook'] = d['facebook'].encode('ascii','ignore')
+            #     d['facebook'] = d['facebook'].encode('ascii','replace')
 
             # if d['fecha_vencimiento']:
             #     d['fecha_vencimiento'] = d['fecha_vencimiento'].encode('ascii','ignore')
@@ -516,7 +646,7 @@ def reportebbva(request,contacto):
             # d['recibects'],d['tienelpdp'],d['facebook'],d['fecha_vencimiento'],d['nombre_agente'],
             # d['observacion'],d['deacuerdo'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva']])
 
-            writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['mail'],d['tipo_envio'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],d['tipo_tarjeta'],d['observaciones'],d['prima_mensual'],d['cantidad'],d['tipodecobertura'],d['tipodedocumento'],d['tienetarjetadecredito'],d['facebook'],d['nombre_agente'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva']])
+            writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['mail'],d['tipo_envio'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],d['observaciones'],d['cantidad'],d['nombre_agente'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva']])
 
         return response   
    

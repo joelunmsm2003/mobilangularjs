@@ -53,11 +53,11 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
             }
 
 
-         $scope.actualizabbva =function(cliente){
+         $scope.ventabbva =function(cliente){
 
 
 
-              BbvaService.actualizar(cliente).then(function(data) {
+              BbvaService.venta(cliente).then(function(data) {
 
 
                       swal({

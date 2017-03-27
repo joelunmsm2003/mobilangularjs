@@ -90,6 +90,14 @@ DATABASES = {
         'HOST': '192.168.40.4', 
         'PORT': '3306'
      
+    },
+    'orion': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'orionc7',
+        'USER': 'root',
+        'PASSWORD': '1q2w3e4r5t',
+        'HOST': '192.168.40.4', 
+        'PORT': '3306'
     }
 }
 

@@ -407,6 +407,33 @@ function HistorialController($scope,$location,$http){
 
 }
 
+angular
+  .module('app')
+  .component('ingresarcomponent', {
+    templateUrl: 'html/ingresar/ingresar.html',
+    controller: IngresarController
+  });
+
+
+function IngresarController($scope,UserService){
+
+
+
+	$scope.ingresar = function(data){
+
+	console.log('Ijjjsjs',UserService.ingresar(data))
+
+	$("#myModal").modal('hide');
+
+	
+	swal.close()
+
+
+	}
+
+
+}
+
 
 function HomeController($stateParams,$scope,$location,$http,LlamadaService){
 
@@ -494,33 +521,6 @@ function HomeController($stateParams,$scope,$location,$http,LlamadaService){
 
 
 
-
-
-}
-
-angular
-  .module('app')
-  .component('ingresarcomponent', {
-    templateUrl: 'html/ingresar/ingresar.html',
-    controller: IngresarController
-  });
-
-
-function IngresarController($scope,UserService){
-
-
-
-	$scope.ingresar = function(data){
-
-	console.log('Ijjjsjs',UserService.ingresar(data))
-
-	$("#myModal").modal('hide');
-
-	
-	swal.close()
-
-
-	}
 
 
 }
@@ -1024,8 +1024,6 @@ function TipificacionController($stateParams,$filter,$scope,$location,$http,$log
 
             console.log('YYYYY',$scope.idagente)
 
-            data.dni = $stateParams.dni
-
             data.base = $scope.base
 
             data.idagente = $scope.idagente 
@@ -1152,11 +1150,11 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
             }
 
 
-         $scope.actualizabbva =function(cliente){
+         $scope.ventabbva =function(cliente){
 
 
 
-              BbvaService.actualizar(cliente).then(function(data) {
+              BbvaService.venta(cliente).then(function(data) {
 
 
                       swal({
