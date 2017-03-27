@@ -2,4 +2,4 @@
 ./apis/apis/settings.py
 ./run.sh
 ./build/js/index.js
-index.js
+.index.js
