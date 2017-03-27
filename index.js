@@ -12,7 +12,7 @@ angular
 
     host='http://192.168.40.231:8000/'
 
-    console.log('Esto no deberia nnn')
+    console.log('Esto no deberiassss nnn')
 
     host_primary='http://192.168.40.4/'
     
