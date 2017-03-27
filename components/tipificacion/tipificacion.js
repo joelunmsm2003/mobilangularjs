@@ -146,13 +146,19 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
                   closeOnConfirm: true
                 },
                 function(){
+
+                  $scope.cliente=''
+                  $state.reload()
+
                   
                 });
 
                 })
 
 
-                $('.bbva').hide()
+               // $('.bbva').hide()
+
+
 
              
                 

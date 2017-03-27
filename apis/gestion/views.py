@@ -123,7 +123,7 @@ def generatrama(request):
 
         dni = data['dni']
 
-        base = OrigBaseC01.objects.filter(dni=dni).values('codigoautorizacion','tarjetacredito','sexo','tipo_tarjeta','mail','dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre')
+        base = OrigBaseC01.objects.filter(dni=dni).values('distrito','provincia','departamento','direccion','codigoautorizacion','tarjetacredito','sexo','tipo_tarjeta','mail','dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre')
 
         data = ValuesQuerySetToDict(base)
 
@@ -152,18 +152,54 @@ def actualizatrama(request):
 
         data = json.loads(request.body)
 
-        dni = data['dni']
-        codigoautorizacion = data['codigoautorizacion']
-        tarjetabancaria = data['tarjetacredito']
-        sexo = data['sexo']
+        dni = None
+        codigoautorizacion = None
+        tarjetabancaria = None
+        sexo = None 
 
+        for d in data:
 
+            if d == 'dni':
+
+                dni = data['dni']
+
+            if d =='codigoautorizacion':
+
+                codigoautorizacion = data['codigoautorizacion']
+
+            if d == 'tarjetacredito':
+
+                tarjetabancaria = data['tarjetacredito']
+
+            if d == 'sexo':
+
+                sexo = data['sexo']
+
+            if d == 'direccion':
+
+                direccion = data['direccion']
+
+            if d == 'distrito':
+
+                distrito = data['distrito']
+
+            if d == 'provincia':
+
+                provincia = data['provincia']
+
+            if d == 'departamento':
+
+                departamento = data['departamento']
 
 
         base = OrigBaseC01.objects.get(dni=dni)
         base.codigoautorizacion = codigoautorizacion
         base.tarjetacredito = tarjetabancaria
         base.sexo=sexo
+        base.direccion = direccion
+        base.distrito = distrito
+        base.provincia=provincia
+        base.departamento=departamento
 
         base.save()
 
@@ -419,6 +455,122 @@ def ventas(request):
 
         os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
 
+
+        return HttpResponse(data_json, content_type="application/json")
+
+@csrf_exempt
+def venta(request):
+
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+
+        print data
+
+        nombre = None
+        dni = None
+        fecha_nacimiento = None
+        telefono1 = None
+        telefono2 = None
+        mail = None
+        cantidad = None
+        nombredelproducto = None
+        cobertura = None
+        direccion = None
+        tipo_envio =None
+        prima = None
+        todo_prima = None
+        facebook = None
+        lpd= None
+        deacuerdo= None
+
+        
+        for d in data:
+
+            if d == 'nombre':
+
+                nombre = data['nombre']
+
+            if d == 'dni':
+
+                dni = data['dni']
+
+            if d == 'fecha_nacimiento':
+
+                fecha_nacimiento = data['fecha_nacimiento']
+
+            if d == 'telefono1':
+
+                telefono1 = data['telefono1']
+
+            if d == 'telefono2':
+
+                telefono2 = data['telefono2']
+
+            if d == 'mail':
+
+                mail = data['mail']
+
+            if d == 'cantidad':
+
+                cantidad = data['cantidad']
+
+            if d == 'nombredelproducto':
+
+                nombredelproducto = data['nombredelproducto']
+
+            if d == 'cobertura':
+
+                cobertura = data['cobertura']
+
+            if d == 'direccion':
+
+                direccion = data['direccion']
+
+            if d == 'tipo_envio':
+
+                tipo_envio = data['tipo_envio']
+
+            if d == 'prima':
+
+                prima = data['prima']
+
+            if d == 'todo_prima':
+
+                todo_prima = data['todo_prima']
+
+            if d == 'facebook':
+
+                facebook = data['facebook']
+
+            if d == 'lpd':
+
+                deacuerdo = data['lpd']
+
+        base = OrigBaseC01.objects.get(dni=dni)
+        base.nombre = nombre
+        base.dni = dni
+        base.fecha_nacimiento = fecha_nacimiento
+        base.telefono1 = telefono1
+        base.telefono2 = telefono2
+        base.mail = mail
+        base.cantidad = cantidad
+        base.nombredelproducto = nombredelproducto
+        base.cobertura = cobertura
+        base.direccion = direccion
+        base.tipo_envio =tipo_envio
+        base.prima = prima
+        base.todo_prima = todo_prima
+        base.facebook = facebook
+        base.deacuerdo = deacuerdo
+        
+        base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
+
+        base.save()
+
+        data = ValuesQuerySetToDict(data)
+
+        data_json = simplejson.dumps(data)
 
         return HttpResponse(data_json, content_type="application/json")
 

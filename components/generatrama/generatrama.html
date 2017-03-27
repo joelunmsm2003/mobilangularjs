@@ -3,17 +3,16 @@
 
 
 <h1>Generador de Tramas</h1>
-
+{{base.direccion}}
 
 <form ng-submit='agregar(data)'>
 
 
+
       <div class="form-group"> <label class="sr-only"for="usr">DNI:</label>
-        <input type="text" ng-model='data.dni' class="form-control" required id="usr" placeholder ='Ingrese DNI'>
+        <input type="text" ng-model='data.dni' class="form-control"  id="usr" placeholder ='Ingrese DNI'>
 
       </div>
-
-
 
 
       <div class="form-group">
@@ -27,8 +26,9 @@
 <form class="form-inline" ng-submit='actualizatrama(base)'>
     
     <div class="form-group">
-     <label class="sr-only"class="sr-only" class="sr-only"  for='ct'>Nro.Cuenta Bancaria</label>
-      <input type="texttext" class="form-control" ng-model='base.tarjetacredito' required id="ct" placeholder="Nro.Cuenta Bancaria">
+
+     <label class="sr-only"class="sr-only" class="sr-only"  for='ct'>Nro.Cuenta o  Tarjeta Bancaria  </label>
+      <input type="texttext" class="form-control" ng-model='base.tarjetacredito'  id="ct" placeholder="Nro.Cuenta o  Tarjeta Bancaria">
     </div>
 
 
@@ -43,7 +43,7 @@
     <div class="form-group">
 
        <label class="sr-only"for='plan'>Plan</label>
-       <input type="text" class="form-control" value='1' disabled required id="plan" placeholder="Plan">
+       <input type="text" class="form-control" value='1' disabled  id="plan" placeholder="Plan">
 
     </div>
 
@@ -77,6 +77,13 @@
 
       <label class="sr-only"for='nc'>Nombre Cliente</label>
       <input type="text" class="form-control" ng-model='base.nombre' disabled id="nc" placeholder="Nombre Cliente">
+
+    </div>
+
+        <div class="form-group">
+
+      <label class="sr-only" for='nc'>Direccion</label>
+      <input type="text" class="form-control" ng-model='base.direccion'  id="nc" placeholder="Direccion">
 
     </div>
 
@@ -117,7 +124,7 @@
 
     <div class="form-group">
      <label class="sr-only"class="sr-only" for='sex'>Sexo</label>
-      <select  class="form-control" ng-model='base.sexo' required id="sex" placeholder="Sexo">
+      <select  class="form-control" ng-model='base.sexo'  id="sex" placeholder="Sexo">
       <option></option>
       <option value='01'>Masculino</option>
       <option value='02'>Femenino</option>
@@ -136,7 +143,7 @@
 
      <div class="form-group">
      <label class="sr-only"class="sr-only" for='ca'>Codigo de Autorizacion</label>
-      <input type="text" class="form-control" ng-model='base.codigoautorizacion' required id="ca" placeholder="Codigo de Autorizacion">
+      <input type="text" class="form-control" ng-model='base.codigoautorizacion'  id="ca" placeholder="Codigo de Autorizacion">
     </div>
 
 
@@ -161,3 +168,4 @@
 
 </div>
 </div>
+

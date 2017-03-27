@@ -194,12 +194,19 @@ function BbvacampanaController(LlamadaService,$stateParams,$scope,$location,$htt
         $scope.nomagente = $stateParams.nomagente
 
 
+        LlamadaService.cliente(dni).then(function(data) {
+
+        console.log('Datos del dni',data[0])
+
+        $scope.cliente = data[0]
+
+
+        })
+
+
                   $scope.go=function(dni){
 
-
                $scope.exito = false
-
-
 
                 LlamadaService.cliente(dni).then(function(data) {
 
@@ -1178,13 +1185,19 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
                   closeOnConfirm: true
                 },
                 function(){
+
+                  $scope.cliente=''
+                  $state.reload()
+
                   
                 });
 
                 })
 
 
-                $('.bbva').hide()
+               // $('.bbva').hide()
+
+
 
              
                 
@@ -1353,8 +1366,6 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
 
 
               cliente.nomagente = $scope.nomagente
-
-
 
               BbvaService.venta(cliente).then(function(data) {
 

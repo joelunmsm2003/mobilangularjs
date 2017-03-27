@@ -1,4 +1,6 @@
+
 				<form ng-submit='ventabbva(cliente)' class='bbva' >
+
 
 				<legend>Ventas CHUBB</legend>
 
@@ -20,7 +22,6 @@
 									</div>
 
 
-	
 									
 									<div class='col-md-6'>
 						
@@ -92,7 +93,9 @@
 								<div class="form-group">
 									<label for="dni">Tipo de Cobertura</label>
 
+
 									<select  class="form-control"  ng-model='cliente.cobertura' required><option  value='Solo titular'>Solo Titular</option>
+
 									<option value='Titular y Esposo'>Titular y Esposo(a)</option>
 									<option value='Titular y Familiares'>Titular y Familiares</option>
 									<option value='Titular y Dependientes'>Titular y Dependientes</option>
@@ -105,13 +108,16 @@
 
 								<div class="form-group">
 									<label for="dni">Direccion</label>
+
 									<input   type="text" class="form-control"  ng-model='cliente.direccion' required id="dni">
+
 								</div>
 
 								<div class="form-group">
 									<label for="dni">Tipo de Envio</label>
-								
+
 									<select  class="form-control"  ng-model='cliente.tipo_envio' required><option></option><option value='Email'>Email</option>
+
 									<option value='Domicilio'>Domicilio</option>
 									
 									</select>
@@ -136,7 +142,9 @@
 
 									<div class="form-group">
 									<label for="dni">Todo Prima</label>
+
 									<input   type="text" class="form-control"  ng-model='cliente.todo_prima' required id="dni">
+
 									</div>
 
 								</div>

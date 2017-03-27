@@ -3,7 +3,15 @@
 								
 								<form ng-submit='tipifica(resultado)' class='animated zoomInDown bbva'>
 
-									<legend>TIPIFICACION {{resultado.telefono}}</legend>
+									
+													
+												
+								
+
+								<legend>TIPIFICACION {{resultado.telefono}} <span ng-show='!cliente.fecha_tipifica_bbva' class='aler'>Porfavor Tipifique</span>
+													</legend>
+
+
 
 								<div class="form-group">
 									<label for="nombre">Observacion</label>

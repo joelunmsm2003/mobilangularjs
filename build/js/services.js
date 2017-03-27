@@ -10,7 +10,6 @@ function BbvaService ($http,$q,$log,$localStorage) {
         generatrama:generatrama,
         actualizatrama:actualizatrama
 
-
     }
 
         function buscardni(dni){
@@ -109,8 +108,6 @@ function BbvaService ($http,$q,$log,$localStorage) {
 
     function trama(data){
 
-
-        var def = $q.defer();
 
         $http({
 

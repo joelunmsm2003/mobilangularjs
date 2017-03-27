@@ -58,8 +58,6 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
 
               cliente.nomagente = $scope.nomagente
 
-
-
               BbvaService.venta(cliente).then(function(data) {
 
 
