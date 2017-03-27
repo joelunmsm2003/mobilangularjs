@@ -643,6 +643,14 @@ function IngresarController($scope,UserService){
 }
 
 
+
+
+function InicioController($stateParams,$scope,$location,$http,LlamadaService){
+
+
+
+}
+
 angular
   .module('app')
   .component('llamadascomponent', {

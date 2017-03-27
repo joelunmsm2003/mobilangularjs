@@ -37,6 +37,13 @@ angular
             controller: ReporteController
         })
 
+        .state('inicio', {
+            url: '/inicio',
+            templateUrl: 'html/inicio/inicio.html',
+            controller: InicioController
+        })
+
+
 
 
 
