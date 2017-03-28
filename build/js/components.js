@@ -643,6 +643,14 @@ function IngresarController($scope,UserService){
 }
 
 
+
+
+function InicioController($stateParams,$scope,$location,$http,LlamadaService){
+
+
+
+}
+
 angular
   .module('app')
   .component('llamadascomponent', {
@@ -876,6 +884,34 @@ angular
 
 function ReportbbvachubbController($scope,$location,$http,LlamadaService){
 	 }
+angular
+  .module('app')
+  .component('signupcomponent', {
+    templateUrl: 'html/signup/signup.html',
+    controller: SignupController
+  });
+
+
+function SignupController($scope,UserService){
+
+	
+	$scope.creauser = function(data){
+
+	
+		UserService.crear(data, function(response) {
+
+		console.log('iiiii',response);
+
+
+		})
+
+		    
+		//UserService.ingresar(data)
+	}
+
+
+}
+
 
 
 function ReporteController($scope,$location,$http,TipificaService){
@@ -974,34 +1010,6 @@ function ReporteController($scope,$location,$http,TipificaService){
 
 
 
-
-
-}
-
-angular
-  .module('app')
-  .component('signupcomponent', {
-    templateUrl: 'html/signup/signup.html',
-    controller: SignupController
-  });
-
-
-function SignupController($scope,UserService){
-
-	
-	$scope.creauser = function(data){
-
-	
-		UserService.crear(data, function(response) {
-
-		console.log('iiiii',response);
-
-
-		})
-
-		    
-		//UserService.ingresar(data)
-	}
 
 
 }

@@ -12,8 +12,6 @@ angular
 
     host='http://192.168.40.4:1000/'
 
-    console.log('Esto no deberiassss perros')
-
     host_primary='http://192.168.40.4/'
     
     
@@ -36,6 +34,13 @@ angular
             templateUrl: 'html/reporte/reporte.html',
             controller: ReporteController
         })
+
+        .state('inicio', {
+            url: '/inicio',
+            templateUrl: 'html/inicio/inicio.html',
+            controller: InicioController
+        })
+
 
 
 

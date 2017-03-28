@@ -480,7 +480,11 @@ class OrigBaseC01(models.Model):
     codigoautorizacion = models.CharField(db_column='codigoautorizacion', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     sexo = models.CharField(db_column='sexo', max_length=10, blank=True, null=True)  # Field name made lowercase.
     tarjetacredito = models.CharField(db_column='tarjetacredito', max_length=1000, blank=True, null=True)  # Field name made lowercase.
-
+    primernombre = models.CharField(db_column='primernombre', max_length=1000, blank=True, null=True)  # Field name made lowercase.
+    fechaefectividad = models.CharField(db_column='fechaefectividad', max_length=1000, blank=True, null=True)  # Field name made lowercase.
+    segundonombre = models.CharField(db_column='segundonombre', max_length=1000, blank=True, null=True)  # Field name made lowercase.
+    apellidos = models.CharField(db_column='apellidos', max_length=1000, blank=True, null=True)  # Field name made lowercase.
+    
     class Meta:
         managed = True
         db_table = 'orig_base_C01'
