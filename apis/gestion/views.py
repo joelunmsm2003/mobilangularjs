@@ -123,7 +123,7 @@ def generatrama(request):
 
         dni = data['dni']
 
-        base = OrigBaseC01.objects.filter(dni=dni).values('distrito','provincia','departamento','direccion','codigoautorizacion','tarjetacredito','sexo','tipo_tarjeta','mail','dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre')
+        base = OrigBaseC01.objects.filter(dni=dni).values('primernombre','segundonombre','apellidos','fechaefectividad','distrito','provincia','departamento','direccion','codigoautorizacion','tarjetacredito','sexo','tipo_tarjeta','mail','dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre')
 
         data = ValuesQuerySetToDict(base)
 
@@ -152,10 +152,15 @@ def actualizatrama(request):
 
         data = json.loads(request.body)
 
+        print 'Actualizar Trama',data
+
         dni = None
         codigoautorizacion = None
         tarjetabancaria = None
         sexo = None 
+        primernombre = None
+        segundonombre = None
+        apellidos = None
 
         for d in data:
 
@@ -192,6 +197,26 @@ def actualizatrama(request):
                 departamento = data['departamento']
 
 
+            if d == 'primernombre':
+
+                primernombre = data['primernombre']
+
+
+            if d == 'segundonombre':
+
+                segundonombre = data['segundonombre']
+
+
+            if d == 'apellidos':
+
+                apellidos = data['apellidos']
+
+
+            if d == 'fechaefectividad':
+
+                fechaefectividad = data['fechaefectividad']
+
+
         base = OrigBaseC01.objects.get(dni=dni)
         base.codigoautorizacion = codigoautorizacion
         base.tarjetacredito = tarjetabancaria
@@ -200,6 +225,10 @@ def actualizatrama(request):
         base.distrito = distrito
         base.provincia=provincia
         base.departamento=departamento
+        base.primernombre = primernombre
+        base.segundonombre = segundonombre
+        base.apellidos = apellidos
+        base.fechaefectividad = fechaefectividad
 
         base.save()
 
@@ -910,19 +939,21 @@ def trama(request,dni):
     
 
         #Nombre del Contratante - 30
-        ncontratante = ''
+        ncontratante = base.primernombre
         eb = 30 - len(ncontratante)
         ncontratante = ncontratante + generablancos(eb)
 
 
         #Segundo Nombre del contratante - 15
-        scontratante = ''
+        if base.segundonombre == None:
+            base.segundonombre =''
+        scontratante = base.segundonombre
         eb = 15 - len(scontratante)
         scontratante = scontratante + generablancos(eb)
 
 
         #Apellidos del contratante - 30
-        apcontratante = ''
+        apcontratante = base.apellidos
         eb = 30 - len(apcontratante)
         apcontratante = apcontratante + generablancos(eb)
 
@@ -942,17 +973,17 @@ def trama(request,dni):
 
 
         #Direccion 3 -30
-        direccion3 = '130107'
+        direccion3 = base.distrito
         eb = 30 - len(direccion3)
         direccion3 = direccion3 + generablancos(eb)
 
         #Provincia-30
-        provincia ='1301'
+        provincia = base.provincia
         eb = 30 - len(provincia)
         provincia = provincia + generablancos(eb)
 
         #Departamento-2
-        departamento ='ZG'
+        departamento = base.departamento
         eb = 2 - len(departamento)
         departamento = departamento + generablancos(eb)
 
@@ -986,9 +1017,12 @@ def trama(request,dni):
 
 
         #Telefono de trabajo - 20
-        telftrabajo = base.telefono1
-        eb = 20 - len(telftrabajo)
-        telftrabajo = telftrabajo + generablancos(eb)
+
+        if base.telefono1 == None:
+            base.telefono1 = ''
+        telefonotrabajo = base.telefono1
+        eb = 20 - len(telefonotrabajo)
+        telefonotrabajo = telefonotrabajo + generablancos(eb)
 
 
         dependientes = '00'
@@ -1038,15 +1072,25 @@ def trama(request,dni):
         eb = 20 - len(cuentabancaria)
         cuentabancaria = cuentabancaria + generablancos(eb)
 
+        #Cuenta bancaria - 20
+        fechaefectividad = base.fechaefectividad
+        eb = 20 - len(fechaefectividad)
+        fechaefectividad = fechaefectividad + generablancos(eb)
+
         #DNI - 15
         dni = base.dni
         eb = 15 - len(dni)
         dni = dni + generablancos(eb)
 
         #telefono casa - 20
-        telefonocasa = base.telefono2
+        telefonocasa = base.telefono1
         eb = 20 - len(telefonocasa)
         telefonocasa = telefonocasa + generablancos(eb)
+
+                #telefono casa - 20
+        telefonotrabajo = base.telefono2
+        eb = 20 - len(telefonotrabajo)
+        telefonotrabajo = telefonotrabajo + generablancos(eb)
 
 
         #telefono casa - 20
@@ -1076,7 +1120,7 @@ def trama(request,dni):
         m.append(dni)#numero de DNI - 15 / 98-112
         m.append('1')#plan - 1 / 113-113
         m.append('MO')#tipo de cobertura - 2 / 114-115
-        m.append('20170101')#Fecha de efectividad - 8 / 116-123
+        m.append(fechaefectividad)#Fecha de efectividad - 8 / 116-123
         m.append(generablancos(10))#codigo de sucursal bancaria - 10 / 124-133
         m.append(vendedor)#codigo de vendedor - 20 / 134-153
         m.append(generablancos(10))#codigo de banco - 10 / 154-163
@@ -1098,7 +1142,7 @@ def trama(request,dni):
         m.append(generablancos(10))#postal - 10 / 464-473
         m.append('PE')#codigo de pais - 2 / 474-475
         m.append(telefonocasa)#telefono de casa - 20 / 476-495
-        m.append(generablancos(20))#telefono de trabajo - 20 / 496-515
+        m.append(telefonotrabajo)#telefono de trabajo - 20 / 496-515
         m.append(fechadenacimiento)#fecha de nacimiento - 8 / 516-523
         m.append(sexo)#codigo de sexo - 2 / 524-525
         m.append(generablancos(2))#titulo - 2 / 526-527
@@ -1144,6 +1188,8 @@ def trama(request,dni):
         response = HttpResponse(content_type='text/csv')
     
         response['Content-Disposition'] = 'attachment; filename="Trama.txt"'
+
+        response.write(u'\ufeff'.encode('utf8'))
     
         writer = csv.writer(response)
 
