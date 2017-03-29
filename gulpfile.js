@@ -177,7 +177,7 @@ gulp.task('watch', function() {
 
 // Run styles, site-js and bootstrap-js
 gulp.task('default', function() {
-	gulp.start('styles', 'components', 'services','index');
+	gulp.start('styles', 'components', 'services','index','html');
 });
 
 

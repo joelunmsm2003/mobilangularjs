@@ -939,6 +939,10 @@ def trama(request,dni):
     
 
         #Nombre del Contratante - 30
+
+        base.primernombre = base.primernombre.encode('ascii','ignore')
+        base.primernombre = base.primernombre.encode('ascii','replace')
+
         ncontratante = base.primernombre
         eb = 30 - len(ncontratante)
         ncontratante = ncontratante + generablancos(eb)
@@ -947,9 +951,17 @@ def trama(request,dni):
         #Segundo Nombre del contratante - 15
         if base.segundonombre == None:
             base.segundonombre =''
+
+        base.segundonombre = base.segundonombre.encode('ascii','ignore')
+        base.segundonombre = base.segundonombre.encode('ascii','replace')
+
+
         scontratante = base.segundonombre
         eb = 15 - len(scontratante)
         scontratante = scontratante + generablancos(eb)
+
+        base.apellidos = base.apellidos.encode('ascii','ignore')
+        base.apellidos = base.apellidos.encode('ascii','replace')
 
 
         #Apellidos del contratante - 30
@@ -1074,7 +1086,7 @@ def trama(request,dni):
 
         #Cuenta bancaria - 20
         fechaefectividad = base.fechaefectividad
-        eb = 20 - len(fechaefectividad)
+        eb = 8 - len(fechaefectividad)
         fechaefectividad = fechaefectividad + generablancos(eb)
 
         #DNI - 15
@@ -1104,6 +1116,8 @@ def trama(request,dni):
             codigotarjeta = 'P9'
         if str(base.tipo_tarjeta)[0:10] == 'MasterCard':
             codigotarjeta = 'P8' 
+        if str(base.tipo_tarjeta)[0:5] == 'Bfree':
+            codigotarjeta = 'P9'
             print 'entre masti'
 
         print codigotarjeta
