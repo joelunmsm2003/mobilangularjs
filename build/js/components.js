@@ -206,6 +206,8 @@ function BbvacampanaController(LlamadaService,$stateParams,$scope,$location,$htt
 
                   $scope.go=function(dni){
 
+                  
+
                $scope.exito = false
 
                 LlamadaService.cliente(dni).then(function(data) {
@@ -1152,7 +1154,7 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
       $scope.tipifica =function(data){
 
 
-            if(data.contacto==8 && !data.accion){
+            if(data.contacto==6 && !data.accion){
 
                 swal({
                   title: "Tipificacion Error",

@@ -28,6 +28,8 @@ function BbvacampanaController(LlamadaService,$stateParams,$scope,$location,$htt
 
                   $scope.go=function(dni){
 
+                  
+
                $scope.exito = false
 
                 LlamadaService.cliente(dni).then(function(data) {

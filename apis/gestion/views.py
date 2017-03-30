@@ -719,7 +719,7 @@ def reportebbva(request,contacto):
         # 'cantidad','tipodecobertura','tipodedocumento','tienetarjetadecredito','facebook','nombredeagente'
         # 'contacto__nombre','accion__nombre','fecha_tipifica_bbva'
 
-        data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('dni','nombre','telefono1','telefono2','mail','tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva')
+        data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('dni','nombre','telefono1','telefono2','direccion','mail','tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva')
 
 
         # for j in range(len(data)):
@@ -741,7 +741,7 @@ def reportebbva(request,contacto):
     
         writer = csv.writer(response)
 
-        writer.writerow(['dni','nombre','telefono1','telefono2','mail',
+        writer.writerow(['dni','nombre','telefono1','telefono2','direccion','mail',
         'tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva'])
 
         print 'Csv...'
@@ -845,9 +845,9 @@ def reportebbva(request,contacto):
                 d['nombre_agente'] = d['nombre_agente'].encode('ascii','ignore')
                 d['nombre_agente'] = d['nombre_agente'].encode('ascii','replace')
 
-            # if d['observacion']:
-            #     d['observacion'] = d['observacion'].encode('ascii','ignore')
-            #     d['observacion'] = d['observacion'].encode('ascii','replace')
+            if d['direccion']:
+                d['direccion'] = d['direccion'].encode('ascii','ignore')
+                d['direccion'] = d['direccion'].encode('ascii','replace')
 
             # if d['deacuerdo']:
             #     d['deacuerdo'] = d['deacuerdo'].encode('ascii','ignore')
@@ -883,7 +883,7 @@ def reportebbva(request,contacto):
             # d['recibects'],d['tienelpdp'],d['facebook'],d['fecha_vencimiento'],d['nombre_agente'],
             # d['observacion'],d['deacuerdo'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva']])
 
-            writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['mail'],d['tipo_envio'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],d['observaciones'],d['cantidad'],d['nombre_agente'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva']])
+            writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['direccion'],d['mail'],d['tipo_envio'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],d['observaciones'],d['cantidad'],d['nombre_agente'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva']])
 
         return response   
    
@@ -1229,7 +1229,7 @@ def cliente(request,dni):
 
     if request.method == 'GET':
 
-        data = OrigBaseC01.objects.filter(dni=dni,cod_cam=29).values('fecha_venta_bbva','tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
+        data = OrigBaseC01.objects.filter(dni=dni,cod_cam=29).values('tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
         
         
         fmt = '%Y-%b-%d %H:%M:%S'
@@ -1243,6 +1243,12 @@ def cliente(request,dni):
             if OrigBaseC01.objects.filter(id=data[x]['id']).values('fecha_tipifica_bbva')[0]['fecha_tipifica_bbva']:
 
                 data[x]['fecha_tipifica_bbva'] = OrigBaseC01.objects.get(id=data[x]['id']).fecha_tipifica_bbva.strftime(fmt)
+
+
+            if OrigBaseC01.objects.filter(id=data[x]['id']).values('fecha_actualizar_bbva')[0]['fecha_actualizar_bbva']:
+
+                data[x]['fecha_actualizar_bbva'] = OrigBaseC01.objects.get(id=data[x]['id']).fecha_actualizar_bbva.strftime(fmt)
+
 
         data = ValuesQuerySetToDict(data)
 
@@ -1373,7 +1379,7 @@ def tipifica(request):
 
         if ccampana==3:
 
-            b = OrigBaseC01.objects.get(dni=dni)
+            b = OrigBaseC01.objects.get(dni=dni,cod_cam=29)
 
             print 'b', b
 
