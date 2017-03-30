@@ -8,7 +8,8 @@ function BbvaService ($http,$q,$log,$localStorage) {
         actualizarchubb:actualizarchubb,
         trama:trama,
         generatrama:generatrama,
-        actualizatrama:actualizatrama
+        actualizatrama:actualizatrama,
+        preguntas:preguntas
 
     }
 
@@ -32,6 +33,29 @@ function BbvaService ($http,$q,$log,$localStorage) {
         })
 
     }
+
+
+        function preguntas(data){
+
+
+        var def = $q.defer();
+
+        $http({
+
+        url: host+"preguntas",
+        data: data,
+        method: 'POST'
+        }).
+        success(function(data) {
+
+        def.resolve(data);
+
+        })
+
+        return def.promise;
+
+    }
+
 
 
         function generatrama(data){

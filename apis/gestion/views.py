@@ -146,6 +146,50 @@ def contactos(request):
 
 
 @csrf_exempt
+def preguntas(request):
+
+    if request.method == 'POST':
+
+        print 'pregntas', json.loads(request.body)
+
+        data = json.loads(request.body)
+
+        dni = json.loads(request.body)['dni']
+
+        base = OrigBaseC01.objects.get(dni=dni,cod_cam=29)
+
+        for d in data:
+
+            if d =='a':
+
+                base.pregunta1 = data[d]
+
+            if d =='b':
+
+                base.pregunta2 = data[d]
+
+            if d =='c':
+
+                base.pregunta3 = data[d]
+
+            if d =='d':
+
+                base.pregunta4 = data[d]
+
+            base.save()
+
+
+        data=''
+
+        data = ValuesQuerySetToDict(data)
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
+
+
+@csrf_exempt
 def actualizatrama(request):
 
     if request.method == 'POST':
@@ -332,7 +376,7 @@ def actualizabbva(request):
 
                 nomagente = data['nomagente']
 
-        base = OrigBaseC01.objects.get(dni=dni)
+        base = OrigBaseC01.objects.get(dni=dni,cod_cam=29)
         base.nombre = nombre
         base.dni = dni
         base.fecha_nacimiento = fecha_nacimiento
@@ -1409,6 +1453,8 @@ def tipifica(request):
 
         ccampana = 3
 
+        recupero = 0
+
         if ccampana==3:
 
             if recupero==1:
@@ -1417,7 +1463,7 @@ def tipifica(request):
 
             else:
 
-                b = OrigBaseC01.objects.get(dni=dni)
+                b = OrigBaseC01.objects.get(dni=dni,cod_cam=29)
 
 
             b.contacto_id = contacto

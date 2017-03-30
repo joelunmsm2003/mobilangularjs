@@ -553,6 +553,11 @@ class OrigBaseC01(models.Model):
     fechaefectividad = models.CharField(db_column='fechaefectividad', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     segundonombre = models.CharField(db_column='segundonombre', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     apellidos = models.CharField(db_column='apellidos', max_length=1000, blank=True, null=True)  # Field name made lowercase.
+    pregunta1 = models.CharField(db_column='pregunta1', max_length=100, blank=True, null=True)
+    pregunta2 = models.CharField(db_column='pregunta2', max_length=100, blank=True, null=True)
+    pregunta3 = models.CharField(db_column='pregunta3', max_length=100, blank=True, null=True)
+    pregunta4 = models.CharField(db_column='pregunta4', max_length=100, blank=True, null=True)
+
     
     class Meta:
         managed = True

@@ -143,26 +143,54 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
 
-        $scope.preguntar =function(preguntas){
+        $scope.preguntar =function(res){
+
+            res.dni = $stateParams.dni
+
+
+            contadorpre = 0
+
+            if (res.a ==true){
+
+              contadorpre = contadorpre+1
+            }
+
+
+            if (res.b ==true){
+
+              contadorpre = contadorpre+1
+            }
+
+
+            if (res.c ==true){
+
+              contadorpre = contadorpre+1
+            }
+
+
+            if (res.d ==true){
+
+              contadorpre = contadorpre+1
+            }
+
+            console.log('contador',contadorpre)
 
             $scope.btnact = false
 
-            if(preguntas==true){
-
-              x=x+1
-            }
-            else{
-
-              x=x-1
-            }
-
-            if(x>=2){
+ 
+            if(contadorpre>=2){
 
               $scope.btnact = true
             }
 
 
-            console.log('cliente...',x)
+            console.log('cliente...',res)
+
+            BbvaService.preguntas(res).then(function(data) {
+
+
+
+            })
 
 
 
