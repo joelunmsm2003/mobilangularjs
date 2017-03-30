@@ -10,9 +10,9 @@ angular
     
 
 
-    host='http://192.168.40.231:8000/'
+    host='http://192.168.40.4:1000/'
 
-    host_primary='http://192.168.40.231/'
+    host_primary='http://192.168.40.4/'
     
     
     $stateProvider
@@ -40,6 +40,13 @@ angular
             templateUrl: 'html/inicio/inicio.html',
             controller: InicioController
         })
+
+        .state('recupero', {
+            url: '/recupero/:dni/:base/:idagente/:nomagente',
+            templateUrl: 'html/ventarecupero/ventarecupero.html',
+            controller: VentarecuperoController
+        })
+
 
 
 

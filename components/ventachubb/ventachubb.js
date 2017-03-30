@@ -4,7 +4,8 @@ angular
     templateUrl: 'html/ventachubb/ventachubb.html',
     controller: VentachubbController,
     bindings: {
-        onDelete: '&'
+        onDelete: '&',
+        recupero: '@'
     }
   });
 
@@ -13,7 +14,7 @@ angular
 function VentachubbController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService){
 
 
-
+  
         dni = $stateParams.dni
 
         $scope.base = $stateParams.base

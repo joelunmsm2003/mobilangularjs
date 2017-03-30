@@ -4,7 +4,8 @@ angular
     templateUrl: 'html/tipificacion/tipificacion.html',
     controller: TipificacionController,
     bindings: {
-        pasabase: '='
+        pasabase: '=',
+        recupero:'@'
     }
   
 
@@ -18,6 +19,9 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
 
 
       ctrl = this
+
+
+      $scope.recupero =this.recupero
 
       url = $location.url()
 
