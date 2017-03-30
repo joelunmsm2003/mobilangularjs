@@ -250,20 +250,6 @@ function BbvacampanaController(LlamadaService,$stateParams,$scope,$location,$htt
  }
 angular
   .module('app')
-  .component('bbvachubbcomponent', {
-    templateUrl: 'html/bbvachubb/bbvachubb.html',
-    controller: BbvachubbController,
-    bindings: {
-        onDelete: '&'
-    }
-  });
-
-
-
-function BbvachubbController($scope,$location,$http,LlamadaService){
-	 }
-angular
-  .module('app')
   .component('botoneracomponent', {
     templateUrl: 'html/botonera/botonera.html',
     controller: BotoneraController,
@@ -275,6 +261,20 @@ angular
 
 
 function BotoneraController($scope,$location,$http,LlamadaService){
+	 }
+angular
+  .module('app')
+  .component('bbvachubbcomponent', {
+    templateUrl: 'html/bbvachubb/bbvachubb.html',
+    controller: BbvachubbController,
+    bindings: {
+        onDelete: '&'
+    }
+  });
+
+
+
+function BbvachubbController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
@@ -373,6 +373,67 @@ function GameController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
+  .component('headercomponent', {
+    templateUrl: 'html/header/header.html',
+    controller: HeaderController,
+     bindings: {
+        onSidebar: '&'
+    }
+  });
+
+
+
+function HeaderController($scope,$location,$localStorage,UserService){
+
+    var ctrl = this;
+
+
+    ctrl.sidebar = function() {
+
+    
+      ctrl.onSidebar();
+
+      
+    };
+
+    $scope.search = function(){
+
+      console.log('data')
+
+    }
+
+   $scope.salir = function () {
+
+      UserService.salir()
+
+    }
+
+
+  if($localStorage.token){
+
+    console.log('TOKEN',$localStorage.token)
+
+    $scope.token = $localStorage.token
+
+
+
+    UserService.perfil().then(function(data) {
+
+           $scope.perfil = data[0]
+        
+    })
+
+
+
+
+
+  }
+
+
+}
+
+angular
+  .module('app')
   .component('generatramacomponent', {
     templateUrl: 'html/generatrama/generatrama.html',
     controller: GeneratramaController,
@@ -443,67 +504,6 @@ function GeneratramaController($scope,$location,$http,BbvaService){
 
 	}
 
-
-angular
-  .module('app')
-  .component('headercomponent', {
-    templateUrl: 'html/header/header.html',
-    controller: HeaderController,
-     bindings: {
-        onSidebar: '&'
-    }
-  });
-
-
-
-function HeaderController($scope,$location,$localStorage,UserService){
-
-    var ctrl = this;
-
-
-    ctrl.sidebar = function() {
-
-    
-      ctrl.onSidebar();
-
-      
-    };
-
-    $scope.search = function(){
-
-      console.log('data')
-
-    }
-
-   $scope.salir = function () {
-
-      UserService.salir()
-
-    }
-
-
-  if($localStorage.token){
-
-    console.log('TOKEN',$localStorage.token)
-
-    $scope.token = $localStorage.token
-
-
-
-    UserService.perfil().then(function(data) {
-
-           $scope.perfil = data[0]
-        
-    })
-
-
-
-
-
-  }
-
-
-}
 
 angular
   .module('app')
