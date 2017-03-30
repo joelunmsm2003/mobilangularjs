@@ -4,7 +4,8 @@ angular
     templateUrl: 'html/bbva/bbva.html',
     controller: BbvaController,
     bindings: {
-        onDelete: '&'
+        onDelete: '&',
+        recupero: '@'
 
     }
   });
@@ -17,6 +18,9 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
         dni = $stateParams.dni
+
+
+        console.log('lolololololo',this.recupero)
 
 
 
@@ -37,7 +41,13 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                 })
 
+    $scope.recupero =function(cliente){
 
+      console.log('SADASDSADASDSAD',cliente)
+
+
+
+        }
 
 	  $scope.buscardni =function(dni){
 
@@ -75,7 +85,7 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                   $('#campana').addClass('bounceInLeft');
 
-                  $location.path('/bbvacampana/'+dni+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
+                  $location.path('/recupero/'+dni+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
 
 
                 }

@@ -4,7 +4,8 @@ angular
     templateUrl: 'html/tipificacion/tipificacion.html',
     controller: TipificacionController,
     bindings: {
-        pasabase: '='
+        pasabase: '=',
+        recupero:'@'
     }
   
 

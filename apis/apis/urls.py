@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^reportebbva/(\w+)$', 'gestion.views.reportebbva'),
     url(r'^audios/$', 'gestion.views.audios'),
     url(r'^actualizatrama$', 'gestion.views.actualizatrama'),
+    url(r'^ventarecupero$', 'gestion.views.ventarecupero'),
 
 
     #Hotels

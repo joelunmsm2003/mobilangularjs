@@ -1206,6 +1206,19 @@ def cliente(request,dni):
 
 
 @csrf_exempt
+def ventarecupero(request):
+
+    if request.method == 'POST':
+
+         print json.loads(request.body)
+
+        data = ValuesQuerySetToDict(data)
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
+@csrf_exempt
 def listaacciones(request):
 
     if request.method == 'GET':
@@ -1297,6 +1310,13 @@ def tipifica(request):
 
                 observacion = data['observacion']
 
+            if d =='recupero':
+
+                recupero = data['recupero']
+
+                print recupero
+
+
             if d =='fecha':
 
                 fecha = data['fecha']
@@ -1327,9 +1347,15 @@ def tipifica(request):
 
         if ccampana==3:
 
-            b = OrigBaseC01.objects.get(dni=dni)
 
-            print 'b', b
+            if recupero==1:
+
+                b = Ventarecupero.objects.get(dni=dni)
+
+            else:
+
+                b = OrigBaseC01.objects.get(dni=dni)
+
 
             b.contacto_id = contacto
 
@@ -1345,12 +1371,9 @@ def tipifica(request):
 
             b.fecha_tipifica_bbva = datetime.today()-timedelta(hours=5)
 
-
-            # if agendax:
-
-            #     b.fagenda = fagenda-timedelta(hours=5)
-
             b.tadicional = phone
+
+            b.save()
 
 
         if ccampana == 1:

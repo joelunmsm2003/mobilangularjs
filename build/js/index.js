@@ -43,6 +43,13 @@ angular
             controller: InicioController
         })
 
+        .state('recupero', {
+            url: '/recupero/:dni/:base/:idagente/:nomagente',
+            templateUrl: 'html/ventarecupero/ventarecupero.html',
+            controller: VentarecuperoController
+        })
+
+
 
 
 

@@ -18,7 +18,8 @@ angular
     templateUrl: 'html/bbva/bbva.html',
     controller: BbvaController,
     bindings: {
-        onDelete: '&'
+        onDelete: '&',
+        recupero: '@'
 
     }
   });
@@ -31,6 +32,9 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
         dni = $stateParams.dni
+
+
+        console.log('lolololololo',this.recupero)
 
 
 
@@ -51,7 +55,13 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                 })
 
+    $scope.buscardni =function(cliente){
 
+      console.log('SADASDSADASDSAD',cliente)
+
+
+
+        }
 
 	  $scope.buscardni =function(dni){
 
@@ -1051,7 +1061,8 @@ angular
     templateUrl: 'html/tipificacion/tipificacion.html',
     controller: TipificacionController,
     bindings: {
-        pasabase: '='
+        pasabase: '=',
+        recupero:'@'
     }
   
 
@@ -1321,7 +1332,8 @@ angular
     templateUrl: 'html/ventachubb/ventachubb.html',
     controller: VentachubbController,
     bindings: {
-        onDelete: '&'
+        onDelete: '&',
+        recupero: '@'
     }
   });
 
@@ -1330,7 +1342,7 @@ angular
 function VentachubbController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService){
 
 
-
+  
         dni = $stateParams.dni
 
         $scope.base = $stateParams.base
@@ -1402,6 +1414,68 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
 
 
         }
+
+
+	 }
+
+
+function VentarecuperoController($scope,$location,$http,LlamadaService,$stateParams){
+
+
+
+        console.log($stateParams.dni)
+        
+        var ctrl = this;
+
+        url = $location.url()
+
+        dni = $stateParams.dni
+
+        $scope.base = $stateParams.base
+
+        $scope.id_agente = $stateParams.idagente
+
+        $scope.nomagente = $stateParams.nomagente
+
+
+        LlamadaService.cliente(dni).then(function(data) {
+
+        console.log('Datos del dni',data[0])
+
+        $scope.cliente = data[0]
+
+
+        })
+
+
+                  $scope.go=function(dni){
+
+               $scope.exito = false
+
+                LlamadaService.cliente(dni).then(function(data) {
+
+		            console.log('Datos del dni',data[0])
+
+		            $scope.cliente = data[0]
+
+                if(data[0]){
+
+
+                   $scope.exito = true
+
+                  $('#campana').addClass('bounceInLeft');
+
+                  $location.path('/recupero/'+dni+'/'+data.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
+
+
+                }
+
+		        })
+
+           
+        }
+
+
 
 
 	 }

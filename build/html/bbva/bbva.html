@@ -1,4 +1,32 @@
 
+<div class="panel panel-default">
+
+<div class="panel-body">
+			<input  placeholder='Ingrese DNI...' ng-change='go(dni)' type="text" class="form-control"  ng-model='dni' id="nombre" >
+
+			<h5>Agente</h5>
+
+			<select class="form-control">
+				  <optgroup label="Picnic">
+				    <option>Mustard</option>
+				    <option>Ketchup</option>
+				    <option>Relish</option>
+				  </optgroup>
+
+				  <optgroup label="Camping">
+				    <option>Tent</option>
+				    <option>Flashlight</option>
+				    <option>Toilet Paper</option>
+				  </optgroup>
+			</select>
+
+
+</div>
+
+	<div class="panel-footer">
+			<button class='btn btn-danger' ng-click='recupero(cliente)' >Recupera Venta</button>
+</div>	
+</div>
 
 
 <form ng-submit='actualizar(cliente)' class='bbva' >
