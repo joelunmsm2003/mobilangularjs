@@ -48,9 +48,6 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
 
-        console.log('lolololololo',this.recupero)
-
-
 
         $scope.base = $stateParams.base
 
@@ -69,9 +66,9 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                 })
 
-    $scope.recuperoventafunction =function(data){
+    $scope.recuperoventafunction =function(data,cliente){
 
-      console.log('SADASDSADASDSAD',data)
+      console.log('SADASDSADASDSAD',data,cliente)
 
        // $location.path('/recupero/'+dni+'/'+cliente.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
 
@@ -339,6 +336,20 @@ function BotoneraController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
+  .component('campanacomponent', {
+    templateUrl: 'html/campana/campana.html',
+    controller: CampanaController,
+    bindings: {
+        onDelete: '&'
+    }
+  });
+
+
+
+function CampanaController($scope,$location,$http,LlamadaService){
+	 }
+angular
+  .module('app')
   .component('detallesbotoneracomponent', {
     templateUrl: 'html/detallesbotonera/detallesbotonera.html',
     controller: DetallesbotoneraController,
@@ -351,20 +362,6 @@ angular
 
 
 function DetallesbotoneraController($scope,$location,$http,LlamadaService){
-	 }
-angular
-  .module('app')
-  .component('campanacomponent', {
-    templateUrl: 'html/campana/campana.html',
-    controller: CampanaController,
-    bindings: {
-        onDelete: '&'
-    }
-  });
-
-
-
-function CampanaController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
@@ -432,67 +429,6 @@ angular
 
 function GameController($scope,$location,$http,LlamadaService){
 	 }
-angular
-  .module('app')
-  .component('headercomponent', {
-    templateUrl: 'html/header/header.html',
-    controller: HeaderController,
-     bindings: {
-        onSidebar: '&'
-    }
-  });
-
-
-
-function HeaderController($scope,$location,$localStorage,UserService){
-
-    var ctrl = this;
-
-
-    ctrl.sidebar = function() {
-
-    
-      ctrl.onSidebar();
-
-      
-    };
-
-    $scope.search = function(){
-
-      console.log('data')
-
-    }
-
-   $scope.salir = function () {
-
-      UserService.salir()
-
-    }
-
-
-  if($localStorage.token){
-
-    console.log('TOKEN',$localStorage.token)
-
-    $scope.token = $localStorage.token
-
-
-
-    UserService.perfil().then(function(data) {
-
-           $scope.perfil = data[0]
-        
-    })
-
-
-
-
-
-  }
-
-
-}
-
 angular
   .module('app')
   .component('generatramacomponent', {
@@ -565,6 +501,67 @@ function GeneratramaController($scope,$location,$http,BbvaService){
 
 	}
 
+
+angular
+  .module('app')
+  .component('headercomponent', {
+    templateUrl: 'html/header/header.html',
+    controller: HeaderController,
+     bindings: {
+        onSidebar: '&'
+    }
+  });
+
+
+
+function HeaderController($scope,$location,$localStorage,UserService){
+
+    var ctrl = this;
+
+
+    ctrl.sidebar = function() {
+
+    
+      ctrl.onSidebar();
+
+      
+    };
+
+    $scope.search = function(){
+
+      console.log('data')
+
+    }
+
+   $scope.salir = function () {
+
+      UserService.salir()
+
+    }
+
+
+  if($localStorage.token){
+
+    console.log('TOKEN',$localStorage.token)
+
+    $scope.token = $localStorage.token
+
+
+
+    UserService.perfil().then(function(data) {
+
+           $scope.perfil = data[0]
+        
+    })
+
+
+
+
+
+  }
+
+
+}
 
 angular
   .module('app')
@@ -686,15 +683,6 @@ function HomeController($stateParams,$scope,$location,$http,LlamadaService){
 
 }
 
-
-
-
-function InicioController($stateParams,$scope,$location,$http,LlamadaService){
-
-
-
-}
-
 angular
   .module('app')
   .component('ingresarcomponent', {
@@ -718,6 +706,15 @@ function IngresarController($scope,UserService){
 
 
 	}
+
+
+}
+
+
+
+
+function InicioController($stateParams,$scope,$location,$http,LlamadaService){
+
 
 
 }
@@ -872,23 +869,6 @@ function NewuserController($location,$scope,KineService,UserService,$http){
 
 angular
   .module('app')
-  .component('redirectcomponent', {
-    templateUrl: 'html/redirect/redirect.html',
-    controller: RedirectController
-  });
-
-
-
-function RedirectController($scope,KineService){
-
-
-	
-
-
-}
-
-angular
-  .module('app')
   .component('perfilcomponent', {
     templateUrl: 'html/perfil/perfil.html',
     controller: PerfilController
@@ -937,6 +917,23 @@ $scope.kines = $filter('filter')(data,{ 'user_id' : $scope.user_id})
 
 
 
+
+
+}
+
+angular
+  .module('app')
+  .component('redirectcomponent', {
+    templateUrl: 'html/redirect/redirect.html',
+    controller: RedirectController
+  });
+
+
+
+function RedirectController($scope,KineService){
+
+
+	
 
 
 }
@@ -1374,20 +1371,6 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
       } 
 
           
-
-
-
-
-
-      
-
-    
-   
-
-
-
-
-
 
 
 }

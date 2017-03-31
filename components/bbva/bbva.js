@@ -34,9 +34,6 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
 
-        console.log('lolololololo',this.recupero)
-
-
 
         $scope.base = $stateParams.base
 
@@ -55,9 +52,9 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                 })
 
-    $scope.recuperoventafunction =function(data){
+    $scope.recuperoventafunction =function(data,cliente){
 
-      console.log('SADASDSADASDSAD',data)
+      console.log('SADASDSADASDSAD',data,cliente)
 
        // $location.path('/recupero/'+dni+'/'+cliente.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
 

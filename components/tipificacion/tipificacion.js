@@ -258,18 +258,4 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
           
 
 
-
-
-
-      
-
-    
-   
-
-
-
-
-
-
-
 }
