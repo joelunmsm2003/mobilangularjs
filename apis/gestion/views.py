@@ -1395,17 +1395,34 @@ def cliente(request,dni):
 
         for x in range(len(data)):
 
-            ta= Ticket.objects.filter(dni=dni).values('numero')[0]['numero']
+            for t in Ticket.objects.filter(dni=dni).values('numero'):
 
-            tv = Ticket.objects.filter(dni=dni).values('numero')[1]['numero']
-
-            print 'ta....',ta,'tv......',tv
+                ntic = len(str(t['numero']).split(','))
 
 
+                print ntic
 
-            data[x]['ticket_actualiza'] = ta
+                if ntic == 2:
 
-            data[x]['ticket_venta'] = tv
+                    data[x]['ticket_actualiza'] = str(t['numero'])
+
+                if ntic > 2:
+
+                    data[x]['ticket_venta'] = str(t['numero'])
+
+
+
+            # if Ticket.objects.filter(dni=dni).values('numero'):
+
+            #     ta= Ticket.objects.filter(dni=dni).values('numero')[0]['numero']
+
+            #     tv = Ticket.objects.filter(dni=dni).values('numero')[1]['numero']
+
+            #     print 'ta....',ta,'tv......',tv
+
+            #     data[x]['ticket_actualiza'] = ta
+
+            #     data[x]['ticket_venta'] = tv
 
             if OrigBaseC01.objects.filter(id=data[x]['id']).values('fecha_venta_bbva')[0]['fecha_venta_bbva']:
 
