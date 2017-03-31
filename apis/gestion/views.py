@@ -142,6 +142,28 @@ def contactos(request):
 
         data_json = simplejson.dumps(data)
 
+
+        return HttpResponse(data_json, content_type="application/json")
+
+
+@csrf_exempt
+def noactualiza(request,dni):
+
+    if request.method == 'GET':
+
+        data = OrigBaseC01.objects.get(dni=dni,cod_cam=29)
+
+        print 'no actualiza..',data.contacto
+
+        if data.contacto == None:
+
+            data.contacto_id = 8
+            data.save()
+
+        data = ValuesQuerySetToDict('data')
+
+        data_json = simplejson.dumps(data)
+
         return HttpResponse(data_json, content_type="application/json")
 
 
@@ -393,6 +415,7 @@ def actualizabbva(request):
         base.facebook = facebook
         base.deacuerdo = deacuerdo
         base.nombre_agente = nomagente
+        base.contacto_id = 6
 
         base.fecha_actualizar_bbva = datetime.today()-timedelta(hours=5)
 
@@ -636,6 +659,7 @@ def venta(request):
         base.todo_prima = todo_prima
         base.facebook = facebook
         base.deacuerdo = deacuerdo
+        base.contacto = 7
         
         base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
 
@@ -1287,7 +1311,7 @@ def cliente(request,dni):
 
     if request.method == 'GET':
 
-        data = OrigBaseC01.objects.filter(dni=dni,cod_cam=29).values('tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
+        data = OrigBaseC01.objects.filter(dni=dni,cod_cam=29).values('contacto__nombre','deacuerdo','ticket','tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
         
         
         fmt = '%Y-%b-%d %H:%M:%S'
@@ -1357,6 +1381,43 @@ def saveagente(request,agente,base):
         data = ValuesQuerySetToDict('data')
 
         return HttpResponse(data, content_type="application/json")
+
+
+@csrf_exempt
+def ticket(request,dni):
+
+    url = 'http://192.168.40.4/sql/sorteo.php'
+
+    base = OrigBaseC01.objects.get(dni=dni,cod_cam=29)
+
+    if base.fecha_venta_bbva:
+
+        venta = base.cantidad
+        actualiza = 0
+
+    if base.fecha_venta_bbva== None:
+
+        venta = 0
+        actualiza=1
+
+    data = {'dni':dni,'cliente':base.nombre,'agente':base.nombre_agente,'actualiza':actualiza,'venta':venta}
+
+    print data
+        
+    r = requests.post(url,data)
+    result = r.text.strip()
+
+    
+    Ticket(numero=result,dni=dni).save()
+
+    base = OrigBaseC01.objects.get(dni=dni,cod_cam=29)
+
+    base.ticket = result
+    base.save()
+
+
+    return HttpResponse(result, content_type="application/json")
+
 
 
 

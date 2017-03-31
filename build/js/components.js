@@ -85,7 +85,7 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                $scope.exito = false
 
-               $('.bbva').show();
+
 
 
 
@@ -98,7 +98,7 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
                 if(data[0]){
 
 
-                   $scope.exito = true
+            $('.bbva').show()
 
                   $('#campana').addClass('bounceInLeft');
 
@@ -116,18 +116,29 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
          $scope.actualizabbva =function(cliente){
 
 
+
+                    $('#actualiza').modal('hide')
+                  $('.modal-backdrop').remove();
+
+
               cliente.nomagente = $scope.nomagente
 
 
-              $('#actualiza').modal('hide');
+             BbvaService.ticket(dni).then(function(data) {
 
 
+                console.log('tickets',data)
+
+                $scope.tickets = data
+
+
+              })
 
 
               BbvaService.actualizar(cliente).then(function(data) {
 
 
-                      swal({
+            swal({
               title: "Actualizacion BBVA",
               text: "La actualizacion se hizo con exito",
               type: "success",
@@ -217,7 +228,7 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
 	 }
-function BbvacampanaController(LlamadaService,$stateParams,$scope,$location,$http){
+function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$location,$http){
 
 
         console.log($stateParams.dni)
@@ -258,6 +269,14 @@ function BbvacampanaController(LlamadaService,$stateParams,$scope,$location,$htt
 		            $scope.cliente = data[0]
 
                 if(data[0]){
+
+
+                  BbvaService.noactualiza(dni).then(function(data) {
+
+
+
+                  })
+
 
 
                    $scope.exito = true
@@ -1211,6 +1230,8 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
                   closeOnConfirm: true
                 },
                 function(){
+
+                  $state.reload()
                   
                 });
 
@@ -1241,16 +1262,16 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
                 },
                 function(){
 
-                  $scope.cliente=''
-                  $state.reload()
+         
+
+           $state.reload()
+
 
                   
                 });
 
                 })
 
-
-               // $('.bbva').hide()
 
 
 

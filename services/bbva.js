@@ -9,7 +9,10 @@ function BbvaService ($http,$q,$log,$localStorage) {
         trama:trama,
         generatrama:generatrama,
         actualizatrama:actualizatrama,
-        preguntas:preguntas
+        preguntas:preguntas,
+        ticket:ticket,
+        noactualiza:noactualiza
+
 
     }
 
@@ -188,6 +191,9 @@ function BbvaService ($http,$q,$log,$localStorage) {
         function actualizarchubb(dni){
 
 
+
+
+
         var defered = $q.defer();
         var promise = defered.promise;
 
@@ -205,6 +211,35 @@ function BbvaService ($http,$q,$log,$localStorage) {
         })
 
     }
+
+    function ticket(dni) {
+
+
+            var def = $q.defer();
+
+            $http.get(host+'ticket/'+dni).success(function(data) {
+
+                    def.resolve(data);
+                })
+               
+            return def.promise;
+        }
+
+
+    function noactualiza(dni) {
+
+
+            var def = $q.defer();
+
+            $http.get(host+'noactualiza/'+dni).success(function(data) {
+
+                    def.resolve(data);
+                })
+               
+            return def.promise;
+        }
+
+
 
 
 }

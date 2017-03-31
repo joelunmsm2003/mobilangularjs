@@ -557,6 +557,7 @@ class OrigBaseC01(models.Model):
     pregunta2 = models.CharField(db_column='pregunta2', max_length=100, blank=True, null=True)
     pregunta3 = models.CharField(db_column='pregunta3', max_length=100, blank=True, null=True)
     pregunta4 = models.CharField(db_column='pregunta4', max_length=100, blank=True, null=True)
+    ticket = models.CharField(db_column='ticket', max_length=100, blank=True, null=True)
 
     
     class Meta:
@@ -573,3 +574,12 @@ class Tipificacion(models.Model):
     class Meta:
         managed = False
         db_table = 'tipificacion'
+
+class Ticket(models.Model):
+    numero = models.CharField(db_column='numero', max_length=1000, blank=True, null=True)
+    dni = models.CharField(db_column='dni', max_length=100, blank=True, null=True)
+
+
+    class Meta:
+        managed = False
+        db_table = 'ticket'

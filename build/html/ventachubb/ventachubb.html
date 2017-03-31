@@ -109,7 +109,10 @@
 								<div class="form-group">
 									<label for="dni">Direccion</label>
 
-									<input   type="text" class="form-control"  ng-model='cliente.direccion' required id="dni">
+
+									Max Caracteres : {{cliente.direccion.length}}/30
+
+									<input   type="text" class="form-control"  ng-model='cliente.direccion' maxlength="30" required id="dni">
 
 								</div>
 

@@ -37,6 +37,8 @@ urlpatterns = [
     url(r'^actualizatrama$', 'gestion.views.actualizatrama'),
     url(r'^ventarecupero$', 'gestion.views.ventarecupero'),
     url(r'^preguntas$', 'gestion.views.preguntas'),
+    url(r'^ticket/(\w+)$', 'gestion.views.ticket'),
+    url(r'^noactualiza/(\w+)$', 'gestion.views.noactualiza'),
 
 
     #Hotels

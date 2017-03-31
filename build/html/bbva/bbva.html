@@ -38,6 +38,9 @@
 <form ng-submit='actualizar(cliente)' class='bbva' >
 
 
+<span ng-if='cliente.ticket'><i class="fa fa-ticket" aria-hidden="true"></i> Tickets {{cliente.ticket}}</span>
+
+
 <legend>Actualizacion BBVA 
 
 
@@ -126,7 +129,6 @@
 							<button ng-hide='btnact' type="submit" disabled class="btn btn-danger">Actualizar BBVA</button>
 
 								</form>
-
 
 
 

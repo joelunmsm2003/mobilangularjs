@@ -1,4 +1,4 @@
-function BbvacampanaController(LlamadaService,$stateParams,$scope,$location,$http){
+function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$location,$http){
 
 
         console.log($stateParams.dni)
@@ -39,6 +39,14 @@ function BbvacampanaController(LlamadaService,$stateParams,$scope,$location,$htt
 		            $scope.cliente = data[0]
 
                 if(data[0]){
+
+
+                  BbvaService.noactualiza(dni).then(function(data) {
+
+
+
+                  })
+
 
 
                    $scope.exito = true

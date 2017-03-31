@@ -121,6 +121,8 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
                   closeOnConfirm: true
                 },
                 function(){
+
+                  $state.reload()
                   
                 });
 
@@ -151,16 +153,16 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
                 },
                 function(){
 
-                  $scope.cliente=''
-                  $state.reload()
+         
+
+           $state.reload()
+
 
                   
                 });
 
                 })
 
-
-               // $('.bbva').hide()
 
 
 
