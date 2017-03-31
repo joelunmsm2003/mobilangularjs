@@ -330,20 +330,6 @@ function BotoneraController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
-  .component('campanacomponent', {
-    templateUrl: 'html/campana/campana.html',
-    controller: CampanaController,
-    bindings: {
-        onDelete: '&'
-    }
-  });
-
-
-
-function CampanaController($scope,$location,$http,LlamadaService){
-	 }
-angular
-  .module('app')
   .component('detallesbotoneracomponent', {
     templateUrl: 'html/detallesbotonera/detallesbotonera.html',
     controller: DetallesbotoneraController,
@@ -356,6 +342,20 @@ angular
 
 
 function DetallesbotoneraController($scope,$location,$http,LlamadaService){
+	 }
+angular
+  .module('app')
+  .component('campanacomponent', {
+    templateUrl: 'html/campana/campana.html',
+    controller: CampanaController,
+    bindings: {
+        onDelete: '&'
+    }
+  });
+
+
+
+function CampanaController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
