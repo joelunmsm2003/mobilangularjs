@@ -1,19 +1,5 @@
 angular
   .module('app')
-  .component('administradorcomponent', {
-    templateUrl: 'html/administrador/administrador.html',
-    controller: AdministradorController,
-    bindings: {
-        onDelete: '&'
-    }
-  });
-
-
-
-function AdministradorController($scope,$location,$http,LlamadaService){
-	 }
-angular
-  .module('app')
   .component('bbvacomponent', {
     templateUrl: 'html/bbva/bbva.html',
     controller: BbvaController,
@@ -27,7 +13,7 @@ angular
 
 
 
-function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService){
+function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService,UserService){
 
 
         $ctrl =this
@@ -35,6 +21,17 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
         dni = $stateParams.dni
 
         $scope.recuperoventa = this.recupero
+
+
+        UserService.agentes().then(function(data) {
+
+
+
+        $scope.agentes = data
+
+
+        })
+
 
 
         console.log('lolololololo',this.recupero)
@@ -58,9 +55,11 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                 })
 
-    $scope.recupero =function(cliente){
+    $scope.recuperoventafunction =function(data){
 
-      console.log('SADASDSADASDSAD',cliente)
+      console.log('SADASDSADASDSAD',data)
+
+       // $location.path('/recupero/'+dni+'/'+cliente.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
 
 
 
@@ -124,15 +123,7 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
               cliente.nomagente = $scope.nomagente
 
 
-             BbvaService.ticket(dni).then(function(data) {
 
-
-                console.log('tickets',data)
-
-                $scope.tickets = data
-
-
-              })
 
 
               BbvaService.actualizar(cliente).then(function(data) {
@@ -158,6 +149,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
             })
+
+
 
 
 
@@ -228,7 +221,21 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
 	 }
-function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$location,$http){
+angular
+  .module('app')
+  .component('administradorcomponent', {
+    templateUrl: 'html/administrador/administrador.html',
+    controller: AdministradorController,
+    bindings: {
+        onDelete: '&'
+    }
+  });
+
+
+
+function AdministradorController($scope,$location,$http,LlamadaService){
+	 }
+function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$location,$http,UserService){
 
 
         console.log($stateParams.dni)
@@ -244,6 +251,8 @@ function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$l
         $scope.id_agente = $stateParams.idagente
 
         $scope.nomagente = $stateParams.nomagente
+
+
 
 
         LlamadaService.cliente(dni).then(function(data) {
@@ -330,20 +339,6 @@ function BotoneraController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
-  .component('campanacomponent', {
-    templateUrl: 'html/campana/campana.html',
-    controller: CampanaController,
-    bindings: {
-        onDelete: '&'
-    }
-  });
-
-
-
-function CampanaController($scope,$location,$http,LlamadaService){
-	 }
-angular
-  .module('app')
   .component('detallesbotoneracomponent', {
     templateUrl: 'html/detallesbotonera/detallesbotonera.html',
     controller: DetallesbotoneraController,
@@ -356,6 +351,20 @@ angular
 
 
 function DetallesbotoneraController($scope,$location,$http,LlamadaService){
+	 }
+angular
+  .module('app')
+  .component('campanacomponent', {
+    templateUrl: 'html/campana/campana.html',
+    controller: CampanaController,
+    bindings: {
+        onDelete: '&'
+    }
+  });
+
+
+
+function CampanaController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
@@ -704,15 +713,6 @@ function IngresarController($scope,UserService){
 
 }
 
-
-
-
-function InicioController($stateParams,$scope,$location,$http,LlamadaService){
-
-
-
-}
-
 angular
   .module('app')
   .component('llamadascomponent', {
@@ -744,6 +744,15 @@ function LlamadasController($stateParams,$scope,$location,$http,LlamadaService){
         $scope.llamadas = data
 
         })
+
+
+
+}
+
+
+
+
+function InicioController($stateParams,$scope,$location,$http,LlamadaService){
 
 
 
@@ -1442,6 +1451,11 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
          $scope.ventabbva =function(cliente){
 
 
+
+
+
+
+
               cliente.nomagente = $scope.nomagente
 
               BbvaService.venta(cliente).then(function(data) {
@@ -1467,6 +1481,9 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
 
 
             })
+
+
+
 
 
 

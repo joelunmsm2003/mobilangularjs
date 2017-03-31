@@ -485,7 +485,8 @@ function UserService ($http,$q,$log,$localStorage,$location,$localStorage) {
         ingresar: ingresar,
         crear:crear,
         perfil:perfil,
-        salir:salir
+        salir:salir,
+        agentes:agentes
     }
 
 
@@ -526,6 +527,20 @@ function UserService ($http,$q,$log,$localStorage,$location,$localStorage) {
         $location.path('/')
 
     }
+
+        function agentes() {
+
+
+            var def = $q.defer();
+
+            $http.get(host+'agentes').success(function(data) {
+
+                    def.resolve(data);
+                })
+               
+            return def.promise;
+        }
+
 
 
 

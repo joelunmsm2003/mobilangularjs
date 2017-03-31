@@ -97,6 +97,20 @@ def audios(request):
 
 
 @csrf_exempt
+def agentes(request):
+
+    if request.method == 'GET':
+
+        data = OriUsuario.objects.using('orion').all().values('id_ori_usuario','usuario_nombre')
+
+        data = ValuesQuerySetToDict(data)
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
+
+@csrf_exempt
 def todosestados(request):
 
     if request.method == 'GET':
@@ -419,8 +433,29 @@ def actualizabbva(request):
 
         base.fecha_actualizar_bbva = datetime.today()-timedelta(hours=5)
 
+        url = 'http://192.168.40.4/sql/sorteo.php'
+
+        venta = 0
+
+        actualiza=1
+
+        data = {'dni':dni,'cliente':base.nombre,'agente':base.nombre_agente,'actualiza':actualiza,'venta':venta}
+
+        print data
+
+        r = requests.post(url,data)
+
+        result = r.text.strip()
+
+        Ticket(numero=result,dni=dni).save()
+
+        base.ticket = result
+
+        base.fecha = datetime.today()-timedelta(hours=5)
 
         base.save()
+
+
 
         data = ValuesQuerySetToDict(data)
 
@@ -662,6 +697,28 @@ def venta(request):
         base.contacto = 7
         
         base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
+
+        url = 'http://192.168.40.4/sql/sorteo.php'
+
+        base = OrigBaseC01.objects.get(dni=dni,cod_cam=29)
+
+        venta = base.cantidad
+
+        actualiza = 0
+
+        data = {'dni':dni,'cliente':base.nombre,'agente':base.nombre_agente,'actualiza':actualiza,'venta':venta}
+
+        print data
+
+        r = requests.post(url,data)
+
+        result = r.text.strip()
+
+        Ticket(numero=result,dni=dni).save()
+
+        base.ticket = result
+
+        base.fecha = datetime.today()-timedelta(hours=5)
 
         base.save()
 
