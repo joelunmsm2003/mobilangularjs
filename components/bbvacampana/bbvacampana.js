@@ -1,4 +1,4 @@
-function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$location,$http){
+function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$location,$http,UserService){
 
 
         console.log($stateParams.dni)
@@ -14,6 +14,8 @@ function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$l
         $scope.id_agente = $stateParams.idagente
 
         $scope.nomagente = $stateParams.nomagente
+
+
 
 
         LlamadaService.cliente(dni).then(function(data) {

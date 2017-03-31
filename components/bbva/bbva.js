@@ -13,7 +13,7 @@ angular
 
 
 
-function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService){
+function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService,UserService){
 
 
         $ctrl =this
@@ -21,6 +21,17 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
         dni = $stateParams.dni
 
         $scope.recuperoventa = this.recupero
+
+
+        UserService.agentes().then(function(data) {
+
+
+
+        $scope.agentes = data
+
+
+        })
+
 
 
         console.log('lolololololo',this.recupero)
@@ -44,9 +55,11 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                 })
 
-    $scope.recupero =function(cliente){
+    $scope.recuperoventafunction =function(data){
 
-      console.log('SADASDSADASDSAD',cliente)
+      console.log('SADASDSADASDSAD',data)
+
+       // $location.path('/recupero/'+dni+'/'+cliente.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
 
 
 
@@ -110,15 +123,7 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
               cliente.nomagente = $scope.nomagente
 
 
-             BbvaService.ticket(dni).then(function(data) {
 
-
-                console.log('tickets',data)
-
-                $scope.tickets = data
-
-
-              })
 
 
               BbvaService.actualizar(cliente).then(function(data) {
@@ -144,6 +149,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
             })
+
+
 
 
 

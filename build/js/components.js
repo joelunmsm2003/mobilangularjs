@@ -27,7 +27,7 @@ angular
 
 
 
-function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService){
+function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService,UserService){
 
 
         $ctrl =this
@@ -35,6 +35,17 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
         dni = $stateParams.dni
 
         $scope.recuperoventa = this.recupero
+
+
+        UserService.agentes().then(function(data) {
+
+
+
+        $scope.agentes = data
+
+
+        })
+
 
 
         console.log('lolololololo',this.recupero)
@@ -58,9 +69,11 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
                 })
 
-    $scope.recupero =function(cliente){
+    $scope.recuperoventafunction =function(data){
 
-      console.log('SADASDSADASDSAD',cliente)
+      console.log('SADASDSADASDSAD',data)
+
+       // $location.path('/recupero/'+dni+'/'+cliente.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
 
 
 
@@ -124,15 +137,7 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
               cliente.nomagente = $scope.nomagente
 
 
-             BbvaService.ticket(dni).then(function(data) {
 
-
-                console.log('tickets',data)
-
-                $scope.tickets = data
-
-
-              })
 
 
               BbvaService.actualizar(cliente).then(function(data) {
@@ -158,6 +163,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
             })
+
+
 
 
 
@@ -228,7 +235,7 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
 	 }
-function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$location,$http){
+function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$location,$http,UserService){
 
 
         console.log($stateParams.dni)
@@ -244,6 +251,8 @@ function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$l
         $scope.id_agente = $stateParams.idagente
 
         $scope.nomagente = $stateParams.nomagente
+
+
 
 
         LlamadaService.cliente(dni).then(function(data) {
@@ -425,6 +434,67 @@ function GameController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
+  .component('headercomponent', {
+    templateUrl: 'html/header/header.html',
+    controller: HeaderController,
+     bindings: {
+        onSidebar: '&'
+    }
+  });
+
+
+
+function HeaderController($scope,$location,$localStorage,UserService){
+
+    var ctrl = this;
+
+
+    ctrl.sidebar = function() {
+
+    
+      ctrl.onSidebar();
+
+      
+    };
+
+    $scope.search = function(){
+
+      console.log('data')
+
+    }
+
+   $scope.salir = function () {
+
+      UserService.salir()
+
+    }
+
+
+  if($localStorage.token){
+
+    console.log('TOKEN',$localStorage.token)
+
+    $scope.token = $localStorage.token
+
+
+
+    UserService.perfil().then(function(data) {
+
+           $scope.perfil = data[0]
+        
+    })
+
+
+
+
+
+  }
+
+
+}
+
+angular
+  .module('app')
   .component('generatramacomponent', {
     templateUrl: 'html/generatrama/generatrama.html',
     controller: GeneratramaController,
@@ -495,67 +565,6 @@ function GeneratramaController($scope,$location,$http,BbvaService){
 
 	}
 
-
-angular
-  .module('app')
-  .component('headercomponent', {
-    templateUrl: 'html/header/header.html',
-    controller: HeaderController,
-     bindings: {
-        onSidebar: '&'
-    }
-  });
-
-
-
-function HeaderController($scope,$location,$localStorage,UserService){
-
-    var ctrl = this;
-
-
-    ctrl.sidebar = function() {
-
-    
-      ctrl.onSidebar();
-
-      
-    };
-
-    $scope.search = function(){
-
-      console.log('data')
-
-    }
-
-   $scope.salir = function () {
-
-      UserService.salir()
-
-    }
-
-
-  if($localStorage.token){
-
-    console.log('TOKEN',$localStorage.token)
-
-    $scope.token = $localStorage.token
-
-
-
-    UserService.perfil().then(function(data) {
-
-           $scope.perfil = data[0]
-        
-    })
-
-
-
-
-
-  }
-
-
-}
 
 angular
   .module('app')
@@ -677,6 +686,15 @@ function HomeController($stateParams,$scope,$location,$http,LlamadaService){
 
 }
 
+
+
+
+function InicioController($stateParams,$scope,$location,$http,LlamadaService){
+
+
+
+}
+
 angular
   .module('app')
   .component('ingresarcomponent', {
@@ -700,15 +718,6 @@ function IngresarController($scope,UserService){
 
 
 	}
-
-
-}
-
-
-
-
-function InicioController($stateParams,$scope,$location,$http,LlamadaService){
-
 
 
 }
@@ -863,6 +872,23 @@ function NewuserController($location,$scope,KineService,UserService,$http){
 
 angular
   .module('app')
+  .component('redirectcomponent', {
+    templateUrl: 'html/redirect/redirect.html',
+    controller: RedirectController
+  });
+
+
+
+function RedirectController($scope,KineService){
+
+
+	
+
+
+}
+
+angular
+  .module('app')
   .component('perfilcomponent', {
     templateUrl: 'html/perfil/perfil.html',
     controller: PerfilController
@@ -911,23 +937,6 @@ $scope.kines = $filter('filter')(data,{ 'user_id' : $scope.user_id})
 
 
 
-
-
-}
-
-angular
-  .module('app')
-  .component('redirectcomponent', {
-    templateUrl: 'html/redirect/redirect.html',
-    controller: RedirectController
-  });
-
-
-
-function RedirectController($scope,KineService){
-
-
-	
 
 
 }
@@ -1442,6 +1451,11 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
          $scope.ventabbva =function(cliente){
 
 
+
+
+
+
+
               cliente.nomagente = $scope.nomagente
 
               BbvaService.venta(cliente).then(function(data) {
@@ -1467,6 +1481,9 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
 
 
             })
+
+
+
 
 
 

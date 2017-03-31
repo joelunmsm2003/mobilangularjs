@@ -578,6 +578,7 @@ class Tipificacion(models.Model):
 class Ticket(models.Model):
     numero = models.CharField(db_column='numero', max_length=1000, blank=True, null=True)
     dni = models.CharField(db_column='dni', max_length=100, blank=True, null=True)
+    fecha = models.DateTimeField(db_column='fecha')
 
 
     class Meta:
