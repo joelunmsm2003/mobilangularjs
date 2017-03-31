@@ -575,8 +575,30 @@ def ventas(request):
         base.todo_prima = todo_prima
         base.facebook = facebook
         base.deacuerdo = deacuerdo
+        base.contacto_id = 7
+
         
         base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
+
+        url = 'http://192.168.40.4/sql/sorteo.php'
+
+        venta = base.cantidad
+
+        actualiza = 0
+
+        data = {'dni':dni,'cliente':base.nombre,'agente':base.nombre_agente,'actualiza':actualiza,'venta':venta}
+
+        print data
+
+        r = requests.post(url,data)
+
+        result = r.text.strip()
+
+        Ticket(numero=result,dni=dni).save()
+
+        base.ticket = result
+
+        base.fecha = datetime.today()-timedelta(hours=5)
 
         base.save()
 
@@ -615,7 +637,7 @@ def venta(request):
         lpd= None
         deacuerdo= None
 
-        
+
         for d in data:
 
             if d == 'nombre':
@@ -698,25 +720,25 @@ def venta(request):
         
         base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
 
-        url = 'http://192.168.40.4/sql/sorteo.php'
+        # url = 'http://192.168.40.4/sql/sorteo.php'
 
-        venta = base.cantidad
+        # venta = base.cantidad
 
-        actualiza = 0
+        # actualiza = 0
 
-        data = {'dni':dni,'cliente':base.nombre,'agente':base.nombre_agente,'actualiza':actualiza,'venta':venta}
+        # data = {'dni':dni,'cliente':base.nombre,'agente':base.nombre_agente,'actualiza':actualiza,'venta':venta}
 
-        print data
+        # print data
 
-        r = requests.post(url,data)
+        # r = requests.post(url,data)
 
-        result = r.text.strip()
+        # result = r.text.strip()
 
-        Ticket(numero=result,dni=dni).save()
+        # Ticket(numero=result,dni=dni).save()
 
-        base.ticket = result
+        # base.ticket = result
 
-        base.fecha = datetime.today()-timedelta(hours=5)
+        # base.fecha = datetime.today()-timedelta(hours=5)
 
         base.save()
 
