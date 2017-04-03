@@ -3,7 +3,7 @@ killall -9 node
 killall 9 python
 
 
-gulp watch&
+#gulp watch&
 
 # cd ../server
 # npm start&
