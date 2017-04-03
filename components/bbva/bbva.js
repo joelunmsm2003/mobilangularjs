@@ -23,6 +23,9 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
         $scope.recuperoventa = this.recupero
 
 
+        console.log('VEnta.....',$scope.recuperoventa)
+
+
         UserService.agentes().then(function(data) {
 
 
@@ -56,8 +59,7 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
       console.log('SADASDSADASDSAD',data,cliente)
 
-       // $location.path('/recupero/'+dni+'/'+cliente.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
-
+        $location.path('/recupero/'+dni+'/'+'null'+'/'+'null'+'/'+data)
 
 
         }
@@ -113,11 +115,13 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
 
-                    $('#actualiza').modal('hide')
+                  $('#actualiza').modal('hide')
                   $('.modal-backdrop').remove();
 
 
               cliente.nomagente = $scope.nomagente
+
+              cliente.recupero = $scope.recuperoventa
 
 
 
@@ -161,6 +165,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
         $scope.preguntar =function(res){
 
             res.dni = $stateParams.dni
+
+            res.recupero = $scope.recuperoventa
 
 
             contadorpre = 0

@@ -17,6 +17,11 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
   
         dni = $stateParams.dni
 
+
+        $scope.recupero = this.recupero
+
+        console.log('recuperoventa----',$scope.recupero)
+
         $scope.base = $stateParams.base
 
         $scope.idagente = $stateParams.idagente
@@ -60,7 +65,7 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
 
 
 
-
+              cliente.recupero = $scope.recupero
 
               cliente.nomagente = $scope.nomagente
 

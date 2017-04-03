@@ -12,6 +12,8 @@ function VentarecuperoController($scope,$location,$http,LlamadaService,$statePar
 
         dni = $stateParams.dni
 
+        $scope.ndni = $stateParams.dni
+
         $scope.base = $stateParams.base
 
         $scope.id_agente = $stateParams.idagente

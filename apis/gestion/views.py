@@ -212,7 +212,7 @@ def preguntas(request):
 
                 base.pregunta4 = data[d]
 
-            base.save()
+            #base.save()
 
 
         data=''
@@ -344,6 +344,7 @@ def actualizabbva(request):
         lpd= None
         deacuerdo= None
         nomagente = None
+        recupero = None
 
         
         for d in data:
@@ -404,13 +405,17 @@ def actualizabbva(request):
 
                 facebook = data['facebook']
 
-            if d == 'lpd':
+            if d == 'deacuerdo':
 
-                deacuerdo = data['lpd']
+                deacuerdo = data['deacuerdo']
 
             if d == 'nomagente':
 
                 nomagente = data['nomagente']
+
+            if d == 'recupero':
+
+                recupero = data['recupero']
 
         base = OrigBaseC01.objects.get(dni=dni,cod_cam=29)
         base.nombre = nombre
@@ -419,20 +424,11 @@ def actualizabbva(request):
         base.telefono1 = telefono1
         base.telefono2 = telefono2
         base.mail = mail
-        base.cantidad = cantidad
-        base.nombredelproducto = nombredelproducto
-        base.cobertura = cobertura
-        base.direccion = direccion
-        base.tipo_envio =tipo_envio
-        base.prima = prima
-        base.todo_prima = todo_prima
         base.facebook = facebook
         base.deacuerdo = deacuerdo
         base.nombre_agente = nomagente
-        base.contacto_id = 6
-
-        base.fecha_actualizar_bbva = datetime.today()-timedelta(hours=5)
-
+    
+     
         url = 'http://192.168.40.4/sql/sorteo.php'
 
         venta = 0
@@ -441,28 +437,43 @@ def actualizabbva(request):
 
         data = {'dni':dni,'cliente':base.nombre,'agente':base.nombre_agente,'actualiza':actualiza,'venta':venta}
 
-        print data
+        print 'recupero.....',recupero
 
-        r = requests.post(url,data)
+        if recupero == None:
 
-        result = r.text.strip()
+            base.contacto_id = 6
 
-        Ticket(numero=result,dni=dni).save()
+            r = requests.post(url,data)
 
-        base.ticket = result
+            result = r.text.strip()
 
-        base.fecha = datetime.today()-timedelta(hours=5)
+            Ticket(numero=result,dni=dni).save()
 
-        base.save()
+            base.ticket = result
 
+            base.fecha = datetime.today()-timedelta(hours=5)
+
+            base.save()
+
+            os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
+
+
+        if int(recupero) == 1:
+
+            fecha=datetime.today()-timedelta(hours=5)
+
+            base.save()
+
+            Ventarecupero(bbva_id=base.id,cod_cam=29,lote=3,t_ins=fecha,contacto_id=7,facebook=facebook,nombre=nombre,dni=dni,fecha_nacimiento=fecha_nacimiento,telefono1=telefono1,telefono2=telefono2,mail=mail,deacuerdo=deacuerdo,nombre_agente=nomagente).save()
+
+            os.system('python /var/www/html/gestion/apis/gestion/audiorecupero.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
 
 
         data = ValuesQuerySetToDict(data)
 
         data_json = simplejson.dumps(data)
 
-        os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
-
+        
         return HttpResponse(data_json, content_type="application/json")
 
 @csrf_exempt
@@ -491,6 +502,7 @@ def ventas(request):
         lpd= None
         deacuerdo= None
         nomagente = None
+        recupero = None
 
         
         for d in data:
@@ -559,6 +571,10 @@ def ventas(request):
 
                 nomagente = data['nomagente']
 
+            if d == 'recupero':
+
+                recupero = data['recupero']
+
         base = OrigBaseC01.objects.get(dni=dni)
         base.nombre = nombre
         base.dni = dni
@@ -575,40 +591,52 @@ def ventas(request):
         base.todo_prima = todo_prima
         base.facebook = facebook
         base.deacuerdo = deacuerdo
-        base.contacto_id = 7
-
         
-        base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
+        if recupero == None:
 
-        url = 'http://192.168.40.4/sql/sorteo.php'
+            base.contacto_id = 7
+        
+            base.fecha_venta_bbva = datetime.today()-timedelta(hours=5)
 
-        venta = base.cantidad
+            url = 'http://192.168.40.4/sql/sorteo.php'
 
-        actualiza = 0
+            venta = base.cantidad
 
-        data = {'dni':dni,'cliente':base.nombre,'agente':base.nombre_agente,'actualiza':actualiza,'venta':venta}
+            actualiza = 0
 
-        print data
+            data = {'dni':dni,'cliente':base.nombre,'agente':base.nombre_agente,'actualiza':actualiza,'venta':venta}
 
-        r = requests.post(url,data)
+            r = requests.post(url,data)
 
-        result = r.text.strip()
+            result = r.text.strip()
 
-        Ticket(numero=result,dni=dni).save()
+            Ticket(numero=result,dni=dni).save()
 
-        base.ticket = result
+            base.ticket = result
 
-        base.fecha = datetime.today()-timedelta(hours=5)
+            base.fecha = datetime.today()-timedelta(hours=5)
 
-        base.save()
+            base.save()
+
+            os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
+
+
+        if int(recupero) == 1:
+
+            print 'Recupero....Venta'
+        
+            base.save()
+
+            Ventarecupero(bbva_id=base.id,cod_cam=29,lote=3,t_ins=fecha,contacto_id=7,facebook=facebook,nombre=nombre,dni=dni,fecha_nacimiento=fecha_nacimiento,telefono1=telefono1,telefono2=telefono2,mail=mail,deacuerdo=deacuerdo,nombre_agente=nomagente).save()
+
+            os.system('python /var/www/html/gestion/apis/gestion/audiorecupero.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
+
 
         data = ValuesQuerySetToDict(data)
 
         data_json = simplejson.dumps(data)
 
-        os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
-
-
+      
         return HttpResponse(data_json, content_type="application/json")
 
 @csrf_exempt
@@ -1539,6 +1567,7 @@ def tipifica(request):
         idagente = data['idagente']
         nomagente = data['nomagente']
         dni = data['dni']
+        recupero = None
 
 
         for d in data:
@@ -1594,6 +1623,11 @@ def tipifica(request):
                 dni = data['dni']
 
 
+            if d == 'recupero':
+
+                recupero = data['recupero']
+
+
             if d == 'mytime':
 
                 mytime = data['mytime']
@@ -1606,18 +1640,11 @@ def tipifica(request):
 
         ccampana = 3
 
-        recupero = 0
+
 
         if ccampana==3:
 
-            if recupero==1:
-
-                b = Ventarecupero.objects.get(dni=dni)
-
-            else:
-
-                b = OrigBaseC01.objects.get(dni=dni,cod_cam=29)
-
+            b=OrigBaseC01.objects.get(dni=dni,cod_cam=29)
 
             b.contacto_id = contacto
 
@@ -1631,11 +1658,25 @@ def tipifica(request):
 
             b.nombre_agente = nomagente
 
-            b.fecha_tipifica_bbva = datetime.today()-timedelta(hours=5)
 
-            b.tadicional = phone
+            if recupero == None:
 
-            b.save()
+                b.fecha_tipifica_bbva = datetime.today()-timedelta(hours=5)
+
+                b.save()
+
+                os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(dni))
+
+
+            if int(recupero) == 1:
+
+                print 'tipifica... venta'
+
+                fecha =datetime.today()-timedelta(hours=5)
+
+                Ventarecupero(bbva_id=b.id,cod_cam=29,lote=3,fecha_tipifica_bbva=fecha,contacto_id=contacto,accion_id=accion,dni=dni,nombre_agente=nomagente).save()
+
+                os.system('python /var/www/html/gestion/apis/gestion/audiorecupero.py'+' '+str("'"+nomagente+"'")+' '+str(dni))
 
 
         if ccampana == 1:
@@ -1655,6 +1696,5 @@ def tipifica(request):
 
         data_json = simplejson.dumps(data)
 
-        os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(dni))
-
+        
         return HttpResponse(data_json, content_type="application/json")

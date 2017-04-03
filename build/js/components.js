@@ -37,6 +37,9 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
         $scope.recuperoventa = this.recupero
 
 
+        console.log('VEnta.....',$scope.recuperoventa)
+
+
         UserService.agentes().then(function(data) {
 
 
@@ -70,8 +73,7 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
       console.log('SADASDSADASDSAD',data,cliente)
 
-       // $location.path('/recupero/'+dni+'/'+cliente.id_orig_base+'/'+$scope.idagente+'/'+$scope.nomagente)
-
+        $location.path('/recupero/'+dni+'/'+'null'+'/'+'null'+'/'+data)
 
 
         }
@@ -127,11 +129,13 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
 
 
 
-                    $('#actualiza').modal('hide')
+                  $('#actualiza').modal('hide')
                   $('.modal-backdrop').remove();
 
 
               cliente.nomagente = $scope.nomagente
+
+              cliente.recupero = $scope.recuperoventa
 
 
 
@@ -175,6 +179,8 @@ function BbvaController($state,$stateParams,$scope,$location,$http,LlamadaServic
         $scope.preguntar =function(res){
 
             res.dni = $stateParams.dni
+
+            res.recupero = $scope.recuperoventa
 
 
             contadorpre = 0
@@ -242,6 +248,8 @@ function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$l
         url = $location.url()
 
         dni = $stateParams.dni
+
+        $scope.ndni = $stateParams.dni
 
         $scope.base = $stateParams.base
 
@@ -336,6 +344,20 @@ function BotoneraController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
+  .component('campanacomponent', {
+    templateUrl: 'html/campana/campana.html',
+    controller: CampanaController,
+    bindings: {
+        onDelete: '&'
+    }
+  });
+
+
+
+function CampanaController($scope,$location,$http,LlamadaService){
+	 }
+angular
+  .module('app')
   .component('detallesbotoneracomponent', {
     templateUrl: 'html/detallesbotonera/detallesbotonera.html',
     controller: DetallesbotoneraController,
@@ -348,20 +370,6 @@ angular
 
 
 function DetallesbotoneraController($scope,$location,$http,LlamadaService){
-	 }
-angular
-  .module('app')
-  .component('campanacomponent', {
-    templateUrl: 'html/campana/campana.html',
-    controller: CampanaController,
-    bindings: {
-        onDelete: '&'
-    }
-  });
-
-
-
-function CampanaController($scope,$location,$http,LlamadaService){
 	 }
 angular
   .module('app')
@@ -1194,20 +1202,16 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
 
       TipificaService.todosestados().then(function(data) { $scope.estados = data  })
 
-      LlamadaService.base($scope.base).then(function(data) {
+      // LlamadaService.base($scope.base).then(function(data) {
 
-        console.log('base...',data)
+      //   console.log('base...',data)
 
-        $scope.resultado = data[0]
+      //   $scope.resultado = data[0]
 
-        $scope.resultado.contacto = $filter('filter')($scope.contacto,{'id' : $scope.resultado.contacto})[0]     
-
-        //console.log('dhhd',$scope.todosestados)
-
-        //$scope.resultado.estado = $filter('filter')($scope.todosestados,{'id' : $scope.resultado.estado})[0]     
+      //   $scope.resultado.contacto = $filter('filter')($scope.contacto,{'id' : $scope.resultado.contacto})[0]     
 
       
-      })
+      // })
 
       TipificaService.acciones().then(function(data) {
 
@@ -1246,6 +1250,8 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
             else{
 
                 data.dni = dni
+
+                data.recupero = $scope.recupero
 
                 data.base = $scope.base
 
@@ -1394,6 +1400,11 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
   
         dni = $stateParams.dni
 
+
+        $scope.recupero = this.recupero
+
+        console.log('recuperoventa----',$scope.recupero)
+
         $scope.base = $stateParams.base
 
         $scope.idagente = $stateParams.idagente
@@ -1437,7 +1448,7 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
 
 
 
-
+              cliente.recupero = $scope.recupero
 
               cliente.nomagente = $scope.nomagente
 
@@ -1487,6 +1498,8 @@ function VentarecuperoController($scope,$location,$http,LlamadaService,$statePar
         url = $location.url()
 
         dni = $stateParams.dni
+
+        $scope.ndni = $stateParams.dni
 
         $scope.base = $stateParams.base
 

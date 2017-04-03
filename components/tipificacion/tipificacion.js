@@ -79,20 +79,16 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
 
       TipificaService.todosestados().then(function(data) { $scope.estados = data  })
 
-      LlamadaService.base($scope.base).then(function(data) {
+      // LlamadaService.base($scope.base).then(function(data) {
 
-        console.log('base...',data)
+      //   console.log('base...',data)
 
-        $scope.resultado = data[0]
+      //   $scope.resultado = data[0]
 
-        $scope.resultado.contacto = $filter('filter')($scope.contacto,{'id' : $scope.resultado.contacto})[0]     
-
-        //console.log('dhhd',$scope.todosestados)
-
-        //$scope.resultado.estado = $filter('filter')($scope.todosestados,{'id' : $scope.resultado.estado})[0]     
+      //   $scope.resultado.contacto = $filter('filter')($scope.contacto,{'id' : $scope.resultado.contacto})[0]     
 
       
-      })
+      // })
 
       TipificaService.acciones().then(function(data) {
 
@@ -131,6 +127,8 @@ function TipificacionController($state,$stateParams,$filter,$scope,$location,$ht
             else{
 
                 data.dni = dni
+
+                data.recupero = $scope.recupero
 
                 data.base = $scope.base
 

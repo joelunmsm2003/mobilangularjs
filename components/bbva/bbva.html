@@ -9,7 +9,7 @@
 
 		
 
-			<select  class='form-control' ng-model="item"   ng-options="item.id_ori_usuario as item.usuario_nombre for item in agentes track by item.id_ori_usuario" required><option></option></select>
+			<select  class='form-control' ng-model="item"   ng-options="item.usuario_nombre as item.usuario_nombre for item in agentes track by item.id_ori_usuario" required><option></option></select>
 
 			<br></br>
 			<button class='btn btn-danger' ng-click='recuperoventafunction(item,cliente)'  >Recupera Venta</button>
@@ -25,6 +25,8 @@
 
 
 <form ng-submit='actualizar(cliente)' class='bbva' >
+
+
 
 <span ng-if='cliente.ticket_actualiza'><i class="fa fa-ticket" aria-hidden="true"></i> Tickets : {{cliente.ticket_actualiza}}</span>
 
@@ -147,7 +149,7 @@
 	       	<p>Sr. / Srta. {{cliente.apellidos}} para poder asignarle su opcion de participacion al sorteo de la camioneta Hyundai Tucson, es necesario que nos proporcione los siguientes datos:</p>
 
 
-	       	<form ng-submit='actualizabbva(cliente)'>
+	       	<form  ng-submit='actualizabbva(cliente)'>
 
 			<label>Su nombre y apellidos completos es:</label> <input required type="text" class="form-control"  ng-model='cliente.nombre' id="nombre">
 
@@ -162,10 +164,11 @@
 			
 			<label>¿Este correo tambien lo utiliza para Facebook?</label> <select  class='form-control' ng-model='cliente.facebook' required ><option></option><option value='Si'>Si</option><option value='No'>No</option></select>
 
-			<label>Ley de Proteccion de Datos ¿Esta de acuerdo?</label> <select ng-model='cliente.lpd' required class='form-control' ><option></option><option value='Si'>Si</option><option value='No'>No</option></select>
+			<label>Ley de Proteccion de Datos ¿Esta de acuerdo?</label> <select ng-model='cliente.deacuerdo' required class='form-control' ><option></option><option value='Si'>Si</option><option value='No'>No</option></select>
 
 			<br>
-			<button class="btn btn-prrimary" type='submit'>Actualizar</button>
+			<button  class="btn btn-info" type='submit'>Actualizar</button>
+
 			</form>
 		
 

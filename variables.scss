@@ -73,7 +73,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)) !default;
 $headings-font-family:    inherit !default;
 $headings-font-weight:    500 !default;
 $headings-line-height:    1.1 !default;
-$headings-color:          inherit !default;
+$headings-color:          $brand-success !default;
 
 
 //== Iconography
@@ -520,7 +520,7 @@ $state-warning-text:             #fff !default;
 $state-warning-bg:               #28CC9E !default;
 $state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
 
-$state-danger-text:              #fff !default;
+$state-danger-text:              $brand-info !default;
 $state-danger-bg:                #DDFEE4 !default;
 $state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
 

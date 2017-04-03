@@ -9,6 +9,8 @@ function BbvacampanaController(LlamadaService,BbvaService,$stateParams,$scope,$l
 
         dni = $stateParams.dni
 
+        $scope.ndni = $stateParams.dni
+
         $scope.base = $stateParams.base
 
         $scope.id_agente = $stateParams.idagente
