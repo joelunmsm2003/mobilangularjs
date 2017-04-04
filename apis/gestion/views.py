@@ -464,7 +464,7 @@ def actualizabbva(request):
 
             base.save()
 
-            Ventarecupero(bbva_id=base.id,cod_cam=29,lote=3,t_ins=fecha,contacto_id=7,facebook=facebook,nombre=nombre,dni=dni,fecha_nacimiento=fecha_nacimiento,telefono1=telefono1,telefono2=telefono2,mail=mail,deacuerdo=deacuerdo,nombre_agente=nomagente).save()
+            Ventarecupero(bbva_id=base.id,cod_cam=29,lote=3,t_ins=fecha,contacto_id=12,facebook=facebook,nombre=nombre,dni=dni,fecha_nacimiento=fecha_nacimiento,telefono1=telefono1,telefono2=telefono2,mail=mail,deacuerdo=deacuerdo,nombre_agente=nomagente).save()
 
             os.system('python /var/www/html/gestion/apis/gestion/audiorecupero.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
 
@@ -627,7 +627,7 @@ def ventas(request):
         
             base.save()
 
-            Ventarecupero(bbva_id=base.id,cod_cam=29,lote=3,t_ins=fecha,contacto_id=7,facebook=facebook,nombre=nombre,dni=dni,fecha_nacimiento=fecha_nacimiento,telefono1=telefono1,telefono2=telefono2,mail=mail,deacuerdo=deacuerdo,nombre_agente=nomagente).save()
+            Ventarecupero(bbva_id=base.id,cod_cam=29,lote=3,t_ins=fecha,contacto_id=12,facebook=facebook,nombre=nombre,dni=dni,fecha_nacimiento=fecha_nacimiento,telefono1=telefono1,telefono2=telefono2,mail=mail,deacuerdo=deacuerdo,nombre_agente=nomagente).save()
 
             os.system('python /var/www/html/gestion/apis/gestion/audiorecupero.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
 
