@@ -453,12 +453,14 @@ def actualizabbva(request):
 
             base.fecha = datetime.today()-timedelta(hours=5)
 
+            base.fecha_actualizar_bbva = datetime.today()-timedelta(hours=5)
+
             base.save()
 
-            os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
+            os.system('python /var/www/html/produccion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
 
 
-        if int(recupero) == 1:
+        else:
 
             fecha=datetime.today()-timedelta(hours=5)
 
@@ -466,7 +468,7 @@ def actualizabbva(request):
 
             Ventarecupero(bbva_id=base.id,cod_cam=29,lote=3,t_ins=fecha,contacto_id=12,facebook=facebook,nombre=nombre,dni=dni,fecha_nacimiento=fecha_nacimiento,telefono1=telefono1,telefono2=telefono2,mail=mail,deacuerdo=deacuerdo,nombre_agente=nomagente).save()
 
-            os.system('python /var/www/html/gestion/apis/gestion/audiorecupero.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
+            os.system('python /var/www/html/produccion/apis/gestion/audiorecupero.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
 
 
         data = ValuesQuerySetToDict(data)
@@ -618,18 +620,20 @@ def ventas(request):
 
             base.save()
 
-            os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
+            os.system('python /var/www/html/produccion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
 
 
-        if int(recupero) == 1:
+        else:
 
             print 'Recupero....Venta'
         
             base.save()
 
-            Ventarecupero(bbva_id=base.id,cod_cam=29,lote=3,t_ins=fecha,contacto_id=12,facebook=facebook,nombre=nombre,dni=dni,fecha_nacimiento=fecha_nacimiento,telefono1=telefono1,telefono2=telefono2,mail=mail,deacuerdo=deacuerdo,nombre_agente=nomagente).save()
+            fecha = datetime.today()-timedelta(hours=5)
 
-            os.system('python /var/www/html/gestion/apis/gestion/audiorecupero.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
+            Ventarecupero(fecha_venta_bbva=fecha,bbva_id=base.id,cod_cam=29,lote=3,t_ins=fecha,contacto_id=12,facebook=facebook,nombre=nombre,dni=dni,fecha_nacimiento=fecha_nacimiento,telefono1=telefono1,telefono2=telefono2,mail=mail,deacuerdo=deacuerdo,nombre_agente=nomagente).save()
+
+            os.system('python /var/www/html/produccion/apis/gestion/audiorecupero.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
 
 
         data = ValuesQuerySetToDict(data)
@@ -1661,14 +1665,16 @@ def tipifica(request):
 
             if recupero == None:
 
+                print 'BBVA sin recupero'
+
                 b.fecha_tipifica_bbva = datetime.today()-timedelta(hours=5)
 
                 b.save()
 
-                os.system('python /var/www/html/gestion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(dni))
+                os.system('python /var/www/html/produccion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(dni))
 
 
-            if int(recupero) == 1:
+            else:
 
                 print 'tipifica... venta'
 
@@ -1676,7 +1682,7 @@ def tipifica(request):
 
                 Ventarecupero(bbva_id=b.id,cod_cam=29,lote=3,fecha_tipifica_bbva=fecha,contacto_id=contacto,accion_id=accion,dni=dni,nombre_agente=nomagente).save()
 
-                os.system('python /var/www/html/gestion/apis/gestion/audiorecupero.py'+' '+str("'"+nomagente+"'")+' '+str(dni))
+                os.system('python /var/www/html/produccion/apis/gestion/audiorecupero.py'+' '+str("'"+nomagente+"'")+' '+str(dni))
 
 
         if ccampana == 1:
