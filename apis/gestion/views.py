@@ -455,7 +455,10 @@ def actualizabbva(request):
 
             base.fecha_actualizar_bbva = datetime.today()-timedelta(hours=5)
 
+            base.audiofinal = dni+'_'+str(base.fecha_actualizar_bbva)+'_AC'
+
             base.save()
+
 
             os.system('python /var/www/html/produccion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
 
@@ -463,6 +466,8 @@ def actualizabbva(request):
         else:
 
             fecha=datetime.today()-timedelta(hours=5)
+
+            base.audiofinal = dni+'_'+str(fecha)+'_VR'
 
             base.save()
 
@@ -618,6 +623,8 @@ def ventas(request):
 
             base.fecha = datetime.today()-timedelta(hours=5)
 
+            base.audiofinal = dni+'_'+str(base.fecha_venta_bbva)+'_AV'
+
             base.save()
 
             os.system('python /var/www/html/produccion/apis/gestion/audio.py'+' '+str("'"+nomagente+"'")+' '+str(base.dni))
@@ -626,10 +633,14 @@ def ventas(request):
         else:
 
             print 'Recupero....Venta'
+
+            fecha = datetime.today()-timedelta(hours=5)
+
+            base.audiofinal = dni+'_'+str(fecha)+'_VR'
         
             base.save()
 
-            fecha = datetime.today()-timedelta(hours=5)
+            
 
             Ventarecupero(fecha_venta_bbva=fecha,bbva_id=base.id,cod_cam=29,lote=3,t_ins=fecha,contacto_id=12,facebook=facebook,nombre=nombre,dni=dni,fecha_nacimiento=fecha_nacimiento,telefono1=telefono1,telefono2=telefono2,mail=mail,deacuerdo=deacuerdo,nombre_agente=nomagente).save()
 

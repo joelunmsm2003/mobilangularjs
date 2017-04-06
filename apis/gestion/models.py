@@ -491,6 +491,7 @@ class OrigBaseC01(models.Model):
     pregunta3 = models.CharField(db_column='pregunta3', max_length=100, blank=True, null=True)
     pregunta4 = models.CharField(db_column='pregunta4', max_length=100, blank=True, null=True)
     ticket = models.CharField(db_column='ticket', max_length=100, blank=True, null=True)
+    audiofinal = models.CharField(db_column='audiofinal', max_length=100, blank=True, null=True)
 
     
     class Meta:

@@ -12,6 +12,7 @@ cd ./apis
 
 python manage.py runserver 0.0.0.0:1000&
 
+gulp
 
 echo 3 > /proc/sys/vm/drop_caches
 

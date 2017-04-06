@@ -30,6 +30,8 @@ function HomeController($stateParams,$scope,$location,$http,LlamadaService){
 
                 LlamadaService.listar(dni).then(function(data) {
 
+                console.log(data)
+
                 $scope.registros = data
 
                 })
