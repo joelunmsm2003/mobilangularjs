@@ -130,6 +130,13 @@ def creaunatrama(dni):
         segundonombre = name[2]
         apellidos = str(name[3])+str(name[4])+str(name[5])
 
+    if int(c)==7:
+
+        primernombre =str(name[0])+str(name[1])
+        segundonombre = name[2]
+        apellidos = str(name[3])+str(name[4])+str(name[5])+str(name[6])
+
+
 
     
     #Nombre del Contratante - 30
