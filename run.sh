@@ -8,9 +8,11 @@ killall 9 python
 # cd ../server
 # npm start&
 
-cd ./apis
+cd /var/www/html/produccion/apis
 
 python manage.py runserver 0.0.0.0:1000&
+
+cd /var/www/html/produccion/
 
 gulp
 

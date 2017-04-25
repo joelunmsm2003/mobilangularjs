@@ -38,6 +38,353 @@ def ValuesQuerySetToDict(vqs):
     return [item for item in vqs]
 
 
+def generablancos(data):
+
+    e = ''
+
+    for b in range(data):
+
+        e = ' '+ e
+
+    return e
+
+
+def creaunatrama(dni):
+
+    print 'Creando...',dni
+
+    base = OrigBaseC01.objects.get(dni=dni,cod_cam=29)
+
+    print base
+    
+    m = []
+
+    # Tipo de registro - 1
+    tipo = '1'
+    eb = 1 - len(tipo)
+    tipo = tipo + generablancos(eb)
+
+    ccampana = 'PE17008801'
+    eb = 10 - len(ccampana)
+    ccampana = ccampana + generablancos(eb)
+
+    # DNI
+    dni = base.dni
+    eb = 15 - len(dni)
+    dni = dni + generablancos(eb)
+
+
+    # Tipo de cobertura - 2
+    tcobertura = 'PA'
+    eb = 2 - len(tcobertura)
+    tcobertura = tcobertura + generablancos(eb)
+
+    base.nombre = base.nombre.encode('ascii','ignore')
+    base.nombre = base.nombre.encode('ascii','replace')
+
+
+    #Nombre Apellido - 50
+    nombre = base.nombre
+    eb = 50 - len(nombre)
+    nombre = nombre + generablancos(eb)
+
+    #print nombre
+    #SANDRA MICAELA CERNA CASTILLO
+
+    name = nombre.split(' ')
+    cantn = len(name)
+
+    print type(name)
+
+    c=0
+
+    for n in name:
+
+        if len(n)>0:
+
+            c=c+1
+
+    print c
+
+    if int(c) == 4:
+
+        primernombre = name[0]
+        segundonombre = name[1]
+        apellidos =str(name[2])+' '+str(name[3])
+
+    if int(c)==5:
+
+        primernombre =str(name[0])+str(name[1])
+        segundonombre = name[2]
+        apellidos = str(name[3])+str(name[4])
+
+    if int(c)==3:
+
+        primernombre=str(name[0])
+        segundonombre = ''
+        apellidos=str(name[1])+str(name[2])
+
+    if int(c)==6:
+
+        primernombre =str(name[0])+str(name[1])
+        segundonombre = name[2]
+        apellidos = str(name[3])+str(name[4])+str(name[5])
+
+
+    
+    #Nombre del Contratante - 30
+
+    primernombre = primernombre.encode('ascii','ignore')
+    primernombre = primernombre.encode('ascii','replace')
+
+    ncontratante = primernombre
+    eb = 30 - len(ncontratante)
+    ncontratante = ncontratante + generablancos(eb)
+
+
+    segundonombre = segundonombre.encode('ascii','ignore')
+    segundonombre = segundonombre.encode('ascii','replace')
+
+
+    scontratante = segundonombre
+    eb = 15 - len(scontratante)
+    scontratante = scontratante + generablancos(eb)
+
+    apellidos = apellidos.encode('ascii','ignore')
+    apellidos = apellidos.encode('ascii','replace')
+
+
+    #Apellidos del contratante - 30
+    apcontratante = apellidos
+    eb = 30 - len(apcontratante)
+    apcontratante = apcontratante + generablancos(eb)
+
+
+    #Direccion 1 - 30
+    base.direccion = base.direccion.encode('ascii','ignore')
+    base.direccion = base.direccion.encode('ascii','replace')
+
+    if base.direccion == None:
+        base.direccion =''
+    direccion1 = base.direccion[0:29]
+    eb = 30 - len(direccion1)
+    direccion1 = direccion1 + generablancos(eb)
+
+
+    #Direccion 2 - 30
+    direccion2 = ''
+    eb = 30 - len(direccion2)
+    direccion2 = direccion2 + generablancos(eb)
+
+
+    #Direccion 3 -30
+    direccion3 = base.distrito
+    eb = 30 - len(direccion3)
+    direccion3 = direccion3 + generablancos(eb)
+
+    #Provincia-30
+    provincia = base.provincia
+    eb = 30 - len(provincia)
+    provincia = provincia + generablancos(eb)
+
+    #Departamento-2
+    departamento = base.departamento
+    eb = 2 - len(departamento)
+    departamento = departamento + generablancos(eb)
+
+    #Sexo-2
+    sexo =base.sexo
+    eb = 2 - len(sexo)
+    sexo = sexo + generablancos(eb)
+
+    idioma='02'
+
+    #Poliza
+    poliza ='01'
+    eb = 2 - len(poliza)
+    poliza = poliza + generablancos(eb)
+
+    #transaccion
+    transaccion ='NEW'
+
+    #Direccion 4 - 30
+    direccion4 = ''
+    eb = 30 - len(direccion4)
+    direccion4 = direccion4 + generablancos(eb)
+
+
+    #Telefono de Casa - 20
+    if base.telefono2 == None:
+        base.telefono2 = ''
+    telfcasa = base.telefono2
+    eb = 20 - len(telfcasa)
+    telfcasa = telfcasa + generablancos(eb)
+
+
+    #Telefono de trabajo - 20
+
+    if base.telefono1 == None:
+        base.telefono1 = ''
+    telefonotrabajo = base.telefono1
+    eb = 20 - len(telefonotrabajo)
+    telefonotrabajo = telefonotrabajo + generablancos(eb)
+
+
+    dependientes = '00'
+
+    #Fecha de expiracion - 100
+    #fexpiracion = '03/17'
+    fexpiracion = str(base.fecha_vencimiento).split('-')[1]+'/'+str(base.fecha_vencimiento)[2:4]
+    eb = 5- len(fexpiracion)
+    fexpiracion = fexpiracion + generablancos(eb)
+
+
+    #Fecha de Naciomiento - 100
+    reference3 = base.codigoautorizacion
+    eb = 100 - len(reference3)
+    reference3 = reference3 + generablancos(eb)
+
+
+    #Fecha de Naciomiento - 8
+    fechadenacimiento = base.fecha_nacimiento.replace('-','')
+    eb = 8 - len(fechadenacimiento)
+    fechadenacimiento = fechadenacimiento + generablancos(eb)
+
+
+    #Email - 40 
+    email = base.mail
+    eb = 40 - len(email)
+    email = email + generablancos(eb)
+
+
+    #Unit - 100
+    uni = ''
+    eb = 100 - len(uni)
+    uni = uni + generablancos(eb)
+
+    #Datos Especificos del producto - 2080
+    datespecpro = ''
+    eb = 2080 - len(datespecpro)
+    datespecpro = datespecpro + generablancos(eb)
+
+    codigoproductosimple = 'PAP494'
+    eb = 60 - len(codigoproductosimple)
+    codigoproductosimple = codigoproductosimple + generablancos(eb)
+
+
+    #Cuenta bancaria - 20
+    cuentabancaria = base.tarjetacredito
+    eb = 20 - len(cuentabancaria)
+    cuentabancaria = cuentabancaria + generablancos(eb)
+
+    #Cuenta bancaria - 20
+
+    fecha = str(base.fecha_venta_bbva).split('-')
+    fecha=fecha[0]+fecha[1]+fecha[2]
+    fechaefectividad = fecha[0:8]
+    eb = 8 - len(fechaefectividad)
+    fechaefectividad = fechaefectividad + generablancos(eb)
+
+    #DNI - 15
+    dni = base.dni
+    eb = 15 - len(dni)
+    dni = dni + generablancos(eb)
+
+    #telefono casa - 20
+    telefonocasa = base.telefono1
+    eb = 20 - len(telefonocasa)
+    telefonocasa = telefonocasa + generablancos(eb)
+
+            #telefono casa - 20
+    telefonotrabajo = base.telefono2
+    eb = 20 - len(telefonotrabajo)
+    telefonotrabajo = telefonotrabajo + generablancos(eb)
+
+
+    #telefono casa - 20
+    vendedor = base.nombre_agente
+    eb = 20 - len(vendedor)
+    vendedor = vendedor + generablancos(eb)
+
+    print str(base.tipo_tarjeta)[0:10]
+
+    if str(base.tipo_tarjeta)[0:4] == 'Visa':
+        codigotarjeta = 'P9'
+    if str(base.tipo_tarjeta)[0:10] == 'MasterCard':
+        codigotarjeta = 'P8' 
+    if str(base.tipo_tarjeta)[0:5] == 'Bfree':
+        codigotarjeta = 'P9'
+        print 'entre masti'
+
+    print codigotarjeta
+    eb = 2 - len(codigotarjeta)
+    codigotarjeta = codigotarjeta + generablancos(eb)
+
+
+    m.append(tipo)#tipo de registro - 1 / 1-1
+    m.append(ccampana)#codigo de campana - 10 / 2-11
+    m.append('      ') #codigo de producto paquete - 6 / 12-17
+    m.append(codigoproductosimple)#codigo de producto simple - 60 / 18-77
+    m.append(cuentabancaria)#numero de cuenta bancaria - 20 / 78-97
+    m.append(dni)#numero de DNI - 15 / 98-112
+    m.append('1')#plan - 1 / 113-113
+    m.append('MO')#tipo de cobertura - 2 / 114-115
+    m.append(fechaefectividad)#Fecha de efectividad - 8 / 116-123
+    m.append(generablancos(10))#codigo de sucursal bancaria - 10 / 124-133
+    m.append(vendedor)#codigo de vendedor - 20 / 134-153
+    m.append(generablancos(10))#codigo de banco - 10 / 154-163
+    m.append(codigotarjeta)#codigo de tarjeta de credito - 2 /164-165
+    m.append('10')#metodo de pago - 2 / 166-167
+    m.append('M ')#frecuencia de pago - 2 / 168-169
+    m.append(nombre)# nombre y apellido del contratante - 50 / 170-219
+    m.append(ncontratante)#nombre del contratante - 30 / 220-249
+    m.append(scontratante)#segundo nombre del contratante - 15 / 250-264
+    m.append(apcontratante)#apellido del contratante - 30 /265-294
+    m.append('01')#codigo de tipo de direccion - 2 / 295-296
+    m.append(direccion1)#direccion 1 - 30 / 297-326
+    m.append(direccion2)#direccion 2 - 30 / 327-356
+    m.append(direccion3)#direccion 3 - 30 / 357-386
+    m.append(direccion4)#direccion 4 - 30 / 387-416
+    m.append(generablancos(15))#filler - 15 / 417-431
+    m.append(provincia)#provincia - 30 / 432-461
+    m.append(departamento)#departamento - 2 / 462-463
+    m.append(generablancos(10))#postal - 10 / 464-473
+    m.append('PE')#codigo de pais - 2 / 474-475
+    m.append(telefonocasa)#telefono de casa - 20 / 476-495
+    m.append(telefonotrabajo)#telefono de trabajo - 20 / 496-515
+    m.append(fechadenacimiento)#fecha de nacimiento - 8 / 516-523
+    m.append(sexo)#codigo de sexo - 2 / 524-525
+    m.append(generablancos(2))#titulo - 2 / 526-527
+    m.append(idioma)#idioma - 2 / 528-529
+    m.append(generablancos(2))#filler - 2 / 530-531
+    m.append(generablancos(2))#filler - 2 / 532-533
+    m.append(generablancos(2))#filler - 2 / 534-535
+    m.append(generablancos(2))#filler - 2 / 536-537
+    m.append(poliza)#indicador de envio de polisa - 2 / 538-539
+    m.append(dependientes)#numero de dependientes - 2 / 540-541
+    m.append(generablancos(2))#filler - 2 / 542-543
+    m.append(generablancos(15))#polisa - 15 / 544-558
+    m.append(generablancos(9))#filler - 9 / 559-567
+    m.append(transaccion)#codigo de transaccion - 3 / 568-570
+    m.append(generablancos(2))#filler - 2 / 571-572
+    m.append(generablancos(5))#filler - 5 / 573-577
+    m.append(generablancos(30))#filler - 30 / 578-607
+    m.append(email)#email - 40 / 608-647
+    m.append(uni)#unit - 100 / 648-747
+    m.append(generablancos(100))#referencia1 - 100 / 748-847
+    m.append(generablancos(100))#referencia2 - 100 / 848-947
+    m.append(reference3)#referencia3 - 100 / 948-1047
+    m.append(fexpiracion)#fecha de expiracion - 5 / 1048-1052
+    # m.append(generablancos(10))#fecha de aplicacion - 10 / 1053-1062
+    # m.append(generablancos(5)) #filler - 5 / 1063-1067
+    # m.append(generablancos(3))#filler - 3 / 1068-1070
+    # m.append(generablancos(6))#filler - 6 / 1071-1076
+    # m.append(generablancos(10))#filler - 10 / 1077-1086
+    # m.append(generablancos(15))#numero de formulario - 15 / 1087-1001
+    # m.append(datespecpro)#datos especificos del producto - 2080 / 1002-3181
+    data = ''.join(m)
+
+    return data
 
 class JSONResponse(HttpResponse):
     """
@@ -212,7 +559,7 @@ def preguntas(request):
 
                 base.pregunta4 = data[d]
 
-            #base.save()
+            base.save()
 
 
         data=''
@@ -241,6 +588,7 @@ def actualizatrama(request):
         primernombre = None
         segundonombre = None
         apellidos = None
+        fechaefectividad = None
 
         for d in data:
 
@@ -324,8 +672,6 @@ def actualizabbva(request):
     if request.method == 'POST':
 
         data = json.loads(request.body)
-
-        print data
 
         nombre = None
         dni = None
@@ -437,8 +783,6 @@ def actualizabbva(request):
 
         data = {'dni':dni,'cliente':base.nombre,'agente':base.nombre_agente,'actualiza':actualiza,'venta':venta}
 
-        print 'recupero.....',recupero
-
         if recupero == None:
 
             base.contacto_id = 6
@@ -489,8 +833,6 @@ def ventas(request):
     if request.method == 'POST':
 
         data = json.loads(request.body)
-
-        print data
 
         nombre = None
         dni = None
@@ -653,6 +995,10 @@ def ventas(request):
 
       
         return HttpResponse(data_json, content_type="application/json")
+
+    data_json = simplejson.dumps('Ok')
+
+    return HttpResponse(data_json, content_type="application/json")
 
 @csrf_exempt
 def venta(request):
@@ -846,25 +1192,39 @@ def reporte(request):
 
     if request.method == 'GET':
 
-        data = OrigBase.objects.all().values('cliente').annotate(count=Count('cliente'))
+        data = OrigBase.objects.filter(id_orig_base_c__cod_cam=1).values('cliente').annotate(count=Count('cliente'))
 
         for j in range(len(data)):
 
             data[j]['contador'] = OrigBase.objects.filter(cliente=data[j]['cliente']).count()
 
-            base = OrigBase.objects.filter(cliente=data[j]['cliente']).values('id_orig_base','telefono','contacto__nombre','estado__nombre','accion__nombre','observacion','nombre_agente','tadicional','id_orig_base_c__campana','id_orig_base_c__fecha').order_by('-fgestion')
+            base = OrigBase.objects.filter(cliente=data[j]['cliente']).values('cliente','id_orig_base_c','id_orig_base','telefono','contacto__nombre','estado__nombre','accion__nombre','observacion','nombre_agente','tadicional','id_orig_base_c__campana','id_orig_base_c__fecha','id_orig_base_c__cod_cam').order_by('-fgestion')
 
+            print 'base.......',base
+            
             fmt = '%Y-%m-%d %H:%M:%S'
 
             for x in range(len(base)):
 
                 base[x]['fgestion'] = ''
 
+                base[x]['fventa'] = ''
+
+                print base[x]['id_orig_base_c']
+
+                if OrigBaseC01.objects.filter(dni=base[x]['cliente'],cod_cam=1).values('fecha').count()>0:
+
+                    base[x]['fventa'] = OrigBaseC01.objects.filter(dni=base[x]['cliente'],cod_cam=1).values('fecha')[0]['fecha']
+
+
                 if OrigBase.objects.filter(id_orig_base=base[x]['id_orig_base']).values('fgestion')[0]['fgestion']:
 
                     base[x]['fgestion'] = OrigBase.objects.get(id_orig_base=base[x]['id_orig_base']).fgestion.strftime(fmt)
 
                 base = ValuesQuerySetToDict(base)
+
+            print 'reporte welcome...',base
+
 
             data[j]['registros'] = base[0]
 
@@ -880,7 +1240,7 @@ def reporte(request):
 
         for d in data:
 
-            writer.writerow([d['contador'],d['registros']['fgestion'],d['registros']['id_orig_base_c__fecha'],d['cliente'],d['registros']['nombre_agente'],d['registros']['contacto__nombre'],d['registros']['accion__nombre'],d['registros']['estado__nombre'],d['registros']['observacion'],d['registros']['telefono'],d['registros']['id_orig_base_c__campana']])
+            writer.writerow([d['contador'],d['registros']['fgestion'],d['registros']['fventa'],d['cliente'],d['registros']['nombre_agente'],d['registros']['contacto__nombre'],d['registros']['accion__nombre'],d['registros']['estado__nombre'],d['registros']['observacion'],d['registros']['telefono'],d['registros']['id_orig_base_c__campana']])
 
         return response   
    
@@ -889,6 +1249,7 @@ def reporte(request):
         # data_json = simplejson.dumps(data)
 
         # return HttpResponse(data_json, content_type="application/json")
+
 
 @csrf_exempt
 def reportebbva(request,contacto):
@@ -907,7 +1268,7 @@ def reportebbva(request,contacto):
         # 'cantidad','tipodecobertura','tipodedocumento','tienetarjetadecredito','facebook','nombredeagente'
         # 'contacto__nombre','accion__nombre','fecha_tipifica_bbva'
 
-        data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('fecha_actualizar_bbva','deacuerdo','facebook','dni','nombre','telefono1','telefono2','direccion','mail','tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva')
+        data = OrigBaseC01.objects.filter(cod_cam=29,mail__isnull=False).values('fecha_actualizar_bbva','deacuerdo','facebook','dni','nombre','telefono1','telefono2','direccion','mail','tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','observacion','cantidad','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva','pregunta1','pregunta2','pregunta3','pregunta4')
 
 
         # for j in range(len(data)):
@@ -930,7 +1291,7 @@ def reportebbva(request,contacto):
         writer = csv.writer(response)
 
         writer.writerow(['dni','nombre','telefono1','telefono2','direccion','mail',
-        'tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','observaciones','cantidad','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva','fecha_actualizar_bbva','facebook','deacuerdo'])
+        'tipo_envio','cobertura','cant_afiliados','fecha_nacimiento','observacion','cantidad','nombre_agente','contacto__nombre','accion__nombre','fecha_tipifica_bbva','fecha_actualizar_bbva','facebook','deacuerdo','pregunta1','pregunta2','pregunta3','pregunta4'])
 
         print 'Csv...'
 
@@ -980,9 +1341,9 @@ def reportebbva(request,contacto):
             #     d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','ignore')
             #     d['tipo_tarjeta'] = d['tipo_tarjeta'].encode('ascii','replace')
 
-            if d['observaciones']:
-                d['observaciones'] = d['observaciones'].encode('ascii','ignore')
-                d['observaciones'] = d['observaciones'].encode('ascii','replace')
+            if d['observacion']:
+                d['observacion'] = d['observacion'].encode('ascii','ignore')
+                d['observacion'] = d['observacion'].encode('ascii','replace')
 
             # if d['prima_mensual']:
             #     d['prima_mensual'] = d['prima_mensual'].encode('ascii','ignore')
@@ -1071,20 +1432,12 @@ def reportebbva(request,contacto):
             # d['recibects'],d['tienelpdp'],d['facebook'],d['fecha_vencimiento'],d['nombre_agente'],
             # d['observacion'],d['deacuerdo'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva']])
 
-            writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['direccion'],d['mail'],d['tipo_envio'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],d['observaciones'],d['cantidad'],d['nombre_agente'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva'],d['fecha_actualizar_bbva'],d['facebook'],d['deacuerdo']])
+            writer.writerow([d['dni'],d['nombre'],d['telefono1'],d['telefono2'],d['direccion'],d['mail'],d['tipo_envio'],d['cobertura'],d['cant_afiliados'],d['fecha_nacimiento'],d['observacion'],d['cantidad'],d['nombre_agente'],d['contacto__nombre'],d['accion__nombre'],d['fecha_tipifica_bbva'],d['fecha_actualizar_bbva'],d['facebook'],d['deacuerdo'],d['pregunta1'],d['pregunta2'],d['pregunta3'],d['pregunta4']])
 
         return response   
    
 
-def generablancos(data):
 
-    e = ''
-
-    for b in range(data):
-
-        e = ' '+ e
-
-    return e
 
 @csrf_exempt
 def trama(request,dni):
@@ -1092,298 +1445,17 @@ def trama(request,dni):
     if request.method == 'GET':
 
 
-        base = OrigBaseC01.objects.get(dni=dni)
-        
-        m = []
+        print 'generando....'
 
-        # Tipo de registro - 1
-        tipo = '1'
-        eb = 1 - len(tipo)
-        tipo = tipo + generablancos(eb)
+        dnis = dni.split('_')
 
-        ccampana = 'PE17008801'
-        eb = 10 - len(ccampana)
-        ccampana = ccampana + generablancos(eb)
+        trama = ''
 
-        # DNI
-        dni = base.dni
-        eb = 15 - len(dni)
-        dni = dni + generablancos(eb)
+        for d in dnis:
 
+            trama = trama + creaunatrama(d)+chr(13) + chr(10)
 
-        # Tipo de cobertura - 2
-        tcobertura = 'PA'
-        eb = 2 - len(tcobertura)
-        tcobertura = tcobertura + generablancos(eb)
-
-        base.nombre = base.nombre.encode('ascii','ignore')
-        base.nombre = base.nombre.encode('ascii','replace')
-
-
-        #Nombre Apellido - 50
-        nombre = base.nombre
-        eb = 50 - len(nombre)
-        nombre = nombre + generablancos(eb)
-    
-
-        #Nombre del Contratante - 30
-
-        base.primernombre = base.primernombre.encode('ascii','ignore')
-        base.primernombre = base.primernombre.encode('ascii','replace')
-
-        ncontratante = base.primernombre
-        eb = 30 - len(ncontratante)
-        ncontratante = ncontratante + generablancos(eb)
-
-
-        #Segundo Nombre del contratante - 15
-        if base.segundonombre == None:
-            base.segundonombre =''
-
-        base.segundonombre = base.segundonombre.encode('ascii','ignore')
-        base.segundonombre = base.segundonombre.encode('ascii','replace')
-
-
-        scontratante = base.segundonombre
-        eb = 15 - len(scontratante)
-        scontratante = scontratante + generablancos(eb)
-
-        base.apellidos = base.apellidos.encode('ascii','ignore')
-        base.apellidos = base.apellidos.encode('ascii','replace')
-
-
-        #Apellidos del contratante - 30
-        apcontratante = base.apellidos
-        eb = 30 - len(apcontratante)
-        apcontratante = apcontratante + generablancos(eb)
-
-
-        #Direccion 1 - 30
-        if base.direccion == None:
-            base.direccion =''
-        direccion1 = base.direccion
-        eb = 30 - len(direccion1)
-        direccion1 = direccion1 + generablancos(eb)
-
-
-        #Direccion 2 - 30
-        direccion2 = ''
-        eb = 30 - len(direccion2)
-        direccion2 = direccion2 + generablancos(eb)
-
-
-        #Direccion 3 -30
-        direccion3 = base.distrito
-        eb = 30 - len(direccion3)
-        direccion3 = direccion3 + generablancos(eb)
-
-        #Provincia-30
-        provincia = base.provincia
-        eb = 30 - len(provincia)
-        provincia = provincia + generablancos(eb)
-
-        #Departamento-2
-        departamento = base.departamento
-        eb = 2 - len(departamento)
-        departamento = departamento + generablancos(eb)
-
-        #Sexo-2
-        sexo =base.sexo
-        eb = 2 - len(sexo)
-        sexo = sexo + generablancos(eb)
-
-        idioma='02'
-
-        #Poliza
-        poliza ='01'
-        eb = 2 - len(poliza)
-        poliza = poliza + generablancos(eb)
-
-        #transaccion
-        transaccion ='NEW'
-
-        #Direccion 4 - 30
-        direccion4 = ''
-        eb = 30 - len(direccion4)
-        direccion4 = direccion4 + generablancos(eb)
-
-
-        #Telefono de Casa - 20
-        if base.telefono2 == None:
-            base.telefono2 = ''
-        telfcasa = base.telefono2
-        eb = 20 - len(telfcasa)
-        telfcasa = telfcasa + generablancos(eb)
-
-
-        #Telefono de trabajo - 20
-
-        if base.telefono1 == None:
-            base.telefono1 = ''
-        telefonotrabajo = base.telefono1
-        eb = 20 - len(telefonotrabajo)
-        telefonotrabajo = telefonotrabajo + generablancos(eb)
-
-
-        dependientes = '00'
-
-        #Fecha de expiracion - 100
-        #fexpiracion = '03/17'
-        fexpiracion = str(base.fecha_vencimiento).split('-')[1]+'/'+str(base.fecha_vencimiento)[2:4]
-        eb = 5- len(fexpiracion)
-        fexpiracion = fexpiracion + generablancos(eb)
-
-
-        #Fecha de Naciomiento - 100
-        reference3 = base.codigoautorizacion
-        eb = 100 - len(reference3)
-        reference3 = reference3 + generablancos(eb)
-
-
-        #Fecha de Naciomiento - 8
-        fechadenacimiento = base.fecha_nacimiento.replace('-','')
-        eb = 8 - len(fechadenacimiento)
-        fechadenacimiento = fechadenacimiento + generablancos(eb)
-
-
-        #Email - 40 
-        email = base.mail
-        eb = 40 - len(email)
-        email = email + generablancos(eb)
-
-
-        #Unit - 100
-        uni = ''
-        eb = 100 - len(uni)
-        uni = uni + generablancos(eb)
-
-        #Datos Especificos del producto - 2080
-        datespecpro = ''
-        eb = 2080 - len(datespecpro)
-        datespecpro = datespecpro + generablancos(eb)
-
-        codigoproductosimple = 'PAP494'
-        eb = 60 - len(codigoproductosimple)
-        codigoproductosimple = codigoproductosimple + generablancos(eb)
-
-
-        #Cuenta bancaria - 20
-        cuentabancaria = base.tarjetacredito
-        eb = 20 - len(cuentabancaria)
-        cuentabancaria = cuentabancaria + generablancos(eb)
-
-        #Cuenta bancaria - 20
-        fechaefectividad = base.fechaefectividad
-        eb = 8 - len(fechaefectividad)
-        fechaefectividad = fechaefectividad + generablancos(eb)
-
-        #DNI - 15
-        dni = base.dni
-        eb = 15 - len(dni)
-        dni = dni + generablancos(eb)
-
-        #telefono casa - 20
-        telefonocasa = base.telefono1
-        eb = 20 - len(telefonocasa)
-        telefonocasa = telefonocasa + generablancos(eb)
-
-                #telefono casa - 20
-        telefonotrabajo = base.telefono2
-        eb = 20 - len(telefonotrabajo)
-        telefonotrabajo = telefonotrabajo + generablancos(eb)
-
-
-        #telefono casa - 20
-        vendedor = base.nombre_agente
-        eb = 20 - len(vendedor)
-        vendedor = vendedor + generablancos(eb)
-
-        print str(base.tipo_tarjeta)[0:10]
-
-        if str(base.tipo_tarjeta)[0:4] == 'Visa':
-            codigotarjeta = 'P9'
-        if str(base.tipo_tarjeta)[0:10] == 'MasterCard':
-            codigotarjeta = 'P8' 
-        if str(base.tipo_tarjeta)[0:5] == 'Bfree':
-            codigotarjeta = 'P9'
-            print 'entre masti'
-
-        print codigotarjeta
-        eb = 2 - len(codigotarjeta)
-        codigotarjeta = codigotarjeta + generablancos(eb)
-
-        #1PE16015801      PAP407                                                      9999999999999999    08808817       2MO20170101          GRAMIREZ                      P910M CORINA IMELDA MONZON CASTILLO                     CORINA                        IMELDA         MONZON CASTILLO               01AV ignacio merino N 795 URB palermo                         130107                                                                     1301                          ZG          PE044212807                               1955123002  02        0100                          NEW                                     corinamonzoncatillo@hotmail.com                                                                                                                                                                                                                                                                                                                     230230  
-
-        m.append(tipo)#tipo de registro - 1 / 1-1
-        m.append(ccampana)#codigo de campana - 10 / 2-11
-        m.append('      ') #codigo de producto paquete - 6 / 12-17
-        m.append(codigoproductosimple)#codigo de producto simple - 60 / 18-77
-        m.append(cuentabancaria)#numero de cuenta bancaria - 20 / 78-97
-        m.append(dni)#numero de DNI - 15 / 98-112
-        m.append('1')#plan - 1 / 113-113
-        m.append('MO')#tipo de cobertura - 2 / 114-115
-        m.append(fechaefectividad)#Fecha de efectividad - 8 / 116-123
-        m.append(generablancos(10))#codigo de sucursal bancaria - 10 / 124-133
-        m.append(vendedor)#codigo de vendedor - 20 / 134-153
-        m.append(generablancos(10))#codigo de banco - 10 / 154-163
-        m.append(codigotarjeta)#codigo de tarjeta de credito - 2 /164-165
-        m.append('10')#metodo de pago - 2 / 166-167
-        m.append('M ')#frecuencia de pago - 2 / 168-169
-        m.append(nombre)# nombre y apellido del contratante - 50 / 170-219
-        m.append(ncontratante)#nombre del contratante - 30 / 220-249
-        m.append(scontratante)#segundo nombre del contratante - 15 / 250-264
-        m.append(apcontratante)#apellido del contratante - 30 /265-294
-        m.append('01')#codigo de tipo de direccion - 2 / 295-296
-        m.append(direccion1)#direccion 1 - 30 / 297-326
-        m.append(direccion2)#direccion 2 - 30 / 327-356
-        m.append(direccion3)#direccion 3 - 30 / 357-386
-        m.append(direccion4)#direccion 4 - 30 / 387-416
-        m.append(generablancos(15))#filler - 15 / 417-431
-        m.append(provincia)#provincia - 30 / 432-461
-        m.append(departamento)#departamento - 2 / 462-463
-        m.append(generablancos(10))#postal - 10 / 464-473
-        m.append('PE')#codigo de pais - 2 / 474-475
-        m.append(telefonocasa)#telefono de casa - 20 / 476-495
-        m.append(telefonotrabajo)#telefono de trabajo - 20 / 496-515
-        m.append(fechadenacimiento)#fecha de nacimiento - 8 / 516-523
-        m.append(sexo)#codigo de sexo - 2 / 524-525
-        m.append(generablancos(2))#titulo - 2 / 526-527
-        m.append(idioma)#idioma - 2 / 528-529
-        m.append(generablancos(2))#filler - 2 / 530-531
-        m.append(generablancos(2))#filler - 2 / 532-533
-        m.append(generablancos(2))#filler - 2 / 534-535
-        m.append(generablancos(2))#filler - 2 / 536-537
-        m.append(poliza)#indicador de envio de polisa - 2 / 538-539
-        m.append(dependientes)#numero de dependientes - 2 / 540-541
-        m.append(generablancos(2))#filler - 2 / 542-543
-        m.append(generablancos(15))#polisa - 15 / 544-558
-        m.append(generablancos(9))#filler - 9 / 559-567
-        m.append(transaccion)#codigo de transaccion - 3 / 568-570
-        m.append(generablancos(2))#filler - 2 / 571-572
-        m.append(generablancos(5))#filler - 5 / 573-577
-        m.append(generablancos(30))#filler - 30 / 578-607
-        m.append(email)#email - 40 / 608-647
-        m.append(uni)#unit - 100 / 648-747
-        m.append(generablancos(100))#referencia1 - 100 / 748-847
-        m.append(generablancos(100))#referencia2 - 100 / 848-947
-        m.append(reference3)#referencia3 - 100 / 948-1047
-        m.append(fexpiracion)#fecha de expiracion - 5 / 1048-1052
-        m.append(generablancos(10))#fecha de aplicacion - 10 / 1053-1062
-        m.append(generablancos(5)) #filler - 5 / 1063-1067
-        m.append(generablancos(3))#filler - 3 / 1068-1070
-        m.append(generablancos(6))#filler - 6 / 1071-1076
-        m.append(generablancos(10))#filler - 10 / 1077-1086
-        m.append(generablancos(15))#numero de formulario - 15 / 1087-1001
-        m.append(datespecpro)#datos especificos del producto - 2080 / 1002-3181
-        data = ''.join(m)
-
-        print 'carater 10' ,data[108]
-
-
-        
-        # data[0:2] = '22323'
-
-        # data[2:4] = 'yeyey'
+        data=trama.replace('"','')
 
         print data
 
@@ -1398,6 +1470,7 @@ def trama(request,dni):
         writer.writerow([data])
 
         return response   
+
 
 
 @csrf_exempt
@@ -1707,7 +1780,7 @@ def tipifica(request):
 
 
 
-        b.save()
+        #b.save()
 
         data = ValuesQuerySetToDict('data')
 
