@@ -587,3 +587,17 @@ class Ticket(models.Model):
     class Meta:
         managed = False
         db_table = 'ticket'
+
+class Ubigeo(models.Model):
+    departamento = models.CharField(db_column='departamento', max_length=1000, blank=True, null=True)
+    cod_departamento = models.CharField(db_column='cod_departamento', max_length=1000, blank=True, null=True)
+    provincia = models.CharField(db_column='provincia', max_length=1000, blank=True, null=True)
+    cod_provincia = models.CharField(db_column='cod_provincia', max_length=1000, blank=True, null=True)
+    distrito = models.CharField(db_column='distrito', max_length=1000, blank=True, null=True)
+    cod_distrito = models.CharField(db_column='cod_distrito', max_length=1000, blank=True, null=True)
+
+
+    class Meta:
+        managed = False
+        db_table = 'ubigeo'
+

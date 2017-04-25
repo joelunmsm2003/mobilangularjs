@@ -691,6 +691,7 @@ def actualizabbva(request):
         deacuerdo= None
         nomagente = None
         recupero = None
+        sexo = None
 
         
         for d in data:
@@ -773,6 +774,8 @@ def actualizabbva(request):
         base.facebook = facebook
         base.deacuerdo = deacuerdo
         base.nombre_agente = nomagente
+
+
     
      
         url = 'http://192.168.40.4/sql/sorteo.php'
@@ -852,6 +855,10 @@ def ventas(request):
         deacuerdo= None
         nomagente = None
         recupero = None
+        distrito = None
+        departamento = None
+        provincia = None
+        sexo= None
 
         
         for d in data:
@@ -924,6 +931,27 @@ def ventas(request):
 
                 recupero = data['recupero']
 
+
+            if d == 'departamento':
+
+                departamento = data['departamento']
+
+
+            if d == 'provincia':
+
+                provincia = data['provincia']
+
+            if d == 'distrito':
+
+                distrito = data['distrito']
+
+            if d == 'sexo':
+
+                sexo = data['sexo']
+
+
+
+
         base = OrigBaseC01.objects.get(dni=dni)
         base.nombre = nombre
         base.dni = dni
@@ -940,6 +968,14 @@ def ventas(request):
         base.todo_prima = todo_prima
         base.facebook = facebook
         base.deacuerdo = deacuerdo
+
+
+
+        base.departamento = departamento
+        base.provincia = provincia[0]['cod_provincia']
+        base.distrito = distrito
+        base.sexo = sexo
+
         
         if recupero == None:
 
@@ -1186,6 +1222,64 @@ def traebase(request,fono):
         data_json = simplejson.dumps(data)
 
         return HttpResponse(data_json, content_type="application/json")
+
+
+
+@csrf_exempt
+def distrito(request):
+
+    if request.method == 'GET':
+
+        data = Ubigeo.objects.all().values('id','distrito')
+
+        data = ValuesQuerySetToDict(data)
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
+
+@csrf_exempt
+def departamentos(request):
+
+    if request.method == 'GET':
+
+        data = Ubigeo.objects.all().values('cod_departamento','departamento').annotate(count=Max('departamento'))
+
+        data = ValuesQuerySetToDict(data)
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
+
+@csrf_exempt
+def provincia(request,departamento):
+
+    if request.method == 'GET':
+
+        data = Ubigeo.objects.filter(cod_departamento=departamento).values('cod_provincia','provincia').annotate(count=Max('provincia'))
+
+        data = ValuesQuerySetToDict(data)
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
+@csrf_exempt
+def distrito(request,provincia):
+
+    if request.method == 'GET':
+
+        data = Ubigeo.objects.filter(cod_provincia=provincia).values('cod_distrito','distrito').annotate(count=Max('distrito'))
+
+        data = ValuesQuerySetToDict(data)
+
+        data_json = simplejson.dumps(data)
+
+        return HttpResponse(data_json, content_type="application/json")
+
+
 
 @csrf_exempt
 def reporte(request):
@@ -1504,7 +1598,7 @@ def cliente(request,dni):
 
     if request.method == 'GET':
 
-        data = OrigBaseC01.objects.filter(dni=dni,cod_cam=29).values('contacto__nombre','deacuerdo','ticket','tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial')
+        data = OrigBaseC01.objects.filter(dni=dni,cod_cam=29).values('contacto__nombre','deacuerdo','ticket','tipodedocumento','facebook','cobertura','nombredelproducto','cantidad','facebook','mail','telefono1','telefono2','tienetarjetadecredito','tarjetasadicionales','recibects','tienelpdp','id','nombre','dni','cobertura','plan_cobertura','cant_afiliados','direccion','distrito','provincia','departamento','mail','fecha_nacimiento','call','fecha','campana','prima_mensual','todo_prima','telefono1','telefono2','telefono3','telefono4','telefono5','telefono6','telefono7','tipo_tarjeta','tipo_envio','comercial','distrito','departamento','provincia','sexo')
         
         
         fmt = '%Y-%b-%d %H:%M:%S'

@@ -40,6 +40,12 @@ urlpatterns = [
     url(r'^ticket/(\w+)$', 'gestion.views.ticket'),
     url(r'^noactualiza/(\w+)$', 'gestion.views.noactualiza'),
     url(r'^agentes$', 'gestion.views.agentes'),
+    url(r'^distrito$', 'gestion.views.distrito'),
+    url(r'^distrito$', 'gestion.views.distrito'),
+    url(r'^provincia/(\w+)$', 'gestion.views.provincia'),
+    url(r'^departamentos/$', 'gestion.views.departamentos'),
+    url(r'^distrito/(\w+)$', 'gestion.views.distrito'),
+
 
 
     #Hotels

@@ -5,6 +5,7 @@ angular
 .service('TipificaService', TipificaService)
 .service('UserService', UserService)
 .service('BbvaService', BbvaService)
+.service('UbigeoService', UbigeoService)
 
 .config(function($stateProvider, $urlRouterProvider,$locationProvider,$httpProvider) {
     

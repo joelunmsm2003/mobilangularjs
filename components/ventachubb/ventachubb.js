@@ -11,11 +11,21 @@ angular
 
 
 
-function VentachubbController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService){
+function VentachubbController($state,$stateParams,$scope,$location,$http,LlamadaService,BbvaService,UbigeoService,$filter){
 
 
   
         dni = $stateParams.dni
+
+
+         UbigeoService.departamento().then(function(data) {
+
+            console.log('departamentos...',data)
+
+            $scope.departamentos=data
+
+
+            })
 
 
         $scope.recupero = this.recupero
@@ -29,11 +39,17 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
         $scope.nomagente = $stateParams.nomagente
 
 
+
               LlamadaService.cliente(dni).then(function(data) {
 
                 console.log('Ventachub...',data)
 
                 $scope.cliente = data[0]
+
+
+
+                console.log('departamento......',$scope.dept)
+  
 
                 })
 
@@ -59,10 +75,62 @@ function VentachubbController($state,$stateParams,$scope,$location,$http,Llamada
             }
 
 
+
+          $scope.buscaprovincia =function(departamento){
+
+
+            console.log(departamento)
+
+
+               UbigeoService.provincia(departamento).then(function(data) {
+
+            console.log('provincia...',data)
+
+            $scope.provincia=data
+
+
+            })
+
+
+
+
+
+
+          }
+
+           $scope.buscadistrito =function(provincia){
+
+
+            console.log(departamento)
+
+
+               UbigeoService.distrito(provincia).then(function(data) {
+
+            console.log('distrito...',data)
+
+            $scope.distrito=data
+
+
+            })
+
+
+
+
+
+
+          }
+
+
          $scope.ventabbva =function(cliente){
 
 
+            console.log('ubigeo...',$scope.dept,$scope.prov,$scope.dist)
 
+              cliente.departamento = $scope.dept
+
+              cliente.provincia = $scope.provincia
+
+              cliente.distrito =$scope.dist
 
 
               cliente.recupero = $scope.recupero
