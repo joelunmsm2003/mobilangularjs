@@ -45,6 +45,10 @@ urlpatterns = [
     url(r'^provincia/(\w+)$', 'gestion.views.provincia'),
     url(r'^departamentos/$', 'gestion.views.departamentos'),
     url(r'^distrito/(\w+)$', 'gestion.views.distrito'),
+    url(r'^tramaweb$', 'gestion.views.tramaweb'),
+    url(r'^uploadfile$', 'gestion.views.uploadfile'),
+    url(r'^gentrama/(\w+)$', 'gestion.views.gentrama'),
+    url(r'^actaudio$', 'gestion.views.actaudio'),
 
 
 

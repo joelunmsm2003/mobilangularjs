@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+PROJECT_PATH = os.path.dirname(os.path.realpath(__file__))
+
+MEDIA_ROOT = os.path.join(PROJECT_PATH, '/var/www/html/')
+
+MEDIA_URL = '/var/www/html/'
+
 
 # Application definition
 
@@ -62,7 +68,7 @@ ROOT_URLCONF = 'apis.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

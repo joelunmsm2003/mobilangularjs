@@ -562,6 +562,7 @@ class Ventarecupero(models.Model):
     sexo = models.CharField(db_column='sexo', max_length=10, blank=True, null=True)  # Field name made lowercase.
     tarjetacredito = models.CharField(db_column='tarjetacredito', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     bbva = models.ForeignKey(OrigBaseC01, models.DO_NOTHING, db_column='bbva', blank=True, null=True)
+    audiofinal = models.CharField(db_column='audiofinal', max_length=100, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -601,3 +602,11 @@ class Ubigeo(models.Model):
         managed = False
         db_table = 'ubigeo'
 
+
+
+class Lote(models.Model):
+    file =models.FileField(upload_to='static')
+
+    class Meta:
+        managed = False
+        db_table = 'lote'
