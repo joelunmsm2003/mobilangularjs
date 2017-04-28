@@ -191,6 +191,8 @@ def creaunatrama(dni):
 
     #Provincia-30
     provincia = base.provincia
+
+
     eb = 30 - len(provincia)
     provincia = provincia + generablancos(eb)
 
@@ -1293,25 +1295,25 @@ def reporte(request):
 
     if request.method == 'GET':
 
-        data = OrigBase.objects.filter(id_orig_base_c__cod_cam=1).values('cliente').annotate(count=Count('cliente'))
+        data = OrigBase.objects.filter(id_orig_base_c__cod_cam=1,nombre_agente__isnull=False).values('cliente').annotate(count=Count('cliente'))
+
 
         for j in range(len(data)):
 
-            data[j]['contador'] = OrigBase.objects.filter(cliente=data[j]['cliente']).count()
+            print '----',j
 
             base = OrigBase.objects.filter(cliente=data[j]['cliente']).values('cliente','id_orig_base_c','id_orig_base','telefono','contacto__nombre','estado__nombre','accion__nombre','observacion','nombre_agente','tadicional','id_orig_base_c__campana','id_orig_base_c__fecha','id_orig_base_c__cod_cam').order_by('-fgestion')
 
-            print 'base.......',base
-            
             fmt = '%Y-%m-%d %H:%M:%S'
 
             for x in range(len(base)):
 
+
+                print '.......',x
+
                 base[x]['fgestion'] = ''
 
                 base[x]['fventa'] = ''
-
-                print base[x]['id_orig_base_c']
 
                 if OrigBaseC01.objects.filter(dni=base[x]['cliente'],cod_cam=1).values('fecha').count()>0:
 
@@ -1324,7 +1326,7 @@ def reporte(request):
 
                 base = ValuesQuerySetToDict(base)
 
-            print 'reporte welcome...',base
+
 
 
             data[j]['registros'] = base[0]
@@ -1341,7 +1343,7 @@ def reporte(request):
 
         for d in data:
 
-            writer.writerow([d['contador'],d['registros']['fgestion'],d['registros']['fventa'],d['cliente'],d['registros']['nombre_agente'],d['registros']['contacto__nombre'],d['registros']['accion__nombre'],d['registros']['estado__nombre'],d['registros']['observacion'],d['registros']['telefono'],d['registros']['id_orig_base_c__campana']])
+            writer.writerow([d['count'],d['registros']['fgestion'],d['registros']['fventa'],d['cliente'],d['registros']['nombre_agente'],d['registros']['contacto__nombre'],d['registros']['accion__nombre'],d['registros']['estado__nombre'],d['registros']['observacion'],d['registros']['telefono'],d['registros']['id_orig_base_c__campana']])
 
         return response   
    
