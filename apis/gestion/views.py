@@ -614,12 +614,11 @@ def creaunatramadependiente(dni,dni_dependiente,nombre,sexo,dependientes,fecha_n
     #Provincia-30
     provincia = base.provincia
 
+
     if len(provincia) == 5:
         provincia='0'+provincia
 
-
     provincia = re.sub(r'\s', '', provincia)
-
     eb = 30 - len(provincia)
     provincia = provincia + generablancos(eb)
 
@@ -2036,12 +2035,7 @@ def reporte(request):
 
         data = OrigBase.objects.filter(id_orig_base_c__cod_cam=1,nombre_agente__isnull=False).values('cliente').annotate(count=Count('cliente'))
 
-        print data.count()
-        
-
         for j in range(len(data)):
-
-            print '----',j,'de...', data.count()
 
             base = OrigBase.objects.filter(cliente=data[j]['cliente']).values('cliente','id_orig_base_c','id_orig_base','telefono','contacto__nombre','estado__nombre','accion__nombre','observacion','nombre_agente','tadicional','id_orig_base_c__campana','id_orig_base_c__fecha','id_orig_base_c__cod_cam').order_by('-fgestion')
 
@@ -2607,13 +2601,13 @@ def tipifica(request):
 
                 f=dia+mes+anio
 
-                if base.telefono1:
+                if b.telefono1:
 
                     b.telefono1 = b.telefono1.encode('ascii','ignore')
                     
                     b.telefono1 = b.telefono1.encode('ascii','replace')
 
-                audio = re.sub(r'\s', '', base.dni)+'_'+str(f)+'_'+str(b.telefono1)[0:9]+'_'+str('AV')
+                audio = re.sub(r'\s', '', b.dni)+'_'+str(f)+'_'+str(b.telefono1)[0:9]+'_'+str('VR')
                 
                 audiofinal = re.sub(r'\s', '', audio)
 
